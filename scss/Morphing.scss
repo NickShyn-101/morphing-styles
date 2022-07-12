@@ -1,0 +1,24 @@
+@charset "UTF-8";
+
+// Global Settings for fast customising your Project
+@import "global/Root"; 
+@import "global/Preferences";
+
+// Global components for creating a base Project Style
+@import "global/base";					
+@import "global/typography"; 			
+@import "global/grid-flex"; 	// Grid system based on FlexBox
+
+@import "Forms"; 				// forms, inputs & other components
+@import "Components"; 			// other styling components
+
+// Use themes in Morphing, import a themeplate you like
+// more from github or site (soon)
+
+// !!! don`t use several themes in one build
+// @import "classic-themeplate";
+
+
+// Create your own componens and styles below
+@import "CustomStyles";
+
