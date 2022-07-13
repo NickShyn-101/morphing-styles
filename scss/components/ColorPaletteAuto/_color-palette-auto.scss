@@ -1,0 +1,23 @@
+
+$shade-steps: 			3; 	  	// number of shades
+$shade-step-value: 		8%;   	// step for shader
+
+$lighten-colors: 		true;  	// only lighter shades
+$darken-colors: 		true; 	// only darker shades
+
+$colors-for-bg: 		true; 	// use Generator only for tag "background"
+$colors-for-txt: 		true; 	// use Generator only for tag "color"
+$colors-for-border: 	true; 	// use Generator only for tag "border-color" 
+
+// input your color name and starting shade
+$base-colors: (
+	"green": 	#6ECF72,
+	"blue":		#3E5EBB,
+);
+
+// final result will be
+// "green-0-bg
+// "green-l1-bg - green-l3-bg"
+// "green-d1-bg - green-d3-bg"
+// ... 
+@import "bin/core"

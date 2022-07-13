@@ -1,0 +1,46 @@
+@each $color-key, $color-value in $base-colors {
+	.#{$color-key}-0-bg {background-color: $color-value;}
+	.#{$color-key}-0-txt {color: $color-value;}
+	.#{$color-key}-0-border {border-color: $color-value;}
+	@for $i from $shade-steps through 1 {				
+		@if $lighten-colors == true {
+			@if $colors-for-bg == true {
+				.#{$color-key}-l#{$i}-bg {
+					background-color: lighten($color-value, $shade-step-value * $i);
+				}
+			}
+			@if $colors-for-txt == true {
+				.#{$color-key}-l#{$i}-txt {
+					color: lighten($color-value, $shade-step-value * $i);
+				}
+			}
+			@if $colors-for-border == true {
+				.#{$color-key}-l#{$i}-border {
+					border-color: lighten($color-value, $shade-step-value * $i);
+				}
+			}
+		}
+	}		
+	@for $i from 1 through $shade-steps {
+		@if $darken-colors == true {
+			@if $colors-for-bg == true {
+				.#{$color-key}-d#{$i}-bg {
+					background-color: darken($color-value, $shade-step-value * $i);
+				}
+			}
+			@if $colors-for-txt == true {
+				.#{$color-key}-d#{$i}-txt {
+					color: darken($color-value, $shade-step-value * $i);
+				}
+			}
+			@if $colors-for-border == true {
+				.#{$color-key}-d#{$i}-border {
+					border-color: darken($color-value, $shade-step-value * $i);
+				}
+			}
+		}
+	}
+}
+ 
+
+
