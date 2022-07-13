@@ -1,0 +1,102 @@
+$flex-direction: (
+  "row": row,
+  "col": column,
+  "row-r": row-reverse,
+  "col-r": column-reverse,
+);
+
+$flex-wrap: (
+  "nowrap": nowrap,
+  "wrap": wrap,
+  "wrap-r": wrap-reverse,
+);
+
+
+
+
+
+
+// gaps for flex elements // to Use this "g<name>"
+$custom-gap: (
+	"1": 1rem 1rem,
+	"2": 2rem 2rem,
+	"3": 3rem 3rem,
+	"4": 2rem 2rem,
+	"5": 3rem 3rem,
+);
+
+// gaps for flex elements // to Use this "sh<name>"
+$custom-shrink: (
+	"1": 1,
+	"2": 2,
+	"3": 3,
+	"4": 4,
+	"5": 5,
+	"6": 6,
+);
+
+// ======================== Extended Settings ========================================
+// ======================== comment useless properities =============================
+
+$flex-flow: (
+	"ff-row": 		row,
+	"ff-col": 		column,
+	"ff-row-r": 	row-reverse,
+	"ff-col-r": 	column-reverse,
+	"ff-nowrap": 	nowrap,
+	"ff-wrap": 		wrap,
+	"ff-wrap-r": 	wrap-reverse,
+);
+
+// done all
+$justify-content: (
+	"jc-center": 	center,
+	"jc-fs": 		flex-start,
+	"jc-fe": 		flex-end,
+	"jc-left": 		left,
+	"jc-right": 	right,
+	"jc-str": 		stretch,
+	"jc-sb": 		space-between,
+	"jc-sa": 		space-around,
+	"jc-se": 		space-evenly,
+);
+
+//done
+$align-items: (
+	"ai-fs": 		flex-start,
+	"ai-fe": 		flex-end,
+	"ai-center":	center,
+	"ai-bl": 		baseline,
+	"ai-str": 		stretch,
+);
+
+$align-self: (
+	"as-auto": 		auto,
+	"as-normal": 	normal,
+	"as-center": 	center,
+	"as-fs": 		flex-start,
+	"as-fe": 		flex-end,
+	"as-bl": 		baseline,
+	"as-str": 		stretch,
+);
+
+$align-content: (
+	"ac-normal": 	normal,
+	"ac-center": 	center,
+	"ac-fs": 		flex-start,
+	"ac-fe": 		flex-end,
+	"ac-bl": 		baseline,
+	"ac-sb": 		space-between,
+	"ac-sa": 		space-around,
+	"ac-se": 		space-evenly,
+
+);
+
+$text-align: (
+	"ta-left": 		left,
+	"ta-right": 	right,
+	"ta-center": 	center,
+	"ta-justify": 	justify,
+);
+
+// ====================================== END ===============================

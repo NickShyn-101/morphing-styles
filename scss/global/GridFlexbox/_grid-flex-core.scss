@@ -1,0 +1,63 @@
+%testing-settings {
+  background-color: rgba(50, 50, 50, 0.15);
+  border: 1px dashed rgba(50, 50, 50, 0.15);
+  padding: 10px;
+}
+
+%global-grid-settings {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: flex-start;
+
+  @extend %testing-settings ;
+}
+
+%global-col-settings {
+  @extend %testing-settings ;
+}
+
+@mixin grid-structure($isMQ: false) {
+  .container {
+    flex-direction: row;
+    width: 100%;
+    @extend %global-grid-settings;
+    gap: $gapInContainer;
+  }
+
+  .row {
+    flex-direction: row;
+    width: 100%;
+    @extend %global-grid-settings;
+    gap: $gapInRow;
+  }
+
+  @for $i from 1 through $col-count {
+    .col-#{$i},
+    .cg-#{$i} {
+      width: calc(
+        (((100% / $col-count) * $i)) -
+          $gapInRow +
+          (($gapInRow / $col-count) * ($i))
+      );
+
+      @extend %global-col-settings;
+    }
+  }
+
+  @for $i from 0 through $col-count {
+    .cf-#{$i} {
+      flex: $i;
+      @extend %global-col-settings;
+    }
+  }
+}
+
+.strict {
+  max-width: $container-width;
+}
+
+.m-auto,
+.to-center,
+.to-mid {
+  margin: 0 auto;
+}
