@@ -1,0 +1,10 @@
+@function widthWithGap($maxnumb, $itr, $gapVal, $rev: false) {
+    @if ($rev) {
+      @return calc(
+        (((100% / $maxnumb) * $itr)) + $gapVal - (($gapVal / $maxnumb) * ($itr + 4))
+      );
+    }
+    @return calc(
+      (((100% / $maxnumb) * $itr)) - $gapVal + (($gapVal / $maxnumb) * ($itr))
+    );
+  }

@@ -1,3 +1,14 @@
+// fixed bug with offset when we use global gap 
+
+%testing-settings {
+  // background-color: rgba(50, 50, 50, 0.15);
+  // border: 1px dashed rgba(50, 50, 50, 0.15);
+  // padding: 10px;
+}
+
+
+@import "functions";
+
 main,
 aside,
 footer,
@@ -6,14 +17,6 @@ section,
 .section {
   display: block;
   margin: 0;
-}
-
-
-
-%testing-settings {
-  // background-color: rgba(50, 50, 50, 0.15);
-  // border: 1px dashed rgba(50, 50, 50, 0.15);
-  // padding: 10px;
 }
 
 %global-grid-settings {
@@ -45,11 +48,7 @@ section,
   @for $i from 1 through $col-count {
     .col-#{$i},
     .cg-#{$i} {
-      width: calc(
-        (((100% / $col-count) * $i)) -
-          $gapInRow +
-          (($gapInRow / $col-count) * ($i))
-      );
+      width: widthWithGap($col-count, $i, $gapInRow);
 
       @extend %global-col-settings;
     }
@@ -63,22 +62,28 @@ section,
   }
 }
 
-// offset gen for col
+// need to fix offset with gap param
 @mixin offsetProps($offsetL, $offsetR, $isMQ: false) {
-  @for $i from 0 through ($col-count - 1) {
+  .offset-l0 {
+    margin-left: 0px;
+  }
+  .offset-r0 {
+    margin-right: 0px;
+  }
+  @for $i from 1 through ($col-count - 1) {
     @if ($offsetL) {
       .offset-l#{$i} {
-        margin-left: (100% / $col-count) * $i;
+        margin-left: widthWithGap($col-count, $i, $gapInRow, true);
+        @debug "calculate function is not working right with gaps";
       }
     }
     @if ($offsetR) {
       .offset-r#{$i} {
-        margin-right: (100% / $col-count) * $i;
+        margin-right: widthWithGap($col-count, $i, $gapInRow, true);
       }
     }
   }
 }
-
 
 // additional styles
 .strict {
@@ -90,7 +95,6 @@ section,
 .to-mid {
   margin: 0 auto;
 }
-
 
 //tasks
 // flex-basis:  gen
