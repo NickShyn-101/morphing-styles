@@ -1,3 +1,6 @@
-@import 'comp/h';
-@import 'comp/text-decoration';
-@import 'comp/code';
+@import 'bin/functions';
+@import 'bin/mixins';
+
+@import 'components/h';
+@import 'components/text-decoration';
+@import 'components/code';
