@@ -1,3 +1,15 @@
+main,
+aside,
+footer,
+header,
+section,
+.section {
+  display: block;
+  margin: 0;
+}
+
+
+
 %testing-settings {
   // background-color: rgba(50, 50, 50, 0.15);
   // border: 1px dashed rgba(50, 50, 50, 0.15);
@@ -51,6 +63,24 @@
   }
 }
 
+// offset gen for col
+@mixin offsetProps($offsetL, $offsetR, $isMQ: false) {
+  @for $i from 0 through ($col-count - 1) {
+    @if ($offsetL) {
+      .offset-l#{$i} {
+        margin-left: (100% / $col-count) * $i;
+      }
+    }
+    @if ($offsetR) {
+      .offset-r#{$i} {
+        margin-right: (100% / $col-count) * $i;
+      }
+    }
+  }
+}
+
+
+// additional styles
 .strict {
   max-width: $container-width;
 }
@@ -60,3 +90,10 @@
 .to-mid {
   margin: 0 auto;
 }
+
+
+//tasks
+// flex-basis:  gen
+// flex-grow:   gen
+// flex-shrink: gen
+// gap:         gen
