@@ -10,8 +10,8 @@ $gapInRow:              10px;
 
 
 
-@include grid-structure(true);
-@include offsetProps(true, true, false);
+@include columnProps(true, true, true);  // col, colFlex, mediaQ
+@include offsetProps(true, true, false); // offset-l, offset-r, mediaQ
 // Add your custom props to "./grid-flex-props" and create rule
 @include onePropFromArray("fw-",   "flex-wrap",         $flex-wrap,         true);
 @include onePropFromArray("fd-",   "flex-direction",    $flex-direction,    true);

@@ -1,13 +1,23 @@
-// fixed bug with offset when we use global gap 
+@import "functions";
 
 %testing-settings {
-  // background-color: rgba(50, 50, 50, 0.15);
-  // border: 1px dashed rgba(50, 50, 50, 0.15);
-  // padding: 10px;
+  background-color: rgba(50, 50, 50, 0.15);
+  border: 1px dashed rgba(50, 50, 50, 0.15);
+  padding: 10px;
 }
 
+%global-grid-settings {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: flex-start;
+  overflow: hidden;
+  @extend %testing-settings;
+}
 
-@import "functions";
+%global-col-settings {
+  overflow: hidden;
+  @extend %testing-settings;
+}
 
 main,
 aside,
@@ -19,50 +29,40 @@ section,
   margin: 0;
 }
 
-%global-grid-settings {
-  display: flex;
-  flex-wrap: wrap;
-  align-items: flex-start;
-  @extend %testing-settings;
+.container {
+  flex-direction: row;
+  width: 100%;
+  @extend %global-grid-settings;
+  gap: $gapInContainer;
 }
 
-%global-col-settings {
-  @extend %testing-settings;
+.row {
+  flex-direction: row;
+  width: 100%;
+  @extend %global-grid-settings;
+  gap: $gapInRow;
 }
 
-@mixin grid-structure($isMQ: false) {
-  .container {
-    flex-direction: row;
-    width: 100%;
-    @extend %global-grid-settings;
-    gap: $gapInContainer;
-  }
-
-  .row {
-    flex-direction: row;
-    width: 100%;
-    @extend %global-grid-settings;
-    gap: $gapInRow;
-  }
-
-  @for $i from 1 through $col-count {
-    .col-#{$i},
-    .cg-#{$i} {
-      width: widthWithGap($col-count, $i, $gapInRow);
-
-      @extend %global-col-settings;
+@mixin columnProps($colGap, $collFlex, $isMQ: false) {
+  @if ($colGap) {
+    @for $i from 1 through $col-count {
+      .col-#{$i} {
+        width: gridWidth($col-count, $i, $gapInRow);
+        @extend %global-col-settings;
+      }
     }
   }
 
-  @for $i from 0 through $col-count {
-    .cf-#{$i} {
-      flex: $i;
-      @extend %global-col-settings;
+  @if ($collFlex) {
+    @for $i from 0 through $col-count {
+      .cf-#{$i} {
+        flex: $i;
+        @extend %global-col-settings;
+      }
     }
   }
 }
 
-// need to fix offset with gap param
 @mixin offsetProps($offsetL, $offsetR, $isMQ: false) {
   .offset-l0 {
     margin-left: 0px;
@@ -73,13 +73,12 @@ section,
   @for $i from 1 through ($col-count - 1) {
     @if ($offsetL) {
       .offset-l#{$i} {
-        margin-left: widthWithGap($col-count, $i, $gapInRow, true);
-        @debug "calculate function is not working right with gaps";
+        margin-left: gridOffset($col-count, $i, $gapInRow);
       }
     }
     @if ($offsetR) {
       .offset-r#{$i} {
-        margin-right: widthWithGap($col-count, $i, $gapInRow, true);
+        margin-right: gridOffset($col-count, $i, $gapInRow);
       }
     }
   }
