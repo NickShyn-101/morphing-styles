@@ -1,19 +1,18 @@
 %testing-settings {
-  background-color: rgba(50, 50, 50, 0.15);
-  border: 1px dashed rgba(50, 50, 50, 0.15);
-  padding: 10px;
+  // background-color: rgba(50, 50, 50, 0.15);
+  // border: 1px dashed rgba(50, 50, 50, 0.15);
+  // padding: 10px;
 }
 
 %global-grid-settings {
   display: flex;
   flex-wrap: wrap;
   align-items: flex-start;
-
-  @extend %testing-settings ;
+  @extend %testing-settings;
 }
 
 %global-col-settings {
-  @extend %testing-settings ;
+  @extend %testing-settings;
 }
 
 @mixin grid-structure($isMQ: false) {
