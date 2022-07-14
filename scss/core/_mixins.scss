@@ -1,12 +1,8 @@
 // special mixin for generating special params for any
 @mixin onePropFromArray($styleName, $propsName, $array, $isMQ: "") {
-  $mqLabel: "";
-  @if ($isMQ != "") {
-    $mqLabel: "#{$isMQ}-";
-  }
-  
+  $mqLabel: checkMQ($isMQ);  
   @each $key, $props in $array {
-    .#{$mqLabel}#{$styleName}#{$key} {
+    .#{$mqLabel}#{$styleName}-#{$key}{
       #{$propsName}: $props;
     }
   }

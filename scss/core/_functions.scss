@@ -1,0 +1,7 @@
+@function checkMQ($hasMQ) {
+  @if ($hasMQ != "") {
+    @return "#{$mediaQueryPrefix}#{$hasMQ}#{$mediaQueryPostfix}";
+  } @else {
+    @return "";
+  }
+}
