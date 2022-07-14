@@ -1,3 +1,6 @@
+//  fixed calc in gridWidth() in _functions 
+
+
 $col-count: 12 !default;
 $container-width: 1220px !default;
 $gapInContainer: 20px;
@@ -8,8 +11,8 @@ $gapInRow: 10px;
 
 
 // Comment props you dont need
-@include columnProps(true, true, true); // col, colFlex, mediaQ
-@include offsetProps(true, true, true); // offset-l, offset-r, mediaQ
+@include columnProps(true, true); // col, colFlex, mediaQ
+@include offsetProps(true, true); // offset-l, offset-r, mediaQ
 
 // Add your custom props to "./grid-flex-props" and create rule
 @include onePropFromArray("fw-",   "flex-wrap",        $flex-wrap);
@@ -27,6 +30,8 @@ $gapInRow: 10px;
 
 @each $mqKey, $mqProp in $mediaQuery {
     @media #{$mqProp} {
+        // @include columnProps(true, true, $mqKey); // a bug with extend %
+        @include offsetProps(true, true, $mqKey);
 
     @include onePropFromArray("fw-",   "flex-wrap",        $flex-wrap,          $mqKey);
     @include onePropFromArray("fd-",   "flex-direction",   $flex-direction,     $mqKey);

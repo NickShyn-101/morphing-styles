@@ -1,6 +1,6 @@
 @function gridWidth($maxnumb, $itr, $gapVal) {
   @return calc(
-    (((100% / $maxnumb) * $itr)) - $gapVal + (($gapVal / $maxnumb) * ($itr))
+    (((100% / $maxnumb) * $itr)) - ($gapVal - (($gapVal / $maxnumb) * ($itr)))
   );
 }
 

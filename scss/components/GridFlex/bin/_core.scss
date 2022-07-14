@@ -1,3 +1,5 @@
+// bug cols in media can`t use % !!! FIX it
+
 @import "functions";
 
 %testing-settings {
@@ -16,7 +18,7 @@
 
 %global-col-settings {
   overflow: hidden;
-  @extend %testing-settings;
+  // @extend %testing-settings;
 }
 
 main,
@@ -43,42 +45,54 @@ section,
   gap: $gapInRow;
 }
 
-@mixin columnProps($colGap, $collFlex, $isMQ: false) {
+@mixin columnProps($colGap, $collFlex, $isMQ: "") {
+  $mqLabel: "";
+  @if ($isMQ != "") {
+    $mqLabel: "#{$isMQ}-";
+  }
+
   @if ($colGap) {
     @for $i from 1 through $col-count {
-      .col-#{$i} {
+      .#{$mqLabel}col-#{$i} {
         width: gridWidth($col-count, $i, $gapInRow);
-        @extend %global-col-settings;
+        // @extend %global-col-settings;
       }
     }
   }
 
   @if ($collFlex) {
     @for $i from 0 through $col-count {
-      .cf-#{$i} {
+      .#{$mqLabel}cf-#{$i} {
         flex: $i;
-        @extend %global-col-settings;
+        // @extend %global-col-settings;
       }
     }
   }
 }
 
-@mixin offsetProps($offsetL, $offsetR, $isMQ: false) {
-  .offset-l0 {
-    margin-left: 0px;
+@mixin offsetProps($offsetL, $offsetR, $isMQ: "") {
+  $mqLabel: "";
+  @if ($isMQ != "") {
+    $mqLabel: "#{$isMQ}-";
   }
-  .offset-r0 {
-    margin-right: 0px;
-  }
-  @for $i from 1 through ($col-count - 1) {
-    @if ($offsetL) {
-      .offset-l#{$i} {
+
+  @if ($offsetL) {
+    .#{$mqLabel}offset-l0 {
+      margin-left: 0px;
+    }
+    @for $i from 1 through ($col-count - 1) {
+      .#{$mqLabel}offset-l#{$i} {
         margin-left: gridOffset($col-count, $i, $gapInRow);
       }
     }
-    @if ($offsetR) {
-      .offset-r#{$i} {
-        margin-right: gridOffset($col-count, $i, $gapInRow);
+  }
+  @if ($offsetR) {
+    .#{$mqLabel}offset-r0 {
+      margin-right: 0px;
+    }
+    @for $i from 1 through ($col-count - 1) {
+      .#{$mqLabel}offset-l#{$i} {
+        margin-left: gridOffset($col-count, $i, $gapInRow);
       }
     }
   }
