@@ -1,0 +1,118 @@
+// bug cols in media can`t use % !!! FIX it
+
+@import "functions";
+
+%testing-settings {
+  background-color: rgba(50, 50, 50, 0.15);
+  border: 1px dashed rgba(50, 50, 50, 0.15);
+  padding: 10px;
+}
+
+%global-grid-settings {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: flex-start;
+  overflow: hidden;
+  @extend %testing-settings;
+}
+
+%global-col-settings {
+  overflow: hidden;
+  @extend %testing-settings;
+}
+
+main,
+aside,
+footer,
+header,
+section,
+.section {
+  display: block;
+  margin: 0;
+}
+
+.container {
+  flex-direction: row;
+  width: 100%;
+  @extend %global-grid-settings;
+  gap: $gapInContainer;
+}
+
+.row {
+  flex-direction: row;
+  width: 100%;
+  @extend %global-grid-settings;
+  gap: $gapInRow;
+}
+
+// generate cols
+@mixin columnProps($colGap, $collFlex, $isMQ: "") {
+  $mqLabel: checkMQ($isMQ);
+
+  %testing-settings#{$mqLabel} {
+    background-color: rgba(50, 50, 50, 0.15);
+    border: 1px dashed rgba(50, 50, 50, 0.15);
+    padding: 10px;
+  }
+  
+
+  %global-col-settings#{$mqLabel} {
+    overflow: hidden;
+    @extend %testing-settings#{$mqLabel};
+  }
+
+
+  @if ($colGap) {
+    @for $i from 1 through $col-count {
+      .#{$mqLabel}col-#{$i} {
+        width: gridWidth($col-count, $i, $gapInRow);
+        @extend %global-col-settings#{$mqLabel};
+      }
+    }
+  }
+
+  @if ($collFlex) {
+    @for $i from 0 through $col-count {
+      .#{$mqLabel}cf-#{$i} {
+        flex: $i;
+        @extend %global-col-settings#{$mqLabel};
+      }
+    }
+  }
+}
+// generate offset param
+@mixin offsetProps($offsetL, $offsetR, $isMQ: "") {
+  $mqLabel: checkMQ($isMQ);
+
+  @if ($offsetL) {
+    .#{$mqLabel}offset-l0 {
+      margin-left: 0px;
+    }
+    @for $i from 1 through ($col-count - 1) {
+      .#{$mqLabel}offset-l#{$i} {
+        margin-left: gridOffset($col-count, $i, $gapInRow);
+      }
+    }
+  }
+  @if ($offsetR) {
+    .#{$mqLabel}offset-r0 {
+      margin-right: 0px;
+    }
+    @for $i from 1 through ($col-count - 1) {
+      .#{$mqLabel}offset-l#{$i} {
+        margin-left: gridOffset($col-count, $i, $gapInRow);
+      }
+    }
+  }
+}
+
+// additional styles
+.strict {
+  max-width: $container-width;
+}
+
+.m-auto,
+.to-center,
+.to-mid {
+  margin: 0 auto;
+}
