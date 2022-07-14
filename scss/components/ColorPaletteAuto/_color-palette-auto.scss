@@ -11,13 +11,22 @@ $colors-for-border: 	true; 	// use Generator only for tag "border-color"
 
 // input your color name and starting shade
 $base-colors: (
-	"green": 	#6ECF72,
-	"blue":		#3E5EBB,
+	"orange":	#e87c16,
+	"yellow": 	#e2db09,
+	"green": 	#0ac936,
+	"mint":		#1cd688,
+	"sky":		#1c98d6,
+	"blue":		#244dc8,
+	"purple":	#a51fd2,
+	"pink":		#c51f51,
+	"red":		#cd2424,
 );
+
+@import "bin/core"
+
 
 // final result will be
 // "green-0-bg
 // "green-l1-bg - green-l3-bg"
 // "green-d1-bg - green-d3-bg"
 // ... 
-@import "bin/core"
