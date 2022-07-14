@@ -1,36 +1,14 @@
 // special mixin for generating special params for any
-@mixin onePropFromArray($styleName, $propsName, $array, $isMQ: false) {
-  @each $key, $props in $array {
-    .#{$styleName}#{$key} {
-      #{$propsName}: $props;
-    }
+@mixin onePropFromArray($styleName, $propsName, $array, $isMQ: "") {
+  $mqLabel: "";
+  @if ($isMQ != "") {
+    $mqLabel: "#{$isMQ}-";
   }
-  @if ($isMQ) {
-    @each $MQKey, $MQParam in $mediaQuery {
-      @media #{$MQParam} {
-        @each $key, $props in $array {
-          .#{$styleName}#{$key}-#{$MQKey} {
-            #{$propsName}: $props;
-          }
-        }
-      }
+  
+  @each $key, $props in $array {
+    .#{$mqLabel}#{$styleName}#{$key} {
+      #{$propsName}: $props;
     }
   }
 }
 
-// @each $media-query-key, $media-query-param in $mediaQuery {
-//     @media #{$media-query-param} {
-//         @include arrayBasedOnePropertyGen("ff-", "flex-flow", $flex-flow);
-//     }
-// }
-// @mixin allParams() {
-
-// }
-
-// @mixin cycleBasedPropertyGen() {
-//   @for $i from 1 through $cols {
-//     .#{$title}-#{$i} {
-//       #{$name}: 100% / $i;
-//     }
-//   }
-// }

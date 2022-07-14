@@ -3,8 +3,8 @@
 // @import "./core/extentions";
 
 $mediaQuery: (
-	"lh":   " screen and (min-width : 1181px)", // большие экраны и выше
-	"md":   " screen and (max-width : 910px)", // средние экраны и ниже
-	"sd":   " screen and (max-width : 700px)", // маленькие экраны и ниже
+	"LH":   " screen and (min-width : 1181px)", // большие экраны и выше
+	"MD":   " screen and (max-width : 910px)", // средние экраны и ниже
+	"SD":   " screen and (max-width : 700px)", // маленькие экраны и ниже
 );
 
