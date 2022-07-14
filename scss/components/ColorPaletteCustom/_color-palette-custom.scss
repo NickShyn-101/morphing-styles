@@ -1,0 +1,12 @@
+@import "bin/core";
+
+// 1 arg: color title
+// 2 arg: base / starting color
+// 3 arg: number of shades
+// 4 arg: shade step
+// 5 arg: shading type = d: darken, l: lighten, both
+// 6 arg: tag type = bgc, color, border
+
+@include custom-color("red", #d52574, 7, 7%, "both", "border");
+@include custom-color("blue", #1851ed, 2, 10%, "d", "bgc");
+@include custom-color("pink", #ed18c6, 4, 6%, "l", "color");

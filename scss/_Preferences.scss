@@ -1,10 +1,11 @@
+@import "core/css-properties";
 @import "core/mixins";
 @import "core/functions";
 // @import "./core/extentions";
 
 $mediaQuery: (
-	"LH":   " screen and (min-width : 1181px)", // большие экраны и выше
-	"MD":   " screen and (max-width : 910px)", // средние экраны и ниже
-	"SD":   " screen and (max-width : 700px)", // маленькие экраны и ниже
+	"LH":   " screen and (min-width : 1181px)", 	// Large screens and Up
+	"MD":   " screen and (max-width : 910px)", 		// middle screens and down
+	"SD":   " screen and (max-width : 700px)", 		// Small screens and down
 );
 

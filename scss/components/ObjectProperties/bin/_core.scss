@@ -1,0 +1,23 @@
+@mixin displayVisProps($displayProp, $visProp, $isMQ: "") {
+  $mqLabel: checkMQ($isMQ);
+  @if ($displayProp) {
+    .#{$mqLabel}hide,
+    .#{$mqLabel}-d {
+      display: none !important;
+    }
+    .#{$mqLabel}show-v,
+    .#{$mqLabel}dv {
+      visibility: initial !important;
+    } // скрывает обект
+  }
+  @if ($displayProp) {
+    .#{$mqLabel}hide-v,
+    .#{$mqLabel}-dv {
+      visibility: hidden !important;
+    }
+    .#{$mqLabel}show,
+    .#{$mqLabel}d {
+      display: initial !important;
+    }
+  }
+}

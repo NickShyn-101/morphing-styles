@@ -1,6 +1,9 @@
-@import "components/Document/document"; 	    // Body, Html and other base styles
-@import "components/GridFlex/grid-flex"; 	    // Grid system based on FlexBox
-@import "components/Typography/typography"; 	// p, h, blockquote
+@import "components/Document/document"; 	                // Body, Html and other base styles
+@import "components/Theme/theme"; 	                        // basic theme
+@import "components/GridFlex/grid-flex"; 	                // Grid system based on FlexBox
+@import "components/Typography/typography"; 	            // p, h, blockquote
+@import "components/ObjectProperties/object-properties"; 	// margin, padding, display
 
 
-@import "components/ColorPaletteAuto/color-palette-auto"; 	// p, h, blockquote
+// @import "components/ColorPaletteAuto/color-palette-auto"; 	// Color palette auto generator
+@import "components/ColorPaletteCustom/color-palette-custom"; 	// Color palette custom

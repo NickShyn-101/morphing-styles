@@ -1,0 +1,19 @@
+@import "bin/props";
+@import "bin/core";
+
+// Comment props you don`t need
+// Add your custom props to "./grid-flex-props" and create rule
+@include displayVisProps(true, true);
+@include onePropFromArray("p",  "padding",  $custom-padding);
+@include onePropFromArray("m",  "margin",   $custom-margin);
+@include onePropFromArray("ta", "text-align",  $text-align);
+
+
+
+@each $mqKey, $mqProp in $mediaQuery { @media #{$mqProp} {
+    @include displayVisProps(true, true, $mqKey);
+    @include onePropFromArray("p",  "padding",  $custom-padding, $mqKey);
+    @include onePropFromArray("m",  "margin",   $custom-margin,  $mqKey);
+    @include onePropFromArray("ta", "text-align",  $text-align,     $mqKey);
+
+} }

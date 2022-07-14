@@ -1,0 +1,39 @@
+@mixin custom-color($colorKey, $colorVal, $shadeStep, $shadeVal, $dir, $tag) {
+  $postfix: "";
+  $tagFullName: "";
+
+  @if ($tag == "b") or ($tag == "bg") or ($tag == "bgc") or 
+      ($tag == "background") or ($tag == "all") {
+    $postfix: "bg";
+    $tagFullName: "background-color";
+  } @else if
+    ($tag == "c") or ($tag == "txt") or ($tag == "color") or
+    ($tag == "all") or ($tag == "col") {
+    $postfix: "color";
+    $tagFullName: "color";
+  } @else if ($tag == "br") or ($tag == "border") or
+    ($tag == "brd") or ($tag == "all") {
+    $postfix: "border";
+    $tagFullName: "border-color";
+  }
+
+  @if ($postfix != "") {
+    @for $i from $shadeStep through 1 {
+      @if ($dir == "l") or ($dir == "both") {
+        .#{$colorKey}-l#{$i}-#{$postfix} {
+          #{$tagFullName}: lighten($colorVal, $shadeVal * $i);
+        }
+      }
+    }
+    .#{$colorKey}-0-#{$postfix} {
+      #{$tagFullName}: $colorVal;
+    }
+    @for $i from 1 through $shadeStep {
+      @if ($dir == "d") or ($dir == "both") {
+        .#{$colorKey}-d#{$i}-#{$postfix} {
+          #{$tagFullName}: darken($colorVal, $shadeVal * $i);
+        }
+      }
+    }
+  }
+}
