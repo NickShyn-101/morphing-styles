@@ -5,9 +5,9 @@
 }
 
 html {
-  // background-color: $global-bg;
-  font-family:  'Noto Sans', sans-serif;
-  font-size: 1em;
+  background-color: var(--mg-bg-color);
+  font-family: #{$font-famyly-prime}, #{$font-famyly-second}, #{$font-famyly-third}; 
+  font-size: var(--mg-font-size-g);
   -ms-text-size-adjust: 100%;
   -webkit-text-size-adjust: 100%;
 }

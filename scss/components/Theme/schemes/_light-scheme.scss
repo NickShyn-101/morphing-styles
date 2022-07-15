@@ -1,6 +1,5 @@
 html[data-theme='light'] {
-    --mg-demoList: 10, 25, "33px";
-    --mg-bg-color:             rgb(241, 235, 235);
+    --mg-bg-color:             rgb(246, 241, 241);              // +
 
     --mg-primary-color:        #660a9f;
     --mg-secondary-color:      #cbaa26;
@@ -11,57 +10,44 @@ html[data-theme='light'] {
     --mg-light-color:          #ececee;
     --mg-dark-color:           #171324;
     
+    --mg-font-size-g:           1em;                            // +
 
-    --mg-main-text-color:      #191919;
-    --mg-font-famyly-prime:    #191919;
-    --mg-font-famyly-second:   #191919;
-    --mg-font-famyly-third:    #191919;
-    --mg-font-famyly-headings: #191919;
-    --mg-font-famyly-code:     #191919;
+        --mg-table-bg:              rgb(40, 40, 40);              // +
+    --mg-table-color:           rgb(168, 168, 168);           // +
 
-    --mg-font-size-g:           1em;
-    --mg-font-size-h:           1em;
+    --mg-table-header-bg:       rgb(22, 22, 22);            // +
+    --mg-table-footer-bg:       rgb(22, 22, 22);             // +
+    --mg-table-col-bg:          rgb(254, 198, 13);              // +
+    --mg-table-header-color:    rgb(255, 255, 255);             // +
+    --mg-table-footer-color:    rgb(254, 198, 13);           // +
+    --mg-table-col-color:       rgb(211, 211, 211);            // +
+
+    --mg-table-striped-bg:      rgba(0, 0, 0, 0.2);
+    --mg-stiped-col-effect-value: 3%;
+    --mg-stiped-row-effect-value: 5%;
 
 
-
-
-    --mg-table-main-bg:				rgb(250, 225, 230);
-    --mg-table-main-header: 		rgb(220, 225, 230);
-    --mg-table-main-footer: 		rgb(235, 240, 245);
-    --mg-table-main-col: 			rgb(230, 235, 240);
-
-    --mg-table-body-color: 			rgb(75, 75, 75);
-    --mg-table-header-color:		rgb(20, 20, 20);
-    --mg-table-footer-color: 		rgb(20, 20, 20);
-    --mg-table-col-color: 			rgba(125, 125, 125, 1);
-    
-    --mg-stiped-col-effect-value: 	3%;
-    --mg-stiped-row-effect-value: 	5%;
-    --mg-table-main-striped: 		rgba(220, 225, 230, 0.6);
-    
-    --mg-table-table-border:          	solid;
-    --mg-table-body-border:           	1px solid;
-    --mg-table-body-row-border:           1px solid;
-    --mg-table-body-col-border:           1px solid;
-    --mg-table-header-border:         	.5px solid;
-    --mg-table-header-row-border:         2px solid;
-    --mg-table-header-col-border:         1px solid;
-    --mg-table-footer-border:         	solid;
-    --mg-table-footer-row-border:         1px solid;
-    --mg-table-footer-col-border:         1px solid;
-    --mg-table-full-border:           	1px solid;
-
-    --mg-table-border-color:        #333;
-    --mg-body-border-color:         #333;
-    --mg-body-row-border-color:     #333;
-    --mg-body-col-border-color:     #333;
-    --mg-header-border-color:       #333;
-    --mg-header-row-border-color:   rgba(220,230,255, 1);
-    --mg-header-col-border-color:   rgba(220,230,255, 1);
-    --mg-footer-border-color:       #333;
-    --mg-footer-row-border-color:   #333;
-    --mg-footer-col-border-color:   #333;
-    --mg-full-border-color:         #333;
-
+    --mg-table-border:                    0px solid;           // +       
+    --mg-table-body-border:               1px solid;            // +
+    --mg-table-body-row-border:           1px solid;            // +
+    --mg-table-body-col-border:           1px solid;            // +
+    --mg-table-header-border:             0.5px solid;          // +
+    --mg-table-header-row-border:         2px solid;            // +
+    --mg-table-header-col-border:         1px solid;            // +
+    --mg-table-footer-border:             1px solid;            // +
+    --mg-table-footer-row-border:         1px solid;            // +
+    --mg-table-footer-col-border:         1px solid;            // +
+        
+    --mg-table-border-color:              rgb(196, 19, 96);  // +
+    --mg-table-body-border-color:         #333;               // +
+    --mg-table-body-row-border-color:     #333;               // +
+    --mg-table-body-col-border-color:     #333;               // +
+    --mg-table-header-border-color:       #333;               // +
+    --mg-table-header-row-border-color:   #333;               // +
+    --mg-table-header-col-border-color:   #333;               // +
+    --mg-table-footer-border-color:       #333;               // +
+    --mg-table-footer-row-border-color:   #333;               // +
+    --mg-table-footer-col-border-color:   #333;               // +
+           
     
 }

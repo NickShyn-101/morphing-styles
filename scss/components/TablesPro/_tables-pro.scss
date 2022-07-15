@@ -1,38 +1,38 @@
-//---------------------------------- Stripe Generator and colors
 @import "bin/mixin";
-@import "bin/props";
+@import "bin/props"; // edit props to create an awesome table
 @import "bin/core";
 
-
-@include createTablePaddings("slim", 20px, 30px, "40px 1rem");
-@include createTablePaddings("extra", 50px, 100px, "40px 1rem");
-@include createTablePaddings("minimal", 50px, 100px, "40px 1rem");
-
-
-@include highlightTableAreas("head", green, white);
-@include highlightTableAreas("foot", yellow, black);
-@include highlightTableAreas("first-col", rgb(178, 44, 111), black);
-
-
-@include createTableBorder("body", "row", 3px, red);
-@include createTableBorder("body", "col", 3px, red);
-@include createTableBorder("body", "inner", 3px, red);
-@include createTableBorder("body", "wrapper", 3px, red);
-@include createTableBorder("head", "row", 3px, red);
-@include createTableBorder("head", "col", 3px, red);
-@include createTableBorder("head", "inner", 3px, red);
-@include createTableBorder("head", "wrapper", 3px, red);
-@include createTableBorder("foot", "row", 3px, red);
-@include createTableBorder("foot", "col", 3px, red);
-@include createTableBorder("foot", "inner", 3px, red);
-@include createTableBorder("foot", "wrapper", 3px, red);
-
-// $table-main-striped,
-@include createStripedHL("body", "col", "2n", $table-main-striped);
-@include createStripedHL("foot", "col", "3n", $table-main-striped);
-@include createStripedHL("head", "row", "3n", $table-main-striped);
-@include createStripedHL("body", "row", "2n", $table-main-striped);
-// =============================================================
-
-
-
+//----------------- Special Styles ---------------------
+//--------------------------------------------------------------------------------------------------------------------------
+//                           name               Global/tbody        tHead           tFoot
+@include createTablePaddings("slim",            20px,               20px,           "40px 1rem");
+@include createTablePaddings("extra",           50px,               100px,          "40px 1rem");
+@include createTablePaddings("minimal",         50px,               100px,          "40px 1rem");
+//--------------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------------------------------
+// Hightlight table areas :   area              bgColor                                 textColor
+@include highlightTableAreas("head",            var(--mg-table-header-bg),          var(--mg-table-header-color));
+@include highlightTableAreas("foot",            var(--mg-table-footer-bg),          var(--mg-table-footer-color));
+@include highlightTableAreas("first-col",       var(--mg-table-col-bg),             var(--mg-table-col-color));
+//--------------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------------------------------
+// borders in table:       area     type        width and style                     color
+@include createTableBorder("body", "row",       var(--mg-table-body-row-border),    var(--mg-table-body-row-border-color));
+@include createTableBorder("body", "col",       var(--mg-table-body-col-border),    var(--mg-table-body-col-border-color));
+@include createTableBorder("body", "inner",     var(--mg-table-body-row-border),    var(--mg-table-body-row-border-color));
+@include createTableBorder("body", "wrapper",   var(--mg-table-body-border),        var(--mg-table-body-border-color));
+@include createTableBorder("head", "row",       var(--mg-table-header-row-border),  var(--mg-table-header-row-border-color));
+@include createTableBorder("head", "col",       var(--mg-table-header-col-border),  var(--mg-table-header-col-border-color));
+@include createTableBorder("head", "inner",     var(--mg-table-header-row-border),  var(--mg-table-header-row-border-color));
+@include createTableBorder("head", "wrapper",   var(--mg-table-header-border),      var(--mg-table-header-border-color));
+@include createTableBorder("foot", "row",       var(--mg-table-footer-row-border),  var(--mg-table-footer-row-border-color));
+@include createTableBorder("foot", "col",       var(--mg-table-footer-col-border),  var(--mg-table-footer-col-border-color));
+@include createTableBorder("foot", "inner",     var(--mg-table-footer-row-border),  var(--mg-table-footer-row-border-color));
+@include createTableBorder("foot", "wrapper",   var(--mg-table-footer-border),      var(--mg-table-footer-border-color));
+//--------------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------------------------------
+// striped effect:       area       type        rule        color   
+@include createStripedHL("body",    "col",      "2n",       var(--mg-table-striped-bg));
+@include createStripedHL("foot",    "col",      "3n",       var(--mg-table-striped-bg));
+@include createStripedHL("head",    "row",      "3n",       var(--mg-table-striped-bg));
+@include createStripedHL("body",    "row",      "2n",       var(--mg-table-striped-bg));

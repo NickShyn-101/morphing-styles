@@ -4,7 +4,7 @@
       t#{$area} {
         td:nth-child(#{$name}),
         th:nth-child(#{$name}) {
-          background: darken($colorUnder, $stiped-col-effect-value);
+          background: $colorUnder;
         }
       }
     }
@@ -13,7 +13,7 @@
     table.striped-row-#{$name} {
       t#{$area} {
         tr:nth-child(#{$name}) {
-          background: $table-main-striped;
+          background: $colorUnder;
         }
       }
       @if ($area == "body") {
@@ -23,7 +23,7 @@
               &:nth-child(#{$name}) {
                 th:first-child,
                 td:first-child {
-                  background: darken($colorUnder, $stiped-row-effect-value);
+                  background-color: $colorUnder;
                 }
               }
             }

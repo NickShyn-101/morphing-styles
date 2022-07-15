@@ -1,85 +1,30 @@
 //Table background colors
-$table-main-bg: rgb(247, 244, 244);
-$table-main-header: rgb(220, 225, 230);
-$table-main-footer: rgb(235, 240, 245);
-$table-main-col: rgb(230, 235, 240);
 
-// =============================================================
 
-//---------------------------------- Fonts and font color
-
-$font-properties: (
-  "Text-body-th": (
-    "size": 1em,
-    "weight": 600,
-    "lineH": auto,
-  ),
-  "Text-body-td": (
-    "size": 1em,
-    "weight": 400,
-    "lineH": auto,
-  ),
-  "Text-header-th": (
-    "size": 1em,
-    "weight": 600,
-    "lineH": auto,
-  ),
-  "Text-header-td": (
-    "size": 1em,
-    "weight": 400,
-    "lineH": auto,
-  ),
-  "Text-footer-th": (
-    "size": 1em,
-    "weight": 900,
-    "lineH": auto,
-  ),
-  "Text-footer-td": (
-    "size": 1em,
-    "weight": 400,
-    "lineH": auto,
-  ),
-);
-
-//Text color
-$table-body-color: rgb(75, 75, 75);
-$table-header-color: rgb(20, 20, 20);
-$table-footer-color: rgb(20, 20, 20);
-$table-col-color: rgba(125, 125, 125, 1);
-
-// =============================================================
 
 $stiped-col-effect-value: 3%;
 $stiped-row-effect-value: 5%;
 
-$table-main-striped: rgba(220, 225, 230, 0.6);
+$table-striped-bg:      #f7fcc2;
 
-// =============================================================
 
-//---------------------------------- Borders and border colors
-
-$table-main-border-color: rgba(0, 0, 0, 1);
-
-$table-border: 1px solid;
-$body-border: 1px solid;
-$body-row-border: 1px solid;
-$body-col-border: 1px solid;
-$header-border: 0.5px solid;
-$header-row-border: 2px solid;
-$header-col-border: 1px solid;
-$footer-border: 1px solid;
-$footer-row-border: 1px solid;
-$footer-col-border: 1px solid;
-$full-border-color: 1px solid;
-
-$table-border-color: #333;
-$body-border-color: #333;
-$body-row-border-color: #333;
-$body-col-border-color: #333;
-$header-border-color: #333;
-$header-row-border-color: rgba(220, 230, 255, 1);
-$header-col-border-color: rgba(220, 230, 255, 1);
-$footer-border-color: #333;
-$footer-row-border-color: #333;
-$footer-col-border-color: #333;
-$full-border-color: #333;
+//----------------- Main Table Config ---------------------
+// add or remove settings to customize your version of table
+$table_main_props: (
+  "table": (
+    font-size: 1.25em,
+    text-decoration: none,
+  ),
+  "th, td": (
+    font-weight: 400,
+    padding: 0.75rem,
+  ),
+  "thead, thead td, thead th": (
+    font-size: 1em,
+    font-weight: bolder,
+  ),
+  "tfoot, tfoot td, tfoot th": (
+    font-size: 1em,
+    font-weight: bolder,
+  ),
+);

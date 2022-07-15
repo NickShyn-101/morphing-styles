@@ -1,94 +1,51 @@
-@mixin font-settings($font-category) {
-  font-size: map-get($font-properties, $font-category, "size");
-  font-weight: map-get($font-properties, $font-category, "weight");
-  line-height: map-get($font-properties, $font-category, "lineH");
+table tfoot th,
+table tfoot td,
+table tfoot tr,
+table tfoot,
+table thead th,
+table thead td,
+table thead tr,
+table thead,
+table th,
+table td,
+table tr,
+table {
+  border:       var(--mg-table-border);
+  border-color: var(--mg-table-border-color);
 }
 
-%border-color-main {
-  border: 2px solid;
-  border-color: green;
-}
-
-%table-global {
+table {
   table-layout: fixed;
   border-collapse: collapse;
   border-spacing: 0px;
   text-align: left;
   width: 100%;
+  position: relative;
+  background: var(--mg-table-bg);
+  color:      var(--mg-table-color);
 }
+
+caption {
+  font-size: 10px;
+  text-align: left;
+  padding: 10px 20px;
+  color: black;
+}
+
+@each $key, $parm in $table_main_props {
+  $tagTitle: $key;
+  @if ($key == "global") or ($key == "table")  {
+    $tagTitle: "";
+  }
+  table #{$tagTitle} {
+    @each $propName, $propValue in $parm {
+      #{$propName}: $propValue;
+    }
+  }
+}
+
 .table-wrapper {
   width: 100%;
   overflow-y: auto;
   overflow-x: auto;
-}
-
-// Table basic properties
-table {
-  @include font-settings("Text-body-th");
-  @extend %table-global;
-  @extend %border-color-main;
-  background: $table-main-bg;
-  color: $table-body-color;
-  tr {
-    @extend %border-color-main;
-    color: $table-body-color;
-  }
-  th,
-  td {
-    @extend %border-color-main;
-  }
-  th {
-    @include font-settings("Text-body-th");
-  }
-  td {
-    @include font-settings("Text-body-td");
-  }
-  // Table Head Global
-  thead {
-    @extend %border-color-main;
-    @include font-settings("Text-header-td");
-
-    tr {
-      color: $table-header-color;
-      @extend %border-color-main;
-    }
-    th,
-    td {
-      text-decoration: none;
-      @extend %border-color-main;
-    }
-    th {
-      @include font-settings("Text-header-th");
-    }
-    td {
-      @include font-settings("Text-header-td");
-    }
-  }
-  // Table Footer Global
-  tfoot {
-    @include font-settings("Text-footer-td");
-    color: $table-footer-color;
-    @extend %border-color-main;
-
-    tr {
-      @extend %border-color-main;
-    }
-    th,
-    td {
-      @extend %border-color-main;
-    }
-    th {
-      @include font-settings("Text-footer-th");
-    }
-    td {
-      @include font-settings("Text-footer-td");
-    }
-  }
-  caption {
-    font-size: 10px;
-    text-align: left;
-    padding: 10px 20px;
-    letter-spacing: 0px;
-    color: black;
-  }
 }
