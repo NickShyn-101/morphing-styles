@@ -1,0 +1,161 @@
+button {
+  overflow: visible;
+}
+
+button,
+select {
+  text-transform: none;
+}
+
+button,
+html input[type="button"],
+input[type="reset"],
+input[type="submit"] {
+  -webkit-appearance: button;
+  cursor: pointer;
+}
+
+button[disabled],
+html input[disabled] {
+  cursor: default;
+}
+
+button::-moz-focus-inner,
+input::-moz-focus-inner {
+  border: 0;
+  padding: 0;
+}
+
+
+
+// Link Button Component 
+// Global Color Scheme
+//---------------------------------------------------------------------------
+
+// static 
+$a-btn-s-background-color:		$primary-color !default;
+$a-btn-s-text-color:		 	#000 !default;
+$a-btn-s-border-color:			$primary-color !default;
+$a-btn-s-border-width:			2px !default;
+
+// :hover 
+$a-btn-h-background-color:	 lighten($a-btn-s-background-color, 5%) !default;
+$a-btn-h-text-color:		 #000 !default;
+$a-btn-h-border-color:		  lighten($a-btn-s-background-color, 15%) !default;
+$a-btn-h-border-width:			2px !default;
+
+// :active 
+$a-btn-a-background-color:	  darken($a-btn-s-background-color, 10%) !default; 
+$a-btn-a-text-color:		 #000 !default;
+$a-btn-a-border-color:		 darken($a-btn-s-background-color, 20%) !default;
+$a-btn-a-border-width:			2px !default;
+
+
+// создать color scheme на базовых цветах (prime, seconary) и кастомные 6 шт
+// Full Outline, Solid-Outline, 
+
+//Basic Button Settings
+@mixin a-btn-basics() {
+	border-radius: 2px;
+	padding: 3px 6px;
+	border-radius: 4px;
+}
+
+//Global Button Fonts
+@mixin a-btn-font-settings() {
+	font-weight: 500;
+	text-align: center;	
+	text-decoration: none;
+	letter-spacing: 0px;
+}
+
+//Global Button Settings
+@mixin a-btn-global-settings() {
+	display: inline-block;
+	box-sizing: border-box;	
+	transition: all 0.4s ease;
+}
+
+// $background-color, $text-color, border-width, border-color  
+@mixin a-btn-static($a-btn-s-background-color, $a-btn-s-text-color, $a-btn-s-border-width, $a-btn-s-border-color) {
+		background: $a-btn-s-background-color;
+		border: $a-btn-s-border-width solid $a-btn-s-border-color;
+		color: $a-btn-s-text-color;
+} 
+
+@mixin a-btn-hover($a-btn-h-background-color, $a-btn-h-text-color, $a-btn-h-border-width, $a-btn-h-border-color) {   
+	&:hover {
+		background: $a-btn-h-background-color;
+		color: $a-btn-h-text-color;
+		border: $a-btn-h-border-width solid $a-btn-h-border-color;	
+	}
+} 
+
+@mixin a-btn-active($a-btn-a-background-color, $a-btn-a-text-color, $a-btn-a-border-width, $a-btn-a-border-color) {   
+	&:active {
+		background: $a-btn-a-background-color;
+		color: $a-btn-a-text-color;
+		border: $a-btn-a-border-width solid $a-btn-a-border-color;
+	}
+} 
+
+
+// --------------- Button  Basic Classes
+
+.a-btn, .a-btn-fluid{
+	@include a-btn-basics;
+	@include a-btn-global-settings;
+	@include a-btn-font-settings;
+	@include a-btn-static($a-btn-s-background-color, $a-btn-s-text-color, $a-btn-s-border-width, $a-btn-s-border-color);
+	@include a-btn-hover($a-btn-h-background-color, $a-btn-h-text-color, $a-btn-h-border-width, $a-btn-h-border-color);
+	@include a-btn-active($a-btn-a-background-color, $a-btn-a-text-color, $a-btn-a-border-width, $a-btn-a-border-color);
+}
+
+.a-btn-fluid {
+	flex: 1 1 100%;
+}
+// =============== END
+
+// --------------- Button Size
+
+@mixin a-btn-size($pdd-btn, $fs-btn) {
+	padding: $pdd-btn;
+	font-size: $fs-btn;
+}
+
+.a-btn-size-xl 	{@include a-btn-size(25px 60px, 1.2em);}
+.a-btn-size-l 	{@include a-btn-size(20px 48px, 1.1em);}
+.a-btn-size-m 	{@include a-btn-size(15px 36px, 1em);}
+.a-btn-size-s 	{@include a-btn-size(10px 25px, 0.9em);}
+.a-btn-size-xs 	{@include a-btn-size(5px 16px, 0.8em);}
+
+// =============== END
+
+// --------------- Button Shape
+$a-btn-shape: ( 
+	"rounded": 10px,
+	"square": 0,
+	"circle": 10rem,
+);
+
+@each $key, $param in $a-btn-shape {
+	.a-btn-#{$key} {
+		border-radius: $param; 
+	}
+}
+// =============== END
+
+
+// Создать несколько эффектов Hover и active
+.a-btn-hover-effect-1:hover {
+	box-shadow: 5px 5px 20px -5px rgba(0, 0, 0, 2);
+	//box-shadow: 0px 0px 0px 3px #61a1fe;
+	// box-shadow: 1px 1px 2px 0px rgba(0, 0, 0, .3);
+}
+
+
+
+.a-btn-outline {
+	background: transparent;
+	border: 2px solid red;
+}
