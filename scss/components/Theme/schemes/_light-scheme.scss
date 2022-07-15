@@ -1,31 +1,33 @@
 html[data-theme='light'] {
-    --mg-bg-color:             rgb(246, 241, 241);              // +
+    --mg-bg-color:                      rgb(246, 241, 241); // +
 
-    --mg-primary-color:        #660a9f;
-    --mg-secondary-color:      #cbaa26;
-    --mg-success-color:        #22a063;
-    --mg-warning-color:        #da7f2a;
-    --mg-danger-color:         #bd3030;
-    --mg-info-color:           #3055ea;
-    --mg-light-color:          #ececee;
-    --mg-dark-color:           #171324;
+    --mg-primary-color:                 #660a9f;
+    --mg-secondary-color:               #cbaa26;
+    --mg-success-color:                 #22a063;
+    --mg-warning-color:                 #da7f2a;
+    --mg-danger-color:                  #bd3030;
+    --mg-info-color:                    #3055ea;
+    --mg-light-color:                   #ececee;
+    --mg-dark-color:                    #171324;
     
-    --mg-font-size-g:           1em;                            // +
+    --mg-font-size-g:                   1em;                  // +
 
-        --mg-table-bg:              rgb(40, 40, 40);              // +
-    --mg-table-color:           rgb(168, 168, 168);           // +
+    --mg-table-bg:                      rgb(40, 40, 40);    // +
+    --mg-table-color:                   rgb(168, 168, 168); // +
 
-    --mg-table-head-bg:       rgb(22, 22, 22);            // +
-    --mg-table-foot-bg:       rgb(22, 22, 22);             // +
-    --mg-table-col-bg:          rgb(254, 198, 13);              // +
-    --mg-table-head-color:    rgb(255, 255, 255);             // +
-    --mg-table-foot-color:    rgb(254, 198, 13);           // +
-    --mg-table-col-color:       rgb(211, 211, 211);            // +
+    --mg-table-head-bg:                 rgb(22, 22, 22);    // +
+    --mg-table-foot-bg:                 rgb(22, 22, 22);    // +
+    --mg-table-head-color:              rgb(255, 255, 255); // +
+    --mg-table-foot-color:              rgb(254, 198, 13);  // +
 
-    --mg-table-striped-bg:      rgba(0, 0, 0, 0.2);
+    --mg-table-1col-bg:                  rgba(254, 198, 13,0.8);  // +
+    --mg-table-1col-color:               rgb(211, 211, 211); // +
+
+    --mg-table-striped-bg:              rgba(0, 0, 0, 0.2); // +
+    --mg-table-striped-color:           rgba(38, 254, 0, 0.2); // +
 
 
-    --mg-table-border:                  0px solid;           // +       
+    --mg-table-border:                  0px solid;            // +       
     --mg-table-body-border:             3px solid;            // +
     --mg-table-body-row-border:         3px solid;            // +
     --mg-table-body-col-border:         3px solid;            // +
@@ -47,5 +49,4 @@ html[data-theme='light'] {
     --mg-table-foot-row-border-color:   #ff0;               // +
     --mg-table-foot-col-border-color:   #ff0;               // +
            
-    
 }

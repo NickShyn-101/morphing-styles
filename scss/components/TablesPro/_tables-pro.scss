@@ -32,4 +32,4 @@
 @include createHighlight("body", "col",  "2n");
 @include createHighlight("head", "row",  "3n");
 @include createHighlight("body", "row",  "2n");
-@include createHighlight("body", "col",  "1",  rgba(4, 4, 4, 0.25));
+@include createHighlight("body", "col",  "1");
