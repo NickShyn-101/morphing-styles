@@ -1,0 +1,100 @@
+$toggle-switch-height: 20px;
+$toggle-switch-width: 50px;
+$toggle-switch-gap: 5px;
+$border-width: 0px;
+
+.toggle-switcher {
+  margin: 5px 0;
+  display: flex;
+  height: $toggle-switch-height;
+  span {
+    // display: ;
+    margin: 0;
+    padding: 0 10px 0 0;
+    // background: red;
+  }
+  input[type="checkbox"] {
+    // background: #000;
+    position: absolute;
+    opacity: 0;
+    z-index: -1;
+    + label {
+      display: flex;
+      align-items: center;
+      // background: red;
+      font-size: 16px;
+      position: relative;
+      margin: 0 10px 0 0;
+      padding: 0;
+      cursor: pointer;
+      width: $toggle-switch-width;
+      &:before {
+        content: "";
+        position: absolute;
+        width: $toggle-switch-width;
+        height: $toggle-switch-height + $border-width * 2;
+        left: 0;
+        background: #ddd;
+        border-radius: 30px;
+        border: $border-width solid #ccc;
+        transition: all 0.5s ease;
+      }
+      &:after {
+        content: "";
+        position: absolute;
+        height: $toggle-switch-height - $toggle-switch-gap;
+        width: $toggle-switch-height - $toggle-switch-gap;
+        border-radius: 30px;
+        left: $border-width + $toggle-switch-gap - ($toggle-switch-gap / 2);
+        background: #32404d;
+        transition: all 0.5s ease;
+      }
+    }
+    &:checked {
+      + label {
+        &:before {
+          background: #4763fa;
+          border-radius: 30px;
+          border: $border-width solid #3750d3;
+        }
+        &:after {
+          border-radius: 30px;
+          left: calc(
+            100% - #{$toggle-switch-height} - #{$border-width} +
+              (#{$toggle-switch-gap} / 2)
+          );
+          background: #f4f6f9;
+        }
+      }
+    }
+    &:focus:not(:disabled) {
+      + label {
+        &:before {
+          box-shadow: 0 0 0px 3px rgba(133, 144, 155, 0.4);
+        }
+      }
+    }
+    &:disabled {
+      + label {
+        &:before {
+          background: #ddd;
+          border: $border-width solid #ddd;
+        }
+        &:after {
+          background: #f2f2f2;
+        }
+      }
+      &:checked {
+        + label {
+          &:before {
+            background: #999;
+            border: $border-width solid #999;
+          }
+          &:after {
+            background: #656565;
+          }
+        }
+      }
+    }
+  }
+}
