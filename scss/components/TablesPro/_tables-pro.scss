@@ -4,9 +4,35 @@
 @import "bin/core";
 
 
+@include createTablePaddings("slim", 20px, 30px, "40px 1rem");
+@include createTablePaddings("extra", 50px, 100px, "40px 1rem");
+@include createTablePaddings("minimal", 50px, 100px, "40px 1rem");
+
+
+@include highlightTableAreas("head", green, white);
+@include highlightTableAreas("foot", yellow, black);
+@include highlightTableAreas("first-col", rgb(178, 44, 111), black);
+
+
+@include createTableBorder("body", "row", 3px, red);
+@include createTableBorder("body", "col", 3px, red);
+@include createTableBorder("body", "inner", 3px, red);
+@include createTableBorder("body", "wrapper", 3px, red);
+@include createTableBorder("head", "row", 3px, red);
+@include createTableBorder("head", "col", 3px, red);
+@include createTableBorder("head", "inner", 3px, red);
+@include createTableBorder("head", "wrapper", 3px, red);
+@include createTableBorder("foot", "row", 3px, red);
+@include createTableBorder("foot", "col", 3px, red);
+@include createTableBorder("foot", "inner", 3px, red);
+@include createTableBorder("foot", "wrapper", 3px, red);
+
 // $table-main-striped,
-@include generateStripedHL("body", "col", "2n", $table-main-striped);
-@include generateStripedHL("foot", "col", "3n", $table-main-striped);
-@include generateStripedHL("head", "row", "3n", $table-main-striped);
-@include generateStripedHL("body", "row", "2n", $table-main-striped);
+@include createStripedHL("body", "col", "2n", $table-main-striped);
+@include createStripedHL("foot", "col", "3n", $table-main-striped);
+@include createStripedHL("head", "row", "3n", $table-main-striped);
+@include createStripedHL("body", "row", "2n", $table-main-striped);
 // =============================================================
+
+
+

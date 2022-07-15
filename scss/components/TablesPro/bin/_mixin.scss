@@ -1,4 +1,4 @@
-@mixin generateStripedHL($area, $ColOrRow, $name, $colorUnder) {
+@mixin createStripedHL($area, $ColOrRow, $name, $colorUnder) {
   @if ($ColOrRow == "col") {
     table.striped-col-#{$area}-#{$name} {
       t#{$area} {
@@ -30,6 +30,96 @@
           }
         }
       }
+    }
+  }
+}
+
+@mixin createTableBorder($area, $type, $borderWidth, $borderColor) {
+  @if ($type == "wrapper") {
+    table.#{$area}-border {
+      t#{$area} {
+        border: $borderWidth solid;
+        border-color: $borderColor;
+      }
+    }
+  }
+  @if ($type == "row") {
+    table.#{$area}-#{$type}-border {
+      t#{$area} {
+        tr {
+          &:not(:last-child) {
+            border-bottom: $borderWidth solid;
+            border-bottom-color: $borderColor;
+          }
+        }
+      }
+    }
+  }
+  @if ($type == "col") {
+    table.#{$area}-#{$type}-border {
+      t#{$area} {
+        td,
+        th {
+          &:not(:last-child) {
+            border-right: $borderWidth solid;
+            border-right-color: $borderColor;
+          }
+        }
+      }
+    }
+  }
+  @if ($type == "inner") {
+    table.#{$area}-#{$type}-border {
+      t#{$area} {
+        tr {
+          &:not(:last-child) {
+            border-bottom: $borderWidth solid;
+            border-bottom-color: $borderColor;
+            td,
+            th {
+              &:not(:last-child) {
+                border-right: $borderWidth solid;
+                border-right-color: $borderColor;
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}
+
+@mixin highlightTableAreas($area, $bgColor, $textColor) {
+  @if ($area == "first-col") {
+    table.hl-first-col tbody tr {
+      th:first-child,
+      td:first-child {
+        color: $textColor;
+        background: $bgColor;
+      }
+    }
+  }
+  @if ($area == "head") or ($area == "foot") {
+    table.hl-#{$area} t#{$area} tr {
+      color: $textColor;
+      background: $bgColor;
+    }
+  }
+}
+
+@mixin createTablePaddings($name, $bodyP, $headerP: $bodyP, $footerP: $bodyP) {
+  table.#{$name} {
+    th,
+    td {
+      padding: #{$bodyP};
+    }
+    thead th,
+    td {
+      padding: #{$headerP};
+    }
+    tfoot th,
+    td {
+      padding: #{$footerP};
     }
   }
 }
