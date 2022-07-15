@@ -1,10 +1,14 @@
-@mixin createStripedHL($area, $ColOrRow, $name, $colorUnder) {
+@mixin createHighlight($area, $ColOrRow, $name, $colorBG: "") {
+  $default-colorBG: $colorBG;
+  @if $default-colorBG == "" {
+    $default-colorBG: var(--mg-table-striped-bg);
+  }
   @if ($ColOrRow == "col") {
     table.striped-col-#{$area}-#{$name} {
       t#{$area} {
         td:nth-child(#{$name}),
         th:nth-child(#{$name}) {
-          background: $colorUnder;
+          background: $default-colorBG;
         }
       }
     }
@@ -13,33 +17,39 @@
     table.striped-row-#{$name} {
       t#{$area} {
         tr:nth-child(#{$name}) {
-          background: $colorUnder;
-        }
-      }
-      @if ($area == "body") {
-        &.hl-first-col {
-          tbody {
-            tr:nth-child(#{$name}) {
-              &:nth-child(#{$name}) {
-                th:first-child,
-                td:first-child {
-                  background-color: $colorUnder;
-                }
-              }
-            }
-          }
+          background: $default-colorBG;
         }
       }
     }
   }
 }
 
-@mixin createTableBorder($area, $type, $borderWidth, $borderColor) {
+@mixin createTableBorder($area, $type, $borderWidth: "", $borderColor: "") {
+  $border-default: $borderWidth;
+  $border-color-default: $borderColor;
+  @if $borderWidth == "" {
+    @if $type == "wrapper" {
+      $border-default: var(--mg-table-#{$area}-border);
+    } @else if $type == "inner" {
+      $border-default: var(--mg-table-#{$area}-row-border);
+    } @else {
+      $border-default: var(--mg-table-#{$area}-#{$type}-border);
+    }
+  }
+  @if $border-color-default == "" {
+    @if $type == "wrapper" {
+      $border-color-default: var(--mg-table-#{$area}-border-color);
+    } @else if $type == "inner" {
+      $border-color-default: var(--mg-table-#{$area}-row-border-color);
+    } @else {
+      $border-color-default: var(--mg-table-#{$area}-#{$type}-border-color);
+    }
+  }
   @if ($type == "wrapper") {
     table.#{$area}-border {
       t#{$area} {
-        border: $borderWidth solid;
-        border-color: $borderColor;
+        border: #{$border-default};
+        border-color: #{$border-color-default};
       }
     }
   }
@@ -48,8 +58,8 @@
       t#{$area} {
         tr {
           &:not(:last-child) {
-            border-bottom: $borderWidth solid;
-            border-bottom-color: $borderColor;
+            border-bottom: #{$border-default};
+            border-bottom-color: #{$border-color-default};
           }
         }
       }
@@ -61,8 +71,8 @@
         td,
         th {
           &:not(:last-child) {
-            border-right: $borderWidth solid;
-            border-right-color: $borderColor;
+            border-right: #{$border-default};
+            border-right-color: #{$border-color-default};
           }
         }
       }
@@ -73,14 +83,14 @@
       t#{$area} {
         tr {
           &:not(:last-child) {
-            border-bottom: $borderWidth solid;
-            border-bottom-color: $borderColor;
-            td,
-            th {
-              &:not(:last-child) {
-                border-right: $borderWidth solid;
-                border-right-color: $borderColor;
-              }
+            border-bottom: #{$border-default};
+            border-bottom-color: #{$border-color-default};
+          }
+          td,
+          th {
+            &:not(:last-child) {
+              border-right: #{$border-default};
+              border-right-color: #{$border-color-default};
             }
           }
         }
@@ -89,20 +99,20 @@
   }
 }
 
-@mixin highlightTableAreas($area, $bgColor, $textColor) {
-  @if ($area == "first-col") {
-    table.hl-first-col tbody tr {
-      th:first-child,
-      td:first-child {
-        color: $textColor;
-        background: $bgColor;
-      }
-    }
+@mixin highlightTableAreas($area, $bgColor: "", $textColor: "") {
+  $bgColor-default: $bgColor;
+  $textColor-default: $textColor;
+  @if $bgColor-default == "" {
+    $bgColor-default: var(--mg-table-#{$area}-bg);
   }
+  @if $textColor-default == "" {
+    $textColor-default: var(--mg-table-#{$area}-color);
+  }
+
   @if ($area == "head") or ($area == "foot") {
     table.hl-#{$area} t#{$area} tr {
-      color: $textColor;
-      background: $bgColor;
+      color: $textColor-default;
+      background: $bgColor-default;
     }
   }
 }

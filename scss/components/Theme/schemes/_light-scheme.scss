@@ -15,39 +15,37 @@ html[data-theme='light'] {
         --mg-table-bg:              rgb(40, 40, 40);              // +
     --mg-table-color:           rgb(168, 168, 168);           // +
 
-    --mg-table-header-bg:       rgb(22, 22, 22);            // +
-    --mg-table-footer-bg:       rgb(22, 22, 22);             // +
+    --mg-table-head-bg:       rgb(22, 22, 22);            // +
+    --mg-table-foot-bg:       rgb(22, 22, 22);             // +
     --mg-table-col-bg:          rgb(254, 198, 13);              // +
-    --mg-table-header-color:    rgb(255, 255, 255);             // +
-    --mg-table-footer-color:    rgb(254, 198, 13);           // +
+    --mg-table-head-color:    rgb(255, 255, 255);             // +
+    --mg-table-foot-color:    rgb(254, 198, 13);           // +
     --mg-table-col-color:       rgb(211, 211, 211);            // +
 
     --mg-table-striped-bg:      rgba(0, 0, 0, 0.2);
-    --mg-stiped-col-effect-value: 3%;
-    --mg-stiped-row-effect-value: 5%;
 
 
-    --mg-table-border:                    0px solid;           // +       
-    --mg-table-body-border:               1px solid;            // +
-    --mg-table-body-row-border:           1px solid;            // +
-    --mg-table-body-col-border:           1px solid;            // +
-    --mg-table-header-border:             0.5px solid;          // +
-    --mg-table-header-row-border:         2px solid;            // +
-    --mg-table-header-col-border:         1px solid;            // +
-    --mg-table-footer-border:             1px solid;            // +
-    --mg-table-footer-row-border:         1px solid;            // +
-    --mg-table-footer-col-border:         1px solid;            // +
+    --mg-table-border:                  0px solid;           // +       
+    --mg-table-body-border:             3px solid;            // +
+    --mg-table-body-row-border:         3px solid;            // +
+    --mg-table-body-col-border:         3px solid;            // +
+    --mg-table-head-border:             3.5px solid;          // +
+    --mg-table-head-row-border:         3px solid;            // +
+    --mg-table-head-col-border:         3px solid;            // +
+    --mg-table-foot-border:             3px solid;            // +
+    --mg-table-foot-row-border:         3px solid;            // +
+    --mg-table-foot-col-border:         3px solid;            // +
         
-    --mg-table-border-color:              rgb(196, 19, 96);  // +
-    --mg-table-body-border-color:         #333;               // +
-    --mg-table-body-row-border-color:     #333;               // +
-    --mg-table-body-col-border-color:     #333;               // +
-    --mg-table-header-border-color:       #333;               // +
-    --mg-table-header-row-border-color:   #333;               // +
-    --mg-table-header-col-border-color:   #333;               // +
-    --mg-table-footer-border-color:       #333;               // +
-    --mg-table-footer-row-border-color:   #333;               // +
-    --mg-table-footer-col-border-color:   #333;               // +
+    --mg-table-border-color:            rgb(196, 19, 96);  // +
+    --mg-table-body-border-color:       #ff0;               // +
+    --mg-table-body-row-border-color:   #ff0;               // +
+    --mg-table-body-col-border-color:   #ff0;               // +
+    --mg-table-head-border-color:       #ff0;               // +
+    --mg-table-head-row-border-color:   #ff0;               // +
+    --mg-table-head-col-border-color:   #ff0;               // +
+    --mg-table-foot-border-color:       #ff0;               // +
+    --mg-table-foot-row-border-color:   #ff0;               // +
+    --mg-table-foot-col-border-color:   #ff0;               // +
            
     
 }
