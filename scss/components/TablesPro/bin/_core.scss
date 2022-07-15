@@ -1,0 +1,318 @@
+@import "mixin";
+
+.table-wrapper {
+  width: 100%;
+  overflow-y: auto;
+  overflow-x: auto;
+}
+
+// Table basic properties
+table.PRO {
+  table-layout: fixed;
+  border-collapse: collapse;
+  border-spacing: 0px;
+  text-align: left;
+  color: $table-body-color;
+  @include font-settings("Text-body-th");
+  width: 100%;
+  background: $table-main-bg;
+  @extend %border-color-main;
+  tr {
+    @extend %border-color-main;
+    color: $table-body-color;
+  }
+  th,
+  td {
+    padding: map-get($padding-properties, "basic", "body");
+    @extend %border-color-main;
+  }
+  th {
+    @include font-settings("Text-body-th");
+  }
+  td {
+    @include font-settings("Text-body-td");
+  }
+  // Table Head Global
+  thead {
+    @extend %border-color-main;
+    @include font-settings("Text-header-td");
+
+    tr {
+      color: $table-header-color;
+      @extend %border-color-main;
+    }
+    th,
+    td {
+      padding: map-get($padding-properties, "basic", "header");
+      text-decoration: none;
+      @extend %border-color-main;
+    }
+    th {
+      @include font-settings("Text-header-th");
+    }
+    td {
+      @include font-settings("Text-header-td");
+    }
+  }
+  // Table Footer Global
+  tfoot {
+    @include font-settings("Text-footer-td");
+    color: $table-footer-color;
+    @extend %border-color-main;
+
+    tr {
+      @extend %border-color-main;
+    }
+    th,
+    td {
+      @extend %border-color-main;
+      padding: map-get($padding-properties, "basic", "footer");
+    }
+    th {
+      @include font-settings("Text-footer-th");
+    }
+    td {
+      @include font-settings("Text-footer-td");
+    }
+  }
+  caption {
+    font-size: 10px;
+    text-align: left;
+    padding: 10px 20px;
+    letter-spacing: 0px;
+    color: black;
+  }
+
+  &.slim {
+    th,
+    td {
+      padding: map-get($padding-properties, "slim", "body");
+    }
+    thead th,
+    td {
+      padding: map-get($padding-properties, "slim", "header");
+    }
+    tfoot th,
+    td {
+      padding: map-get($padding-properties, "slim", "footer");
+    }
+  }
+  &.extra {
+    th,
+    td {
+      padding: map-get($padding-properties, "extra", "body");
+    }
+    thead th,
+    td {
+      padding: map-get($padding-properties, "extra", "header");
+    }
+    tfoot th,
+    td {
+      padding: map-get($padding-properties, "extra", "footer");
+    }
+  }
+  &.minimized {
+    th,
+    td {
+      padding: map-get($padding-properties, "minimized", "body");
+    }
+    thead th,
+    td {
+      padding: map-get($padding-properties, "minimized", "header");
+    }
+    tfoot th,
+    td {
+      padding: map-get($padding-properties, "minimized", "footer");
+    }
+  }
+  &.hl-header {
+	thead {
+	  tr {
+		color: $table-header-color;
+		background: $table-main-header;
+	  }
+	}
+  }
+  // Hightlight footer
+  &.hl-footer {
+	tfoot {
+	  tr {
+		color: $table-footer-color;
+		background: $table-main-footer;
+	  }
+	}
+  }
+  // Hightlight first col
+  &.hl-first-col {
+	tbody {
+	  tr {
+		th,
+		td {
+		  &:first-child {
+			color: $table-col-color;
+			background: $table-main-col;
+		  }
+		}
+	  }
+	}
+  }
+  
+}
+
+//================== Global styles (maybe 50/50)===============================
+
+
+//=================== Sticky header ============================
+table.sticky-header {
+  thead {
+    position: sticky;
+    top: 0;
+    color: #000;
+    z-index: 1;
+    box-shadow: 0 2px 0 rgb(0, 0, 0);
+    background: inherit;
+  }
+}
+//============================================================
+
+//=================== Stripe  ============================
+
+//генерация striped эффекта для разных задач
+@each $variant in $striped-row-variations {
+  @include stripeGenRow($variant);
+}
+@each $variant in $striped-col-body-variations {
+  @include stripeGenColBody($variant);
+}
+
+@each $variant in $striped-col-header-variations {
+  @include stripeGenColHeader($variant);
+}
+
+@each $variant in $striped-col-footer-variations {
+  @include stripeGenColFooter($variant);
+}
+
+
+
+//table wrapper border
+.table-border {
+  border: map-get($custom-borders, "table-border");
+  border-color: map-get($custom-border-color-main, "table-border");
+}
+
+// tbody borders
+.body-border {
+  tbody {
+    border: map-get($custom-borders, "body-border");
+    border-color: map-get($custom-border-color-main, "body-border");
+  }
+}
+.body-row-border,
+.body-inner-border {
+  tbody {
+    tr {
+      &:not(:last-child) {
+        border-bottom: map-get($custom-borders, "body-row-border");
+        border-color: map-get($custom-border-color-main, "body-row-border");
+      }
+    }
+  }
+}
+.body-col-border,
+.body-inner-border {
+  tbody {
+    td,
+    th {
+      &:not(:last-child) {
+        border-right: map-get($custom-borders, "body-col-border");
+        border-color: map-get($custom-border-color-main, "body-col-border");
+      }
+    }
+  }
+}
+
+// thead borders
+.header-border {
+  thead {
+    border: map-get($custom-borders, "header-border");
+    border-color: map-get($custom-border-color-main, "header-border");
+  }
+}
+.header-row-border,
+.header-inner-border {
+  thead {
+    tr {
+      &:not(:last-child) {
+        border-bottom: map-get($custom-borders, "header-row-border");
+        border-color: map-get($custom-border-color-main, "header-row-border");
+      }
+    }
+  }
+}
+.header-col-border,
+.header-inner-border {
+  thead {
+    td,
+    th {
+      &:not(:last-child) {
+        border-right: map-get($custom-borders, "header-col-border");
+        border-color: map-get($custom-border-color-main, "header-col-border");
+      }
+    }
+  }
+}
+
+// tfoot borders
+.footer-border {
+  tfoot {
+    border: map-get($custom-borders, "footer-border");
+    border-color: map-get($custom-border-color-main, "footer-border");
+  }
+}
+.footer-row-border,
+.footer-inner-border {
+  tfoot {
+    tr {
+      &:not(:last-child) {
+        border-bottom: map-get($custom-borders, "footer-row-border");
+        border-color: map-get($custom-border-color-main, "footer-row-border");
+      }
+    }
+  }
+}
+.footer-col-border,
+.footer-inner-border {
+  tfoot {
+    td,
+    th {
+      &:not(:last-child) {
+        border-right: map-get($custom-borders, "footer-col-border");
+        border-color: map-get($custom-border-color-main, "footer-col-border");
+      }
+    }
+  }
+}
+
+// all borders
+.full-border {
+  border: map-get($custom-borders, "full-border");
+  border-color: map-get($custom-border-color-main, "full-border");
+  thead,
+  tbody,
+  tfoot {
+    border: map-get($custom-borders, "full-border");
+    border-color: map-get($custom-border-color-main, "full-border");
+  }
+  td,
+  th {
+    border: map-get($custom-borders, "full-border");
+    border-color: map-get($custom-border-color-main, "full-border");
+  }
+  tr {
+    &:not(:last-child) {
+      border: map-get($custom-borders, "full-border");
+      border-color: map-get($custom-border-color-main, "full-border");
+    }
+  }
+}

@@ -1,10 +1,25 @@
 html[data-theme='light'] {
-    --bg-color:             rgb(241, 235, 235);
+    --mg-bg-color:             rgb(241, 235, 235);
 
-    --primary-color:        #231556;
-    --secondary-color:      #231556;
-    --warn-color:           #231556;
-    --alert-color:          #231556;
-    --info-color:           #231556;
+    --mg-primary-color:        #660a9f;
+    --mg-secondary-color:      #cbaa26;
+    --mg-success-color:        #22a063;
+    --mg-warning-color:        #da7f2a;
+    --mg-danger-color:         #bd3030;
+    --mg-info-color:           #3055ea;
+    --mg-light-color:          #ececee;
+    --mg-dark-color:           #171324;
+    
 
+    --mg-main-text-color:      #191919;
+    --mg-font-famyly-prime:    #191919;
+    --mg-font-famyly-second:   #191919;
+    --mg-font-famyly-third:    #191919;
+    --mg-font-famyly-headings: #191919;
+    --mg-font-famyly-code:     #191919;
+
+    --mg-font-size-g:           1em;
+    --mg-font-size-h:           1em;
+
+    
 }
