@@ -1,4 +1,5 @@
 html[data-theme='light'] {
+    --mg-demoList: 10, 25, "33px";
     --mg-bg-color:             rgb(241, 235, 235);
 
     --mg-primary-color:        #660a9f;
@@ -20,6 +21,47 @@ html[data-theme='light'] {
 
     --mg-font-size-g:           1em;
     --mg-font-size-h:           1em;
+
+
+
+
+    --mg-table-main-bg:				rgb(250, 225, 230);
+    --mg-table-main-header: 		rgb(220, 225, 230);
+    --mg-table-main-footer: 		rgb(235, 240, 245);
+    --mg-table-main-col: 			rgb(230, 235, 240);
+
+    --mg-table-body-color: 			rgb(75, 75, 75);
+    --mg-table-header-color:		rgb(20, 20, 20);
+    --mg-table-footer-color: 		rgb(20, 20, 20);
+    --mg-table-col-color: 			rgba(125, 125, 125, 1);
+    
+    --mg-stiped-col-effect-value: 	3%;
+    --mg-stiped-row-effect-value: 	5%;
+    --mg-table-main-striped: 		rgba(220, 225, 230, 0.6);
+    
+    --mg-table-table-border:          	solid;
+    --mg-table-body-border:           	1px solid;
+    --mg-table-body-row-border:           1px solid;
+    --mg-table-body-col-border:           1px solid;
+    --mg-table-header-border:         	.5px solid;
+    --mg-table-header-row-border:         2px solid;
+    --mg-table-header-col-border:         1px solid;
+    --mg-table-footer-border:         	solid;
+    --mg-table-footer-row-border:         1px solid;
+    --mg-table-footer-col-border:         1px solid;
+    --mg-table-full-border:           	1px solid;
+
+    --mg-table-border-color:        #333;
+    --mg-body-border-color:         #333;
+    --mg-body-row-border-color:     #333;
+    --mg-body-col-border-color:     #333;
+    --mg-header-border-color:       #333;
+    --mg-header-row-border-color:   rgba(220,230,255, 1);
+    --mg-header-col-border-color:   rgba(220,230,255, 1);
+    --mg-footer-border-color:       #333;
+    --mg-footer-row-border-color:   #333;
+    --mg-footer-col-border-color:   #333;
+    --mg-full-border-color:         #333;
 
     
 }

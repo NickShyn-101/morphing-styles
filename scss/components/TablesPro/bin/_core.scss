@@ -1,4 +1,13 @@
-@import "mixin";
+
+@mixin font-settings($font-category) {
+	font-size: map-get($font-properties, $font-category, "size");
+	font-weight: map-get($font-properties, $font-category, "weight");
+	line-height: map-get($font-properties, $font-category, "lineH");
+  }
+  
+  %border-color-main {
+	border-color: $table-main-border-color;
+  }
 
 .table-wrapper {
   width: 100%;
@@ -173,26 +182,6 @@ table.sticky-header {
     background: inherit;
   }
 }
-//============================================================
-
-//=================== Stripe  ============================
-
-//генерация striped эффекта для разных задач
-@each $variant in $striped-row-variations {
-  @include stripeGenRow($variant);
-}
-@each $variant in $striped-col-body-variations {
-  @include stripeGenColBody($variant);
-}
-
-@each $variant in $striped-col-header-variations {
-  @include stripeGenColHeader($variant);
-}
-
-@each $variant in $striped-col-footer-variations {
-  @include stripeGenColFooter($variant);
-}
-
 
 
 //table wrapper border

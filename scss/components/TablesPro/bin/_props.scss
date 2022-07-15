@@ -1,0 +1,110 @@
+$padding-properties: (
+    "basic": 		("body":  1rem 20px,
+                    "header": 1rem 20px,
+                    "footer": 1rem 20px,),
+    
+    "slim": 		("body":  0.5rem 20px,
+                    "header": 0.5rem 20px,
+                    "footer": 0.5rem 20px,),
+    
+    "extra": 		("body":  1.5rem 20px,
+                    "header": 1.5rem 20px,
+                    "footer": 1.5rem 20px,),
+    
+    "minimized": 	("body":  0.25rem 20px,
+                    "header": 0.25rem 20px,
+                    "footer": 0.25rem 20px,),
+    );
+
+
+
+    
+    //Table background colors
+    $table-main-bg:				rgb(247, 244, 244);
+    $table-main-header: 		rgb(220, 225, 230);
+    $table-main-footer: 		rgb(235, 240, 245);
+    $table-main-col: 			rgb(230, 235, 240);
+    
+      // =============================================================
+    
+    
+    //---------------------------------- Fonts and font color
+    
+    $font-properties: (
+    "Text-body-th": 	("size":	1em,
+                        "weight":	600,
+                        "lineH":	auto,),
+    
+    "Text-body-td": 	("size":	1em,
+                        "weight":	400,
+                        "lineH":	auto,),
+    
+    "Text-header-th": 	("size":	1em,
+                        "weight":	600,
+                        "lineH":	auto,),
+    
+    "Text-header-td": 	("size":	1em,
+                        "weight":	400,
+                        "lineH":	auto,),
+    
+    "Text-footer-th": 	("size":	1em,
+                        "weight":	900,
+                        "lineH":	auto,),
+    
+    "Text-footer-td": 	("size":	1em,
+                        "weight":	400,
+                        "lineH":	auto,),
+    );
+    
+    //Text color 
+    $table-body-color: 			rgb(75, 75, 75);
+    $table-header-color:		rgb(20, 20, 20);
+    $table-footer-color: 		rgb(20, 20, 20);
+    $table-col-color: 			rgba(125, 125, 125, 1);
+    
+    // =============================================================
+    
+        
+    $stiped-col-effect-value: 			3%;
+    $stiped-row-effect-value: 			5%;
+    
+    $table-main-striped: 				rgba(220, 225, 230, 0.6);
+
+
+        // =============================================================
+    
+    
+    
+    //---------------------------------- Borders and border colors
+    
+    $table-main-border-color: 		rgba(0,0,0,1);
+     
+    $custom-borders: (
+        "table-border": 			1px solid,
+        "body-border": 				1px solid,
+        "body-row-border": 			1px solid,
+        "body-col-border": 			1px solid,
+        "header-border": 			0.5px solid,
+        "header-row-border": 		2px solid,
+        "header-col-border": 		1px solid,
+        "footer-border": 			1px solid,
+        "footer-row-border": 		1px solid,
+        "footer-col-border": 		1px solid,
+        "full-border": 				1px solid,
+     );
+    
+    $custom-border-color-main: (
+        "table-border": 			#333,
+        "body-border": 				#333,
+        "body-row-border": 			#333,
+        "body-col-border": 			#333,
+        "header-border": 			#333,
+        "header-row-border": 		rgba(220,230,255, 1),
+        "header-col-border": 		rgba(220,230,255, 1),
+        "footer-border": 			#333,
+        "footer-row-border": 		#333,
+        "footer-col-border": 		#333,
+        "full-border": 				#333,
+     );
+    
+   

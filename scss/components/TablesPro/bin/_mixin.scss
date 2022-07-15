@@ -1,64 +1,31 @@
-@mixin font-settings($font-category) {
-  font-size: map-get($font-properties, $font-category, "size");
-  font-weight: map-get($font-properties, $font-category, "weight");
-  line-height: map-get($font-properties, $font-category, "lineH");
-}
-
-%border-color-main {
-  border-color: $table-main-border-color;
-}
-
-@mixin stripeGenColBody($name) {
-  $prop: background;
-  table.striped-col-body-#{$name} {
-    tbody {
-      td:nth-child(#{$name}),
-      th:nth-child(#{$name}) {
-        background: darken($table-main-striped, $stiped-col-effect-value);
+@mixin generateStripedHL($area, $ColOrRow, $name, $colorUnder) {
+  @if ($ColOrRow == "col") {
+    table.striped-col-#{$area}-#{$name} {
+      t#{$area} {
+        td:nth-child(#{$name}),
+        th:nth-child(#{$name}) {
+          background: darken($colorUnder, $stiped-col-effect-value);
+        }
       }
     }
   }
-}
-
-@mixin stripeGenColHeader($name) {
-  $prop: background;
-  table.striped-col-header-#{$name} {
-    thead {
-      td:nth-child(#{$name}),
-      th:nth-child(#{$name}) {
-        background: darken($table-main-header, $stiped-col-effect-value);
-      }
-    }
-  }
-}
-
-@mixin stripeGenColFooter($name) {
-  $prop: background;
-  table.striped-col-footer-#{$name} {
-    tfoot {
-      td:nth-child(#{$name}),
-      th:nth-child(#{$name}) {
-        background: darken($table-main-footer, $stiped-col-effect-value);
-      }
-    }
-  }
-}
-
-@mixin stripeGenRow($name) {
-  table.striped-row-#{$name} {
-    tbody {
-      tr:nth-child(#{$name}) {
-        background: $table-main-striped;
-      }
-    }
-
-    &.hl-first-col {
-      tbody {
+  @if ($ColOrRow == "row") {
+    table.striped-row-#{$name} {
+      t#{$area} {
         tr:nth-child(#{$name}) {
-          &:nth-child(#{$name}) {
-            th:first-child,
-            td:first-child {
-              background: darken($table-main-col, $stiped-row-effect-value);
+          background: $table-main-striped;
+        }
+      }
+      @if ($area == "body") {
+        &.hl-first-col {
+          tbody {
+            tr:nth-child(#{$name}) {
+              &:nth-child(#{$name}) {
+                th:first-child,
+                td:first-child {
+                  background: darken($colorUnder, $stiped-row-effect-value);
+                }
+              }
             }
           }
         }
