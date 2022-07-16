@@ -1,3 +1,5 @@
+@import "tests";
+
 // special mixin for generating special params for any
 @mixin onePropFromArray($styleName, $propsName, $array: "", $isMQ: "") {
   $mqLabel: checkMQ($isMQ);
@@ -11,7 +13,7 @@
 @mixin GenerateProps(
   $listOfMyProps,
   $mediaTrue: "",
-  $API_LIST: $all_properties_list
+  $API_LIST: $CSS_PROPERTIES_LIST
 ) {
   $isMq: checkMQ($mediaTrue);
   @each $listItem in $listOfMyProps {
@@ -37,3 +39,13 @@
     }
   }
 }
+
+@mixin simplePropsGenerator($basicList, $mediaList) {
+  @include GenerateProps($basicList);
+  @each $mqKey, $mqProp in $mediaQuery {
+    @media #{$mqProp} {
+      @include GenerateProps($mediaList, $mqKey);
+    }
+  }
+}
+

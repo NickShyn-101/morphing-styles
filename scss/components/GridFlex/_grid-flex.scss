@@ -1,48 +1,29 @@
-$col-count:         12 !default;
-
-$container-width:   1220px !default;
-$gapInContainer:    20px;
-$gapInRow:          10px;
-
 @import "bin/functions";
 @import "bin/props";
 @import "bin/core";
 
+// Comment or delete props you don`t need
+// Add your custom props to "./grid-flex-props" and create rule
+// and use GenerateProps() or onePropFromArray()
+// to manage options you need to go to _css-properties in (_core)
+$gridflex-props-list: "flex-wrap", "flex-direction", "justify-content",
+  "align-items", "align-self", "align-content", "flex-shrink", "flex-grow",
+  "flex-basis", "gap", "order";
 
-// Comment props you don`t need
+$gridflex-props-list-MQ: "flex-wrap", "flex-direction", "justify-content",
+  "align-items", "align-self", "align-content", "flex-shrink", "flex-grow",
+  "flex-basis", "gap", "order";
+
 @include columnProps(true, true); // col, colFlex
 @include offsetProps(true, true); // offset-l, offset-r
+@include GenerateProps($gridflex-props-list);
 
-// Add your custom props to "./grid-flex-props" and create rule
-@include onePropFromArray("fw", "flex-wrap",       $flex-wrap);
-@include onePropFromArray("fd", "flex-direction",  $flex-direction);
-@include onePropFromArray("jc", "justify-content", $justify-content);
-@include onePropFromArray("ai", "align-items",     $align-items);
-@include onePropFromArray("as", "align-self",      $align-self);
-@include onePropFromArray("ac", "align-content",   $align-content);
-@include onePropFromArray("fs", "flex-shrink",     $flex-shrink);
-@include onePropFromArray("fg", "flex-grow",       $flex-grow);
-@include onePropFromArray("fb", "flex-basis",      $flex-basis);
-@include onePropFromArray("g",  "gap",             $custom-gap);
-@include onePropFromArray("o",  "order",           $flex-order);
+@each $mqKey, $mqProp in $mediaQuery {
+  @media #{$mqProp} {
 
-
-@each $mqKey, $mqProp in $mediaQuery { @media #{$mqProp} {
-
-    @include columnProps(true, true, $mqKey); 
+    @include columnProps(true, true, $mqKey);
     @include offsetProps(true, true, $mqKey);
+    @include GenerateProps($gridflex-props-list-MQ, $mqKey);
 
-    @include onePropFromArray("fw", "flex-wrap",       $flex-wrap,       $mqKey);
-    @include onePropFromArray("fd", "flex-direction",  $flex-direction,  $mqKey);
-    @include onePropFromArray("jc", "justify-content", $justify-content, $mqKey);
-    @include onePropFromArray("ai", "align-items",     $align-items,     $mqKey);
-    @include onePropFromArray("as", "align-self",      $align-self,      $mqKey);
-    @include onePropFromArray("ac", "align-content",   $align-content,   $mqKey);
-    @include onePropFromArray("fs", "flex-shrink",     $flex-shrink,     $mqKey);
-    @include onePropFromArray("fg", "flex-grow",       $flex-grow,       $mqKey);
-    @include onePropFromArray("fb", "flex-basis",      $flex-basis,      $mqKey);
-    @include onePropFromArray("g",  "gap",             $custom-gap,      $mqKey);
-    @include onePropFromArray("o",  "order",           $flex-order,      $mqKey);
-
-
-} }
+  }
+}

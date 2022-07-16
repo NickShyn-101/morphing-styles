@@ -1,21 +1,11 @@
-// bug cols in media can`t use % !!! FIX it
-%testing-settings {
-  background-color: rgba(50, 50, 50, 0.15);
-  border: 1px dashed rgba(50, 50, 50, 0.15);
-  padding: 10px;
-}
-
 %global-grid-settings {
   display: flex;
-  flex-wrap: wrap;
+  flex-direction: row;
   align-items: flex-start;
+  flex-wrap: wrap;
   overflow: hidden;
-  @extend %testing-settings;
-}
-
-%global-col-settings {
-  overflow: hidden;
-  @extend %testing-settings;
+  width: 100%;
+  @include testRowCol();
 }
 
 main,
@@ -29,15 +19,11 @@ section,
 }
 
 .container {
-  flex-direction: row;
-  width: 100%;
   @extend %global-grid-settings;
   gap: $gapInContainer;
 }
 
 .row {
-  flex-direction: row;
-  width: 100%;
   @extend %global-grid-settings;
   gap: $gapInRow;
 }
@@ -47,17 +33,13 @@ section,
   $mqLabel: checkMQ($isMQ);
 
   %testing-settings#{$mqLabel} {
-    background-color: rgba(50, 50, 50, 0.15);
-    border: 1px dashed rgba(50, 50, 50, 0.15);
-    padding: 10px;
+    @include testRowCol();
   }
-  
 
   %global-col-settings#{$mqLabel} {
     overflow: hidden;
     @extend %testing-settings#{$mqLabel};
   }
-
 
   @if ($colGap) {
     @for $i from 1 through $col-count {
@@ -103,7 +85,6 @@ section,
   }
 }
 
-// additional styles
 .strict {
   max-width: $container-width;
 }

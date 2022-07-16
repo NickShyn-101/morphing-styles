@@ -14,7 +14,3 @@
 
 // Create your own componens and styles below
 @import "Custom";
-@include GenerateProps($list_of_props);
-@each $mqKey, $mqProp in $mediaQuery { @media #{$mqProp} {
-    @include GenerateProps($list_of_props, $mqKey);
-} }

@@ -14,7 +14,7 @@
 @include highlightTableAreas("foot");
 @include highlightTableAreas("first-col");
 //-----------------------------------------------------------------------
-// borders in table:       area     type  ?width/style, ?color
+// borders in table:       area     type  ?width/style/color, ?color
 @include createTableBorder("body", "row");
 @include createTableBorder("body", "col");
 @include createTableBorder("body", "inner");

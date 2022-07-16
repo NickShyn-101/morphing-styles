@@ -1,36 +1,193 @@
-
-$all_properties_list: (
+//     shortName    Property          Active      MediaActive
+$CSS_PROPERTIES_LIST: (
   "justify-content": (
     useTag: "jc",
     propsList: (
-      "center": (center,        true,       true),
-      "fs": (flex-start,        true,       true),
-      "fe": (flex-end,          true,      false),
-      "str": (stretch,          true,      false),
-      "sb": (space-between,     true,      false),
-      "sa": (space-around,      true,      false),
-      "se": (space-evenly,      true,      false),
+      "center":     (center,            true,      true),
+      "fs":         (flex-start,        true,      true),
+      "fe":         (flex-end,          true,      true),
+      "str":        (stretch,           true,      true),
+      "sb":         (space-between,     true,      true),
+      "sa":         (space-around,      true,      true),
+      "se":         (space-evenly,      true,      true),
     ),
   ),
+  "align-items": (
+    useTag: "ai",
+    propsList: (
+      "center":     (center,            true,      true),
+      "fs":         (flex-start,        true,      true),
+      "fe":         (flex-end,          true,      true),
+      "str":        (stretch,           true,      true),
+      "bl":         (baseline,          true,      true),
+    ),
+  ),
+  "align-self": (
+    useTag: "as",
+    propsList: (
+      "center":     (center,            true,      true),
+      "fs":         (flex-start,        true,      true),
+      "fe":         (flex-end,          true,      true),
+      "str":        (stretch,           true,      true),
+      "bl":         (baseline,          true,      true),
+      "auto":       (auto,              true,      true),
+    ),
+  ),
+  "align-content": (
+    useTag: "ac",
+    propsList: (
+      "center":     (center,            true,      true),
+      "fs":         (flex-start,        true,      true),
+      "fe":         (flex-end,          true,      true),
+      "bl":         (baseline,          true,      true),
+      "sb":         (space-between,     true,      true),
+      "sa":         (space-around,      true,      true),
+      "se":         (space-evenly,      true,      true),
+    ),
+  ),
+  "flex-wrap": (
+    useTag: "fw",
+    propsList: (
+      "nowrap":     (nowrap,            true,      true),
+      "wrap":       (wrap,              true,      true),
+      "wrap-r":     (wrap-reverse,      true,      true),
+    ),
+  ),
+  "flex-direction": (
+    useTag: "fd",
+    propsList: (
+      "row":        (row,               true,      true),
+      "col":        (column,            true,      true),
+      "row-r":      (row-reverse,       true,      true),
+      "col-r":      (column-reverse,    true,      true),
+      ),
+  ),
+  "flex-shrink": (
+    useTag: "shrink",
+    propsList: (
+      "1":          (1,                 true,      true),
+      "1n5":        (1.5,               true,      true),
+      "2":          (2,                 true,      true),
+      "mwW1":       (-1,                true,      true),
+      ),
+  ),
+  "flex-grow": (
+    useTag: "grow",
+    propsList: (
+      "1":          (1,                 true,      true),
+      "1n5":        (1.5,               true,      true),
+      "2":          (2,                 true,      true),
+      "-1":         (-1,                true,      true),
+      ),
+  ),
+  
+  "flex-basis": (
+    useTag: "fb",
+    propsList: (
+      "auto":       (auto,              true,      true),
+      "25":         (25%,               true,      true),
+      "50":         (50%,               true,      true),
+      "75":         (75%,               true,      true),
+      "100":        (100%,              true,      true),
+      ),
+  ),
+  "gap": (
+    useTag: "g",
+    propsList: (
+      "10":         (10px,              true,      true),
+      "20":         (20px,              true,      true),
+      "30":         (30px,              true,      true),
+      "40":         (40px,              true,      true),
+      "50":         (50px,              true,      true),
+      ),
+  ),
+  "order": (
+    useTag: "order",
+    propsList: (
+      "m1":        (-1,                  true,      true),
+      "1":         (1,                  true,      true),
+      "2":         (2,                  true,      true),
+      "3":         (3,                  true,      true),
+      "4":         (4,                  true,      true),
+      "5":         (5,                  true,      true),
+      "6":         (6,                  true,      true),
+      "7":         (7,                  true,      true),
+      "8":         (8,                  true,      true),
+      "9":         (9,                  true,      true),
+      "10":        (10,                 true,      true),
+      "11":        (11,                 true,      true),
+      "12":        (12,                 true,      true),
+      ),
+  ),
+  "margin": (
+    useTag: "m",
+    propsList: (
+      "auto":       (auto,              true,      true),
+      "25":         (25%,               true,      true),
+      "50":         (50%,               true,      true),
+      "75":         (75%,               true,      true),
+      "100":        (100%,              true,      true),
+      ),
+  ),
+  "padding": (
+    useTag: "p",
+    propsList: (
+      "auto":       (auto,              true,      true),
+      "25":         (25%,               true,      true),
+      "50":         (50%,               true,      true),
+      "75":         (75%,               true,      true),
+      "100":        (100%,              true,      true),
+      ),
+  ),
+  "opacity": (
+    useTag: "o",
+    propsList: (
+      "0":          (0,                 true,      true),
+      "25":         (0.25,              true,      true),
+      "50":         (0.5,               true,      true),
+      "75":         (0.75,              true,      true),
+      "100":        (1,                 true,      true),
+      ),
+  ),
+  "word-break": (
+    useTag: "word-b",
+    propsList: (
+      "normal":     (normal,            true,      true),
+      "break-all":  (break-all,         true,      true),
+      "keep-all":   (keep-all,          true,      true),
+      "break-word": (break-word,        true,      true),
+      ),
+  ),
+  "text-align": (
+    useTag: "ta",
+    propsList: (
+      "left":       (left,              true,      true),
+      "right":      (right,             true,      true),
+      "center":     (center,            true,      true),
+      "justify":    (justify,           true,      true),
+      ),
+  ),
+  "vertical-align": (
+    useTag: "va",
+    propsList: (
+      "bs":         (baseline,          true,      true),
+      "sub":        (sub,               true,      true),
+      "super":      (super,             true,      true),
+      "text-top":   (text-top,          true,      true),
+      "text-bottom":(text-bottom,       true,      true),
+      "middle":     (middle,            true,      true),
+      "top":        (top,               true,      true),
+      "bottom":     (bottom,            true,      true),
+      "10p":        (10%,               true,      true),
+      "25p":        (25%,               true,      true),
+      "50p":        (50%,               true,      true),
+      "75p":        (75%,               true,      true),
+      "100p":       (100%,              true,      true),
+      "05r":        (0.5rem,            true,      true),
+      "1r":         (1rem,              true,      true),
+      "15r":        (15rem,             true,      true),
+      ),
+  ),
+  
 );
 
-$list_of_props: "justify-content";
-
-
-// @each $key, $param in $demo_properties_list {
-//     $activeTag: map-get($param, "useTag");
-//     @each $propsKey, $propsParam in map-get($param, "propsList") {
-//       .#{$activeTag}-#{$propsKey} {
-//         #{$key}: #{$propsParam};
-//       }
-//     }
-//   }
-
-// @each $key, $param in $demo_properties_list {
-//     $activeTag: map-get($param , "useTag");
-//     @each $propsKey, $propsParam in map-get($param , "propsList") {
-//         .#{$activeTag}-#{$propsKey} {
-//             #{$key}: #{$propsParam}
-//         }
-//     }
-// }

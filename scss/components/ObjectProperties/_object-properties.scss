@@ -1,25 +1,22 @@
 @import "bin/props";
 @import "bin/core";
 
-// Comment props you don`t need
+// Comment or delete props you don`t need
 // Add your custom props to "./grid-flex-props" and create rule
-@include displayVisProps(true, true);
-@include onePropFromArray("p",  "padding",  $custom-padding);
-@include onePropFromArray("m",  "margin",   $custom-margin);
-@include onePropFromArray("ta", "text-align",  $text-align);
-@include onePropFromArray("op", "opacity",  $opacity);
-@include onePropFromArray("wb", "word-break",  $word-break);
+// and use GenerateProps() or onePropFromArray()
+// to manage options you need to go to _css-properties in (_core)
+$obj-props-list: "padding", "margin", "text-align", "opacity", "word-break";
+$obj-props-list-MQ: "padding", "margin", "text-align", "opacity",
+  "word-break";
 
-@include onePropFromArray("wb", "word-break",  $word-break);
+  @include GenerateProps($obj-props-list);
+  @include displayVisProps(true, true);
 
+  @each $mqKey, $mqProp in $mediaQuery {
+    @media #{$mqProp} {
 
-@each $mqKey, $mqProp in $mediaQuery { @media #{$mqProp} {
-    @include displayVisProps(true, true, $mqKey);
-    @include onePropFromArray("p",  "padding",  $custom-padding, $mqKey);
-    @include onePropFromArray("m",  "margin",   $custom-margin,  $mqKey);
-    @include onePropFromArray("ta", "text-align",  $text-align,     $mqKey);
-    @include onePropFromArray("op", "opacity",  $opacity, $mqKey);
-    @include onePropFromArray("wb", "word-break",  $word-break, $mqKey);
-    
-    @include onePropFromArray("wb", "word-break",  $word-break, $mqKey);
-} }
+        @include displayVisProps(true, true, $mqKey);
+        @include GenerateProps($obj-props-list-MQ, $mqKey);
+
+    }
+  }

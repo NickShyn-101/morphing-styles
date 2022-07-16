@@ -1,0 +1,5 @@
+@mixin testRowCol() {
+    background-color: rgba(50, 50, 50, 0.15);
+    border: 1px dashed rgba(50, 50, 50, 0.15);
+    padding: 10px;
+}
