@@ -2,28 +2,14 @@
 @import "bin/props";
 @import "bin/core";
 
-// Comment or delete props you don`t need
-// Add your custom props to "./grid-flex-props" and create rule
-// and use GenerateProps() or onePropFromArray()
-// to manage options you need to go to _css-properties in (_core)
-$gridflex-props-list: "flex-wrap", "flex-direction", "justify-content",
-  "align-items", "align-self", "align-content", "flex-shrink", "flex-grow",
-  "flex-basis", "gap", "order";
-
-$gridflex-props-list-MQ: "flex-wrap", "flex-direction", "justify-content",
-  "align-items", "align-self", "align-content", "flex-shrink", "flex-grow",
-  "flex-basis", "gap", "order";
 
 @include columnProps(true, true); // col, colFlex
 @include offsetProps(true, true); // offset-l, offset-r
-@include GenerateProps($gridflex-props-list);
+
 
 @each $mqKey, $mqProp in $mediaQuery {
   @media #{$mqProp} {
-
     @include columnProps(true, true, $mqKey);
     @include offsetProps(true, true, $mqKey);
-    @include GenerateProps($gridflex-props-list-MQ, $mqKey);
-
   }
 }

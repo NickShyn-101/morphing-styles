@@ -1,16 +1,18 @@
 @charset "UTF-8";
-
 // Global Settings for fast customising your Project
 // It`s important. Don`t switch them off!
-@import "Root"; 
+@import "Root";
 @import "Preferences";
 
-// use any component to extend styles in your project 
-@import "Components"; 			
+// use any component to extend styles in your project
+@import "Components";
 
-// !!! don`t use several themes in one build
-// @import "themes/DefaultTheme/default-theme";
+// Activate only those properties you need now
+@import "Properties";
 
 
 // Create your own componens and styles below
 @import "Custom";
+
+
+

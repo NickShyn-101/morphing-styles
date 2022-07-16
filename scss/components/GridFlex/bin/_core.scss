@@ -1,3 +1,5 @@
+$CSS_PROPERTIES_LIST: map-merge($CSS_PROPERTIES_LIST, $custom-grid-flex-props-list);
+
 %global-grid-settings {
   display: flex;
   flex-direction: row;

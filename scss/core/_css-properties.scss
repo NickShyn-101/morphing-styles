@@ -1,8 +1,9 @@
 //     shortName    Property          Active      MediaActive
 $CSS_PROPERTIES_LIST: (
   "justify-content": (
-    useTag: "jc",
-    propsList: (
+    atr: "justify-content",
+    tag: "jc",
+    props: (
       "center":     (center,            true,      true),
       "fs":         (flex-start,        true,      true),
       "fe":         (flex-end,          true,      true),
@@ -13,8 +14,9 @@ $CSS_PROPERTIES_LIST: (
     ),
   ),
   "align-items": (
-    useTag: "ai",
-    propsList: (
+    atr: "align-items",
+    tag: "ai",
+    props: (
       "center":     (center,            true,      true),
       "fs":         (flex-start,        true,      true),
       "fe":         (flex-end,          true,      true),
@@ -23,8 +25,9 @@ $CSS_PROPERTIES_LIST: (
     ),
   ),
   "align-self": (
-    useTag: "as",
-    propsList: (
+    atr: "align-self",
+    tag: "as",
+    props: (
       "center":     (center,            true,      true),
       "fs":         (flex-start,        true,      true),
       "fe":         (flex-end,          true,      true),
@@ -34,8 +37,9 @@ $CSS_PROPERTIES_LIST: (
     ),
   ),
   "align-content": (
-    useTag: "ac",
-    propsList: (
+    atr: "align-content",
+    tag: "ac",
+    props: (
       "center":     (center,            true,      true),
       "fs":         (flex-start,        true,      true),
       "fe":         (flex-end,          true,      true),
@@ -46,16 +50,18 @@ $CSS_PROPERTIES_LIST: (
     ),
   ),
   "flex-wrap": (
-    useTag: "fw",
-    propsList: (
+    atr: "flex-wrap",
+    tag: "fw",
+    props: (
       "nowrap":     (nowrap,            true,      true),
       "wrap":       (wrap,              true,      true),
       "wrap-r":     (wrap-reverse,      true,      true),
     ),
   ),
   "flex-direction": (
-    useTag: "fd",
-    propsList: (
+    atr: "flex-direction",
+    tag: "fd",
+    props: (
       "row":        (row,               true,      true),
       "col":        (column,            true,      true),
       "row-r":      (row-reverse,       true,      true),
@@ -63,8 +69,9 @@ $CSS_PROPERTIES_LIST: (
       ),
   ),
   "flex-shrink": (
-    useTag: "shrink",
-    propsList: (
+    atr: "flex-shrink",
+    tag: "shrink",
+    props: (
       "1":          (1,                 true,      true),
       "1n5":        (1.5,               true,      true),
       "2":          (2,                 true,      true),
@@ -72,8 +79,9 @@ $CSS_PROPERTIES_LIST: (
       ),
   ),
   "flex-grow": (
-    useTag: "grow",
-    propsList: (
+    atr: "flex-grow",
+    tag: "grow",
+    props: (
       "1":          (1,                 true,      true),
       "1n5":        (1.5,               true,      true),
       "2":          (2,                 true,      true),
@@ -82,8 +90,9 @@ $CSS_PROPERTIES_LIST: (
   ),
   
   "flex-basis": (
-    useTag: "fb",
-    propsList: (
+    atr: "flex-basis",
+    tag: "fb",
+    props: (
       "auto":       (auto,              true,      true),
       "25":         (25%,               true,      true),
       "50":         (50%,               true,      true),
@@ -92,8 +101,9 @@ $CSS_PROPERTIES_LIST: (
       ),
   ),
   "gap": (
-    useTag: "g",
-    propsList: (
+    atr: "gap",
+    tag: "g",
+    props: (
       "10":         (10px,              true,      true),
       "20":         (20px,              true,      true),
       "30":         (30px,              true,      true),
@@ -102,8 +112,9 @@ $CSS_PROPERTIES_LIST: (
       ),
   ),
   "order": (
-    useTag: "order",
-    propsList: (
+    atr: "order",
+    tag: "order",
+    props: (
       "m1":        (-1,                  true,      true),
       "1":         (1,                  true,      true),
       "2":         (2,                  true,      true),
@@ -120,8 +131,9 @@ $CSS_PROPERTIES_LIST: (
       ),
   ),
   "margin": (
-    useTag: "m",
-    propsList: (
+    atr: "margin",
+    tag: "m",
+    props: (
       "auto":       (auto,              true,      true),
       "25":         (25%,               true,      true),
       "50":         (50%,               true,      true),
@@ -130,8 +142,9 @@ $CSS_PROPERTIES_LIST: (
       ),
   ),
   "padding": (
-    useTag: "p",
-    propsList: (
+    atr: "padding",
+    tag: "p",
+    props: (
       "auto":       (auto,              true,      true),
       "25":         (25%,               true,      true),
       "50":         (50%,               true,      true),
@@ -140,8 +153,9 @@ $CSS_PROPERTIES_LIST: (
       ),
   ),
   "opacity": (
-    useTag: "o",
-    propsList: (
+    atr: "opacity",
+    tag: "o",
+    props: (
       "0":          (0,                 true,      true),
       "25":         (0.25,              true,      true),
       "50":         (0.5,               true,      true),
@@ -150,8 +164,9 @@ $CSS_PROPERTIES_LIST: (
       ),
   ),
   "word-break": (
-    useTag: "word-b",
-    propsList: (
+    atr: "word-break",
+    tag: "word-b",
+    props: (
       "normal":     (normal,            true,      true),
       "break-all":  (break-all,         true,      true),
       "keep-all":   (keep-all,          true,      true),
@@ -159,8 +174,9 @@ $CSS_PROPERTIES_LIST: (
       ),
   ),
   "text-align": (
-    useTag: "ta",
-    propsList: (
+    atr: "text-align",
+    tag: "ta",
+    props: (
       "left":       (left,              true,      true),
       "right":      (right,             true,      true),
       "center":     (center,            true,      true),
@@ -168,8 +184,9 @@ $CSS_PROPERTIES_LIST: (
       ),
   ),
   "vertical-align": (
-    useTag: "va",
-    propsList: (
+    atr: "vertical-align",
+    tag: "va",
+    props: (
       "bs":         (baseline,          true,      true),
       "sub":        (sub,               true,      true),
       "super":      (super,             true,      true),

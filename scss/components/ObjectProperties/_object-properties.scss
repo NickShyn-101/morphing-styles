@@ -1,22 +1,2 @@
 @import "bin/props";
 @import "bin/core";
-
-// Comment or delete props you don`t need
-// Add your custom props to "./grid-flex-props" and create rule
-// and use GenerateProps() or onePropFromArray()
-// to manage options you need to go to _css-properties in (_core)
-$obj-props-list: "padding", "margin", "text-align", "opacity", "word-break";
-$obj-props-list-MQ: "padding", "margin", "text-align", "opacity",
-  "word-break";
-
-  @include GenerateProps($obj-props-list);
-  @include displayVisProps(true, true);
-
-  @each $mqKey, $mqProp in $mediaQuery {
-    @media #{$mqProp} {
-
-        @include displayVisProps(true, true, $mqKey);
-        @include GenerateProps($obj-props-list-MQ, $mqKey);
-
-    }
-  }

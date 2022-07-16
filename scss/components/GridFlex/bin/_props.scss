@@ -1,7 +1,12 @@
-$custom-gap: (
-  "1": 	  1rem 1rem,
-  "2": 	  2rem 2rem,
-  "3": 	  3rem 3rem,
-  "4": 	  2rem 2rem,
-  "5": 	  3rem 3rem,
+$custom-grid-flex-props-list: (
+  "custom-gap": (
+    atr: "gap",
+    tag: "gc", //gap custom
+    props: (
+      "1":    (1rem 1rem,      true,      true),
+      "2":    (2rem 2rem,      true,      true),
+      "3":    (3rem 3rem,      true,      true),
+      "4":    (3rem 3rem,      true,      true),
+    ),
+  ),
 );

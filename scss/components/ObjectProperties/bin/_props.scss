@@ -1,17 +1,22 @@
-$custom-padding: (
-  "1": 0 20px,
-  "2": 0 30px,
-  "3": 0 40px,
-  "4": 0 30px,
-  "5": 0 40px,
-);
-
-$custom-margin: (
-  "1": 0 10px,
-  "2": 10px 0px,
-  "3": 0 30px,
-  "4": 0 40px,
-  "5": 0 50px,
-  "1-btn": 0 10px,
-  "2-btn": 22px 0px,
+$custom-grid-flex-props-list: (
+  "custom-padding": (
+    atr: "padding",
+    tag: "pc", //gap custom
+    props: (
+      "1":    (1rem 1rem,      true,      true),
+      "2":    (2rem 2rem,      true,      true),
+      "3":    (3rem 3rem,      true,      true),
+      "4":    (3rem 3rem,      true,      true),
+    ),
+  ),
+  "custom-margin": (
+    atr: "margin",
+    tag: "mc", //gap custom
+    props: (
+      "1":    (1rem 1rem,      true,      true),
+      "2":    (2rem 2rem,      true,      true),
+      "3":    (3rem 3rem,      true,      true),
+      "4":    (3rem 3rem,      true,      true),
+    ),
+  ),
 );
