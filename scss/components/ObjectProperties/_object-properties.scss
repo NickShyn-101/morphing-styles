@@ -7,7 +7,10 @@
 @include onePropFromArray("p",  "padding",  $custom-padding);
 @include onePropFromArray("m",  "margin",   $custom-margin);
 @include onePropFromArray("ta", "text-align",  $text-align);
+@include onePropFromArray("op", "opacity",  $opacity);
+@include onePropFromArray("wb", "word-break",  $word-break);
 
+@include onePropFromArray("wb", "word-break",  $word-break);
 
 
 @each $mqKey, $mqProp in $mediaQuery { @media #{$mqProp} {
@@ -15,5 +18,8 @@
     @include onePropFromArray("p",  "padding",  $custom-padding, $mqKey);
     @include onePropFromArray("m",  "margin",   $custom-margin,  $mqKey);
     @include onePropFromArray("ta", "text-align",  $text-align,     $mqKey);
-
+    @include onePropFromArray("op", "opacity",  $opacity, $mqKey);
+    @include onePropFromArray("wb", "word-break",  $word-break, $mqKey);
+    
+    @include onePropFromArray("wb", "word-break",  $word-break, $mqKey);
 } }

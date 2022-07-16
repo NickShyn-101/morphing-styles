@@ -1,23 +1,23 @@
 // ======================== Edit props ========================================
 // ======================== comment useless properities =============================
 $flex-wrap: (
-  "nowrap": 	nowrap,
-  "wrap": 		wrap,
-  "wrap-r": 	wrap-reverse,
+  "nowrap": nowrap,
+  "wrap": 	wrap,
+  "wrap-r": wrap-reverse,
 );
 
 
 $flex-direction: (
   "row": 		row,
   "col": 		column,
-  "row-r": 		row-reverse,
-  "col-r": 		column-reverse,
+  "row-r": 	row-reverse,
+  "col-r": 	column-reverse,
 );
 
 // ======================== "Content position" Props =============================
 
 $justify-content: (
-  "center": 	center,
+  "center": center,
   "fs": 		flex-start,
   "fe": 		flex-end,
   "str": 		stretch,
@@ -27,7 +27,7 @@ $justify-content: (
 );
 
 $align-items: (
-  "center": 	center,
+  "center": center,
   "fs": 		flex-start,
   "fe": 		flex-end,
   "str": 		stretch,
@@ -35,16 +35,16 @@ $align-items: (
 );
 
 $align-self: (
-  "center": 	center,
+  "center": center,
   "fs": 		flex-start,
   "fe": 		flex-end,
   "str": 		stretch,
   "bl": 		baseline,
-  "auto": 		auto,
+  "auto": 	auto,
 );
 
 $align-content: (
-  "center": 	center,
+  "center": center,
   "fs": 		flex-start,
   "fe": 		flex-end,
   "bl": 		baseline,

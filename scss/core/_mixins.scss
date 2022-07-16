@@ -1,10 +1,39 @@
 // special mixin for generating special params for any
-@mixin onePropFromArray($styleName, $propsName, $array, $isMQ: "") {
-  $mqLabel: checkMQ($isMQ);  
+@mixin onePropFromArray($styleName, $propsName, $array: "", $isMQ: "") {
+  $mqLabel: checkMQ($isMQ);
   @each $key, $props in $array {
-    .#{$mqLabel}#{$styleName}-#{$key}{
+    .#{$mqLabel}#{$styleName}-#{$key} {
       #{$propsName}: $props;
     }
   }
 }
 
+@mixin GenerateProps(
+  $listOfMyProps,
+  $mediaTrue: "",
+  $API_LIST: $all_properties_list
+) {
+  $isMq: checkMQ($mediaTrue);
+  @each $listItem in $listOfMyProps {
+    @if map-has-key($API_LIST, $listItem) {
+      $currentMap: map-get($API_LIST, $listItem);
+      $activeTag: map-get($currentMap, "useTag");
+      $propsListfromItem: map-get($currentMap, "propsList");
+      @each $propsKey, $propsParam in $propsListfromItem {
+        @if ($isMq == "") {
+          @if (nth($propsParam, 2) == true) {
+            .#{$activeTag}-#{$propsKey} {
+              #{$listItem}: #{nth($propsParam, 1)};
+            }
+          }
+        } @else {
+          @if (nth($propsParam, 3) == true) {
+            .#{$isMq}#{$activeTag}-#{$propsKey} {
+              #{$listItem}: #{nth($propsParam, 1)};
+            }
+          }
+        }
+      }
+    }
+  }
+}

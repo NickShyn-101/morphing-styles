@@ -1,12 +1,36 @@
 
-$flex-wrap:        "fw-",    "flex-wrap",        ;
-$flex-direction:   "fd-",    "flex-direction",   ;
-$justify-content:  "jc-",    "justify-content",  ;
-$align-items:      "ai-",    "align-items",      ;
-$align-self:       "as-",    "align-self",       ;
-$align-content:    "ac-",    "align-content",    ;
-$flex-shrink:      "fs-",    "flex-shrink",      ;
-$flex-grow:        "fg-",    "flex-grow",        ;
-$flex-basis:       "fb-",    "flex-basis",       ;
-$gap:              "g-",     "gap",              ;
-$order:            "o-",     "order",            ;
+$all_properties_list: (
+  "justify-content": (
+    useTag: "jc",
+    propsList: (
+      "center": (center,        true,       true),
+      "fs": (flex-start,        true,       true),
+      "fe": (flex-end,          true,      false),
+      "str": (stretch,          true,      false),
+      "sb": (space-between,     true,      false),
+      "sa": (space-around,      true,      false),
+      "se": (space-evenly,      true,      false),
+    ),
+  ),
+);
+
+$list_of_props: "justify-content";
+
+
+// @each $key, $param in $demo_properties_list {
+//     $activeTag: map-get($param, "useTag");
+//     @each $propsKey, $propsParam in map-get($param, "propsList") {
+//       .#{$activeTag}-#{$propsKey} {
+//         #{$key}: #{$propsParam};
+//       }
+//     }
+//   }
+
+// @each $key, $param in $demo_properties_list {
+//     $activeTag: map-get($param , "useTag");
+//     @each $propsKey, $propsParam in map-get($param , "propsList") {
+//         .#{$activeTag}-#{$propsKey} {
+//             #{$key}: #{$propsParam}
+//         }
+//     }
+// }
