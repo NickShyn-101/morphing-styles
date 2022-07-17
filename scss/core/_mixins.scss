@@ -1,15 +1,5 @@
 @import "tests";
 
-// special mixin for generating special params for any
-@mixin onePropFromArray($styleName, $propsName, $array: "", $isMQ: "") {
-  $mqLabel: checkMQ($isMQ);
-  @each $key, $props in $array {
-    .#{$mqLabel}#{$styleName}-#{$key} {
-      #{$propsName}: $props;
-    }
-  }
-}
-
 @mixin PropsGenCore(
   $listOfMyProps,
   $mediaTrue: "",
@@ -18,12 +8,12 @@
   $isMq: checkMQ($mediaTrue);
   @each $listItem in $listOfMyProps {
     @if map-has-key($API_LIST, $listItem) {
-      $currentMap:        map-get($API_LIST, $listItem);
-      
-      $propTag:           map-get($currentMap, "tag");
-      $propTitle:         map-get($currentMap, "atr");
+      $currentMap: map-get($API_LIST, $listItem);
+
+      $propTag: map-get($currentMap, "tag");
+      $propTitle: map-get($currentMap, "atr");
       $propsListfromItem: map-get($currentMap, "props");
-      
+
       @if map-has-key($currentMap, "tag") == false {
         $propTag: $listItem;
       }
@@ -53,9 +43,9 @@
 
 @mixin GlobalPropsGen($basicList) {
   @include PropsGenCore(map-keys($basicList));
-     @each $mqKey, $mqProp in $mediaQuery {
-      @media #{$mqProp} {
-        @each $propName, $isMediaTrue in $basicList {
+  @each $mqKey, $mqProp in $mediaQuery {
+    @media #{$mqProp} {
+      @each $propName, $isMediaTrue in $basicList {
         @if $isMediaTrue == true {
           @include PropsGenCore($propName, $mqKey);
         }
@@ -64,13 +54,3 @@
   }
 }
 
-
-@mixin PropsGeneratorFromList($basicList, $mediaList) {
-  $isMQ: "";
-  @include PropsGenCore($basicList);
-  @each $mqKey, $mqProp in $mediaQuery {
-    @media #{$mqProp} {
-      @include PropsGenCore($mediaList, $mqKey);
-    }
-  }
-}

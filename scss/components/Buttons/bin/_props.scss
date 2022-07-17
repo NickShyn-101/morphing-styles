@@ -1,0 +1,32 @@
+$custom-buttons-props-list: (
+  "custom-btn-borders": (
+    atr: "border-radius",
+    tag: "btn-shape", 
+    props: (
+      "round":        (0.65rem,          true,  false),
+      "circle":       (5rem,             true,  false),
+      "square":       (0px,              true,  false),
+      "hard-rounded": ("1.5rem / 3rem",  true,  false),
+    ),
+  ),
+  "custom-btn-paddings": (
+    atr: "padding",
+    tag: "btn-size", 
+    props: (
+      "xl":   (1rem 1rem,      true,      false),
+      "x":    (2rem 2rem,      true,      false),
+      "xs":   (3rem 3rem,      true,      false),
+      "s":    (3rem 3rem,      true,      false),
+      "l":    (3rem 3rem,      true,      false),
+      "m":    (3rem 3rem,      true,      false),
+    ),
+  ),
+  "custom-btn-bg": (
+    atr: "background-color",
+    tag: "btn-bg", 
+    props: (
+      "primary":        ("var(--mg-success-color) !important",      true,      false),
+      "primary:hover":  ("var(--mg-danger-color) !important",      true,      false),
+    ),
+  ),
+);

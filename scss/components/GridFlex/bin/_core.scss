@@ -1,4 +1,7 @@
-$CSS_PROPERTIES_LIST: map-merge($CSS_PROPERTIES_LIST, $custom-grid-flex-props-list);
+$CSS_PROPERTIES_LIST: map-merge(
+  $CSS_PROPERTIES_LIST,
+  $custom-grid-flex-props-list
+);
 
 %global-grid-settings {
   display: flex;
@@ -110,7 +113,6 @@ section,
     }
   }
 }
-
 
 .strict {
   max-width: $container-width;
