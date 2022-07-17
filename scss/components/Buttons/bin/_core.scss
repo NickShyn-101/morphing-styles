@@ -1,0 +1,57 @@
+// special mixin for generating special params for any
+@mixin onePropFromArray2($styleName, $atrName, $props, $isMQ: "") {
+    $mqLabel: checkMQ($isMQ);  
+
+    @if type-of($props) == "map" {
+        @each $key, $val in $props {
+            .#{$mqLabel}#{$styleName}-#{$key}{
+              #{$atrName}: $val;
+            }
+          }
+    } @else {
+        .#{$mqLabel}#{$styleName}{
+            #{$atrName}: #{$props};
+          }
+    }
+
+  }
+
+
+@mixin buttonShape($name, $param) {
+  .#{$name} {
+    border-radius: #{$param};
+  }
+}
+
+button,
+input[type="button"],
+input[type="submit"],
+input[type="reset"],
+input[type="file"],
+.btn {
+  border: 0;
+  background-color: rgb(183, 18, 18);
+  display: inline-flex;
+
+  margin: 0;
+  padding: 0.8rem 2rem;
+  text-decoration: none;
+  font-size: 1em;
+  font-weight: 500;
+  line-height: 1em;
+  color: rgb(255, 255, 255);
+  box-sizing: border-box;
+  outline: none;
+  border-radius: 3px;
+  cursor: pointer;
+  &:focus {
+    box-shadow: 0 0 0 4px blue;
+  }
+  &:disabled {
+    background-color: grey;
+    cursor: help;
+  }
+  &:hover:not(:disabled) {
+    background-color: rgb(255, 65, 65);
+  }
+}

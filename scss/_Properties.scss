@@ -1,0 +1,33 @@
+// Comment or delete props you don`t need
+// Add your custom props to "._css-properties" or create rule
+// and use GenerateProps() or onePropFromArray()
+// to manage options you need to go to _css-properties in (_core)
+@import "core/css-properties-custom";
+
+$Active-Props-List: (
+  "flex-wrap":            true,
+  "flex-direction":       true,
+  "justify-content":      true,
+  "align-items":          true,
+  "align-self":           true,
+  "align-content":        true,
+  "flex-shrink":          true,
+  "flex-grow":            true,
+  "flex-basis":           true,
+  "gap":                  true,
+  "order":                true,
+  "padding":              true,
+  "margin":               true,
+  "text-align":           true,
+  "opacity":              true,
+  "word-break":           true,
+  
+  "custom-gap":           true,
+  "custom-margin":        true,
+  "custom-padding":       true,
+);
+
+
+// Don`t delete this line!!!
+@include GlobalPropsGen($Active-Props-List);
+
