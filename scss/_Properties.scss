@@ -2,6 +2,7 @@
 // Add your custom props to "._css-properties" or create rule
 // and use GenerateProps() or onePropFromArray()
 // to manage options you need to go to _css-properties in (_core)
+@import "core/css-properties-custom";
 
 $Active-Props-List: (
   "flex-wrap":            true,
@@ -21,8 +22,9 @@ $Active-Props-List: (
   "opacity":              true,
   "word-break":           true,
   
-  "custom-gap":           true,
-
+  "custom-gap":              true,
+  "custom-margin":           true,
+  "custom-padding":          true,
 );
 
 
