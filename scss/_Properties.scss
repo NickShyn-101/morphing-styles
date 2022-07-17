@@ -31,5 +31,5 @@ $Active-Props-List: (
 
 
 // Don`t delete this line!!!
-@include GlobalPropsGen($Active-Props-List);
+@include Combiner($Active-Props-List);
 

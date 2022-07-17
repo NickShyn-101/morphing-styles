@@ -1,0 +1,56 @@
+@import "tests";
+
+@mixin finalRes($title, $param, $attr...) {
+  .#{styleName($attr...)} {
+    #{$title}: #{$param};
+  }
+}
+
+@mixin typeOfPropsGen($tag, $title, $data, $isMq) {
+  @each $key, $prop in $data {
+    $styleName: ($isMq, $tag, "-", $key); // style name themeplate
+
+    @if (type-of($prop) == "string") {
+      @if ($isMq == "") {
+        @include finalRes($title, $prop, $styleName...);
+      }
+    }
+
+    @if (type-of($prop) == "list") {
+      @if ($isMq == "") {
+        @if (length($prop) > 1) and (nth($prop, 2) != only) {
+          @include finalRes($title, nth($prop, 1), $styleName...);
+        }
+      } @else {
+        @if (nth($prop, 2) == true) or (nth($prop, 2) == only) {
+          @include finalRes($title, nth($prop, 1), $styleName...);
+        }
+      }
+    }
+  }
+}
+
+@mixin PropsGenCore($myProps, $MQKey: "", $API_LIST: $CSS_PROPERTIES_LIST) {
+  $MQKey: checkMQ($MQKey);
+  @each $listItem in $myProps {
+    @if map-has-key($API_LIST, $listItem) {
+      $arr: map-get($API_LIST, $listItem);
+      $tag: getAttribute($arr, "tag", $listItem);
+      $atr: getAttribute($arr, "atr", $listItem);
+      $props: map-get($arr, "props");
+
+      @if $props {
+        @include typeOfPropsGen($tag, $atr, $props, $MQKey);
+      }
+    }
+  }
+}
+
+@mixin Combiner($basicList) {
+  @include PropsGenCore(map-keys($basicList));
+  @each $mqKey, $mqProp in $mediaQuery {
+    @media #{$mqProp} {
+      @include PropsGenCore(map-keys($basicList), $mqKey);
+    }
+  }
+}

@@ -4,6 +4,32 @@
   } @else {
     @return "";
   }
+};
+
+
+@function addToAPIList($list, $main: $CSS_PROPERTIES_LIST){
+  $main: map-merge($main, $list);
+ };
+
+
+ 
+@function getAttribute($Array, $findVal, $defaultVal) {
+  $value: "";
+  @if map-has-key($Array, "#{$findVal}") {
+    $value: map-get($Array, "#{$findVal}");
+  } @else {
+    $value: $defaultVal;
+  }
+  @return $value;
 }
 
 
+@function styleName($naming...) {
+  $result: "";
+  @each $value in $naming {
+    @if $value != null {
+      $result: "#{$result}#{&}#{$value}";
+    }
+  }
+  @return $result;
+}
