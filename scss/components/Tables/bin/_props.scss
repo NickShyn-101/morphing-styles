@@ -1,20 +1,31 @@
 //----------------- Table Properies ---------------------
 // add or remove settings to customize your version of table
-$table_main_props: (
-  "table": (
-    font-size: 1.25em,
-    text-decoration: none,
-  ),
-  "th, td": (
-    font-weight: 400,
-    padding: 0.75rem,
-  ),
-  "thead, thead td, thead th": (
-    font-size: 1em,
-    font-weight: bolder,
-  ),
-  "tfoot, tfoot td, tfoot th": (
-    font-size: 1em,
-    font-weight: bolder,
+$TABLE_LIST_CUSTOM: (
+  "custom-table-fonts": (
+    type: component,
+    tag: "table",
+    tagtype: "g",
+    extend: (
+      line-height: 100%,
+    ),
+    props: (
+      "table": (
+        font-size: 1.25em,
+        text-decoration: none,
+      ),
+      "th, td": (
+        font-weight: 400,
+        padding: 0.75rem,
+      ),
+      "thead, thead td, thead th": (
+        font-size: 1em,
+        font-weight: bolder,
+      ),
+      "tfoot, tfoot td, tfoot th": (
+        font-size: 1em,
+        font-weight: bolder,
+      ),
+    ),
   ),
 );
+

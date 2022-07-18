@@ -1,3 +1,6 @@
+$CSS_PROPERTIES_LIST: map-merge($CSS_PROPERTIES_LIST, $TABLE_LIST_CUSTOM);
+
+
 .table-wrapper {
   width: 100%;
   overflow-y: auto;
@@ -35,16 +38,4 @@ caption {
   text-align: left;
   padding: 10px 20px;
   color: black;
-}
-
-@each $key, $parm in $table_main_props {
-  $tagTitle: $key;
-  @if ($key == "global") or ($key == "table") {
-    $tagTitle: "";
-  }
-  table #{$tagTitle} {
-    @each $propName, $propValue in $parm {
-      #{$propName}: $propValue;
-    }
-  }
 }

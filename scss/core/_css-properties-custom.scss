@@ -4,20 +4,20 @@ $CSS_PROPERTIES_LIST_CUSTOM: (
     atr: "padding",
     tag: "pc", //gap custom
     props: (
-      "1":          (1rem 1rem,       true,      true),
-      "2":          (2rem 2rem,       true,      true),
-      "3":          (3rem 3rem,       true,      true),
-      "4":          (3rem 3rem,       true,      true),
+      "1":          1rem 1rem,
+      "2":          2rem 2rem,
+      "3":          3rem 3rem,
+      "4":          3rem 3rem,
     ),
   ),
   "custom-margin": (
     atr: "margin",
     tag: "mc", //gap custom
     props: (
-      "1":          (1rem 1rem,       true,      true),
-      "2":          (2rem 2rem,       true,      true),
-      "3":          (3rem 3rem,       true,      true),
-      "4":          (3rem 3rem,       true,      true),
+      "1":          1rem 1rem,
+      "2":          2rem 2rem,
+      "3":          3rem 3rem,
+      "4":          3rem 3rem,
     ),
   ),
 );

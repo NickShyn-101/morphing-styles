@@ -33,3 +33,32 @@
   }
   @return $result;
 }
+
+
+
+@function checkStyleName($PROPS, $Args) {
+
+  $tag:     map-get($Args, "tag" );
+  $tagType: map-get($Args, "tagType" );
+  $extend:  map-get($Args, "extend" );
+  $isMq:    map-get($Args, "isMq" );
+  $title:   map-get($Args, "atr" );
+  $key: $PROPS;
+
+  $tagList: "";
+  $tagTypeMain: styleName(".", $isMq, $tag, "-", $key);
+  $tagTypeMainMtag: styleName($isMq, $tag);
+  $tagTypeGlobal: styleName($isMq, $tag, " ", $key);
+  $tagTypeGlobalStaight: styleName($isMq, $tag, ".", $key);
+  
+  @if $tag == $key {
+    $tagList: $tagTypeMainMtag;
+  } @else if $tagType == "-g" {
+    $tagList: $tagTypeGlobalStaight;
+  } @else if $tagType == "g" {
+    $tagList: $tagTypeGlobal;
+  } @else {
+    $tagList: $tagTypeMain;
+  }
+  @return  $tagList;
+}
