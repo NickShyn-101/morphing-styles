@@ -1,12 +1,13 @@
 @import "tests";
 
+
 @mixin finalRes($title, $param, $attr...) {
   .#{styleName($attr...)} {
     #{$title}: #{$param};
   }
 }
 
-@mixin typeOfPropsGen($data, $tag, $title, $isMq) {
+@mixin typeOfPropsGen($data, $tag, $title, $extend, $isMq) {
   @each $key, $prop in $data {
     $styleName: ($isMq, $tag, "-", $key); // style name themeplate
 
@@ -59,6 +60,23 @@
   }
 }
 
+@mixin typeOfExtendedProps($data, $tag, $extend, $isMq) {
+  $extendedTags: ();
+
+  @each $value, $param in $data {
+    @if $value != null {
+      $styleName: (".", $isMq, $tag, "-", $value);
+      $extendedTags: append($extendedTags, styleName($styleName...), "comma");
+    }
+  }
+
+  #{$extendedTags} {
+    @each $key, $val in $extend {
+      #{$key}: #{$val};
+    }
+  }
+}
+
 @mixin PropsGenCore($myProps, $MQKey: "", $API_LIST: $CSS_PROPERTIES_LIST) {
   $MQKey: checkMQ($MQKey);
   @each $listItem in $myProps {
@@ -68,23 +86,28 @@
       $tag: getAttribute($arr, "tag", $listItem);
       $atr: getAttribute($arr, "atr", $listItem);
       $props: map-get($arr, "props");
+      $extend: map-get($arr, "extend");
+
+
 
       @if (map-has-key($arr, "type") == false) or ($type == "property") {
-        @include typeOfPropsGen($props, $tag, $atr, $MQKey);
+        @include typeOfExtendedProps($props, $tag, $extend, $MQKey);
+        @include typeOfPropsGen($props, $tag, $atr, $extend, $MQKey);
       }
 
       @if ($type == "component") {
+        @include typeOfExtendedProps($props, $tag, $extend, $MQKey);
         @include typeOfComponentGen($props, $tag, $MQKey);
       }
     }
   }
 }
 
-@mixin Combiner($basicList) {
-  @include PropsGenCore(map-keys($basicList));
-  @each $mqKey, $mqProp in $mediaQuery {
-    @media #{$mqProp} {
-      @include PropsGenCore(map-keys($basicList), $mqKey);
+@mixin Combiner($data) {
+  @include PropsGenCore(map-keys($data));
+  @each $key, $value in $mediaQuery {
+    @media #{$value} {
+      @include PropsGenCore(map-keys($data), $key);
     }
   }
 }
