@@ -6,7 +6,7 @@
   }
 }
 
-@mixin typeOfPropsGen($tag, $title, $data, $isMq) {
+@mixin typeOfPropsGen($data, $tag, $title, $isMq) {
   @each $key, $prop in $data {
     $styleName: ($isMq, $tag, "-", $key); // style name themeplate
 
@@ -30,17 +30,51 @@
   }
 }
 
+@mixin typeOfComponentGen($data, $tag, $isMq) {
+  @each $key, $value in $data {
+    $respIS: map-has-key($value, "responsible");
+    $respValue: map-get($value, "responsible");
+
+    @if ($isMq == "") {
+      @if ($respIS != true) or ($respValue != only) {
+        .#{$isMq}#{$tag}-#{$key} {
+          @each $propName, $propValue in $value {
+            @if $propName != "responsible" {
+              #{$propName}: #{$propValue};
+            }
+          }
+        }
+      }
+    } @else {
+      @if ($respValue == true) or ($respValue == only) {
+        .#{$isMq}#{$tag}-#{$key} {
+          @each $propName, $propValue in $value {
+            @if $propName != "responsible" {
+              #{$propName}: #{$propValue};
+            }
+          }
+        }
+      }
+    }
+  }
+}
+
 @mixin PropsGenCore($myProps, $MQKey: "", $API_LIST: $CSS_PROPERTIES_LIST) {
   $MQKey: checkMQ($MQKey);
   @each $listItem in $myProps {
     @if map-has-key($API_LIST, $listItem) {
       $arr: map-get($API_LIST, $listItem);
+      $type: map-get($arr, "type");
       $tag: getAttribute($arr, "tag", $listItem);
       $atr: getAttribute($arr, "atr", $listItem);
       $props: map-get($arr, "props");
 
-      @if $props {
-        @include typeOfPropsGen($tag, $atr, $props, $MQKey);
+      @if (map-has-key($arr, "type") == false) or ($type == "property") {
+        @include typeOfPropsGen($props, $tag, $atr, $MQKey);
+      }
+
+      @if ($type == "component") {
+        @include typeOfComponentGen($props, $tag, $MQKey);
       }
     }
   }
