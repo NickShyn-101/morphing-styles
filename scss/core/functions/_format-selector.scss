@@ -1,0 +1,32 @@
+@function glueSelectorName($naming...) {
+  $result: "";
+  @each $value in $naming {
+    @if $value != null {
+      $result: "#{$result}#{&}#{$value}";
+    }
+  }
+  @return $result;
+}
+
+@function formatSelector($key_prop, $Args) {
+  $result: "";
+  $sel: map-get($Args, $__SEL__);
+  $selType: map-get($Args, $__SELTYPE__);
+  $isMq: map-get($Args, $__MQ__);
+
+  $selTypeMainMsel: glueSelectorName($isMq, $sel);
+  $selTypeMain: glueSelectorName(".", $isMq, $sel, "-", $key_prop);
+  $selTypeGlobal: glueSelectorName($isMq, $sel, " ", $key_prop);
+  $selTypeGdot: glueSelectorName($isMq, $sel, ".", $key_prop);
+
+  @if $sel == $key_prop {
+    $result: $selTypeMainMsel;
+  } @else if $selType == "-g" {
+    $result: $selTypeGdot;
+  } @else if $selType == "g" {
+    $result: $selTypeGlobal;
+  } @else {
+    $result: $selTypeMain;
+  }
+  @return $result;
+}

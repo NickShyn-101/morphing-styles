@@ -1,64 +1,35 @@
+@import "api-keys";
+@import "functions/format-selector";
+
+
+@function getApiData($RES_ARR, $isMq, $globalDefault) {
+  $result: (
+    $__MQ__:        $isMq,
+    $__TYPE__:      map-get($RES_ARR, $__TYPE__),
+    $__DATA__:      map-get($RES_ARR, $__DATA__),
+    $__SEL__:       getAttribute($RES_ARR, $__SEL__, $globalDefault),
+    $__SELTYPE__:   getAttribute($RES_ARR, $__SELTYPE__, ""),
+    $__EXTEND__:    map-get($RES_ARR, $__EXTEND__),
+    $__PROPPERTY__: getAttribute($RES_ARR, $__PROPPERTY__, $globalDefault),
+  );
+
+  @return $result;
+}
+
 @function checkMQ($hasMQ) {
   @if ($hasMQ != "") {
     @return "#{$mediaQueryPrefix}#{$hasMQ}#{$mediaQueryPostfix}";
   } @else {
     @return "";
   }
-};
-
-
-@function addToAPIList($list, $main: $CSS_PROPERTIES_LIST){
-  $main: map-merge($main, $list);
- };
-
-
- 
-@function getAttribute($Array, $findVal, $defaultVal) {
-  $value: "";
-  @if map-has-key($Array, "#{$findVal}") {
-    $value: map-get($Array, "#{$findVal}");
-  } @else {
-    $value: $defaultVal;
-  }
-  @return $value;
 }
 
-
-@function styleName($naming...) {
+@function getAttribute($where, $what, $default) {
   $result: "";
-  @each $value in $naming {
-    @if $value != null {
-      $result: "#{$result}#{&}#{$value}";
-    }
+  @if map-has-key($where, "#{$what}") {
+    $result: map-get($where, "#{$what}");
+  } @else {
+    $result: $default;
   }
   @return $result;
-}
-
-
-
-@function checkStyleName($PROPS, $Args) {
-
-  $tag:     map-get($Args, "tag" );
-  $tagType: map-get($Args, "tagType" );
-  $extend:  map-get($Args, "extend" );
-  $isMq:    map-get($Args, "isMq" );
-  $title:   map-get($Args, "atr" );
-  $key: $PROPS;
-
-  $tagList: "";
-  $tagTypeMain: styleName(".", $isMq, $tag, "-", $key);
-  $tagTypeMainMtag: styleName($isMq, $tag);
-  $tagTypeGlobal: styleName($isMq, $tag, " ", $key);
-  $tagTypeGlobalStaight: styleName($isMq, $tag, ".", $key);
-  
-  @if $tag == $key {
-    $tagList: $tagTypeMainMtag;
-  } @else if $tagType == "-g" {
-    $tagList: $tagTypeGlobalStaight;
-  } @else if $tagType == "g" {
-    $tagList: $tagTypeGlobal;
-  } @else {
-    $tagList: $tagTypeMain;
-  }
-  @return  $tagList;
 }

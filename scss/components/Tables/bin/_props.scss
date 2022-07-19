@@ -3,12 +3,12 @@
 $TABLE_LIST_CUSTOM: (
   "custom-table-fonts": (
     type: component,
-    tag: "table",
-    tagtype: "g",
+    sel: "table",
+    seltype: "-g",
     extend: (
       line-height: 100%,
     ),
-    props: (
+    data: (
       "table": (
         font-size: 1.25em,
         text-decoration: none,

@@ -1,0 +1,32 @@
+@mixin generateTypeOfList($Args) {
+  $propName: map-get($Args, $__PROPPERTY__);
+  $isMq: map-get($Args, $__MQ__);
+  $data: map-get($Args, $__DATA__);
+
+  @each $key_index, $propValue in $data {
+    $Selector: formatSelector($key_index, $Args);
+    @if (type-of($propValue) == "string") {
+      @if ($isMq == "") {
+        #{$Selector} {
+          #{$propName}: #{$propValue};
+        }
+      }
+    }
+
+    @if (type-of($propValue) == "list") {
+      @if ($isMq == "") {
+        @if (length($propValue) > 1) and (nth($propValue, 2) != only) {
+          #{$Selector} {
+            #{$propName}: #{$propValue};
+          }
+        }
+      } @else {
+        @if (nth($propValue, 2) == true) or (nth($propValue, 2) == only) {
+          #{$Selector} {
+            #{$propName}: #{$propValue};
+          }
+        }
+      }
+    }
+  }
+}

@@ -1,8 +1,8 @@
 $custom-buttons-props-list: (
   "custom-btn-borders": (
-    atr: "border-radius",
-    tag: "btn-shape", 
-    props: (
+    prop: "border-radius",
+    sel: "btn-shape", 
+    data: (
       "round":        0.65rem,
       "circle":       5rem,
       "square":       0px,
@@ -10,9 +10,9 @@ $custom-buttons-props-list: (
     ),
   ),
   "custom-btn-paddings": (
-    atr: "padding",
-    tag: "btn-size", 
-    props: (
+    prop: "padding",
+    sel: "btn-size", 
+    data: (
       "xl":           1rem 1rem,
       "x":            2rem 2rem,
       "xs":           3rem 3rem,
@@ -22,9 +22,9 @@ $custom-buttons-props-list: (
     ),
   ),
   "custom-btn-bg": (
-    atr: "background-color",
-    tag: "btn-bg", 
-    props: (
+    prop: "background-color",
+    sel: "btn-bg", 
+    data: (
       "primary":       "var(--mg-success-color) !important",
       "primary:hover": "var(--mg-danger-color) !important",
     ),

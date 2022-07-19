@@ -1,0 +1,23 @@
+@mixin generateTypeOfExtended($Args) {
+  $extend: map-get($Args, $__EXTEND__);
+  $data: map-get($Args, $__DATA__);
+
+  $extendedSelectors: ();
+  @each $key, $value in $data {
+    @if $key != null {
+      $Selector: formatSelector($key, $Args);
+      $styleName: ($Selector);
+      $extendedSelectors: append(
+        $extendedSelectors,
+        glueSelectorName($styleName...),
+        "comma"
+      );
+    }
+  }
+
+  #{$extendedSelectors} {
+    @each $propName, $propValue in $extend {
+      #{$propName}: #{$propValue};
+    }
+  }
+}

@@ -1,135 +1,33 @@
 @import "tests";
+@import "generators/all-generators";
 
+@mixin Core($DATA, $MQ: "", $API_LIST: $CSS_PROPERTIES_LIST) {
+  $isMq: checkMQ($MQ);
 
-@mixin typeOfPropsGen($PROPS, $Args) {
+  @each $key in $DATA {
+    @if map-has-key($API_LIST, $key) {
 
-  $isMq:    map-get($Args, "isMq" );
-  $title:   map-get($Args, "atr" );
+      $resource: map-get($API_LIST, $key);
+      $type: map-get($resource, $__TYPE__);
 
+      $args: getApiData($resource, $isMq, $key);
 
-  @each $key, $prop in $PROPS {
-    $NAMING: checkStyleName($key, $Args);
-    @if (type-of($prop) == "string") {
-      @if ($isMq == "") {
-        #{$NAMING} {
-          #{$title}: #{$prop};
-        }
+      @include generateTypeOfExtended($args);
+      @if (map-has-key($resource, $__TYPE__) == false) or ($type == $__LIST__) {
+        @include generateTypeOfList($args);
       }
-    }
-
-    @if (type-of($prop) == "list") {
-      @if ($isMq == "") {
-        @if (length($prop) > 1) and (nth($prop, 2) != only) {
-          #{$NAMING} {
-            #{$title}: #{$prop};
-          }
-        }
-      } @else {
-        @if (nth($prop, 2) == true) or (nth($prop, 2) == only) {
-          #{$NAMING} {
-            #{$title}: #{$prop};
-          }
-        }
-      }
-    }
-  }
-}
-
-@mixin typeOfComponentGen($PROPS, $Args) {
-
-  $isMq:    map-get($Args, "isMq" );
-  
-  @each $key, $value in $PROPS {
-    $NAMING: checkStyleName($key, $Args);
-
-    $respIS: map-has-key($value, "responsible");
-    $respValue: map-get($value, "responsible");
-
-    @if ($isMq == "") {
-      @if ($respIS != true) or ($respValue != only) {
-        #{$NAMING} {
-          @each $propName, $propValue in $value {
-            @if $propName != "responsible" {
-              #{$propName}: #{$propValue};
-            }
-          }
-        }
-      }
-    } @else {
-      @if ($respValue == true) or ($respValue == only) {
-        #{$NAMING} {
-          @each $propName, $propValue in $value {
-            @if $propName != "responsible" {
-              #{$propName}: #{$propValue};
-            }
-          }
-        }
-      }
-    }
-  }
-}
-
-@mixin typeOfExtendedProps($PROPS, $Args) {
-
-  $extend:  map-get($Args, "extend" );
-
-  $extendedTags: ();
-  @each $key, $value in $PROPS {
-    @if $key != null {
-      $NAMING: checkStyleName($key, $Args);
-      $styleName: ($NAMING);
-      $extendedTags: append($extendedTags, styleName($styleName...), "comma");
-    }
-  }
-
-  #{$extendedTags} {
-    @each $key, $value in $extend {
-      #{$key}: #{$value};
-    }
-  }
-}
-
-@mixin PropsGenCore($DATA, $MEDIAQUERY: "", $API_LIST: $CSS_PROPERTIES_LIST) {
-  $isMq: checkMQ($MEDIAQUERY);
-  @each $KEY in $DATA {
-    @if map-has-key($API_LIST, $KEY) {
-
-      $arr:            map-get($API_LIST, $KEY);
-      $type:           map-get($arr, "type");     
-
-      $tag:       getAttribute($arr, "tag", $KEY);
-      $tagType:   getAttribute($arr, "tagtype", "");
-      $atr:       getAttribute($arr, "atr", $KEY);
-      $extend:         map-get($arr, "extend");    
-      $PROPS:          map-get($arr, "props");
-
-      $ARGS_PUBLIC: (
-        tag:      $tag,
-        tagType:  $tagType,
-        atr:      $atr,
-        props:    $PROPS,
-        extend:   $extend,
-        isMq:     $isMq,
-      );
-
-      @if (map-has-key($arr, "type") == false) or ($type == "property") {
-        @include typeOfExtendedProps($PROPS, $ARGS_PUBLIC);
-        @include typeOfPropsGen($PROPS, $ARGS_PUBLIC);              
-      }
-
-      @if ($type == "component") {
-        @include typeOfExtendedProps($PROPS, $ARGS_PUBLIC);
-        @include typeOfComponentGen($PROPS, $ARGS_PUBLIC);
+      @if ($type == $__COMPONENT__) {
+        @include generateTypeOfComponent($args);
       }
     }
   }
 }
 
 @mixin Combiner($data) {
-  @include PropsGenCore(map-keys($data));
+  @include Core(map-keys($data));
   @each $key, $value in $mediaQuery {
     @media #{$value} {
-      @include PropsGenCore(map-keys($data), $key);
+      @include Core(map-keys($data), $key);
     }
   }
 }

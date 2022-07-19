@@ -1,9 +1,9 @@
 //     shortName    Property          Active      MediaActive
 $CSS_PROPERTIES_LIST_CUSTOM: (
   "custom-padding": (
-    atr: "padding",
-    tag: "pc", //gap custom
-    props: (
+    prop: "padding",
+    sel: "pc", //gap custom
+    data: (
       "1":          1rem 1rem,
       "2":          2rem 2rem,
       "3":          3rem 3rem,
@@ -11,9 +11,9 @@ $CSS_PROPERTIES_LIST_CUSTOM: (
     ),
   ),
   "custom-margin": (
-    atr: "margin",
-    tag: "mc", //gap custom
-    props: (
+    prop: "margin",
+    sel: "mc", //gap custom
+    data: (
       "1":          1rem 1rem,
       "2":          2rem 2rem,
       "3":          3rem 3rem,
