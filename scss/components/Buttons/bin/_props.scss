@@ -1,5 +1,6 @@
 $custom-buttons-props-list: (
   "custom-btn-borders": (
+    type: list,
     prop: "border-radius",
     sel: "btn-shape", 
     data: (
@@ -10,6 +11,7 @@ $custom-buttons-props-list: (
     ),
   ),
   "custom-btn-paddings": (
+    type: list,
     prop: "padding",
     sel: "btn-size", 
     data: (
@@ -22,6 +24,7 @@ $custom-buttons-props-list: (
     ),
   ),
   "custom-btn-bg": (
+    type: list,
     prop: "background-color",
     sel: "btn-bg", 
     data: (

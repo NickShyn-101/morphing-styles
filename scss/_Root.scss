@@ -1,10 +1,3 @@
-// global settings 
-:root {
-    
-}
-
-$new-components-added-with: new; // status - true/on, false/off, only, mq 
-
-$mediaQueryPrefix: "";
-$mediaQueryPostfix: "-";
-
+@import "core/css-properties";
+@import "core/api";
+@import "core/functions";

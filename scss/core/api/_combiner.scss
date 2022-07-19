@@ -1,0 +1,8 @@
+@mixin Combiner($data) {
+  @include Core($data);
+  @each $key, $value in $mediaQuery {
+    @media #{$value} {
+      @include Core($data, $key);
+    }
+  }
+}

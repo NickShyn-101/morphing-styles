@@ -1,36 +1,4 @@
-@import "tests";
-@import "generators/all-generators";
-
-@mixin Core($DATA, $MQ: "", $API_LIST: $CSS_PROPERTIES_LIST) {
-  $isMq: checkMQ($MQ);
-
-  @each $key in $DATA {
-    @if map-has-key($API_LIST, $key) {
-      $resource: map-get($API_LIST, $key);
-      $type: map-get($resource, $__TYPE__);
-
-      $args: getApiData($resource, $isMq, $key);
-
-      @include generateTypeOfExtended($args);
-      @if (map-has-key($resource, $__TYPE__) == false) or ($type == $__LIST__) {
-        @include generateTypeOfList($args);
-      }
-      @if ($type == $__COMPONENT__) {
-        @include generateTypeOfComponent($args);
-      }
-    }
-  }
-}
-
-@mixin Combiner($data) {
-  @include Core(map-keys($data));
-  @each $key, $value in $mediaQuery {
-    @media #{$value} {
-      @each $propName, $status in $data { //check statuses
-        @if  ($status == true) {
-          @include Core($propName, $key);
-        }    
-      }
-    }
-  }
-}
+@import "api/core";
+@import "api/combiner";
+@import "api/generators";
+@import "api/api-keys";

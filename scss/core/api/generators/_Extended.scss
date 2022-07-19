@@ -15,8 +15,12 @@
     }
   }
 
-  #{$extendedSelectors} {
-    @each $propName, $propValue in $extend {
+  @include formatGenTypeOfExtended($extendedSelectors, $extend);
+}
+
+@mixin formatGenTypeOfExtended($Selector, $properties_list) {
+  #{$Selector} {
+    @each $propName, $propValue in $properties_list {
       #{$propName}: #{$propValue};
     }
   }

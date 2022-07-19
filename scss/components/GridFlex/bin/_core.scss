@@ -10,7 +10,6 @@ $CSS_PROPERTIES_LIST: map-merge(
   flex-wrap: wrap;
   overflow: hidden;
   width: 100%;
-  @include testRowCol();
 }
 
 main,
@@ -38,7 +37,7 @@ section,
   $mqLabel: checkMQ($isMQ);
 
   %testing-settings#{$mqLabel} {
-    @include testRowCol();
+    // @include testRowCol();
   }
 
   %global-col-settings#{$mqLabel} {

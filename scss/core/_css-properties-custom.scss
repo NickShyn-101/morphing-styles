@@ -1,6 +1,7 @@
 //     shortName    Property          Active      MediaActive
 $CSS_PROPERTIES_LIST_CUSTOM: (
   "custom-padding": (
+    type: list,
     prop: "padding",
     sel: "pc", //gap custom
     data: (
@@ -11,6 +12,7 @@ $CSS_PROPERTIES_LIST_CUSTOM: (
     ),
   ),
   "custom-margin": (
+    type: list,
     prop: "margin",
     sel: "mc", //gap custom
     data: (

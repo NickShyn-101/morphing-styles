@@ -5,28 +5,29 @@
 
   @each $key_index, $propValue in $data {
     $Selector: formatSelector($key_index, $Args);
+
     @if (type-of($propValue) == "string") {
       @if ($isMq == "") {
-        #{$Selector} {
-          #{$propName}: #{$propValue};
-        }
+        @include formatGenTypeOfList($Selector, $propName, $propValue);
       }
     }
 
     @if (type-of($propValue) == "list") {
       @if ($isMq == "") {
         @if (length($propValue) > 1) and (nth($propValue, 2) != only) {
-          #{$Selector} {
-            #{$propName}: #{$propValue};
-          }
+          @include formatGenTypeOfList($Selector, $propName, $propValue);
         }
       } @else {
         @if (nth($propValue, 2) == true) or (nth($propValue, 2) == only) {
-          #{$Selector} {
-            #{$propName}: #{$propValue};
-          }
+          @include formatGenTypeOfList($Selector, $propName, $propValue);
         }
       }
     }
+  }
+}
+
+@mixin formatGenTypeOfList($Selector, $propName, $propValue) {
+  #{$Selector} {
+    #{$propName}: #{$propValue};
   }
 }

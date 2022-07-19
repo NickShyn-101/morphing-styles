@@ -9,23 +9,21 @@
 
     @if ($isMq == "") {
       @if ($respHas != true) or ($respValue != only) {
-        #{$Selector} {
-          @each $propName, $propValue in $value {
-            @if $propName != $__RES__ {
-              #{$propName}: #{$propValue};
-            }
-          }
-        }
+        @include formatGenTypeOfComponent($Selector, $value);
       }
     } @else {
       @if ($respValue == true) or ($respValue == only) {
-        #{$Selector} {
-          @each $propName, $propValue in $value {
-            @if $propName != $__RES__ {
-              #{$propName}: #{$propValue};
-            }
-          }
-        }
+        @include formatGenTypeOfComponent($Selector, $value);
+      }
+    }
+  }
+}
+
+@mixin formatGenTypeOfComponent($Selector, $properties_list) {
+  #{$Selector} {
+    @each $propName, $propValue in $properties_list {
+      @if $propName != $__RES__ {
+        #{$propName}: #{$propValue};
       }
     }
   }
