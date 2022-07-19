@@ -22,19 +22,34 @@
   $selTypeGlobal: glueSelectorName($isMq, $sel, " ", $key_prop);
   $selTypeGdot: glueSelectorName($isMq, $sel, ".", $key_prop);
   $selTypeCompMQ: glueSelectorName($sel, " ", $key_prop);
+  $selTypeCompMQSameSel: glueSelectorName($key_prop);
 
-  @if $sel == $key_prop {
-    $result: $selTypeMainMsel;
-  } @else if $selType == "-g" {
+// if selector and component name are equal
+  @if ($sel == $key_prop) {
+    // for expample table with g must be table, not table table {...}  
+    @if  ($selType == "g") {
+      $result: $selTypeCompMQSameSel;
+    } @else {
+      $result: $selTypeMainMsel;
+    }
+  }
+
+  // if we used flag -g (not global)
+  @else if $selType == "-g" {
     $result: $selTypeGdot;
-  } @else if $selType == "g" {
+  }
+
+  // if we used flag g (global)
+  @else if $selType == "g" {
     @if $type == $__COMP__ {
       $result: $selTypeCompMQ;
-    }
-    @if $type == $__LIST__ {
+    } @else {
       $result: $selTypeGlobal;
     }
-  } @else {
+  }
+
+  // default selector styling
+  @else {
     $result: $selTypeMain;
   }
   @return $result;
