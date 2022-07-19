@@ -6,7 +6,6 @@
 
   @each $key in $DATA {
     @if map-has-key($API_LIST, $key) {
-
       $resource: map-get($API_LIST, $key);
       $type: map-get($resource, $__TYPE__);
 
@@ -27,7 +26,11 @@
   @include Core(map-keys($data));
   @each $key, $value in $mediaQuery {
     @media #{$value} {
-      @include Core(map-keys($data), $key);
+      @each $propName, $status in $data { //check statuses
+        @if  ($status == true) {
+          @include Core($propName, $key);
+        }    
+      }
     }
   }
 }
