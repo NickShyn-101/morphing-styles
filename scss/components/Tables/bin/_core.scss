@@ -1,41 +1,41 @@
 $CSS_PROPERTIES_LIST: map-merge($CSS_PROPERTIES_LIST, $TABLE_LIST_CUSTOM);
 
 
-.table-wrapper {
-  width: 100%;
-  overflow-y: auto;
-  overflow-x: auto;
-}
+// .table-wrapper {
+//   width: 100%;
+//   overflow-y: auto;
+//   overflow-x: auto;
+// }
 
-table tfoot th,
-table tfoot td,
-table tfoot tr,
-table tfoot,
-table thead th,
-table thead td,
-table thead tr,
-table thead,
-table th,
-table td,
-table tr,
-table {
-  border: var(--mg-table-border);
-  border-color: var(--mg-table-border-color);
-}
+// table tfoot th,
+// table tfoot td,
+// table tfoot tr,
+// table tfoot,
+// table thead th,
+// table thead td,
+// table thead tr,
+// table thead,
+// table th,
+// table td,
+// table tr,
+// table {
+//   border: var(--mg-table-border);
+//   border-color: var(--mg-table-border-color);
+// }
 
-table {
-  table-layout: fixed;
-  border-collapse: collapse;
-  border-spacing: 0px;
-  text-align: left;
-  width: 100%;
-  background: var(--mg-table-bg);
-  color: var(--mg-table-color);
-}
+// table {
+//   table-layout: fixed;
+//   border-collapse: collapse;
+//   border-spacing: 0px;
+//   text-align: left;
+//   width: 100%;
+//   background: var(--mg-table-bg);
+//   color: var(--mg-table-color);
+// }
 
-caption {
-  font-size: 10px;
-  text-align: left;
-  padding: 10px 20px;
-  color: black;
-}
+// caption {
+//   font-size: 10px;
+//   text-align: left;
+//   padding: 10px 20px;
+//   color: black;
+// }

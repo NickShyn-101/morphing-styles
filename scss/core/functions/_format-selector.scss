@@ -10,21 +10,30 @@
 
 @function formatSelector($key_prop, $Args) {
   $result: "";
+
   $sel: map-get($Args, $__SEL__);
   $selType: map-get($Args, $__SELTYPE__);
   $isMq: map-get($Args, $__MQ__);
+  $type: map-get($Args, $__TYPE__);
+  $status: map-get($Args, $__STATUS__);
 
   $selTypeMainMsel: glueSelectorName($isMq, $sel);
   $selTypeMain: glueSelectorName(".", $isMq, $sel, "-", $key_prop);
   $selTypeGlobal: glueSelectorName($isMq, $sel, " ", $key_prop);
   $selTypeGdot: glueSelectorName($isMq, $sel, ".", $key_prop);
+  $selTypeCompMQ: glueSelectorName($sel, " ", $key_prop);
 
   @if $sel == $key_prop {
     $result: $selTypeMainMsel;
   } @else if $selType == "-g" {
     $result: $selTypeGdot;
   } @else if $selType == "g" {
-    $result: $selTypeGlobal;
+    @if $type == $__COMP__ {
+      $result: $selTypeCompMQ;
+    }
+    @if $type == $__LIST__ {
+      $result: $selTypeGlobal;
+    }
   } @else {
     $result: $selTypeMain;
   }

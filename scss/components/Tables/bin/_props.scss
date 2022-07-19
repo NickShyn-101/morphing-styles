@@ -4,12 +4,14 @@ $TABLE_LIST_CUSTOM: (
   "custom-table-fonts": (
     type: component,
     sel: "table",
-    seltype: "-g",
+    seltype: "g",
     extend: (
+      responsible: false,
       line-height: 100%,
     ),
     data: (
-      "table": (
+      "tabs": (
+        responsible: false,
         font-size: 1.25em,
         text-decoration: none,
       ),

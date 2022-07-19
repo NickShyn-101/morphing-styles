@@ -9,7 +9,7 @@
 
     @if ($isMq == "") {
       @if ($respHas != true) or ($respValue != only) {
-        @include formatGenTypeOfComponent($Selector, $value);
+       @include formatGenTypeOfComponent($Selector, $value);
       }
     } @else {
       @if ($respValue == true) or ($respValue == only) {

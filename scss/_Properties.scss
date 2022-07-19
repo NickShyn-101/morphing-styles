@@ -1,22 +1,24 @@
 @import "core/css-properties-custom";
 
 $UserComponentsList: (
-  "flex-wrap":            true,
-  "flex-direction":       true,
-  "justify-content":      true,
-  "align-items":          only,
-  "align-self":           false,
-  "align-content":        true,
-  "flex-shrink":          true,
-  "flex-grow":            true,
-  "flex-basis":           false,
-  "gap":                  true,
-  "order":                true,
-  "padding":              true,
-  "margin":               true,
-  "text-align":           true,
-  "opacity":              true,
-  "word-break":           false,
+  // "flex-wrap":            true,
+  // "flex-direction":       true,
+  // "justify-content":      true,
+  // "align-items":          true,
+  // "align-self":           true,
+  // "align-content":        true,
+  // "flex-shrink":          true,
+  // "flex-grow":            true,
+  // "flex-basis":           true,
+  // "gap":                  true,
+  // "order":                true,
+  // "padding":              true,
+  // "margin":               true,
+  // "text-align":           true,
+  // "opacity":              true,
+  // "word-break":           true,
+  "custom-table-fonts":   true,
+  
   );
 
 // Set statuses to componetns

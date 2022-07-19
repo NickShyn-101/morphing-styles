@@ -1,27 +1,48 @@
 @mixin generateTypeOfExtended($Args) {
-  $extend: map-get($Args, $__EXTEND__);
-  $data: map-get($Args, $__DATA__);
+  
+  $extend:  map-get($Args, $__EXTEND__);
+  $data:    map-get($Args, $__DATA__);
+  $isMq:    map-get($Args, $__MQ__);
 
   $extendedSelectors: ();
   @each $key, $value in $data {
+    $respHas: map-has-key($value, $__RES__);
+    $respValue: map-get($value, $__RES__);
     @if $key != null {
       $Selector: formatSelector($key, $Args);
       $styleName: ($Selector);
       $extendedSelectors: append(
-        $extendedSelectors,
+        $Selector,
         glueSelectorName($styleName...),
         "comma"
       );
     }
   }
-
-  @include formatGenTypeOfExtended($extendedSelectors, $extend);
+  @include checkForReservedProperties($extendedSelectors, $extend, $Args);
 }
 
-@mixin formatGenTypeOfExtended($Selector, $properties_list) {
-  #{$Selector} {
-    @each $propName, $propValue in $properties_list {
-      #{$propName}: #{$propValue};
+@mixin checkForReservedProperties($Selector, $properties_list, $Args) {
+  $isMq: map-get($Args, $__MQ__);
+  $respHas: map-has-key($properties_list, $__RES__);
+  $respValue: map-get($properties_list, $__RES__);
+  @if ($isMq == "") {
+    @if ($respHas != true) or ($respValue != only) {
+      @include formatGenTypeOfExtended($Selector, $properties_list, $Args);
+    }
+  } @else {
+    @if ($respValue == true) or ($respValue == only) {
+      @include formatGenTypeOfExtended($Selector, $properties_list, $Args);
     }
   }
 }
+
+@mixin formatGenTypeOfExtended($Selector, $properties_list, $Args) {
+  #{$Selector} {
+    @each $propName, $propValue in $properties_list {
+      @if $propName != $__RES__ {
+        #{$propName}: #{$propValue};
+      }
+    }
+  }
+}
+
