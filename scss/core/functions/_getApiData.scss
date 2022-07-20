@@ -1,0 +1,16 @@
+@function getApiData($RES_ARR, $isMq, $currentComp, $currentStatus) {
+  $result: (
+    $__COMP__: $currentComp,
+    $__STATUS__: $currentStatus,
+
+    $__MQ__: $isMq,
+    $__TYPE__: map-get($RES_ARR, $__TYPE__),
+    $__DATA__: map-get($RES_ARR, $__DATA__),
+    $__SEL__: getAttribute($RES_ARR, $__SEL__, $currentComp),
+    $__SELTYPE__: getAttribute($RES_ARR, $__SELTYPE__, ""),
+    $__EXTEND__: map-get($RES_ARR, $__EXTEND__),
+    $__PROPPERTY__: getAttribute($RES_ARR, $__PROPPERTY__, $currentComp),
+  );
+
+  @return $result;
+}

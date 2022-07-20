@@ -1,0 +1,56 @@
+@function formatSelector($key_prop, $Args) {
+  $result: "";
+  // import arguments
+  $sel:     map-get($Args, $__SEL__);
+  $isMq:    map-get($Args, $__MQ__);
+  $selType: map-get($Args, $__SELTYPE__);
+  $type:    map-get($Args, $__TYPE__);
+  $status:  map-get($Args, $__STATUS__);
+
+  // formating vars
+  $-COMP-:  customizeSelector($key_prop, $componentPrefix, $componentPostfix);
+  $-SEL-:   customizeSelector($sel, $selectorPrefix, $selectorPostfix);
+  $-MQ-:    customizeSelector($isMq, $mediaQueryPrefix, $mediaQueryPostfix);
+  $_:       " ";
+  $-div-:   "-";
+  $-dot-:   ".";
+
+  // Format vars
+  $selTypeMainMsel:       glueSelectorName($-MQ-, $-SEL-);
+  $selTypeMain:           glueSelectorName($-dot-, $-MQ-, $-SEL-, $-div-, $-COMP-);
+  $selTypeGlobal:         glueSelectorName($-MQ-, $-SEL-, $_, $-COMP-);
+  $selTypeGdot:           glueSelectorName($-MQ-, $-SEL-, $-dot-, $-COMP-);
+  $selTypeCompMQ:         glueSelectorName($-SEL-, $_, $-COMP-);
+  $selTypeCompMQSameSel:  glueSelectorName($-COMP-);
+  
+  // Rules
+  // if selector and component name are equal
+  @if ($sel == $key_prop) {
+    // for expample table with g must be table, not table table {...}  
+    @if  ($selType == "g") {
+      $result: $selTypeCompMQSameSel;
+    } @else {
+      $result: $selTypeMainMsel;
+    }
+  }
+
+  // if we used flag -g (not global)
+  @else if $selType == "-g" {
+    $result: $selTypeGdot;
+  }
+
+  // if we used flag g (global)
+  @else if $selType == "g" {
+    @if $type == $__COMP__ {
+      $result: $selTypeCompMQ;
+    } @else {
+      $result: $selTypeGlobal;
+    }
+  }
+
+  // default selector styling
+  @else {
+    $result: $selTypeMain;
+  }
+  @return $result;
+}

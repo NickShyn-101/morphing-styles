@@ -1,0 +1,9 @@
+@function glueSelectorName($naming...) {
+  $result: "";
+  @each $value in $naming {
+    @if $value != null {
+      $result: "#{$result}#{&}#{$value}";
+    }
+  }
+  @return $result;
+}

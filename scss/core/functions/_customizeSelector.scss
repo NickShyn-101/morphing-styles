@@ -1,0 +1,7 @@
+@function customizeSelector($value, $prefix, $postfix) {
+    @if ($value != "") {
+      @return "#{$prefix}#{$value}#{$postfix}";
+    } @else {
+      @return "";
+    }
+  }

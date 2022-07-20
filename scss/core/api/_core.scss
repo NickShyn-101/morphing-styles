@@ -1,5 +1,5 @@
 @mixin Core($DATA, $MQ: "", $API_LIST: $CSS_PROPERTIES_LIST) {
-  $isMq: checkMQ($MQ);
+  $isMq: checkValue($MQ);
   @each $key, $status in $DATA {
     @if $status != false {
       @if map-has-key($API_LIST, $key) {

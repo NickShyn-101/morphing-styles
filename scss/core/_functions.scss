@@ -1,37 +1,11 @@
-@import "functions/format-selector";
+@import "functions/checkValue";
+
+@import "functions/getAttribute";
+@import "functions/getApiData";
+
+@import "functions/customizeSelector";
+@import "functions/glueSelectorName";
+@import "functions/formatSelector";
 
 
-@function getApiData($RES_ARR, $isMq, $currentComp, $currentStatus) {
-  $result: (
-    $__COMP__:      $currentComp,
-    $__STATUS__:    $currentStatus,
 
-    $__MQ__:        $isMq,
-    $__TYPE__:      map-get($RES_ARR, $__TYPE__),
-    $__DATA__:      map-get($RES_ARR, $__DATA__),
-    $__SEL__:       getAttribute($RES_ARR, $__SEL__, $currentComp),
-    $__SELTYPE__:   getAttribute($RES_ARR, $__SELTYPE__, ""),
-    $__EXTEND__:    map-get($RES_ARR, $__EXTEND__),
-    $__PROPPERTY__: getAttribute($RES_ARR, $__PROPPERTY__, $currentComp),
-  );
-
-  @return $result;
-}
-
-@function checkMQ($hasMQ) {
-  @if ($hasMQ != "") {
-    @return "#{$mediaQueryPrefix}#{$hasMQ}#{$mediaQueryPostfix}";
-  } @else {
-    @return "";
-  }
-}
-
-@function getAttribute($where, $what, $default) {
-  $result: "";
-  @if map-has-key($where, "#{$what}") {
-    $result: map-get($where, "#{$what}");
-  } @else {
-    $result: $default;
-  }
-  @return $result;
-}
