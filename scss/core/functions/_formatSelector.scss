@@ -16,13 +16,15 @@
   $-dot-:   ".";
 
   // Format vars
-  $selTypeMainMsel:       glueSelectorName($-MQ-, $-SEL-);
-  $selTypeMain:           glueSelectorName($-dot-, $-MQ-, $-SEL-, $-div-, $-COMP-);
-  $selTypeGlobal:         glueSelectorName($-MQ-, $-SEL-, $_, $-COMP-);
-  $selTypeGdot:           glueSelectorName($-MQ-, $-SEL-, $-dot-, $-COMP-);
+  $selTypeMainMsel:       glueSelectorName($-SEL-, $-MQ-);
+  $selTypeMain:           glueSelectorName($-dot-, $-SEL-, $-MQ-, $-div-, $-COMP-);
+  $selTypeGlobal:         glueSelectorName($-SEL-, $-MQ-,  $_, $-COMP-);
+  $selTypeGdot:           glueSelectorName($-SEL-, $-MQ-,  $-dot-, $-COMP-);
   $selTypeCompMQ:         glueSelectorName($-SEL-, $_, $-COMP-);
   $selTypeCompMQSameSel:  glueSelectorName($-COMP-);
+  $selTypeOnlyProp:       glueSelectorName($-dot-, $-COMP-);
   
+  $selTypeNULL:       glueSelectorName($-dot-, $-COMP-);
   // Rules
   // if selector and component name are equal
   @if ($sel == $key_prop) {
@@ -46,6 +48,11 @@
     } @else {
       $result: $selTypeGlobal;
     }
+  }
+  
+ // if no selection is specified
+  @else if ($sel == "") {
+    $result: $selTypeNULL;
   }
 
   // default selector styling

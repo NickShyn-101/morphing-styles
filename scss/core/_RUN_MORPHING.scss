@@ -19,8 +19,10 @@ $ALL_COMPONENTS_LIST: map-merge($ALL_COMPONENTS_LIST, $UserComponentsList);
 
 @if $--show-components-list == true {
   LIST-OF-COMPONENTS {
+    
     @each $key, $val in $ALL_COMPONENTS_LIST {
-      #{$val}: #{$key};
+      #{"/*"} : "#{$key}: #{$val},"#{"*/"};
     }
   }
+
 }

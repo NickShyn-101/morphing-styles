@@ -21,6 +21,11 @@
         @if ($type == $__COMPONENT__) {
           @include generateTypeOfComponent($args);
         }
+
+        // Generate Cycle Based Selectors
+        @if ($type == $__CYCLE__) {
+          @include generateTypeOfCycle($args);
+        }
       }
     }
   }

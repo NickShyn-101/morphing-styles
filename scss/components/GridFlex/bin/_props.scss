@@ -1,13 +1,38 @@
 $custom-grid-flex-props-list: (
-  "custom-gap": (
-    type: list,
-    prop: "gap",
-    sel: "gc",
+  "custom-grid-cols": (
+    type: cycle,
     data: (
-      "1":    1rem 1rem,
-      "2":    2rem 2rem,
-      "3":    3rem 3rem,
-      "4":    3rem 3rem,
+      "COLS_DEMO_SUPER": (
+        // responsible: true,
+        width: "SUPERBASE___CYCLE",
+      ),
+    ),
+  ),
+  "custom-grid-basics": (
+    type: component,
+    data: (
+      "d-none": (
+        responsible: true,
+        display: "none !important",
+      ),
+      "v-none": (
+        responsible: true,
+        visibility: "hidden !important",
+      ),
+      "d-show": (
+        responsible: true,
+        display: "initial !important",
+      ),
+      "v-show": (
+        responsible: true,
+        display: "initial !important",
+      ),
+      "strict": (
+        max-width: $container-width,
+      ),
+      "m-auto": (
+        margin: 0 auto,
+      ),
     ),
   ),
 );

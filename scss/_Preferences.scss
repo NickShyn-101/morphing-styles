@@ -1,7 +1,7 @@
 $mediaQuery: (
-	"LH":   " screen and (min-width : 1181px)", 	// Large screens and Up
-	"MD":   " screen and (max-width : 910px)", 		// middle screens and down
-	"SD":   " screen and (max-width : 700px)", 		// Small screens and down
+	"lh":   " screen and (min-width : 1181px)", 	// Large screens and Up
+	"md":   " screen and (max-width : 910px)", 		// middle screens and down
+	"sd":   " screen and (max-width : 700px)", 		// Small screens and down
 );
 
 $col-count: 			12 !default;	  // when any grid system is adctive
@@ -17,12 +17,12 @@ $font-famyly-third:     '"Ubuntu", sans-serif';
 
 
 // Global Settings and helpers
-$--new-components-add-status: true; // status - true/on, false/off, only, mq 
+$--new-components-add-status: false; // status - true/on, false/off, only, mq 
 $--show-components-list: true;
 
 // selectors styling
-$mediaQueryPrefix: "";
-$mediaQueryPostfix: "-";
+$mediaQueryPrefix: "-";
+$mediaQueryPostfix: "";
 
 $selectorPrefix: "";
 $selectorPostfix: "";

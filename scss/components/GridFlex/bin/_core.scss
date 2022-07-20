@@ -3,6 +3,7 @@ $CSS_PROPERTIES_LIST: map-merge(
   $custom-grid-flex-props-list
 );
 
+
 %global-grid-settings {
   display: flex;
   flex-direction: row;
@@ -34,15 +35,10 @@ section,
 
 // generate cols
 @mixin columnProps($colGap, $collFlex, $isMQ: "") {
-  $mqLabel: checkMQ($isMQ);
-
-  %testing-settings#{$mqLabel} {
-    // @include testRowCol();
-  }
+  $mqLabel: toString($isMQ);
 
   %global-col-settings#{$mqLabel} {
     overflow: hidden;
-    @extend %testing-settings#{$mqLabel};
   }
 
   @if ($colGap) {
@@ -65,7 +61,7 @@ section,
 }
 // generate offset param
 @mixin offsetProps($offsetL, $offsetR, $isMQ: "") {
-  $mqLabel: checkMQ($isMQ);
+  $mqLabel: toString($isMQ);
 
   @if ($offsetL) {
     .#{$mqLabel}offset-l0 {
@@ -89,36 +85,16 @@ section,
   }
 }
 
-@mixin displayVisProps($displayProp, $visProp, $isMQ: "") {
-  $mqLabel: checkMQ($isMQ);
-  @if ($displayProp) {
-    .#{$mqLabel}hide,
-    .#{$mqLabel}-d {
-      display: none !important;
-    }
-    .#{$mqLabel}show-v,
-    .#{$mqLabel}dv {
-      visibility: initial !important;
-    } // скрывает обект
-  }
-  @if ($displayProp) {
-    .#{$mqLabel}hide-v,
-    .#{$mqLabel}-dv {
-      visibility: hidden !important;
-    }
-    .#{$mqLabel}show,
-    .#{$mqLabel}d {
-      display: initial !important;
-    }
-  }
-}
+        
+// @for $i from 1 through ($col-count - 1) {
+//   .#{$mqLabel}offset-l#{$i} {
+//     margin-left: gridOffset($col-count, $i, $gapInRow);
+//   }
+// }
 
-.strict {
-  max-width: $container-width;
-}
-
-.m-auto,
-.to-center,
-.to-mid {
-  margin: 0 auto;
-}
+//default value offset-r0 
+// start 1 ($i)
+// end $col-count - 1
+// sel - selector offset-l
+// prop - property margin-left
+// callback функция gridOffset($col-count, $i, $gapInRow);

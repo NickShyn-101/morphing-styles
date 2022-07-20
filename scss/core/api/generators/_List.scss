@@ -15,11 +15,11 @@
     @if (type-of($propValue) == "list") {
       @if ($isMq == "") {
         @if (length($propValue) > 1) and (nth($propValue, 2) != only) {
-          @include formatGenTypeOfList($Selector, $propName, $propValue);
+          @include formatGenTypeOfList($Selector, $propName, nth($propValue, 1));
         }
       } @else {
         @if (nth($propValue, 2) == true) or (nth($propValue, 2) == only) {
-          @include formatGenTypeOfList($Selector, $propName, $propValue);
+          @include formatGenTypeOfList($Selector, $propName, nth($propValue, 1));
         }
       }
     }
