@@ -180,6 +180,10 @@ $CSS_PROPERTIES_LIST: (
     type: list,
     prop: "word-break",
     sel: "word-b",
+    extend: (
+      responsible: false,
+      color: black,
+    ),
     data: (
       "normal":     (normal, true),
       "break-all":  (break-all, true),
