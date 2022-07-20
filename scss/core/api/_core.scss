@@ -1,5 +1,5 @@
 @mixin Core($DATA, $MQ: "", $API_LIST: $CSS_PROPERTIES_LIST) {
-  $isMq: checkValue($MQ);
+  $isMq: toString($MQ);
   @each $key, $status in $DATA {
     @if $status != false {
       @if map-has-key($API_LIST, $key) {
@@ -13,8 +13,7 @@
         @include generateTypeOfExtended($args);
 
         // Generate One Property Selectors
-        // @if (map-has-key($resource, $__TYPE__) == false) or ($type == $__LIST__)
-        @if ($type == $__LIST__) {
+        @if ($type == $__LIST__) or ($type == null) {
           @include generateTypeOfList($args);
         }
 
@@ -22,9 +21,6 @@
         @if ($type == $__COMPONENT__) {
           @include generateTypeOfComponent($args);
         }
-
-        // Generate Cycle Based Selectors: > next step (future)
-        // Generate Nested Selectors: > (future)
       }
     }
   }

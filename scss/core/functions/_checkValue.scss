@@ -1,5 +1,5 @@
-@function checkValue($value) {
-  @if ($value != "") {
+@function toString($value) {
+  @if ($value != null) {
     @return "#{$value}";
   } @else {
     @return "";

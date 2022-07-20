@@ -1,34 +1,34 @@
-// @import "bin/mixin";
+@import "bin/mixin";
 @import "bin/props"; // edit props to create an awesome table
 @import "bin/core";
 
-// //----------------- Special Styles --------------------------------------
-// //-----------------------------------------------------------------------
-// //Custom paddings            name        tbody    ?tHead    ?tFoot
-// @include createTablePaddings("slim",     20px,    20px,    "40px 1rem");
-// @include createTablePaddings("extra",    30px,    100px);
-// @include createTablePaddings("minimal",  10px);
-// //-----------------------------------------------------------------------
-// // Hightlight table areas :   area  , ?bgColor, ?textColor
-// @include highlightTableAreas("head");
-// @include highlightTableAreas("foot");
-// //-----------------------------------------------------------------------
-// // borders in table:       area     type  ?width/style/color, ?color
-// @include createTableBorder("body", "row");
-// @include createTableBorder("body", "col");
-// @include createTableBorder("body", "inner");
-// @include createTableBorder("body", "wrapper");
-// @include createTableBorder("head", "row");
-// @include createTableBorder("head", "col");
-// @include createTableBorder("head", "inner");
-// @include createTableBorder("head", "wrapper");
-// @include createTableBorder("foot", "row");
-// @include createTableBorder("foot", "col");
-// @include createTableBorder("foot", "inner");
-// @include createTableBorder("foot", "wrapper");
-// //-----------------------------------------------------------------------
-// // striped effect:       area    type    rule  ?colorBG   
-// @include createHighlight("body", "col",  "2n");
-// @include createHighlight("head", "row",  "3n");
-// @include createHighlight("body", "row",  "2n");
-// @include createHighlight("body", "col",  "1");
+//----------------- Special Styles --------------------------------------
+//-----------------------------------------------------------------------
+//Custom paddings            name        tbody    ?tHead    ?tFoot
+@include createTablePaddings("slim",     20px,    20px,    "40px 1rem");
+@include createTablePaddings("extra",    30px,    100px);
+@include createTablePaddings("minimal",  10px);
+//-----------------------------------------------------------------------
+// Hightlight table areas :   area  , ?bgColor, ?textColor
+@include highlightTableAreas("head");
+@include highlightTableAreas("foot");
+//-----------------------------------------------------------------------
+// borders in table:       area     type  ?width/style/color, ?color
+@include createTableBorder("body", "row");
+@include createTableBorder("body", "col");
+@include createTableBorder("body", "inner");
+@include createTableBorder("body", "wrapper");
+@include createTableBorder("head", "row");
+@include createTableBorder("head", "col");
+@include createTableBorder("head", "inner");
+@include createTableBorder("head", "wrapper");
+@include createTableBorder("foot", "row");
+@include createTableBorder("foot", "col");
+@include createTableBorder("foot", "inner");
+@include createTableBorder("foot", "wrapper");
+//-----------------------------------------------------------------------
+// striped effect:       area    type    rule  ?colorBG   
+@include createHighlight("body", "col",  "2n");
+@include createHighlight("head", "row",  "3n");
+@include createHighlight("body", "row",  "2n");
+@include createHighlight("body", "col",  "1");
