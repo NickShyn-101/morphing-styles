@@ -1,9 +1,6 @@
 @mixin generateTypeOfExtended($Args) {
   $data: map-get($Args, $__DATA__);
   $extend: map-get($Args, $__EXTEND__);
-  @if (type-of($extend) != "map") {
-    $extend: ();
-  }
   $AllSelectors: ();
   @if $data != null {
     @each $key, $_ in $data {
@@ -14,8 +11,28 @@
         $AllSelectors: append($AllSelectors, $currentSelector, "comma");
       }
     }
-    @include formatGenTypeOfExtended($AllSelectors, $extend, $Args);
+    @include checkForReservedProperties($AllSelectors, $extend, $Args);
   }
+}
+
+@mixin checkForReservedProperties($AllSelectors, $props, $Args) {
+  $isMq: map-get($Args, $__MQ__);
+
+
+  @if (type-of($props) != "map") {$props: ()}
+  $respHas: map-has-key($props, $__RES__);
+  $respValue: map-get($props, $__RES__);
+
+  @if ($isMq == "") {
+    @if ($respHas != true) or ($respValue != only) {
+      @include formatGenTypeOfExtended($AllSelectors, $props, $Args);
+    }
+  } @else {
+    @if ($respValue == true) or ($respValue == only) {
+      @include formatGenTypeOfExtended($AllSelectors, $props, $Args);
+    }
+  }
+  
 }
 
 @mixin formatGenTypeOfExtended($AllSelectors, $props, $Args) {

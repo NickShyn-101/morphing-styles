@@ -1,16 +1,27 @@
 @mixin generateTypeOfList($Args) {
   $propName: map-get($Args, $__PROPPERTY__);
+  $isMq: map-get($Args, $__MQ__);
   $data: map-get($Args, $__DATA__);
 
   @each $key_index, $propValue in $data {
     $Selector: formatSelector($key_index, $Args);
 
     @if (type-of($propValue) == "string") {
+      @if ($isMq == "") {
         @include formatGenTypeOfList($Selector, $propName, $propValue);
+      }
     }
 
     @if (type-of($propValue) == "list") {
-      @include formatGenTypeOfList($Selector, $propName, nth($propValue, 1));
+      @if ($isMq == "") {
+        @if (nth($propValue, 2) == true) or (nth($propValue, 2) != only) {
+          @include formatGenTypeOfList($Selector, $propName, nth($propValue, 1));
+        }
+      } @else {
+        @if (nth($propValue, 2) == true) or (nth($propValue, 2) == only) {
+          @include formatGenTypeOfList($Selector, $propName, nth($propValue, 1));
+        }
+      }
     }
   }
 }

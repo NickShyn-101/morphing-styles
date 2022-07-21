@@ -1,5 +1,46 @@
 $testName: calcWidth;
 $custom-grid-flex-props-list: (
+  "grid-CYCLE": (
+    type: cycle,
+    sel: "col",
+    prop: "width",
+    start: 1,
+    end: 10,
+    responsible: only,
+    exp: "gridWidth",
+    data: (
+      responsible: false,
+      width: "gridWidth",
+      height: 100px,
+      margin-left: "gridWidth",
+      color: green,
+    ),
+    extend: (
+      display: flex,
+      flex-direction: row,
+      align-items: flex-start,
+      flex-wrap: wrap,
+      overflow: hidden,
+      width: 100%,
+    ),
+  ),
+  // "grid-CYCLE": (
+  //   type: cycle,
+  //   sel: "col",
+  //   prop: "width",
+  //   start: 1,
+  //   end: 10,
+  //   exp: "gridWidth",
+  //   responsible: true,
+  //   // extend: (
+  //   //   display: flex,
+  //   //   flex-direction: row,
+  //   //   align-items: flex-start,
+  //   //   flex-wrap: wrap,
+  //   //   overflow: hidden,
+  //   //   width: 100%,
+  //   // ),
+  // ),
   "grid-columns": (
     prop: "width",
     sel: "col",

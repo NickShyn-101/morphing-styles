@@ -1,0 +1,62 @@
+@mixin generateTypeOfCycle($Args) {
+  $sel: map-get($Args, $__SEL__);
+  $data: map-get($Args, $__DATA__);
+  $propName: map-get($Args, $__PROPPERTY__);
+  $Selector: formatSelector($propName, $Args);
+  $isMq: map-get($Args, $__MQ__);
+
+  @if ($data == "") or ($data == null) {
+    $respHas: map-has-key($Args, $__RES__);
+    $respValue: map-get($Args, $__RES__);
+    @if ($isMq == "") {
+      @if ($respHas != true) or ($respValue != only) {
+        @include formatGenTypeOfCycle($Selector, $propName, $Args);
+      }
+    } @else {
+      @if ($respValue == true) or ($respValue == only) {
+        @include formatGenTypeOfCycle($Selector, $propName, $Args);
+      }
+    }
+  } @else {
+    $respHas: map-has-key($data, $__RES__);
+    $respValue: map-get($data, $__RES__);
+    @if ($isMq == "") {
+      @if ($respHas != true) or ($respValue != only) {
+        @include formatGenTypeOfCycle($Selector, $propName, $Args);
+      }
+    } @else {
+      @if ($respValue == true) or ($respValue == only) {
+        @include formatGenTypeOfCycle($Selector, $propName, $Args);
+      }
+    }
+  }
+}
+
+@mixin formatGenTypeOfCycle($Selector, $propName, $Args) {
+  $start: map-get($Args, $__START__);
+  $end: map-get($Args, $__END__);
+  $exp: map-get($Args, $__EXP__);
+  $data: map-get($Args, $__DATA__);
+
+  @if ($data == "") or ($data == null) {
+    @for $i from $start through $end {
+      #{$Selector}-#{$i} {
+        #{$propName}: Expressions($exp, $i);
+      }
+    }
+  } @else {
+    @for $i from $start through $end {
+      #{$Selector}-#{$i} {
+        @each $key, $value in $data {
+          @if $key != "responsible" {
+            @if $value == $exp {
+              #{$key}: Expressions($exp, $i);
+            } @else {
+              #{$key}: #{$value};
+            }
+          }
+        }
+      }
+    }
+  }
+}
