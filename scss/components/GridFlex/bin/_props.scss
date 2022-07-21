@@ -1,11 +1,29 @@
+$testName: calcWidth;
 $custom-grid-flex-props-list: (
-  "custom-grid-cols": (
-    type: cycle,
+  "grid-columns": (
+    prop: "width",
+    sel: "col",
+    extend: (
+      display: flex,
+      flex-direction: row,
+      align-items: flex-start,
+      flex-wrap: wrap,
+      overflow: hidden,
+      width: 100%,
+    ),
     data: (
-      "COLS_DEMO_SUPER": (
-        // responsible: true,
-        width: "SUPERBASE___CYCLE",
-      ),
+      1:  (calcWidth(1), true),
+      2:  (calcWidth(2), true),
+      3:  (calcWidth(3), true),
+      4:  (calcWidth(4), true),
+      5:  (calcWidth(5), true),
+      6:  (calcWidth(6), true),
+      7:  (calcWidth(7), true),
+      8:  (calcWidth(8), true),
+      9:  (calcWidth(9), true),
+      10: (calcWidth(10), true),
+      11: (calcWidth(11), true),
+      12: (calcWidth(12), true),
     ),
   ),
   "custom-grid-basics": (

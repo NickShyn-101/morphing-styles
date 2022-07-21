@@ -144,6 +144,12 @@ $CSS_PROPERTIES_LIST: (
     type: list,
     prop: "margin",
     sel: "m",
+    extend: (
+      responsible: true,
+      color: balck,
+      text-align: center,
+      text-transform: center,
+    ),
     data: (
       "auto":       (auto, true),
       "25":         (25%, true),

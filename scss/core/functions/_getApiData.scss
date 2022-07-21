@@ -10,7 +10,7 @@
     $__SELTYPE__: getAttribute($RES_ARR, $__SELTYPE__, ""),
     $__EXTEND__: map-get($RES_ARR, $__EXTEND__),
     $__PROPPERTY__: getAttribute($RES_ARR, $__PROPPERTY__, $currentComp),
-  );
+    );
 
   @return $result;
 }

@@ -10,3 +10,11 @@
   );
 }
 
+@function calcWidth($itr) {
+  @return calc(
+    (((100% / $col-count) * $itr)) - ($gapInRow - (($gapInRow / $col-count) * ($itr)))
+  );
+}
+@function calculation($ig) {
+  @return  $ig;
+}

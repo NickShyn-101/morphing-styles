@@ -1,21 +1,8 @@
 @mixin generateTypeOfComponent($Args) {
-  $isMq: map-get($Args, $__MQ__);
   $data: map-get($Args, $__DATA__);
-
   @each $key, $value in $data {
     $Selector: formatSelector($key, $Args);
-    $respHas: map-has-key($value, $__RES__);
-    $respValue: map-get($value, $__RES__);
-
-    @if ($isMq == "") {
-      @if ($respHas != true) or ($respValue != only) {
-       @include formatGenTypeOfComponent($Selector, $value);
-      }
-    } @else {
-      @if ($respValue == true) or ($respValue == only) {
-        @include formatGenTypeOfComponent($Selector, $value);
-      }
-    }
+    @include formatGenTypeOfComponent($Selector, $value);
   }
 }
 
