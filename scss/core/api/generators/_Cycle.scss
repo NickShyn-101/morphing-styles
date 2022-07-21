@@ -2,7 +2,6 @@
   $sel: map-get($Args, $__SEL__);
   $data: map-get($Args, $__DATA__);
   $propName: map-get($Args, $__PROPPERTY__);
-  $Selector: formatSelector($propName, $Args);
   $isMq: map-get($Args, $__MQ__);
 
   @if ($data == "") or ($data == null) {
@@ -10,11 +9,11 @@
     $respValue: map-get($Args, $__RES__);
     @if ($isMq == "") {
       @if ($respHas != true) or ($respValue != only) {
-        @include formatGenTypeOfCycle($Selector, $propName, $Args);
+        @include formatGenTypeOfCycle($propName, $Args);
       }
     } @else {
       @if ($respValue == true) or ($respValue == only) {
-        @include formatGenTypeOfCycle($Selector, $propName, $Args);
+        @include formatGenTypeOfCycle($propName, $Args);
       }
     }
   } @else {
@@ -22,17 +21,17 @@
     $respValue: map-get($data, $__RES__);
     @if ($isMq == "") {
       @if ($respHas != true) or ($respValue != only) {
-        @include formatGenTypeOfCycle($Selector, $propName, $Args);
+        @include formatGenTypeOfCycle($propName, $Args);
       }
     } @else {
       @if ($respValue == true) or ($respValue == only) {
-        @include formatGenTypeOfCycle($Selector, $propName, $Args);
+        @include formatGenTypeOfCycle($propName, $Args);
       }
     }
   }
 }
 
-@mixin formatGenTypeOfCycle($Selector, $propName, $Args) {
+@mixin formatGenTypeOfCycle($propName, $Args) {
   $start: map-get($Args, $__START__);
   $end: map-get($Args, $__END__);
   $exp: map-get($Args, $__EXP__);
@@ -40,15 +39,17 @@
 
   @if ($data == "") or ($data == null) {
     @for $i from $start through $end {
-      #{$Selector}-#{$i} {
+      $Selector: formatSelector($propName, $Args, $i);
+      #{$Selector} {
         #{$propName}: Expressions($exp, $i);
       }
     }
   } @else {
     @for $i from $start through $end {
-      #{$Selector}-#{$i} {
+      $Selector: formatSelector($propName, $Args, $i);
+      #{$Selector} {
         @each $key, $value in $data {
-          @if $key != "responsible" {
+          @if $key != $__RES__ {
             @if $value == $exp {
               #{$key}: Expressions($exp, $i);
             } @else {

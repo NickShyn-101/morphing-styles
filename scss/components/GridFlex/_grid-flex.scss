@@ -1,15 +1,2 @@
-@import "bin/functions";
 @import "bin/props";
 @import "bin/core";
-
-
-// @include columnProps(true, true); // col, colFlex
-// @include offsetProps(true, true); // offset-l, offset-r
-
-
-// @each $mqKey, $mqProp in $mediaQuery {
-//   @media #{$mqProp} {
-//     @include columnProps(true, true, $mqKey);
-//     @include offsetProps(true, true, $mqKey);
-//   }
-// }

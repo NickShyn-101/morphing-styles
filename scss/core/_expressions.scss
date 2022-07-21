@@ -1,18 +1,19 @@
 @function Expressions($method, $itr) {
-
-    @if $method == "gridWidth" {
-      @return calc(
-        (((100% / $col-count) * $itr)) - ($gapInRow - (($gapInRow / $col-count) * ($itr)))
-      );
-    }
-    @if $method == "offsetWidth" {
-      @return calc(
-        (((100% / $maxnumb) * $itr))
-      );
-    }
-
-    // Default value
-    @if $method != true {
-      @return "Value not specified"
-    }
+  @if $method == "gridWidth" {
+    @return calc(
+      (((100% / $col-count) * $itr)) -
+        ($gapInRow - (($gapInRow / $col-count) * ($itr)))
+    );
   }
+
+  @if $method == "offsetWidth" {
+    @return calc(
+      (((100% / $col-count) * $itr)) + (($gapInRow / $col-count) * ($itr))
+    );
+  }
+
+  // Default value
+  @if $method != true {
+    @return "Value not specified";
+  }
+}

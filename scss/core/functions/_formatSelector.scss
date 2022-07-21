@@ -1,4 +1,4 @@
-@function formatSelector($key_prop, $Args) {
+@function formatSelector($key_prop, $Args, $i: 0) {
   $result: "";
   // import arguments
   $sel:     map-get($Args, $__SEL__);
@@ -24,7 +24,9 @@
   $selTypeCompMQSameSel:  glueSelectorName($-COMP-);
   $selTypeOnlyProp:       glueSelectorName($-dot-, $-COMP-);
   
-  $selTypeNULL:       glueSelectorName($-dot-, $-COMP-);
+  $selTypeNULL:           glueSelectorName($-dot-, $-COMP-);
+
+  $selTypeCycleBase:      glueSelectorName($-dot-, $-SEL-, $-MQ-, $-div-, $i);
   // Rules
   // if selector and component name are equal
   @if ($sel == $key_prop) {
@@ -35,7 +37,9 @@
       $result: $selTypeMainMsel;
     }
   }
-
+  @if $type == $__CYCLE__ {
+    $result:   $selTypeCycleBase;
+  }
   // if we used flag -g (not global)
   @else if $selType == "-g" {
     $result: $selTypeGdot;

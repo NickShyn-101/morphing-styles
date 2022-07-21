@@ -1,8 +1,9 @@
 @mixin generateTypeOfExtended($Args) {
   $type: map-get($Args, $__TYPE__);
   $extend: map-get($Args, $__EXTEND__);
-
-  @if $type != "cycle" {
+  $propName: map-get($Args, $__PROPPERTY__);
+  $sel: map-get($Args, $__SEL__);
+  @if $type != $__CYCLE__ {
     $data: map-get($Args, $__DATA__);
     $AllSelectors: ();
     @if ($data != null) {
@@ -16,8 +17,10 @@
       }
 
       @include checkForReservedProperties($AllSelectors, $extend, $Args);
+    } @else {
+      @include checkForReservedProperties($sel, $extend, $Args);
     }
-  } @else if $type == "cycle" {
+  } @else if $type == $__CYCLE__ {
     $propName: map-get($Args, $__PROPPERTY__);
     $start: map-get($Args, $__START__);
     $end: map-get($Args, $__END__);
@@ -26,10 +29,11 @@
     $AllSelectors: ();
 
     @for $i from $start through $end {
-      $currentSelector: formatSelector($propName + -#{$i}, $Args);
+      $currentSelector: formatSelector($propName, $Args, $i);
       $AllSelectors: append($AllSelectors, $currentSelector, "comma");
     }
     @include checkForReservedProperties($AllSelectors, $extend, $Args);
+  
   }
 }
 

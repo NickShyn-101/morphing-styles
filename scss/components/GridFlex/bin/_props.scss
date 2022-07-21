@@ -1,48 +1,13 @@
-$testName: calcWidth;
 $custom-grid-flex-props-list: (
-  "grid-CYCLE": (
-    type: cycle,
-    sel: "col",
-    prop: "width",
-    start: 1,
-    end: 10,
-    responsible: true,
-    exp: "gridWidth",
-    data: (
-      responsible: true,
-      width: "gridWidth",
-      height: 100px,
-      margin-left: "gridWidth",
-      color: green,
-    ),
+  "custom-grid-normal": (
+    sel: "main, aside, footer, header, section, .section",
     extend: (
-      responsible: true,
-      flex-wrap: wrap,
-      overflow: hidden,
-      width: 100%,
+      display: block,
+      margin: 0,
     ),
   ),
-  // "grid-CYCLE": (
-  //   type: cycle,
-  //   sel: "col",
-  //   prop: "width",
-  //   start: 1,
-  //   end: 10,
-  //   exp: "gridWidth",
-  //   responsible: true,
-  //   extend: (
-  //     responsible: true,
-  //     display: flex,
-  //     flex-direction: row,
-  //     align-items: flex-start,
-  //     flex-wrap: wrap,
-  //     overflow: hidden,
-  //     width: 100%,
-  //   ),
-  // ),
-  "grid-columns": (
-    prop: "width",
-    sel: "col",
+  "custom-grid-main": (
+    type: component,
     extend: (
       display: flex,
       flex-direction: row,
@@ -52,19 +17,44 @@ $custom-grid-flex-props-list: (
       width: 100%,
     ),
     data: (
-      1:  (calcWidth(1), true),
-      2:  (calcWidth(2), true),
-      3:  (calcWidth(3), true),
-      4:  (calcWidth(4), true),
-      5:  (calcWidth(5), true),
-      6:  (calcWidth(6), true),
-      7:  (calcWidth(7), true),
-      8:  (calcWidth(8), true),
-      9:  (calcWidth(9), true),
-      10: (calcWidth(10), true),
-      11: (calcWidth(11), true),
-      12: (calcWidth(12), true),
+      "container": (
+        gap: $gapInContainer,
+      ),
+      "row": (
+        gap: $gapInRow,
+      ),
     ),
+  ),
+  "grid-cols": (
+    type: cycle,
+    sel: "col",
+    prop: "width",
+    start: 1,
+    end: $col-count,
+    responsible: true,
+    exp: "gridWidth",
+    extend: (
+      responsible: true,
+      overflow: hidden,
+    ),
+  ),
+  "grid-offset-left": (
+    type: cycle,
+    sel: "offset-l",
+    prop: "margin-left",
+    start: 0,
+    end: $col-count - 1,
+    responsible: true,
+    exp: "offsetWidth",
+  ),
+  "grid-offset-right": (
+    type: cycle,
+    sel: "offset-r",
+    prop: "margin-right",
+    start: 0,
+    end: $col-count - 1,
+    responsible: true,
+    exp: "offsetWidth",
   ),
   "custom-grid-basics": (
     type: component,
@@ -76,20 +66,6 @@ $custom-grid-flex-props-list: (
       "v-none": (
         responsible: true,
         visibility: "hidden !important",
-      ),
-      "d-show": (
-        responsible: true,
-        display: "initial !important",
-      ),
-      "v-show": (
-        responsible: true,
-        display: "initial !important",
-      ),
-      "strict": (
-        max-width: $container-width,
-      ),
-      "m-auto": (
-        margin: 0 auto,
       ),
     ),
   ),
