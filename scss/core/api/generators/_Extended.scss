@@ -1,15 +1,33 @@
 @mixin generateTypeOfExtended($Args) {
-  $data: map-get($Args, $__DATA__);
+  $type: map-get($Args, $__TYPE__);
   $extend: map-get($Args, $__EXTEND__);
-  $AllSelectors: ();
-  @if $data != null {
-    @each $key, $_ in $data {
-      $currentSelector: ();
-      @if $key != null {
-        $Selector: formatSelector($key, $Args);
-        $currentSelector: append($currentSelector, $Selector);
-        $AllSelectors: append($AllSelectors, $currentSelector, "comma");
+
+  @if $type != "cycle" {
+    $data: map-get($Args, $__DATA__);
+    $AllSelectors: ();
+    @if ($data != null) {
+      @each $key, $_ in $data {
+        $currentSelector: ();
+        @if $key != null {
+          $Selector: formatSelector($key, $Args);
+          $currentSelector: append($currentSelector, $Selector);
+          $AllSelectors: append($AllSelectors, $currentSelector, "comma");
+        }
       }
+
+      @include checkForReservedProperties($AllSelectors, $extend, $Args);
+    }
+  } @else if $type == "cycle" {
+    $propName: map-get($Args, $__PROPPERTY__);
+    $start: map-get($Args, $__START__);
+    $end: map-get($Args, $__END__);
+    $extend: map-get($Args, $__EXTEND__);
+    $data: map-get($Args, $__DATA__);
+    $AllSelectors: ();
+
+    @for $i from $start through $end {
+      $currentSelector: formatSelector($propName + -#{$i}, $Args);
+      $AllSelectors: append($AllSelectors, $currentSelector, "comma");
     }
     @include checkForReservedProperties($AllSelectors, $extend, $Args);
   }
@@ -18,8 +36,9 @@
 @mixin checkForReservedProperties($AllSelectors, $props, $Args) {
   $isMq: map-get($Args, $__MQ__);
 
-
-  @if (type-of($props) != "map") {$props: ()}
+  @if (type-of($props) != "map") {
+    $props: ();
+  }
   $respHas: map-has-key($props, $__RES__);
   $respValue: map-get($props, $__RES__);
 
@@ -32,7 +51,6 @@
       @include formatGenTypeOfExtended($AllSelectors, $props, $Args);
     }
   }
-  
 }
 
 @mixin formatGenTypeOfExtended($AllSelectors, $props, $Args) {
