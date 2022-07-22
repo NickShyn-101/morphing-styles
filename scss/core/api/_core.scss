@@ -1,13 +1,12 @@
 @mixin Core($DATA, $MQ: "", $API_LIST: $COMPONENTS) {
   $isMq: toString($MQ);
-  @each $key, $status in $DATA {
+  @each $componentName, $status in $DATA {
     @if $status != false {
-      @if map-has-key($API_LIST, $key) {
-        $resource: map-get($API_LIST, $key);
+      @if map-has-key($API_LIST, $componentName) {
+        $resource: map-get($API_LIST, $componentName);
         $type: map-get($resource, $__TYPE__);
-
         // Params to share with other functions as argument
-        $args: getApiData($resource, $isMq, $key, $status);
+        $args: getApiData($resource, $isMq, $componentName, $status);
 
         // Generate Extended Selectors
         @include generateTypeOfExtended($args);
@@ -25,6 +24,11 @@
         // Generate Cycle Based Selectors
         @if ($type == $__CYCLE__) {
           @include generateTypeOfCycle($args);
+        }
+
+        // Generate Modules
+        @if ($type == "module") {
+          @include generateTypeOfModule($args);
         }
       }
     }

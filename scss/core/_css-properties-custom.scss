@@ -22,5 +22,31 @@ $CSS_PROPERTIES_LIST_CUSTOM: (
       "4":          3rem 3rem,
     ),
   ),
+  "custom-color-short": (
+    type: module,
+    prop: "custom-color",
+    responsible: false,
+    data: (
+      "red":    ("red",  #d52574,  7,  7%,  "both",  "border"),
+      "blue":   ("blue", #1851ed,  2,  10%, "d",     "bgc"),
+      "pink":   ("pink", #ed18c6,  4,  6%,  "l",     "color"),
+    ),
+  ),
+  // "custom-color-long": (
+  //   type: module,
+  //   prop: "custom-color",
+  //   data: (
+  //     "red":  (
+  //       name: "red",
+  //       color: #d52574,
+  //       steps:  7,
+  //       persent:  7%,
+  //       method:  "both",
+  //       area:  "border"
+  //     ),
+  //     // "blue": ("blue", #1851ed,  2,  10%, "d",     "bgc"),
+  //     // "pink": ("pink", #ed18c6,  4,  6%,  "l",     "color"),
+  //   ),
+  // ),
 );
 
