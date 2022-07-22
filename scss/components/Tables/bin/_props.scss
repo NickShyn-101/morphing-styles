@@ -1,7 +1,9 @@
 //----------------- Table Properies ---------------------
 // add or remove settings to customize your version of table
+$table-all-tags: "table tfoot th, table tfoot td, table tfoot tr, table tfoot, table thead th, table thead td, table thead tr, table thead, table th, table td, table tr, table ";
+
 $TABLE_COMPS: (
-  "table": (
+  "table-normal": (
     type: component,
     seltype: "g",
     data: (
@@ -15,6 +17,10 @@ $TABLE_COMPS: (
         background: var(--mg-table-bg),
         color: var(--mg-table-color),
       ),
+      $table-all-tags: (
+        border: var(--mg-table-border),
+        border-color: var(--mg-table-border-color),
+      )
     ),
   ),
   "table-styles": (

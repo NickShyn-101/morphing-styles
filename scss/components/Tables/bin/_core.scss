@@ -1,17 +1,1 @@
 $COMPONENTS: map-merge($COMPONENTS, $TABLE_COMPS);
-
-table tfoot th,
-table tfoot td,
-table tfoot tr,
-table tfoot,
-table thead th,
-table thead td,
-table thead tr,
-table thead,
-table th,
-table td,
-table tr,
-table {
-  border: var(--mg-table-border);
-  border-color: var(--mg-table-border-color);
-}
