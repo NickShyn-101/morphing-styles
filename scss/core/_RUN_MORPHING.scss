@@ -1,8 +1,10 @@
 // Search for components in project
-$CSS_PROPERTIES_LIST: map-merge($CSS_PROPERTIES_LIST, $CSS_PROPERTIES_LIST_CUSTOM);
+// $CSS_PROPERTIES_LIST: map-merge($CSS_PROPERTIES_LIST, $CSS_PROPERTIES_LIST_CUSTOM);
+$COMPONENTS: map-merge($COMPONENTS, $CSS_PROPERTIES_LIST);
+$COMPONENTS: map-merge($COMPONENTS, $CSS_PROPERTIES_LIST_CUSTOM);
 
 $ALL_COMPONENTS_LIST: ();
-@each $component, $_ in $CSS_PROPERTIES_LIST {
+@each $component, $_ in $COMPONENTS {
   $ALL_COMPONENTS_LIST: map-merge(
     $ALL_COMPONENTS_LIST,
     (
@@ -12,17 +14,16 @@ $ALL_COMPONENTS_LIST: ();
 }
 
 // Final check components and statuses
-$ALL_COMPONENTS_LIST: map-merge($ALL_COMPONENTS_LIST, $UserComponentsList);
+$ALL_COMPONENTS_LIST: map-merge($ALL_COMPONENTS_LIST, $USER_COMPONENTS_LIST);
 
 // Morphing Magic Combiner
 @include Combiner($ALL_COMPONENTS_LIST);
 
+// Helpfull instruments and settings
 @if $--show-components-list == true {
   LIST-OF-COMPONENTS {
-    
     @each $key, $val in $ALL_COMPONENTS_LIST {
-      #{"/*"} : "#{$key}: #{$val},"#{"*/"};
+      #{"/*"}: "'#{$key}': #{$val},"#{"*/"};
     }
   }
-
 }

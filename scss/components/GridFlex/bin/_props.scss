@@ -1,12 +1,12 @@
-$custom-grid-flex-props-list: (
-  "custom-grid-normal": (
+$GRID_FLEX_COMPS: (
+  "grid-normal": (
     sel: "main, aside, footer, header, section, .section",
     extend: (
       display: block,
       margin: 0,
     ),
   ),
-  "custom-grid-main": (
+  "grid-main": (
     type: component,
     extend: (
       display: flex,

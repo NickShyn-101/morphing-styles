@@ -1,4 +1,4 @@
-$CSS_PROPERTIES_LIST: map-merge($CSS_PROPERTIES_LIST, $TABLE_LIST_CUSTOM);
+$COMPONENTS: map-merge($COMPONENTS, $TABLE_COMPS);
 
 table tfoot th,
 table tfoot td,

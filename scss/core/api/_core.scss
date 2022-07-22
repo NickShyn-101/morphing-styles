@@ -1,4 +1,4 @@
-@mixin Core($DATA, $MQ: "", $API_LIST: $CSS_PROPERTIES_LIST) {
+@mixin Core($DATA, $MQ: "", $API_LIST: $COMPONENTS) {
   $isMq: toString($MQ);
   @each $key, $status in $DATA {
     @if $status != false {

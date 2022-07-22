@@ -1,4 +1,1 @@
-$CSS_PROPERTIES_LIST: map-merge(
-  $CSS_PROPERTIES_LIST,
-  $custom-grid-flex-props-list
-);
+$COMPONENTS: map-merge($COMPONENTS, $GRID_FLEX_COMPS);
