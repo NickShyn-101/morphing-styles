@@ -29,12 +29,7 @@
     $AllSelectors: ();
 
     @for $i from $start through $end {
-      $Args: map-merge(
-        $Args,
-        (
-          cycleKey: $i,
-        )
-      );
+      $Args: map-merge($Args,(cycleKey: $i,));
       $currentSelector: formatSelector($propName, $Args);
       $AllSelectors: append($AllSelectors, $currentSelector, "comma");
     }
@@ -43,11 +38,12 @@
 }
 
 @mixin checkForReservedProperties($AllSelectors, $props, $Args) {
-  $isMq: map-get($Args, $__MQ__);
-
+  
   @if (type-of($props) != "map") {
     $props: ();
   }
+  
+  $isMq: map-get($Args, $__MQ__);
   $respHas: map-has-key($props, $__RES__);
   $respValue: map-get($props, $__RES__);
 

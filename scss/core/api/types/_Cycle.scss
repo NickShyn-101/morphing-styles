@@ -51,12 +51,7 @@
 
   @if ($data == "") or ($data == null) {
     @for $i from $start through $end {
-      $Args: map-merge(
-        $Args,
-        (
-          cycleKey: $i,
-        )
-      );
+      $Args: map-merge($Args, ( cycleKey: $i ));
       $Selector: formatSelector($propName, $Args);
       #{$Selector} {
         #{$propName}: Expressions($exp, $i);
@@ -64,12 +59,7 @@
     }
   } @else {
     @for $i from $start through $end {
-      $Args: map-merge(
-        $Args,
-        (
-          cycleKey: $i,
-        )
-      );
+      $Args: map-merge($Args, ( cycleKey: $i ));
       $Selector: formatSelector($propName, $Args);
       #{$Selector} {
         @each $key, $value in $data {
