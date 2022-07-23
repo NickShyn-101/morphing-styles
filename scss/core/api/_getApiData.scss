@@ -11,6 +11,8 @@
     $__EXTEND__:      map-get($RES_ARR, $__EXTEND__),
     $__PROPPERTY__:   getAttribute($RES_ARR, $__PROPPERTY__, $componentName),
     $__TO__:          getAttribute($RES_ARR, $__TO__, ""),
+    $__GROUP__:       getAttribute($RES_ARR, $__GROUP__, false),
+    $__NAME__:       getAttribute($RES_ARR, $__NAME__, ""),
   
     $__RES__:         map-get($RES_ARR, $__RES__),
     $__START__:       map-get($RES_ARR, $__START__),

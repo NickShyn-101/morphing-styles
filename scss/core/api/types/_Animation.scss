@@ -1,13 +1,30 @@
 @mixin generateTypeOfAnimation($Args) {
-    $isMq: map-get($Args, $__MQ__);
-    $data: map-get($Args, $__DATA__);
-  
+  $isMq: map-get($Args, $__MQ__);
+  $data: map-get($Args, $__DATA__);
+  $group: map-get($Args, $__GROUP__);
+
+  @if $group == false {
+    $respHas: map-has-key($Args, $__RES__);
+    $respValue: map-get($Args, $__RES__);
+    @if ($isMq == "") {
+      @if ($respHas != true) or ($respValue != only) {
+        @include formatGenTypeOfAnimation($Args, $data);
+      }
+    } @else {
+      @if ($respValue == true) or ($respValue == only) {
+        @include formatGenTypeOfAnimation($Args, $data);
+      }
+    }
+  }
+
+  @if $group == true {
     @each $key, $value in $data {
       $respHas: map-has-key($value, $__RES__);
       $respValue: map-get($value, $__RES__);
+      $Args: map-merge($Args, (SecondaryElement: $key));
       @if ($isMq == "") {
         @if ($respHas != true) or ($respValue != only) {
-         @include formatGenTypeOfAnimation($Args, $value);
+          @include formatGenTypeOfAnimation($Args, $value);
         }
       } @else {
         @if ($respValue == true) or ($respValue == only) {
@@ -16,14 +33,20 @@
       }
     }
   }
-  
-  @mixin formatGenTypeOfAnimation($Args, $properties_list) {
-    @keyframes example {
-      @each $propName, $propValue in $properties_list {
-        #{$propName} {
-          #{$propName}: #{$propValue};
+}
+
+@mixin formatGenTypeOfAnimation($Args, $properties_list) {
+  $name: map-get($Args, $__NAME__);
+  $Selector: formatSelector($name, $Args);
+  @keyframes #{$Selector} {
+    @each $key, $Value in $properties_list {
+      @if $key != $__RES__ {
+        #{$key} {
+          @each $propName, $propValue in $Value {
+            #{$propName}: #{$propValue};
+          }
         }
       }
     }
   }
-  
+}

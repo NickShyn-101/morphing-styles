@@ -29,7 +29,8 @@
     $AllSelectors: ();
 
     @for $i from $start through $end {
-      $currentSelector: formatSelector($propName, $Args, $i);
+      $Args: map-merge($Args, (cycleKey: $i));
+      $currentSelector: formatSelector($propName, $Args);
       $AllSelectors: append($AllSelectors, $currentSelector, "comma");
     }
     @include checkForReservedProperties($AllSelectors, $extend, $Args);

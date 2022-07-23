@@ -13,6 +13,11 @@
           @include generateTypeOfExtended($args);
 
           // Generate One Property Selectors
+          // @if ($type == $__SIMPLE__) or ($type == null) {
+          //   @include generateTypeOfSimple($args);
+          // }
+
+          // Generate One Property Selectors
           @if ($type == $__LIST__) or ($type == null) {
             @include generateTypeOfList($args);
           }
@@ -27,19 +32,14 @@
             @include generateTypeOfCycle($args);
           }
 
-          // Generate Modules
-          @if ($type == $__MODULE__) {
-            @include generateTypeOfModule($args);
-          }
-
-          // Generate One Property Selectors
-          // @if ($type == $__SIMPLE__) or ($type == null) {
-          //   @include generateTypeOfSimple($args);
-          // }
-
           // Generate Animations
           @if ($type == $__ANIMATION__) {
             @include generateTypeOfAnimation($args);
+          }
+
+          // Generate Modules
+          @if ($type == $__MODULE__) {
+            @include generateTypeOfModule($args);
           }
         }
       }
