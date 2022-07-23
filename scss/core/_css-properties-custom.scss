@@ -13,59 +13,59 @@ $CSS_PROPERTIES_LIST_CUSTOM: (
   ),
   "custom-margin": (
     type: list,
+    responsible: true, //List d`nt working well
     prop: "margin",
-    sel: "mc", //gap custom
+    sel: "mc", 
     data: (
-      "1":          1rem 1rem,
+      "1":          1rem 1rem, 
       "2":          2rem 2rem,
       "3":          3rem 3rem,
       "4":          3rem 3rem,
     ),
   ),
-  "animation-single": (
-    type: animation,
-    group: false,
-    name: "SupernSi",
-    responsible: false,
-    data: (
-      "from": (
-        position: 50px,
-        width: 100px,
-      ),
-      "to": (
-        position: 150px,
-        width: 500px,
-      ),
-    ),
-  ),
-  "animation-group": (
-    type: animation,
-    group: true,
-    name: "slide",
-    data: (
-      "in": (
-        // responsible: true,
-        "from": (
-          position: 50px,
-          width: 100px,
-        ),
-        "to": (
-          position: 150px,
-          width: 500px,
-        ),
-      ),
-      "out": (
-        // responsible: only,
-        "from": (
-          left: 100px,
-          top: 150px,
-        ),
-        "to": (
-          left: 150px,
-          top: 200px,
-        ),
-      ),
-    ),
-  ),
+  // "animation-single": (
+  //   type: animation,
+  //   name: "SupernSi",
+  //   responsible: (lh),
+  //   data: (
+  //     "from": (
+  //       position: 50px,
+  //       width: 100px,
+  //     ),
+  //     "to": (
+  //       position: 150px,
+  //       width: 500px,
+  //     ),
+  //   ),
+  // ),
+  // "animation-group": (
+  //   type: animation,
+  //   group: true,
+  //   name: "slide",
+  //   data: (
+  //     "in": (
+  //       // responsible: true,
+  //       "from": (
+  //         position: 50px,
+  //         width: 100px,
+  //       ),
+  //       "to": (
+  //         position: 150px,
+  //         width: 500px,
+  //       ),
+  //     ),
+  //     "out": (
+  //       // responsible: only,
+  //       "from": (
+  //         left: 100px,
+  //         top: 150px,
+  //       ),
+  //       "to": (
+  //         left: 150px,
+  //         top: 200px,
+  //       ),
+  //     ),
+  //   ),
+  // ),
  );
 

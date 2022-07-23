@@ -29,12 +29,16 @@
     $AllSelectors: ();
 
     @for $i from $start through $end {
-      $Args: map-merge($Args, (cycleKey: $i));
+      $Args: map-merge(
+        $Args,
+        (
+          cycleKey: $i,
+        )
+      );
       $currentSelector: formatSelector($propName, $Args);
       $AllSelectors: append($AllSelectors, $currentSelector, "comma");
     }
     @include checkForReservedProperties($AllSelectors, $extend, $Args);
-  
   }
 }
 
@@ -54,6 +58,12 @@
   } @else {
     @if ($respValue == true) or ($respValue == only) {
       @include formatGenTypeOfExtended($AllSelectors, $props, $Args);
+    } @else {
+      @each $mqKey in $respValue {
+        @if $mqKey == $isMq {
+          @include formatGenTypeOfExtended($AllSelectors, $props, $Args);
+        }
+      }
     }
   }
 }

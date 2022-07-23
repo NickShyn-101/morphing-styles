@@ -27,6 +27,7 @@ $GRID_FLEX_COMPS: (
     ),
     data: (
       "container": (
+
         gap: $gapInContainer,
       ),
       "row": (
@@ -43,7 +44,6 @@ $GRID_FLEX_COMPS: (
     responsible: true,
     exp: "gridWidth",
     extend: (
-      responsible: true,
       overflow: hidden,
     ),
   ),

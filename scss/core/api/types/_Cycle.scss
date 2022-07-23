@@ -14,6 +14,12 @@
     } @else {
       @if ($respValue == true) or ($respValue == only) {
         @include formatGenTypeOfCycle($propName, $Args);
+      } @else {
+        @each $mqKey in $respValue {
+          @if $mqKey == $isMq {
+            @include formatGenTypeOfCycle($propName, $Args);
+          }
+        }
       }
     }
   } @else {
@@ -26,6 +32,12 @@
     } @else {
       @if ($respValue == true) or ($respValue == only) {
         @include formatGenTypeOfCycle($propName, $Args);
+      } @else {
+        @each $mqKey in $respValue {
+          @if $mqKey == $isMq {
+            @include formatGenTypeOfCycle($propName, $Args);
+          }
+        }
       }
     }
   }
@@ -39,7 +51,12 @@
 
   @if ($data == "") or ($data == null) {
     @for $i from $start through $end {
-      $Args: map-merge($Args, (cycleKey: $i));
+      $Args: map-merge(
+        $Args,
+        (
+          cycleKey: $i,
+        )
+      );
       $Selector: formatSelector($propName, $Args);
       #{$Selector} {
         #{$propName}: Expressions($exp, $i);
@@ -47,7 +64,12 @@
     }
   } @else {
     @for $i from $start through $end {
-      $Args: map-merge($Args, (cycleKey: $i));
+      $Args: map-merge(
+        $Args,
+        (
+          cycleKey: $i,
+        )
+      );
       $Selector: formatSelector($propName, $Args);
       #{$Selector} {
         @each $key, $value in $data {

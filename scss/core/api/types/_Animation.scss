@@ -13,6 +13,12 @@
     } @else {
       @if ($respValue == true) or ($respValue == only) {
         @include formatGenTypeOfAnimation($Args, $data);
+      } @else {
+        @each $mqKey in $respValue {
+          @if $mqKey == $isMq {
+            @include formatGenTypeOfAnimation($Args, $data);
+          }
+        }
       }
     }
   }
@@ -21,7 +27,7 @@
     @each $key, $value in $data {
       $respHas: map-has-key($value, $__RES__);
       $respValue: map-get($value, $__RES__);
-      $Args: map-merge($Args, (SecondaryElement: $key));
+      $Args: map-merge($Args, (SecondaryElement: $key,));
       @if ($isMq == "") {
         @if ($respHas != true) or ($respValue != only) {
           @include formatGenTypeOfAnimation($Args, $value);
@@ -29,6 +35,12 @@
       } @else {
         @if ($respValue == true) or ($respValue == only) {
           @include formatGenTypeOfAnimation($Args, $value);
+        } @else {
+          @each $mqKey in $respValue {
+            @if $mqKey == $isMq {
+              @include formatGenTypeOfAnimation($Args, $data);
+            }
+          }
         }
       }
     }

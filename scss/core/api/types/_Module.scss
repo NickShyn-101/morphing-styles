@@ -5,18 +5,23 @@
 
   @each $key, $props in $data {
     @if mixin-exists($moduleName) {
-
-        $respHas: map-has-key($Args, $__RES__);
-        $respValue: map-get($Args, $__RES__);
-        @if ($isMq == "") {
-          @if ($respHas != true) or ($respValue != only) {
-            @include Modules($moduleName, $props, $Args);
-          }
+      $respHas: map-has-key($Args, $__RES__);
+      $respValue: map-get($Args, $__RES__);
+      @if ($isMq == "") {
+        @if ($respHas != true) or ($respValue != only) {
+          @include Modules($moduleName, $props, $Args);
+        }
+      } @else {
+        @if ($respValue == true) or ($respValue == only) {
+          @include Modules($moduleName, $props, $Args);
         } @else {
-          @if ($respValue == true) or ($respValue == only) {
-            @include Modules($moduleName, $props, $Args);
+          @each $mqKey in $respValue {
+            @if $mqKey == $isMq {
+              @include Modules($moduleName, $props, $Args);
+            }
           }
         }
-    } 
+      }
+    }
   }
 }
