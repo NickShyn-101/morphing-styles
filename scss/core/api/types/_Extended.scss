@@ -3,7 +3,7 @@
   $extend: map-get($Args, $__EXTEND__);
   $propName: map-get($Args, $__PROPPERTY__);
   $sel: map-get($Args, $__SEL__);
-  @if $type != $__CYCLE__ {
+  @if ($type != $__CYCLE__) and ($type != $__ANIMATION__) {
     $data: map-get($Args, $__DATA__);
     $AllSelectors: ();
     @if ($data != null) {
