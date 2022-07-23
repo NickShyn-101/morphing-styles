@@ -1,0 +1,5 @@
+@mixin runComponentGenerator($Args, $type) {
+    @if $type == $__CYCLE__ {
+      @include formatGenTypeOfCycle($Args)
+    }
+  }

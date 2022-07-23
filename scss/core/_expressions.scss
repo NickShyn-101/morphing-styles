@@ -15,6 +15,6 @@
 
   // Default value
   @if $method != true {
-    @return "Value not specified";
+    @return null;
   }
 }

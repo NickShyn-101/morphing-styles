@@ -7,7 +7,7 @@
     $Selector: formatSelector($key_index, $Args);
     $respHas: map-has-key($Args, $__RES__);
     $respValue: map-get($Args, $__RES__);
-
+    @if (type-of($propValue) == "string") {
       @if ($isMq == "") {
         @if ($respHas != true) or ($respValue != only) {
         @include formatGenTypeOfList($Selector, $propName, $propValue);
@@ -24,7 +24,7 @@
           }
         }
       }
-
+    }
 
     @if (type-of($propValue) == "list") {
       @if ($isMq == "") {

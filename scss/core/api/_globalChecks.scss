@@ -1,0 +1,23 @@
+@mixin globalChecks($checkFromData, $Args, $type) {
+    $respHas: map-has-key($checkFromData, $__RES__);
+    $respValue: map-get($checkFromData, $__RES__);
+    
+    $isMq: map-get($Args, $__MQ__);
+
+    @if ($isMq == "") {
+      @if ($respHas != true) or ($respValue != only) {
+        @include runComponentGenerator($Args, $type);
+      }
+    } @else {
+      @if ($respValue == true) or ($respValue == only) {
+        @include runComponentGenerator($Args, $type);
+      } @else {
+        @each $mqKey in $respValue {
+          @if $mqKey == $isMq {
+            @include runComponentGenerator($Args, $type);
+          }
+        }
+      }
+    }
+  }
+  
