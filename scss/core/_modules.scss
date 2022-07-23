@@ -1,0 +1,6 @@
+@mixin Modules($moduleName, $Props, $Args) {
+  // Color Custom Module from ColorPaletteCustom
+    @if $moduleName == "custom-color" {
+    @include custom-color($Props, $Args);
+  }
+}

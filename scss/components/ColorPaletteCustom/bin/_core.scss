@@ -1,4 +1,12 @@
-@mixin custom-color($colorKey, $colorVal, $shadeStep, $shadeVal, $dir, $tag) {
+@mixin custom-color($props, $Args) {
+ 
+  $colorKey:    nth($props, 1);    
+  $colorVal:    nth($props, 2);    
+  $shadeStep:   nth($props, 3);      
+  $shadeVal:    nth($props, 4);    
+  $dir:         nth($props, 5);
+  $tag:         nth($props, 6);
+
   $postfix: "";
   $tagFullName: "";
 

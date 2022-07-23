@@ -1,4 +1,13 @@
 $GRID_FLEX_COMPS: (
+  "dev-tools": (
+    type: boost,
+    to: ("grid-main", "grid-cols"),
+    data: (
+      background: "rgba(149, 16, 251, 0.05)",
+      border: "1px dashed rgba(149, 16, 251, 0.25)",
+      padding: 20px,
+    ),
+  ),
   "grid-normal": (
     sel: "main, aside, footer, header, section, .section",
     extend: (
@@ -18,6 +27,7 @@ $GRID_FLEX_COMPS: (
     ),
     data: (
       "container": (
+
         gap: $gapInContainer,
       ),
       "row": (
@@ -34,7 +44,6 @@ $GRID_FLEX_COMPS: (
     responsible: true,
     exp: "gridWidth",
     extend: (
-      responsible: true,
       overflow: hidden,
     ),
   ),

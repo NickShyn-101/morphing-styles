@@ -1,30 +1,46 @@
 @mixin Core($DATA, $MQ: "", $API_LIST: $COMPONENTS) {
   $isMq: toString($MQ);
-  @each $key, $status in $DATA {
+  @each $componentName, $status in $DATA {
     @if $status != false {
-      @if map-has-key($API_LIST, $key) {
-        $resource: map-get($API_LIST, $key);
+      @if map-has-key($API_LIST, $componentName) {
+        $resource: map-get($API_LIST, $componentName);
         $type: map-get($resource, $__TYPE__);
+        @if $type != __BOOST__ {
+          // Params to share with other functions as argument
+          $args: getApiData($resource, $isMq, $componentName, $status);
 
-        // Params to share with other functions as argument
-        $args: getApiData($resource, $isMq, $key, $status);
+          // Generate Extended Selectors
+          @include generateTypeOfExtended($args);
 
-        // Generate Extended Selectors
-        @include generateTypeOfExtended($args);
+          // Generate One Property Selectors
+          // @if ($type == $__SIMPLE__) or ($type == null) {
+          //   @include generateTypeOfSimple($args);
+          // }
 
-        // Generate One Property Selectors
-        @if ($type == $__LIST__) or ($type == null) {
-          @include generateTypeOfList($args);
-        }
+          // Generate One Property Selectors
+          @if ($type == $__LIST__) or ($type == null) {
+            @include generateTypeOfList($args);
+          }
 
-        // Generate Component Selectors
-        @if ($type == $__COMPONENT__) {
-          @include generateTypeOfComponent($args);
-        }
+          // Generate Component Selectors
+          @if ($type == $__COMPONENT__) {
+            @include generateTypeOfComponent($args);
+          }
 
-        // Generate Cycle Based Selectors
-        @if ($type == $__CYCLE__) {
-          @include generateTypeOfCycle($args);
+          // Generate Cycle Based Selectors
+          @if ($type == $__CYCLE__) {
+            @include generateTypeOfCycle($args);
+          }
+
+          // Generate Animations
+          @if ($type == $__ANIMATION__) {
+            @include generateTypeOfAnimation($args);
+          }
+
+          // Generate Modules
+          @if ($type == $__MODULE__) {
+            @include generateTypeOfModule($args);
+          }
         }
       }
     }

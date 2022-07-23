@@ -5,12 +5,26 @@
 
   @each $key_index, $propValue in $data {
     $Selector: formatSelector($key_index, $Args);
+    $respHas: map-has-key($Args, $__RES__);
+    $respValue: map-get($Args, $__RES__);
 
-    @if (type-of($propValue) == "string") {
       @if ($isMq == "") {
+        @if ($respHas != true) or ($respValue != only) {
         @include formatGenTypeOfList($Selector, $propName, $propValue);
+
       }
-    }
+      } @else {
+        @if ($respValue == true) or ($respValue == only) {
+          @include formatGenTypeOfList($Selector, $propName, $propValue);
+        } @else {
+          @each $mqKey in $respValue {
+            @if $mqKey == $isMq {
+              @include formatGenTypeOfList($Selector, $propName, $propValue);
+            }
+          }
+        }
+      }
+
 
     @if (type-of($propValue) == "list") {
       @if ($isMq == "") {
@@ -20,6 +34,12 @@
       } @else {
         @if (nth($propValue, 2) == true) or (nth($propValue, 2) == only) {
           @include formatGenTypeOfList($Selector, $propName, nth($propValue, 1));
+        } @else {
+          @each $mqKey in nth($propValue, 2) {
+            @if $mqKey == $isMq {
+              @include formatGenTypeOfList($Selector, $propName, nth($propValue, 1));
+            }
+          }
         }
       }
     }

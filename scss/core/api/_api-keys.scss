@@ -14,11 +14,24 @@ $__END__:         "end";
 $__EXP__:         "exp";
 
 // Types of components
+$__SIMPLE__:      "simple";
+$__COMPONENT__:   "component"; // or null
 $__LIST__:        "list";
-$__COMPONENT__:   "component";
 $__CYCLE__:       "cycle";
+$__ANIMATION__:   "animation";
+$__MODULE__:      "module";
+// pseudo types
+$__BOOST__:       "boost";
+
+// only for Boost
+$__TO__:          "to";
+
+// only for Animation 
+$__GROUP__:       "group";
+$__NAME__:        "name";
 
 // Params in data and extend
+// "responsible", "res", "addaptive";
 $__RES__:         "responsible";
 
 // Other and short names

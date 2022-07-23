@@ -1,20 +1,23 @@
-@function getApiData($RES_ARR, $isMq, $currentComp, $currentStatus) {
+@function getApiData($RES_ARR, $isMq, $componentName, $currentStatus) {
   $result: (
-    $__COMP__: $currentComp,
-    $__STATUS__: $currentStatus,
+    $__COMP__:        $componentName,
+    $__STATUS__:      $currentStatus,
 
-    $__MQ__: $isMq,
-    $__TYPE__: map-get($RES_ARR, $__TYPE__),
-    $__DATA__: map-get($RES_ARR, $__DATA__),
-    $__SEL__: getAttribute($RES_ARR, $__SEL__, ""),
-    $__SELTYPE__: getAttribute($RES_ARR, $__SELTYPE__, ""),
-    $__EXTEND__: map-get($RES_ARR, $__EXTEND__),
-    $__PROPPERTY__: getAttribute($RES_ARR, $__PROPPERTY__, $currentComp),
+    $__MQ__:          $isMq,
+    $__TYPE__:        map-get($RES_ARR, $__TYPE__),
+    $__DATA__:        map-get($RES_ARR, $__DATA__),
+    $__SEL__:         getAttribute($RES_ARR, $__SEL__, ""),
+    $__SELTYPE__:     getAttribute($RES_ARR, $__SELTYPE__, ""),
+    $__EXTEND__:      map-get($RES_ARR, $__EXTEND__),
+    $__PROPPERTY__:   getAttribute($RES_ARR, $__PROPPERTY__, $componentName),
+    $__TO__:          getAttribute($RES_ARR, $__TO__, ""),
+    $__GROUP__:       getAttribute($RES_ARR, $__GROUP__, false),
+    $__NAME__:       getAttribute($RES_ARR, $__NAME__, ""),
   
-    $__RES__: map-get($RES_ARR, $__RES__),
-    $__START__: map-get($RES_ARR, $__START__),
-    $__END__: map-get($RES_ARR, $__END__),
-    $__EXP__: map-get($RES_ARR, $__EXP__),
+    $__RES__:         map-get($RES_ARR, $__RES__),
+    $__START__:       map-get($RES_ARR, $__START__),
+    $__END__:         map-get($RES_ARR, $__END__),
+    $__EXP__:         map-get($RES_ARR, $__EXP__),
     );
 
   @return $result;

@@ -3,7 +3,7 @@
   $extend: map-get($Args, $__EXTEND__);
   $propName: map-get($Args, $__PROPPERTY__);
   $sel: map-get($Args, $__SEL__);
-  @if $type != $__CYCLE__ {
+  @if ($type != $__CYCLE__) and ($type != $__ANIMATION__) {
     $data: map-get($Args, $__DATA__);
     $AllSelectors: ();
     @if ($data != null) {
@@ -29,20 +29,21 @@
     $AllSelectors: ();
 
     @for $i from $start through $end {
-      $currentSelector: formatSelector($propName, $Args, $i);
+      $Args: map-merge($Args,(cycleKey: $i,));
+      $currentSelector: formatSelector($propName, $Args);
       $AllSelectors: append($AllSelectors, $currentSelector, "comma");
     }
     @include checkForReservedProperties($AllSelectors, $extend, $Args);
-  
   }
 }
 
 @mixin checkForReservedProperties($AllSelectors, $props, $Args) {
-  $isMq: map-get($Args, $__MQ__);
-
+  
   @if (type-of($props) != "map") {
     $props: ();
   }
+  
+  $isMq: map-get($Args, $__MQ__);
   $respHas: map-has-key($props, $__RES__);
   $respValue: map-get($props, $__RES__);
 
@@ -53,6 +54,12 @@
   } @else {
     @if ($respValue == true) or ($respValue == only) {
       @include formatGenTypeOfExtended($AllSelectors, $props, $Args);
+    } @else {
+      @each $mqKey in $respValue {
+        @if $mqKey == $isMq {
+          @include formatGenTypeOfExtended($AllSelectors, $props, $Args);
+        }
+      }
     }
   }
 }
