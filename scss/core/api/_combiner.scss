@@ -1,8 +1,9 @@
 @mixin Combiner($data) {
-  @include Core($data);
+  $API_LIST: BoostCore($data);
+  @include Core($data, "", $API_LIST);
   @each $key, $value in $mediaQuery {
     @media #{$value} {
-      @include Core($data, $key);
+      @include Core($data, $key,  $API_LIST);
     }
   }
 }

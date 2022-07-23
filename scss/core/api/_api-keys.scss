@@ -14,9 +14,15 @@ $__END__:         "end";
 $__EXP__:         "exp";
 
 // Types of components
+$__SIMPLE__:      "simple";
+$__COMPONENT__:   "component"; // or null
 $__LIST__:        "list";
-$__COMPONENT__:   "component";
 $__CYCLE__:       "cycle";
+$__ANIMATION__:   "animation";
+$__MODULE__:      "module";
+// pseudo types
+$__BOOST__:       "boost";
+$__TO__:          "to";
 
 // Params in data and extend
 $__RES__:         "responsible";
