@@ -8,7 +8,7 @@ $TABLE_COMPS: (
     seltype: "g",
     data: (
       "table": (
-        responsible: false,
+        mq: false,
         table-layout: fixed,
         border-collapse: collapse,
         border-spacing: 0px,
@@ -39,7 +39,7 @@ $TABLE_COMPS: (
     seltype: "g",
     data: (
       "caption": (
-        responsible: false,
+        mq: false,
         font-size: 10px,
         text-align: left,
         padding: 10px 20px,
@@ -52,12 +52,12 @@ $TABLE_COMPS: (
     sel: "table",
     seltype: "g",
     extend: (
-      responsible: false,
+      mq: false,
       line-height: 100%,
     ),
     data: (
       "table": (
-        responsible: false,
+        mq: false,
         font-size: 1.25em,
         text-decoration: none,
       ),

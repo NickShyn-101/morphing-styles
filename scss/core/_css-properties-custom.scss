@@ -15,7 +15,7 @@ $CSS_PROPERTIES_LIST_CUSTOM: (
     type: list,
     prop: "margin",
     sel: "mc", 
-    responsible: true,
+    mq: true,
     extend: (
       color: green,
     ),
@@ -36,7 +36,7 @@ $CSS_PROPERTIES_LIST_CUSTOM: (
   "animation-single": (
     type: animation,
     name: "SupernSi",
-    responsible: (lh),
+    mq: (lh),
     data: (
       "from": (
         position: 50px,
@@ -54,7 +54,7 @@ $CSS_PROPERTIES_LIST_CUSTOM: (
     name: "slide",
     data: (
       "in": (
-        // responsible: true,
+        // mq: true,
         "from": (
           position: 50px,
           width: 100px,
@@ -65,7 +65,7 @@ $CSS_PROPERTIES_LIST_CUSTOM: (
         ),
       ),
       "out": (
-        // responsible: only,
+        // mq: only,
         "from": (
           left: 100px,
           top: 150px,

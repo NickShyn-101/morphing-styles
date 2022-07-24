@@ -40,7 +40,7 @@ $GRID_FLEX_COMPS: (
   //   sel: "col",
   //   start: 1,
   //   end: $col-count,
-  //   responsible: true,
+  //   mq: true,
   //   extend: (
   //     overflow: hidden,
   //   ),
@@ -55,7 +55,7 @@ $GRID_FLEX_COMPS: (
     prop: "width",
     start: 1,
     end: $col-count,
-    responsible: true,
+    mq: true,
     exp: "gridWidth",
     extend: (
       overflow: hidden,
@@ -67,7 +67,7 @@ $GRID_FLEX_COMPS: (
     prop: "margin-left",
     start: 0,
     end: $col-count - 1,
-    responsible: true,
+    mq: true,
     exp: "offsetWidth",
   ),
   "grid-offset-right": (
@@ -76,18 +76,18 @@ $GRID_FLEX_COMPS: (
     prop: "margin-right",
     start: 0,
     end: $col-count - 1,
-    responsible: true,
+    mq: true,
     exp: "offsetWidth",
   ),
   "custom-grid-basics": (
     type: block,
     data: (
       "d-none": (
-        responsible: true,
+        mq: true,
         display: "none !important",
       ),
       "v-none": (
-        responsible: true,
+        mq: true,
         visibility: "hidden !important",
       ),
     ),
