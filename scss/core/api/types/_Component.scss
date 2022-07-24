@@ -1,22 +1,23 @@
 @mixin generateTypeOfComponent($Args) {
   $data:    map-get($Args, $__DATA__);
 
-  @each $key, $value in $data {
-    $Selector: formatSelector($key, $Args);
+  @each $currentProp, $currentValue in $data {
     $Args: map-merge($Args,(
-        $__SELECTOR__: $Selector,
-        $__CONTENT__: $value,
+        $__CURRENTPROP__:   $currentProp,
+        $__CURRENTDATA__:   $currentValue
       ));
-    @include globalChecks($value, $Args);
+    @include globalChecks($currentValue, $Args);
   }
 }
 
 @mixin formatGenTypeOfComponent($Args) {
-  $Selector:  map-get($Args, $__SELECTOR__);
-  $Content:   map-get($Args, $__CONTENT__);
+  $currentProp:   map-get($Args, $__CURRENTPROP__);
+  $currentData:   map-get($Args, $__CURRENTDATA__);
+  
+  $Selector:      formatSelector($currentProp, $Args);
 
   #{$Selector} {
-    @each $propName, $propValue in $Content {
+    @each $propName, $propValue in $currentData {
       @if $propName != $__RES__ {
         #{$propName}: #{$propValue};
       }

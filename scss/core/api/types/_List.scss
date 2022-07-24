@@ -1,31 +1,32 @@
 @mixin generateTypeOfList($Args) {
-  $isMq: map-get($Args, $__MQ__);
   $data: map-get($Args, $__DATA__);
 
-  @each $key_index, $propValue in $data {
+  @each $currentProp, $currnetData in $data {
     $respValue: map-get($Args, $__RES__);
 
-    @if length($propValue) == 2 {
-      $respValue: nth($propValue, 2);
+    @if length($currnetData) == 2 {
+      $respValue: nth($currnetData, 2);
     }
 
     $Args: map-merge($Args,(
-      ListPropValue:  nth($propValue, 1),
-      ListPropName: $key_index,
-      $__RES__: $respValue
+      $__CURRENTPROP__:   $currentProp,
+      $__CURRENTDATA__:   nth($currnetData, 1),
+      $__RES__:           $respValue
       ));
+      
     @include globalChecks($Args);
-  }
+  } 
 }
 
 @mixin formatGenTypeOfList($Args) {
-  $prop: map-get($Args, $__PROPPERTY__);
-  $propValue: map-get($Args, ListPropValue);
-  $propName: map-get($Args, ListPropName);
-  $Selector: formatSelector($propName, $Args);
+  $propName:    map-get($Args, $__PROPPERTY__);
+  $currentProp: map-get($Args, $__CURRENTPROP__);
+  $currentData: map-get($Args, $__CURRENTDATA__);
+
+  $Selector: formatSelector($currentProp, $Args);
 
   #{$Selector} {
-    #{$prop}: #{$propValue};
+    #{$propName}: #{$currentData};
   }
 }
 

@@ -19,21 +19,24 @@
     $Args:      map-merge($Args, ( cycleKey: $i ));
     $Selector:  formatSelector($propName, $Args);
 
-    @if $data == null {   
-      #{$Selector} {
+    #{$Selector} {
+      
+        // if there is only one (prop) Cycle Component
+      @if $data == null {    
         #{$propName}: Expressions($exp, $i);
-      } 
-    } @else {
-      #{$Selector} {
-        @each $propNameCycle, $propValueCycle in $data {
-          @if $propNameCycle != $__RES__ {
-            @if Expressions($propValueCycle, $i) != null {
-              #{$propNameCycle}: Expressions($propValueCycle, $i);
+      } @else {
+
+        // for some props in (data) in Cycle Component
+        @each  $currentProp, $currentData in $data {
+          @if  $currentProp != $__RES__ {
+            @if Expressions($currentData, $i) != null {
+              #{ $currentProp}: Expressions($currentData, $i);
             } @else {
-              #{$propNameCycle}: #{$propValueCycle};
+              #{ $currentProp}: #{$currentData};
             }
-          }
+          }   
         }
+
       }
     }
   }
