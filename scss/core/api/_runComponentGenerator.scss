@@ -1,5 +1,14 @@
-@mixin runComponentGenerator($Args, $type) {
-    @if $type == $__CYCLE__ {
-      @include formatGenTypeOfCycle($Args)
-    }
+@mixin runComponentGenerator($Args) {
+  $type: map-get($Args, $__TYPE__);
+
+  @if $type == $__CYCLE__ {
+    @include formatGenTypeOfCycle($Args);
   }
+
+  @if $type == $__COMPONENT__ {
+    @include formatGenTypeOfComponent($Args);
+  }
+}
+    // .worke {
+    //     done: tue;
+    // }

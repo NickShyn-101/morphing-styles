@@ -4,6 +4,7 @@
       @if map-has-key($API_LIST, $componentName) {
         $resource: map-get($API_LIST, $componentName);
         $type: map-get($resource, $__TYPE__);
+
         @if $type == $__BOOST__ {
           $toList: map-get($resource, $__TO__);
           $boostedData: map-get($resource, $__DATA__);
@@ -15,6 +16,7 @@
             }
           }
         }
+        
       }
     }
   }

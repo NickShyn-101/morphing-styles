@@ -1,38 +1,36 @@
 @mixin generateTypeOfCycle($Args) {
   $data: map-get($Args, $__DATA__);
-  $type: map-get($Args, $__TYPE__);
-  @if ($data == "") or ($data == null) {
-    @include globalChecks($Args, $Args, $type)
+ 
+  @if $data == null {
+    @include globalChecks($Args, $Args)
   } @else {
-    @include globalChecks($data, $Args, $type)
+    @include globalChecks($data, $Args)
   }
 }
 
 @mixin formatGenTypeOfCycle($Args) {
-  $start: map-get($Args, $__START__);
-  $end: map-get($Args, $__END__);
-  $exp: map-get($Args, $__EXP__);
-  $data: map-get($Args, $__DATA__);
-  $propName: map-get($Args, $__PROPPERTY__);
-  @if ($data == "") or ($data == null) {
-    @for $i from $start through $end {
-      $Args: map-merge($Args, ( cycleKey: $i ));
-      $Selector: formatSelector($propName, $Args);
+  $start:     map-get($Args, $__START__);
+  $end:       map-get($Args, $__END__);
+  $exp:       map-get($Args, $__EXP__);
+  $data:      map-get($Args, $__DATA__);
+  $propName:  map-get($Args, $__PROPPERTY__);
+
+  @for $i from $start through $end {
+    $Args: map-merge($Args, ( cycleKey: $i ));
+    $Selector: formatSelector($propName, $Args);
+
+    @if $data == null {   
       #{$Selector} {
         #{$propName}: Expressions($exp, $i);
-      }
-    }
-  } @else {
-    @for $i from $start through $end {
-      $Args: map-merge($Args, ( cycleKey: $i ));
-      $Selector: formatSelector($propName, $Args);
+      } 
+    } @else {
       #{$Selector} {
-        @each $key, $value in $data {
-          @if $key != $__RES__ {
-            @if Expressions($value, $i) != null {
-              #{$key}: Expressions($value, $i);
+        @each $propNameCycle, $propValueCycle in $data {
+          @if $propNameCycle != $__RES__ {
+            @if Expressions($propValueCycle, $i) != null {
+              #{$propNameCycle}: Expressions($propValueCycle, $i);
             } @else {
-              #{$key}: #{$value};
+              #{$propNameCycle}: #{$propValueCycle};
             }
           }
         }

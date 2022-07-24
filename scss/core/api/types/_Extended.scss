@@ -1,8 +1,11 @@
 @mixin generateTypeOfExtended($Args) {
-  $type: map-get($Args, $__TYPE__);
-  $extend: map-get($Args, $__EXTEND__);
-  $propName: map-get($Args, $__PROPPERTY__);
-  $sel: map-get($Args, $__SEL__);
+  $type:      map-get($Args, $__TYPE__);
+  $extend:    map-get($Args, $__EXTEND__);
+  $propName:  map-get($Args, $__PROPPERTY__);
+  $sel:       map-get($Args, $__SEL__);
+  $extend:    map-get($Args, $__EXTEND__);
+  $data:      map-get($Args, $__DATA__);
+
   @if ($type != $__CYCLE__) and ($type != $__ANIMATION__) {
     $data: map-get($Args, $__DATA__);
     $AllSelectors: ();
@@ -15,19 +18,15 @@
           $AllSelectors: append($AllSelectors, $currentSelector, "comma");
         }
       }
-
       @include checkForReservedProperties($AllSelectors, $extend, $Args);
     } @else {
       @include checkForReservedProperties($sel, $extend, $Args);
     }
   } @else if $type == $__CYCLE__ {
-    $propName: map-get($Args, $__PROPPERTY__);
     $start: map-get($Args, $__START__);
     $end: map-get($Args, $__END__);
-    $extend: map-get($Args, $__EXTEND__);
-    $data: map-get($Args, $__DATA__);
-    $AllSelectors: ();
 
+    $AllSelectors: ();
     @for $i from $start through $end {
       $Args: map-merge($Args,(cycleKey: $i,));
       $currentSelector: formatSelector($propName, $Args);

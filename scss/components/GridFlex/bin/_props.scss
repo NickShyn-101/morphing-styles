@@ -35,32 +35,32 @@ $GRID_FLEX_COMPS: (
       ),
     ),
   ),
-  "grid-cols": (
-    type: cycle,
-    sel: "col",
-    start: 1,
-    end: $col-count,
-    responsible: true,
-    extend: (
-      overflow: hidden,
-    ),
-    data: (
-      width: "gridWidth",
-      height: 100px,
-    ),
-  ),
   // "grid-cols": (
   //   type: cycle,
   //   sel: "col",
-  //   prop: "width",
   //   start: 1,
   //   end: $col-count,
   //   responsible: true,
-  //   exp: "gridWidth",
   //   extend: (
   //     overflow: hidden,
   //   ),
+  //   data: (
+  //     width: "gridWidth",
+  //     height: 100px,
+  //   ),
   // ),
+  "grid-cols": (
+    type: cycle,
+    sel: "col",
+    prop: "width",
+    start: 1,
+    end: $col-count,
+    responsible: true,
+    exp: "gridWidth",
+    extend: (
+      overflow: hidden,
+    ),
+  ),
   "grid-offset-left": (
     type: cycle,
     sel: "offset-l",
