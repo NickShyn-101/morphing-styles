@@ -20,6 +20,10 @@
     @include formatGenTypeOfComponent($Args);
   }
 
+  @if $type == $__ANIMATION__ {
+    @include formatGenTypeOfAnimation($Args)
+  }
+
   @if $type == $__MODULE__ {
     @include Modules($Args);
   }

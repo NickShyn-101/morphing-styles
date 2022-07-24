@@ -29,49 +29,49 @@ $CSS_PROPERTIES_LIST_CUSTOM: (
       "green":      ("pink", #ed18c6,  10,  2%,  "l",     "color"), 
     ),
   ),
-  // "animation-single": (
-  //   type: animation,
-  //   name: "SupernSi",
-  //   responsible: (lh),
-  //   data: (
-  //     "from": (
-  //       position: 50px,
-  //       width: 100px,
-  //     ),
-  //     "to": (
-  //       position: 150px,
-  //       width: 500px,
-  //     ),
-  //   ),
-  // ),
-  // "animation-group": (
-  //   type: animation,
-  //   group: true,
-  //   name: "slide",
-  //   data: (
-  //     "in": (
-  //       // responsible: true,
-  //       "from": (
-  //         position: 50px,
-  //         width: 100px,
-  //       ),
-  //       "to": (
-  //         position: 150px,
-  //         width: 500px,
-  //       ),
-  //     ),
-  //     "out": (
-  //       // responsible: only,
-  //       "from": (
-  //         left: 100px,
-  //         top: 150px,
-  //       ),
-  //       "to": (
-  //         left: 150px,
-  //         top: 200px,
-  //       ),
-  //     ),
-  //   ),
-  // ),
+  "animation-single": (
+    type: animation,
+    name: "SupernSi",
+    responsible: (lh),
+    data: (
+      "from": (
+        position: 50px,
+        width: 100px,
+      ),
+      "to": (
+        position: 150px,
+        width: 500px,
+      ),
+    ),
+  ),
+  "animation-group": (
+    type: animation,
+    group: true,
+    name: "slide",
+    data: (
+      "in": (
+        // responsible: true,
+        "from": (
+          position: 50px,
+          width: 100px,
+        ),
+        "to": (
+          position: 150px,
+          width: 500px,
+        ),
+      ),
+      "out": (
+        // responsible: only,
+        "from": (
+          left: 100px,
+          top: 150px,
+        ),
+        "to": (
+          left: 150px,
+          top: 200px,
+        ),
+      ),
+    ),
+  ),
  );
 

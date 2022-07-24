@@ -9,16 +9,17 @@
   $AllSelectors: ();
 
   @if ($type != $__CYCLE__) and
-    ($type != $__ANIMATION__) and
-    ($type != $__MODULE__) {
+      ($type != $__ANIMATION__) and
+      ($type != $__MODULE__) {
     @if ($data != null) {
       @each $key, $_ in $data {
         $currentSelector: ();
+
         @if $key != null {
           $Selector: formatSelector($key, $Args);
           $currentSelector: append($currentSelector, $Selector);
           $AllSelectors: append($AllSelectors, $currentSelector, "comma");
-        }
+        }  
       }
       @include checkForReservedProperties($AllSelectors, $Args);
     } @else {

@@ -1,5 +1,5 @@
 @mixin generateTypeOfCycle($Args) {
-  $data:        map-get($Args, $__DATA__);
+  $data:  map-get($Args, $__DATA__);
  
   @if $data == null {
     @include globalChecks($Args)

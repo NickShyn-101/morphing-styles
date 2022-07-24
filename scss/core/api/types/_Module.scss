@@ -5,7 +5,7 @@
 
   @each $key, $value in $data {
     @if mixin-exists($moduleName) {
-      $Args:      map-merge($Args, ($__CONTENT__: $value));
+      $Args: map-merge($Args, ($__CONTENT__: $value));
 
       @include globalChecks($Args);
     }
