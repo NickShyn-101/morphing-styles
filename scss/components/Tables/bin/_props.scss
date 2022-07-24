@@ -4,7 +4,7 @@ $table-all-tags: "table tfoot th, table tfoot td, table tfoot tr, table tfoot, t
 
 $TABLE_COMPS: (
   "table-normal": (
-    type: component,
+    type: block,
     seltype: "g",
     data: (
       "table": (
@@ -24,7 +24,7 @@ $TABLE_COMPS: (
     ),
   ),
   "table-styles": (
-    type: component,
+    type: block,
     sel: "table",
     data: (
       "wrapper": (
@@ -35,7 +35,7 @@ $TABLE_COMPS: (
     ),
   ),
   "caption": (
-    type: component,
+    type: block,
     seltype: "g",
     data: (
       "caption": (
@@ -48,7 +48,7 @@ $TABLE_COMPS: (
     ),
   ),
   "table-fonts": (
-    type: component,
+    type: block,
     sel: "table",
     seltype: "g",
     extend: (

@@ -24,8 +24,8 @@
           }
 
           // Generate Component Selectors
-          @if ($type == $__COMPONENT__) {
-            @include generateTypeOfComponent($Args);
+          @if ($type == $__BLOCK__) {
+            @include generateTypeOfBlock($Args);
           }
 
           // Generate Cycle Based Selectors

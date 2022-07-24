@@ -9,7 +9,7 @@
   $AllSelectors:    ();
 
   @if $extend != null {
-    @if ($type == $__LIST__) or ($type == $__COMPONENT__) or ($type == null) {
+    @if ($type == $__LIST__) or ($type == $__BLOCK__) or ($type == null) {
       @if ($data != null) {
         @each $key, $_ in $data {
           $currentSelector: ();
@@ -37,7 +37,7 @@
 @mixin formatGenTypeOfExtended($Args) {
   $Selector: map-get($Args, $__SELECTOR__);
   $extend: map-get($Args, $__EXTEND__);
-  
+
   #{$Selector} {
     @each $propName, $propValue in $extend {
       @if $propName != $__RES__ {

@@ -13,8 +13,8 @@
       @include formatGenTypeOfList($Args);
     }
 
-    @if $type == $__COMPONENT__ {
-      @include formatGenTypeOfComponent($Args);
+    @if $type == $__BLOCK__ {
+      @include formatGenTypeOfBlock($Args);
     }
 
     @if $type == $__ANIMATION__ {

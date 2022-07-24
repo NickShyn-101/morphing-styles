@@ -16,7 +16,7 @@ $GRID_FLEX_COMPS: (
     ),
   ),
   "grid-main": (
-    type: component,
+    type: block,
     extend: (
       display: flex,
       flex-direction: row,
@@ -80,7 +80,7 @@ $GRID_FLEX_COMPS: (
     exp: "offsetWidth",
   ),
   "custom-grid-basics": (
-    type: component,
+    type: block,
     data: (
       "d-none": (
         responsible: true,

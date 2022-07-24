@@ -61,7 +61,7 @@
 
   // if we used flag g (global)
   @else if $selType == "g" {
-    @if $type == $__COMPONENT__ {
+    @if $type == $__BLOCK__ {
       $result: $selTypeCompMQ;
     } @else {
       $result: $selTypeGlobal;

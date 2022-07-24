@@ -1,4 +1,4 @@
-@mixin generateTypeOfComponent($Args) {
+@mixin generateTypeOfBlock($Args) {
   $data:    map-get($Args, $__DATA__);
 
   @each $currentProp, $currentValue in $data {
@@ -10,7 +10,7 @@
   }
 }
 
-@mixin formatGenTypeOfComponent($Args) {
+@mixin formatGenTypeOfBlock($Args) {
   $currentProp:   map-get($Args, $__CURRENTPROP__);
   $currentData:   map-get($Args, $__CURRENTDATA__);
   
