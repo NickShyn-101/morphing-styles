@@ -1,15 +1,15 @@
-@function getApiData($RES_ARR, $isMq, $componentName, $currentStatus) {
+@function getApiData($RES_ARR) {
   $result: (
-    $__COMP__:        $componentName,
-    $__STATUS__:      $currentStatus,
+    $__COMP__:        map-get($RES_ARR, $__COMP__),
+    $__STATUS__:      map-get($RES_ARR, $__STATUS__),
 
-    $__MQ__:          $isMq,
+    $__MQ__:          map-get($RES_ARR, $__MQ__),
     $__TYPE__:        map-get($RES_ARR, $__TYPE__),
     $__DATA__:        map-get($RES_ARR, $__DATA__),
     $__SEL__:         getAttribute($RES_ARR, $__SEL__, ""),
     $__SELTYPE__:     getAttribute($RES_ARR, $__SELTYPE__, ""),
     $__EXTEND__:      map-get($RES_ARR, $__EXTEND__),
-    $__PROPPERTY__:   getAttribute($RES_ARR, $__PROPPERTY__, $componentName),
+    $__PROPPERTY__:   getAttribute($RES_ARR, $__PROPPERTY__, map-get($RES_ARR, $__COMP__)),
     $__TO__:          getAttribute($RES_ARR, $__TO__, ""),
     $__GROUP__:       getAttribute($RES_ARR, $__GROUP__, false),
     $__NAME__:       getAttribute($RES_ARR, $__NAME__, ""),

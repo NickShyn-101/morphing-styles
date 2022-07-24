@@ -1,8 +1,8 @@
-@function BoostCore($DATA, $MQ: "", $API_LIST: $COMPONENTS) {
-  @each $componentName, $status in $DATA {
-    @if $status != false {
-      @if map-has-key($API_LIST, $componentName) {
-        $resource:  map-get($API_LIST, $componentName);
+@function BoostCore($DATA, $API_LIST: $COMPONENTS) {
+  @each $compName, $compStatus in $DATA {
+    @if $compStatus != false {
+      @if map-has-key($API_LIST, $compName) {
+        $resource:  map-get($API_LIST, $compName);
         $type:      map-get($resource, $__TYPE__);
 
         @if $type == $__BOOST__ {

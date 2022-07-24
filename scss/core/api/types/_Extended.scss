@@ -1,52 +1,44 @@
 @mixin generateTypeOfExtended($Args) {
-  $type: map-get($Args, $__TYPE__);
-  $propName: map-get($Args, $__PROPPERTY__);
-  $sel: map-get($Args, $__SEL__);
-  $start: map-get($Args, $__START__);
-  $end: map-get($Args, $__END__);
-  $data: map-get($Args, $__DATA__);
+  $type:            map-get($Args, $__TYPE__);
+  $propName:        map-get($Args, $__PROPPERTY__);
+  $sel:             map-get($Args, $__SEL__);
+  $start:           map-get($Args, $__START__);
+  $end:             map-get($Args, $__END__);
+  $data:            map-get($Args, $__DATA__);
+  $extend:          map-get($Args, $__EXTEND__);
+  $AllSelectors:    ();
 
-  $AllSelectors: ();
-
-  @if ($type != $__CYCLE__) and
-      ($type != $__ANIMATION__) and
-      ($type != $__MODULE__) {
-    @if ($data != null) {
-      @each $key, $_ in $data {
-        $currentSelector: ();
-
-        @if $key != null {
-          $Selector: formatSelector($key, $Args);
-          $currentSelector: append($currentSelector, $Selector);
-          $AllSelectors: append($AllSelectors, $currentSelector, "comma");
-        }  
-      }
-      @include checkForReservedProperties($AllSelectors, $Args);
-    } @else {
-      @include checkForReservedProperties($sel, $Args);
-    }
-  } @else if $type == $__CYCLE__ {
-    @for $i from $start through $end {
-      $Args: map-merge($Args,(cycleKey: $i,));
-      $currentSelector: formatSelector($propName, $Args);
-      $AllSelectors: append($AllSelectors, $currentSelector, "comma");
-    }
-    @include checkForReservedProperties($AllSelectors, $Args);
-  }
-}
-
-@mixin checkForReservedProperties($AllSelectors, $Args) {
-  $extend: map-get($Args, $__EXTEND__);
   @if $extend != null {
+    @if ($type == $__LIST__) or ($type == $__COMPONENT__) or ($type == null) {
+      @if ($data != null) {
+        @each $key, $_ in $data {
+          $currentSelector: ();
+          @if $key != null {
+            $Selector: formatSelector($key, $Args);
+            $currentSelector: append($currentSelector, $Selector);
+            $AllSelectors: append($AllSelectors, $currentSelector, "comma");
+          }  
+        }
+      } @else {
+        $AllSelectors: append($AllSelectors, $sel, "comma");
+      }
+    } @else if ($type == $__CYCLE__) {
+      @for $i from $start through $end {
+        $Args: map-merge($Args,(cycleKey: $i));
+        $currentSelector: formatSelector($propName, $Args);
+        $AllSelectors: append($AllSelectors, $currentSelector, "comma");
+      }
+    }
     $Args: map-merge($Args,($__SELECTOR__: $AllSelectors));
     @include globalChecks($extend, $Args);
   }
 }
 
 @mixin formatGenTypeOfExtended($Args) {
-  $AllSelectors: map-get($Args, $__SELECTOR__);
+  $Selector: map-get($Args, $__SELECTOR__);
   $extend: map-get($Args, $__EXTEND__);
-  #{$AllSelectors} {
+  
+  #{$Selector} {
     @each $propName, $propValue in $extend {
       @if $propName != $__RES__ {
         #{$propName}: #{$propValue};

@@ -1,18 +1,17 @@
 @mixin globalChecks($checkFromData, $Args: $checkFromData) {
+    $res:  map-get($checkFromData, $__RES__);   
+    $MQ:   map-get($Args, $__MQ__);
 
-    $respValue:     map-get($checkFromData, $__RES__);   
-    $isMq:          map-get($Args, $__MQ__);
-
-    @if ($isMq == "") {
-      @if ($respValue != only) {
+    @if ($MQ == "") {
+      @if ($res != only) {
         @include runComponentGenerator($Args);
       }
     } @else {
-      @if ($respValue == true) or ($respValue == only) {
+      @if ($res == true) or ($res == only) {
         @include runComponentGenerator($Args);
       } @else {
-        @each $mqKey in $respValue {
-          @if $mqKey == $isMq {
+        @each $mqKey in $res {
+          @if $mqKey == $MQ {
             @include runComponentGenerator($Args);
           }
         }

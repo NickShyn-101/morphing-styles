@@ -19,13 +19,11 @@
     $Args:      map-merge($Args, ( cycleKey: $i ));
     $Selector:  formatSelector($propName, $Args);
 
-    #{$Selector} {
-      
+    #{$Selector} {  
         // if there is only one (prop) Cycle Component
       @if $data == null {    
         #{$propName}: Expressions($exp, $i);
       } @else {
-
         // for some props in (data) in Cycle Component
         @each  $currentProp, $currentData in $data {
           @if  $currentProp != $__RES__ {
