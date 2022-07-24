@@ -38,7 +38,7 @@
 @mixin checkForReservedProperties($AllSelectors, $Args) {
   $extend: map-get($Args, $__EXTEND__);
   @if $extend != null {
-    $Args: map-merge($Args,($__SELECTOR__: $AllSelectors,));
+    $Args: map-merge($Args,($__SELECTOR__: $AllSelectors));
     @include globalChecks($extend, $Args);
   }
 }

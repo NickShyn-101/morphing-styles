@@ -16,6 +16,10 @@
     @include formatGenTypeOfCycle($Args);
   }
 
+  @if $type == $__LIST__ {
+    @include formatGenTypeOfList($Args);
+  }
+
   @if $type == $__COMPONENT__ {
     @include formatGenTypeOfComponent($Args);
   }

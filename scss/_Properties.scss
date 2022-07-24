@@ -1,8 +1,8 @@
 @import "core/css-properties-custom";
 
 $USER_COMPONENTS_LIST: (
-    'animation-single': true, 
-    'animation-group': true, 
+    // 'animation-single': true, 
+    // 'animation-group': true, 
     // 'grid-normal': true, 
     // 'grid-main': true,
     // 'grid-cols': true,
@@ -35,9 +35,9 @@ $USER_COMPONENTS_LIST: (
     // 'text-align': true,
     // 'vertical-align': false,
     // 'custom-padding': false,
-    // 'custom-margin': true,
-    'custom-color-long': true,
-    'custom-color-short': true,
+    'custom-margin': true,
+    // 'custom-color-long': true,
+    // 'custom-color-short': true,
   );
 
 // Set statuses to componetns

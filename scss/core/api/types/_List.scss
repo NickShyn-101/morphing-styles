@@ -1,53 +1,31 @@
 @mixin generateTypeOfList($Args) {
-  $propName: map-get($Args, $__PROPPERTY__);
   $isMq: map-get($Args, $__MQ__);
   $data: map-get($Args, $__DATA__);
 
   @each $key_index, $propValue in $data {
-    $Selector: formatSelector($key_index, $Args);
-
     $respValue: map-get($Args, $__RES__);
-    @if (type-of($propValue) == "string") {
-      @if ($isMq == "") {
-        @if ($respValue != only) {
-        @include formatGenTypeOfList($Selector, $propName, $propValue);
-      }
-      } @else {
-        @if ($respValue == true) or ($respValue == only) {
-          @include formatGenTypeOfList($Selector, $propName, $propValue);
-        } @else {
-          @each $mqKey in $respValue {
-            @if $mqKey == $isMq {
-              @include formatGenTypeOfList($Selector, $propName, $propValue);
-            }
-          }
-        }
-      }
+
+    @if length($propValue) == 2 {
+      $respValue: nth($propValue, 2);
     }
 
-    @if (type-of($propValue) == "list") {
-      @if ($isMq == "") {
-        @if (nth($propValue, 2) == true) or (nth($propValue, 2) != only) {
-          @include formatGenTypeOfList($Selector, $propName, nth($propValue, 1));
-        }
-      } @else {
-        @if (nth($propValue, 2) == true) or (nth($propValue, 2) == only) {
-          @include formatGenTypeOfList($Selector, $propName, nth($propValue, 1));
-        } @else {
-          @each $mqKey in nth($propValue, 2) {
-            @if $mqKey == $isMq {
-              @include formatGenTypeOfList($Selector, $propName, nth($propValue, 1));
-            }
-          }
-        }
-      }
-    }
+    $Args: map-merge($Args,(
+      ListPropValue:  nth($propValue, 1),
+      ListPropName: $key_index,
+      $__RES__: $respValue
+      ));
+    @include globalChecks($Args);
   }
 }
 
-@mixin formatGenTypeOfList($Selector, $propName, $propValue) {
+@mixin formatGenTypeOfList($Args) {
+  $prop: map-get($Args, $__PROPPERTY__);
+  $propValue: map-get($Args, ListPropValue);
+  $propName: map-get($Args, ListPropName);
+  $Selector: formatSelector($propName, $Args);
+
   #{$Selector} {
-    #{$propName}: #{$propValue};
+    #{$prop}: #{$propValue};
   }
 }
 
