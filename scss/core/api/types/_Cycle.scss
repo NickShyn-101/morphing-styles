@@ -1,23 +1,23 @@
 @mixin generateTypeOfCycle($Args) {
-  $data: map-get($Args, $__DATA__);
+  $data:        map-get($Args, $__DATA__);
  
   @if $data == null {
-    @include globalChecks($Args, $Args)
+    @include globalChecks($Args)
   } @else {
     @include globalChecks($data, $Args)
   }
 }
 
 @mixin formatGenTypeOfCycle($Args) {
-  $start:     map-get($Args, $__START__);
-  $end:       map-get($Args, $__END__);
-  $exp:       map-get($Args, $__EXP__);
-  $data:      map-get($Args, $__DATA__);
-  $propName:  map-get($Args, $__PROPPERTY__);
+  $start:       map-get($Args, $__START__);
+  $end:         map-get($Args, $__END__);
+  $exp:         map-get($Args, $__EXP__);
+  $data:        map-get($Args, $__DATA__);
+  $propName:    map-get($Args, $__PROPPERTY__);
 
   @for $i from $start through $end {
-    $Args: map-merge($Args, ( cycleKey: $i ));
-    $Selector: formatSelector($propName, $Args);
+    $Args:      map-merge($Args, ( cycleKey: $i ));
+    $Selector:  formatSelector($propName, $Args);
 
     @if $data == null {   
       #{$Selector} {

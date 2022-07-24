@@ -1,6 +1,10 @@
-@mixin Modules($moduleName, $Props, $Args) {
+@mixin Modules($Args) {
+  $moduleName:  map-get($Args, $__PROPPERTY__);
+  $Content:     map-get($Args, Content);
+
+
   // Color Custom Module from ColorPaletteCustom
     @if $moduleName == "custom-color" {
-    @include custom-color($Props, $Args);
+    @include custom-color($Content, $Args);
   }
 }

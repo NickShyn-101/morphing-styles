@@ -5,7 +5,7 @@
       @if map-has-key($API_LIST, $componentName) {
         $resource: map-get($API_LIST, $componentName);
         $type: map-get($resource, $__TYPE__);
-        @if $type != __BOOST__ {
+        @if ($type != __BOOST__) {
           // Params to share with other functions as argument
           $args: getApiData($resource, $isMq, $componentName, $status);
 

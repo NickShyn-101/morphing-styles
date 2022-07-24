@@ -2,17 +2,22 @@
   $data: map-get($Args, $__DATA__);
 
   @each $key, $value in $data {
-    $Selector:  formatSelector($key, $Args);
-    $Args:      map-merge($Args, ( Selector: $Selector ));
-    $Args:      map-merge($Args, ( Content: $value ));
+    $Selector: formatSelector($key, $Args);
+    $Args: map-merge(
+      $Args,
+      (
+        $__SELECTOR__: $Selector,
+        $__CONTENT__: $value,
+      )
+    );
 
-    @include globalChecks($value, $Args)
+    @include globalChecks($value, $Args);
   }
 }
 
 @mixin formatGenTypeOfComponent($Args) {
-  $Selector: map-get($Args, Selector);
-  $Content: map-get($Args, Content);
+  $Selector: map-get($Args, $__SELECTOR__);
+  $Content: map-get($Args, $__CONTENT__);
 
   #{$Selector} {
     @each $propName, $propValue in $Content {

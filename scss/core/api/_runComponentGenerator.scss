@@ -1,5 +1,16 @@
 @mixin runComponentGenerator($Args) {
   $type: map-get($Args, $__TYPE__);
+  $extend: map-get($Args, $__EXTEND__);
+  $AllSelectors: map-get($Args, $__SELECTOR__);
+        // .Demo {
+        //   col: $AllSelectors
+        // }
+// @if $extend != null {
+//     @include formatGenTypeOfExtended($Args);
+// }
+@if $AllSelectors != null {
+    @include formatGenTypeOfExtended($Args);
+} @else {
 
   @if $type == $__CYCLE__ {
     @include formatGenTypeOfCycle($Args);
@@ -8,7 +19,9 @@
   @if $type == $__COMPONENT__ {
     @include formatGenTypeOfComponent($Args);
   }
+
+  @if $type == $__MODULE__ {
+    @include Modules($Args);
+  }
 }
-    // .worke {
-    //     done: tue;
-    // }
+}

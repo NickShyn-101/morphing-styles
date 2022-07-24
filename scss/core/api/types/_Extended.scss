@@ -1,14 +1,16 @@
 @mixin generateTypeOfExtended($Args) {
-  $type:      map-get($Args, $__TYPE__);
-  $extend:    map-get($Args, $__EXTEND__);
-  $propName:  map-get($Args, $__PROPPERTY__);
-  $sel:       map-get($Args, $__SEL__);
-  $extend:    map-get($Args, $__EXTEND__);
-  $data:      map-get($Args, $__DATA__);
+  $type: map-get($Args, $__TYPE__);
+  $propName: map-get($Args, $__PROPPERTY__);
+  $sel: map-get($Args, $__SEL__);
+  $start: map-get($Args, $__START__);
+  $end: map-get($Args, $__END__);
+  $data: map-get($Args, $__DATA__);
 
-  @if ($type != $__CYCLE__) and ($type != $__ANIMATION__) {
-    $data: map-get($Args, $__DATA__);
-    $AllSelectors: ();
+  $AllSelectors: ();
+
+  @if ($type != $__CYCLE__) and
+    ($type != $__ANIMATION__) and
+    ($type != $__MODULE__) {
     @if ($data != null) {
       @each $key, $_ in $data {
         $currentSelector: ();
@@ -18,54 +20,33 @@
           $AllSelectors: append($AllSelectors, $currentSelector, "comma");
         }
       }
-      @include checkForReservedProperties($AllSelectors, $extend, $Args);
+      @include checkForReservedProperties($AllSelectors, $Args);
     } @else {
-      @include checkForReservedProperties($sel, $extend, $Args);
+      @include checkForReservedProperties($sel, $Args);
     }
   } @else if $type == $__CYCLE__ {
-    $start: map-get($Args, $__START__);
-    $end: map-get($Args, $__END__);
-
-    $AllSelectors: ();
     @for $i from $start through $end {
       $Args: map-merge($Args,(cycleKey: $i,));
       $currentSelector: formatSelector($propName, $Args);
       $AllSelectors: append($AllSelectors, $currentSelector, "comma");
     }
-    @include checkForReservedProperties($AllSelectors, $extend, $Args);
+    @include checkForReservedProperties($AllSelectors, $Args);
   }
 }
 
-@mixin checkForReservedProperties($AllSelectors, $props, $Args) {
-  
-  @if (type-of($props) != "map") {
-    $props: ();
-  }
-  
-  $isMq: map-get($Args, $__MQ__);
-  $respHas: map-has-key($props, $__RES__);
-  $respValue: map-get($props, $__RES__);
-
-  @if ($isMq == "") {
-    @if ($respHas != true) or ($respValue != only) {
-      @include formatGenTypeOfExtended($AllSelectors, $props, $Args);
-    }
-  } @else {
-    @if ($respValue == true) or ($respValue == only) {
-      @include formatGenTypeOfExtended($AllSelectors, $props, $Args);
-    } @else {
-      @each $mqKey in $respValue {
-        @if $mqKey == $isMq {
-          @include formatGenTypeOfExtended($AllSelectors, $props, $Args);
-        }
-      }
-    }
+@mixin checkForReservedProperties($AllSelectors, $Args) {
+  $extend: map-get($Args, $__EXTEND__);
+  @if $extend != null {
+    $Args: map-merge($Args,($__SELECTOR__: $AllSelectors,));
+    @include globalChecks($extend, $Args);
   }
 }
 
-@mixin formatGenTypeOfExtended($AllSelectors, $props, $Args) {
+@mixin formatGenTypeOfExtended($Args) {
+  $AllSelectors: map-get($Args, $__SELECTOR__);
+  $extend: map-get($Args, $__EXTEND__);
   #{$AllSelectors} {
-    @each $propName, $propValue in $props {
+    @each $propName, $propValue in $extend {
       @if $propName != $__RES__ {
         #{$propName}: #{$propValue};
       }

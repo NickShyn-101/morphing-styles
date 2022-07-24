@@ -22,6 +22,13 @@ $CSS_PROPERTIES_LIST_CUSTOM: (
       "4":          3rem 3rem,
     ),
   ),
+  "custom-color-short": (
+    type: module,
+    prop: "custom-color",
+    data: (
+      "green":      ("pink", #ed18c6,  10,  2%,  "l",     "color"), 
+    ),
+  ),
   // "animation-single": (
   //   type: animation,
   //   name: "SupernSi",
