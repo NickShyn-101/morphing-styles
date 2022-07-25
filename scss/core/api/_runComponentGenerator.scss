@@ -2,6 +2,9 @@
   $type:      map-get($Args, $__TYPE__);
   $Selector:  map-get($Args, $__SELECTOR__);
 
+  @if ($type == null) {
+    @include formatGenTypeOfSimple($Args);
+  }
   @if $Selector != null {
     @include formatGenTypeOfExtended($Args);
   } @else {

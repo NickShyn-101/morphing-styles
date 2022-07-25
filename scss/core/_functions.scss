@@ -2,10 +2,15 @@
 @import "functions/checkValue";
 @import "functions/getAttribute";
 
-// Managing styling of selectors
+// Selector style control
 @import "functions/customizeSelector";
 @import "functions/glueSelectorName";
 @import "functions/formatSelector";
+@import "functions/checkCurrentData";
+@import "functions/checkSpaces";
+@import "functions/checkFormat";
+
+
 
 
 

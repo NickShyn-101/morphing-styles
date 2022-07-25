@@ -1,0 +1,24 @@
+@function checkFormatForSelector(
+    $Args,  $default,  $g: $default,  $id: $default,  $p: $default
+    ) {
+        
+  $result: "";
+  $selType: map-get($Args, $__SELTYPE__);
+
+  // selector by type / global
+  @if ($selType == "g") {
+    $result: $g;
+    // id selector
+  } @else if ($selType == "id") {
+    $result: $id;
+    // pseudo class selector
+  } @else if ($selType == "pc") {
+    $result: $p;
+    // pseudo element selector
+  } @else if ($selType == "pe") {
+    $result: $p;
+  } @else {
+    $result: $default;
+  }
+  @return $result;
+}

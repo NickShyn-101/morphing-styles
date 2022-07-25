@@ -1,35 +1,25 @@
 //     shortName    Property          Active      MediaActive
 $CSS_PROPERTIES_LIST_CUSTOM: (
   "custom-padding": (
-    sel: "table", 
-    text-align: center,
-    text-transform: upper,
-    padding: 10px,
-    "thead": (
+
+    "table": (
       border: 1px,
       color: green,
-      "tr": (
+      
+      "tbody": (
         border-radius: "8px",
         position: stycky,
         border: 1px,
-        color: green,
-        
-        "gg": (
+        color: green,   
+        "classic": (
           border-radius: "4px",
           position: releative,
+          mq: only,
         ),
       ),
       "newlink": (
         border: "4px solid red",
         position: releative,
-      ),
-    ),
-    "tbody": (
-      border: 6px,
-      color: blue,
-      "tr": (
-        text-transform: capitalize,
-        position: absolute,
       ),
     ),
   ),
