@@ -18,8 +18,12 @@
           // Generate Extended Selectors
           @include generateTypeOfExtended($Args);
 
+          @if ($type == $__SIMPLE__) or ($type == null) {
+            @include generateTypeOfSimple($Args);
+          }
+
           // Generate One Property Selectors
-          @if ($type == $__LIST__) or ($type == null) {
+          @if ($type == $__LIST__) {
             @include generateTypeOfList($Args);
           }
 

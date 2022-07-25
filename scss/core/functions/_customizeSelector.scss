@@ -1,5 +1,5 @@
 @function customizeSelector($value, $prefix, $postfix) {
-    @if ($value != "") {
+    @if ($value != null) {
       @return "#{$prefix}#{$value}#{$postfix}";
     } @else {
       @return "";

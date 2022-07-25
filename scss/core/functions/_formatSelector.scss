@@ -1,81 +1,127 @@
 @function formatSelector($key_prop, $Args) {
   $result: "";
   // import arguments
-  $sel:         map-get($Args, $__SEL__);
-  $isMq:        map-get($Args, $__MQ__);
-  $selType:     map-get($Args, $__SELTYPE__);
-  $type:        map-get($Args, $__TYPE__);
-  $i_cycle:     map-get($Args, "cycleKey");
-  $sE:          map-get($Args, "SecondaryElement");
+  $sel: map-get($Args, $__SEL__);
+  $selType: map-get($Args, $__SELTYPE__);
+  $MQ: map-get($Args, $__MQ__);
+  $type: map-get($Args, $__TYPE__);
+  $i_cycle: map-get($Args, "cycleKey");
+  $sE: map-get($Args, "SecondaryElement");
+
 
   // formating vars
-  $-COMP-:  customizeSelector($key_prop, $componentPrefix, $componentPostfix);
-  $-SEL-:   customizeSelector($sel, $selectorPrefix, $selectorPostfix);
-  $-MQ-:    customizeSelector($isMq, $mediaQueryPrefix, $mediaQueryPostfix);
-  $_:       " ";
-  $-div-:   "-";
-  $-dot-:   ".";
+  $-COMP-: customizeSelector($key_prop, $componentPrefix, $componentPostfix);
+  $-SEL-: customizeSelector($sel, $selectorPrefix, $selectorPostfix);
+  $-MQ-: customizeSelector($MQ, $mediaQueryPrefix, $mediaQueryPostfix);
+  $_: " ";
+  $-div-: "-";
+  $-dot-: ".";
 
-  // Format vars
-  $selTypeMainMsel:         glueSelectorName($-SEL-, $-MQ-);
-  $selTypeMain:             glueSelectorName($-dot-, $-SEL-, $-MQ-, $-div-, $-COMP-);
-  $selTypeGlobal:           glueSelectorName($-SEL-, $-MQ-,  $_, $-COMP-);
-  $selTypeGdot:             glueSelectorName($-SEL-, $-MQ-,  $-dot-, $-COMP-);
-  $selTypeCompMQ:           glueSelectorName($-SEL-, $_, $-COMP-);
-  $selTypeCompMQSameSel:    glueSelectorName($-COMP-);
-  $selTypeOnlyProp:         glueSelectorName($-dot-, $-COMP-);
+@if $-MQ- == "-" {
+  $-MQ-: ""
+}
 
-  $selTypeNULL:             glueSelectorName($-dot-, $-COMP-);
-
-  $selTypeAnimationSingle:  glueSelectorName($-COMP-);
-  $selTypeAnimationGroup:  glueSelectorName($-COMP-, $-div-, $sE);
-
-  $selTypeCycleBase:        glueSelectorName($-dot-, $-SEL-, $-MQ-, $-div-, $i_cycle);
   // Rules
-  // if selector and component name are equal
-  @if ($sel == $key_prop) {
-    // for expample table with g must be table, not table table {...}  
-    @if  ($selType == "g") {
-      $result: $selTypeCompMQSameSel;
-    } @else {
-      $result: $selTypeMainMsel;
-    }
-  }
 
-  @if $type == $__CYCLE__ {
-    $result:   $selTypeCycleBase;
-  }
-  // if we used flag -g (not global)
-  @else if $selType == "-g" {
-    $result: $selTypeGdot;
-  }
-
-  // if we used flag -g (not global)
-  @else if $type == $__ANIMATION__ {
-    @if $sE != null {
-      $result:  $selTypeAnimationGroup;
-    } @else {
-      $result:  $selTypeAnimationSingle;
-    }
-  }
-
-  // if we used flag g (global)
-  @else if $selType == "g" {
-    @if $type == $__BLOCK__ {
-      $result: $selTypeCompMQ;
-    } @else {
-      $result: $selTypeGlobal;
-    }
-  }
-  
- // if no selection is specified
-  @else if ($sel == "") {
-    $result: $selTypeNULL;
-  }
-
-  // default selector styling
-  @else {
-    $result: $selTypeMain;
+  $stSimpleG: glueSelectorName($-SEL-);
+  $stSimpleID: glueSelectorName("#", $-SEL-);
+  $stSimplePC: glueSelectorName(":", $-SEL-);
+  $stSimpleD: glueSelectorName($-dot- , $-SEL-, $-MQ-);
+  @if ($type == $__SIMPLE__) or ($type == null) {
+    $result: checkFormatForSelector($Args, $stSimpleD, $stSimpleG, $stSimpleID, $stSimplePC);
   }
   @return $result;
 }
+
+@function checkFormatForSelector(
+  $Args,
+  $default,
+  $g: $default,
+  $id: $default,
+  $p: $default
+) {
+  $result: "";
+  $selType: map-get($Args, $__SELTYPE__);
+
+    // selector by type / global
+  @if ($selType == "g") {
+    $result: $g;
+    // id selector
+  } @else if ($selType == "id") {
+    $result: $id;
+    // pseudo class selector
+  } @else if ($selType == "pc") {
+    $result: $p;
+    // pseudo element selector
+  } @else if ($selType == "pe") {
+    $result: $p;
+  } @else {
+    $result: $default;
+  }
+  @return $result;
+}
+
+
+
+
+  // // Format vars
+  // $selTypeMainMsel: glueSelectorName($-SEL-, $-MQ-);
+  // $selTypeMain: glueSelectorName($-dot-, $-SEL-, $-MQ-, $-div-, $-COMP-);
+  // $selTypeGlobal: glueSelectorName($-SEL-, $-MQ-, $_, $-COMP-);
+  // $selTypeGdot: glueSelectorName($-SEL-, $-MQ-, $-dot-, $-COMP-);
+  // $selTypeCompMQ: glueSelectorName($-SEL-, $_, $-COMP-);
+  // $selTypeCompMQSameSel: glueSelectorName($-COMP-);
+  // $selTypeOnlyProp: glueSelectorName($-dot-, $-COMP-);
+
+  // $selTypeNULL: glueSelectorName($-dot-, $-COMP-);
+
+  // $selTypeAnimationSingle: glueSelectorName($-COMP-);
+  // $selTypeAnimationGroup: glueSelectorName($-COMP-, $-div-, $sE);
+
+  // $selTypeCycleBase: glueSelectorName($-dot-, $-SEL-, $-MQ-, $-div-, $i_cycle);
+
+
+//   @if ($sel == $key_prop) {
+//     // for expample table with g must be table, not table table {...}
+//     @if  ($selType == "g") {
+//       $result: $selTypeCompMQSameSel;
+//     } @else {
+//       $result: $selTypeMainMsel;
+//     }
+//   }
+
+//   @if $type == $__CYCLE__ {
+//     $result:   $selTypeCycleBase;
+//   }
+//   // if we used flag -g (not global)
+//   @else if $selType == "-g" {
+//     $result: $selTypeGdot;
+//   }
+
+//   // if we used flag -g (not global)
+//   @else if $type == $__ANIMATION__ {
+//     @if $sE != null {
+//       $result:  $selTypeAnimationGroup;
+//     } @else {
+//       $result:  $selTypeAnimationSingle;
+//     }
+//   }
+
+//   // if we used flag g (global)
+//   @else if $selType == "g" {
+//     @if $type == $__BLOCK__ {
+//       $result: $selTypeCompMQ;
+//     } @else {
+//       $result: $selTypeGlobal;
+//     }
+//   }
+
+//  // if no selection is specified
+//   @else if ($sel == "") {
+//     $result: $selTypeNULL;
+//   }
+
+//   // default selector styling
+//   @else {
+//     $result: $selTypeMain;
+//   }

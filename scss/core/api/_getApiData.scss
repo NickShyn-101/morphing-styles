@@ -7,7 +7,7 @@
     $__TYPE__:        map-get($RES_ARR, $__TYPE__),
     $__DATA__:        map-get($RES_ARR, $__DATA__),
     $__SEL__:         getAttribute($RES_ARR, $__SEL__, ""),
-    $__SELTYPE__:     getAttribute($RES_ARR, $__SELTYPE__, ""),
+    $__SELTYPE__:     getAttribute($RES_ARR, $__SELTYPE__, null),
     $__EXTEND__:      map-get($RES_ARR, $__EXTEND__),
     $__PROPPERTY__:   getAttribute($RES_ARR, $__PROPPERTY__, map-get($RES_ARR, $__COMP__)),
     $__TO__:          getAttribute($RES_ARR, $__TO__, ""),

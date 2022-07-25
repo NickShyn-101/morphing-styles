@@ -5,7 +5,7 @@
   @if $Selector != null {
     @include formatGenTypeOfExtended($Args);
   } @else {
-    @if $type == $__CYCLE__ {
+    @if ($type == $__CYCLE__) {
       @include formatGenTypeOfCycle($Args);
     }
 

@@ -1,0 +1,59 @@
+@mixin generateTypeOfSimple($Args) {
+  $sel:     map-get($Args, $__SEL__);
+  $selType: map-get($Args, $__SELTYPE__);
+
+  @if ($selType == null) {
+    @if (index($reserved_HTML_TAGS, $sel) != null) {
+      $selType: g;
+      $Args: map-merge($Args,($__SELTYPE__: $selType));
+    }
+    @if (index($reserved_PSEUDO_CLASSES, $sel) != null)  {
+      $selType: pc;
+      $Args: map-merge($Args,($__SELTYPE__: $selType));
+    }
+  }
+// data type 
+  @if map-has-key($Args, $__DATA__) and map-get($Args, $__DATA__) != null {
+    $data: map-get($Args, $__DATA__);
+    $prevSelector: map-get($Args, $__SELECTOR__);
+    $currentSelector: formatSelector($sel, $Args);
+    $Selector: "#{$prevSelector}#{checkForSpaceType($Args)}#{$currentSelector}";
+
+    #{$Selector} {
+      @each $key, $value in $data {
+        @if (type-of($value) != "map") {
+          @if (index($reservedNames, $key) == null) {
+            #{$key}: #{$value};
+          }
+        }
+      }
+    }
+    $data: map-merge($data,($__SELECTOR__: $Selector,));
+    @include generateTypeOfSimple($data);
+  }
+}
+
+// @include generateTypeOfSimple($value);
+
+@mixin formatGenTypeOfSimple($Args) {
+
+}
+
+
+@function checkForSpaceType($Args) {
+  $st: "";
+  $selType: map-get($Args, $__SELTYPE__);
+  @if ($selType == null) {
+    $st: "";
+  }
+  @if ($selType == g) {
+    $st: " ";
+  }
+  @if ($selType == pc) {
+    $st: "";
+  }
+  @if ($selType == d) {
+    $st: " ";
+  }
+  @return $st;
+}

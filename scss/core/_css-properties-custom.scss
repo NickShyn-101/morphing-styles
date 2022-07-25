@@ -1,81 +1,41 @@
 //     shortName    Property          Active      MediaActive
 $CSS_PROPERTIES_LIST_CUSTOM: (
   "custom-padding": (
-    type: list,
-    prop: "padding",
-    sel: "pc", //gap custom
-    data: (
-      "1":          1rem 1rem,
-      "2":          2rem 2rem,
-      "3":          3rem 3rem,
-      "4":          3rem 3rem,
-    ),
-  ),
-  "custom-margin": (
-    type: list,
-    prop: "margin",
-    sel: "mc", 
-    mq: true,
-    extend: (
+    sel: "div.doc", 
+    text-align: center,
+    text-transform: upper,
+    "caption": (
+      sel: caption,
+      border: 1px,
       color: green,
     ),
-    data: (
-      "1":          ("1rem 1rem"), 
-      "2":          ("2rem 2rem"),
-      "3":          ("3rem 3rem", false),
-      "4":          ("3rem 3rem", false),
+    "thead": (
+      sel: caption,
+      border: 1px,
+      color: green,
     ),
   ),
-  "custom-color-short": (
-    type: module,
-    prop: "custom-color",
-    data: (
-      "green":      ("pink", #ed18c6,  10,  2%,  "l",     "color"), 
-    ),
-  ),
-  "animation-single": (
-    type: animation,
-    name: "SupernSi",
-    mq: (lh),
-    data: (
-      "from": (
-        position: 50px,
-        width: 100px,
-      ),
-      "to": (
-        position: 150px,
-        width: 500px,
-      ),
-    ),
-  ),
-  "animation-group": (
-    type: animation,
-    group: true,
-    name: "slide",
-    data: (
-      "in": (
-        // mq: true,
-        "from": (
-          position: 50px,
-          width: 100px,
-        ),
-        "to": (
-          position: 150px,
-          width: 500px,
-        ),
-      ),
-      "out": (
-        // mq: only,
-        "from": (
-          left: 100px,
-          top: 150px,
-        ),
-        "to": (
-          left: 150px,
-          top: 200px,
-        ),
-      ),
-    ),
-  ),
+  // "custom-padding": (
+  //   sel: "div.doc", 
+  //   data: (
+  //     color: black,
+  //     text-alighn: center,
+  //     sel: "table",
+  //     data: (
+  //       font-size: 32px,
+  //       sel: "hover",
+  //       data: (
+  //         color: white,
+  //         text-transform: upper,
+  //         sel: "dsd",
+  //         seltype: "d",
+  //         data: (
+  //           word-wrap: greeen,
+  //           test: google,
+  //         ),
+  //       ),
+  //     ),
+  //   ),
+  // ),
  );
 

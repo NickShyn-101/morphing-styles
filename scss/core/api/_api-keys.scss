@@ -1,45 +1,64 @@
 // Core shortNames
-$__COMP__:        "component";
-$__STATUS__:      "status";
+$__COMP__: "component";
+$__STATUS__: "status";
 
 // High level
-$__TYPE__:        "type";
-$__SEL__:         "sel";
-$__SELTYPE__:     "seltype";
-$__DATA__:        "data";
-$__PROPPERTY__:   "prop";
-$__EXTEND__:      "extend";
-$__START__:       "start";
-$__END__:         "end";
-$__EXP__:         "exp";
+$__TYPE__: "type";
+$__SEL__: "sel";
+$__SELTYPE__: "seltype";
+$__DATA__: "data";
+$__PROPPERTY__: "prop";
+$__EXTEND__: "extend";
+$__START__: "start";
+$__END__: "end";
+$__EXP__: "exp";
 
 // Types of components
-$__SIMPLE__:      "simple";
-$__BLOCK__:       "block"; // or null
-$__LIST__:        "list";
-$__CYCLE__:       "cycle";
-$__ANIMATION__:   "animation";
-$__MODULE__:      "module";
+$__SIMPLE__: "simple";
+$__BLOCK__: "block"; // or null
+$__LIST__: "list";
+$__CYCLE__: "cycle";
+$__ANIMATION__: "animation";
+$__MODULE__: "module";
 // pseudo types
-$__BOOST__:       "boost";
+$__BOOST__: "boost";
 
 // only for Boost
-$__TO__:          "to";
+$__TO__: "to";
 
-// only for Animation 
-$__GROUP__:       "group";
-$__NAME__:        "name";
+// only for Animation
+$__GROUP__: "group";
+$__NAME__: "name";
 
 // Params in data and extend
-// "responsible", "res", "addaptive";
-$__RES__:         "mq";
+$__RES__: "mq";
 
 // Other and short names
-$__MQ__:          "isMq";
-$__CONTENT__:     "Content";
-$__SELECTOR__:    "Selector";
+$__MQ__: "hasMQ";
+$__CONTENT__: "Content";
+$__SELECTOR__: "Selector";
 $__CURRENTPROP__: "CurrentProp";
 $__CURRENTDATA__: "CurrentData";
 
-
 $COMPONENTS: ();
+
+$reservedNames: $__DATA__, $__SEL__, $__SELTYPE__, $__RES__;
+
+$reserved_HTML_TAGS: a, abbr, address, area, article, aside, audio, b, base, bdi,
+  bdo, blockquote, body, br, button, canvas, caption, cite, code, col, colgroup,
+  data, datalist, dd, del, details, dfn, dialog, div, dl, dt, em, embed,
+  fieldset, figcaption, figure, footer, form, h1, head, header, hr, html, i,
+  iframe, img, input, ins, kbd, label, legend, li, link, main, map, mark, meta,
+  meter, nav, noscript, object, ol, optgroup, option, output, p, param, picture,
+  pre, progress, q, ruby, rb, rt, rtc, rp, s, samp, script, section, select,
+  small, source, span, strong, style, sub, summary, sup, table, tbody, td,
+  template, textarea, tfoot, th, thead, time, title, tr, track, u, ul, var,
+  video, wbr;
+
+$reserved_PSEUDO_CLASSES: "active", "any", "any-link", "checked", "default",
+  "defined", "dir", "disabled", "empty", "enabled", "first", "first-child",
+  "first-of-type", "fullscreen", "focus", "hover", "indeterminate", "in-range",
+  "invalid", "lang", "last-child", "last-of-type", "left", "link", "not",
+  "nth-child", "nth-last-child", "nth-last-of-type", "nth-of-type", "only-child",
+  "only-of-type", "optional", "out-of-range", "read-only", "read-write",
+  "required", "right", "root", "scope", "target", "valid", "visited";
