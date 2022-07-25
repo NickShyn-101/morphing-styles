@@ -1,5 +1,6 @@
 @function getApiData($RES_ARR) {
   $result: (
+    input:            map-get($RES_ARR, input),
     $__COMP__:        map-get($RES_ARR, $__COMP__),
     $__STATUS__:      map-get($RES_ARR, $__STATUS__),
 

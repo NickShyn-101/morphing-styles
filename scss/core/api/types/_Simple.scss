@@ -1,37 +1,117 @@
 @mixin generateTypeOfSimple($Args) {
-  $sel:     map-get($Args, $__SEL__);
-  $selType: map-get($Args, $__SELTYPE__);
+  $data:    map-get($Args, input);
+  @each $MasterKey, $MasterValue in $data {
+    @if type-of($MasterValue) == map {
+      $MasterValue:       checkCurrentData($MasterKey, $MasterValue);
+      $sel:               map-get($MasterValue, $__SEL__);
+      $selType:           map-get($MasterValue, $__SELTYPE__);
+      $currentSelector:   formatSelector($sel, $MasterValue);
+      $prevSelector:      map-get($data, $__SELECTOR__);
+
+      $Selector: "#{$prevSelector}#{checkSpaces($MasterValue)}#{$currentSelector}";
+    
+      @if (type-of($MasterValue) == "map") {
+        #{$Selector} {
+          @each $key, $value in $MasterValue {
+            @if (type-of($value) != "map") {
+              @if (index($reservedNames, $key) == null) {
+                #{$key}: #{$value};
+              }     
+            }
+          }
+        }
+      }   
+      @if (type-of($MasterValue) == "map"){ 
+        $MasterValue: map-merge($MasterValue,($__SELECTOR__: $Selector));
+        $Args: map-merge($Args,(input: $MasterValue));
+        @include generateTypeOfSimple($Args);
+      }
+    }
+  }
+}
+
+@function checkCurrentData($name, $value) {
+  
+  $sel:           map-get($value, $__SEL__);
+  $selType:       map-get($value, $__SELTYPE__);
+   
+  @if ($sel == null) {
+    $sel: $name;
+    $value:   map-merge($value,($__SEL__: $name));
+  }
 
   @if ($selType == null) {
     @if (index($reserved_HTML_TAGS, $sel) != null) {
       $selType: g;
-      $Args: map-merge($Args,($__SELTYPE__: $selType));
+      $value: map-merge($value,($__SELTYPE__: $selType));
     }
     @if (index($reserved_PSEUDO_CLASSES, $sel) != null)  {
       $selType: pc;
-      $Args: map-merge($Args,($__SELTYPE__: $selType));
+      $value: map-merge($value,($__SELTYPE__: $selType));
     }
   }
-// data type 
-  @if map-has-key($Args, $__DATA__) and map-get($Args, $__DATA__) != null {
-    $data: map-get($Args, $__DATA__);
-    $prevSelector: map-get($Args, $__SELECTOR__);
-    $currentSelector: formatSelector($sel, $Args);
-    $Selector: "#{$prevSelector}#{checkForSpaceType($Args)}#{$currentSelector}";
-
-    #{$Selector} {
-      @each $key, $value in $data {
-        @if (type-of($value) != "map") {
-          @if (index($reservedNames, $key) == null) {
-            #{$key}: #{$value};
-          }
-        }
-      }
-    }
-    $data: map-merge($data,($__SELECTOR__: $Selector,));
-    @include generateTypeOfSimple($data);
-  }
+  @return $value;
 }
+  // $currentSelector: $MasterKey;
+    // .demo {
+    //   dedd: $MasterValue;
+    // }
+    // $currentSelector: formatSelector($MasterKey, $Args);
+    // $Selector: "#{$prevSelector}#{checkForSpaceType($Args)}#{$currentSelector}";
+
+
+
+        // #{$Selector} {
+    //   @each $key, $value in $data {
+    //     @if (type-of($value) != "map") {
+    //       @if (index($reservedNames, $key) == null) {
+    //         #{$key}: #{$value};
+    //       }
+    //     }
+    //   }
+    // }
+    
+
+
+// data type 
+  // @if map-has-key($Args, $__DATA__) and map-get($Args, $__DATA__) != null {
+  //   $sel:     map-get($Args, $__SEL__);
+  //   $selType: map-get($Args, $__SELTYPE__);
+  
+  //   @if ($selType == null) {
+  //     @if (index($reserved_HTML_TAGS, $sel) != null) {
+  //       $selType: g;
+  //       $Args: map-merge($Args,($__SELTYPE__: $selType));
+  //     }
+  //     @if (index($reserved_PSEUDO_CLASSES, $sel) != null)  {
+  //       $selType: pc;
+  //       $Args: map-merge($Args,($__SELTYPE__: $selType));
+  //     }
+  //   }
+    
+  //   $data: map-get($Args, $__DATA__);
+  //   $prevSelector: map-get($Args, $__SELECTOR__);
+  //   $currentSelector: formatSelector($sel, $Args);
+  //   $Selector: "#{$prevSelector}#{checkForSpaceType($Args)}#{$currentSelector}";
+  //   $sel:     map-get($Args, $__SEL__);
+  //   $selType: map-get($Args, $__SELTYPE__);
+
+
+  //   #{$Selector} {
+  //     @each $key, $value in $data {
+  //       @if (type-of($value) != "map") {
+  //         @if (index($reservedNames, $key) == null) {
+  //           #{$key}: #{$value};
+  //         }
+  //       }
+  //     }
+  //   }
+  //   $data: map-merge($data,($__SELECTOR__: $Selector,));
+  //   @include generateTypeOfSimple($data);
+
+  // }
+
+// }
 
 // @include generateTypeOfSimple($value);
 
@@ -40,7 +120,55 @@
 }
 
 
-@function checkForSpaceType($Args) {
+  // } @else {
+  //   $data:    map-get($Args, input);
+  //   $sel: map-get($data , $__SEL__);
+
+  //   $prevSelector: map-get($data, $__SELECTOR__);
+  //   $currentSelector: formatSelector($sel, $data);
+  //   $Selector: "#{$prevSelector}#{checkForSpaceType($Args)}#{$currentSelector}";
+     
+  //   // #{$Selector} {
+  //   //   @each $key, $value in $data {
+  //   //     @if (type-of($value) != "map") {
+  //   //       @if (index($reservedNames, $key) == null) {
+  //   //         #{$key}: #{$value};
+  //   //       }
+  //   //     }
+  //   //   }
+  //   // }
+  //   @each $MasterKey, $MasterValue in $data {
+  //    @if (type-of($MasterValue) == "map") {
+  //     #{$Selector} {
+  //       @each $key, $value in $MasterValue {
+  //         @if (type-of($value) != "map") {
+  //           @if (index($reservedNames, $key) == null) {
+  //             #{$key}: #{$value};
+  //           }
+  //         }
+  //       }
+  //     }
+  //     $data: map-merge($data,($__SELECTOR__: $Selector,));
+
+  //   }
+  //   // @include generateTypeOfSimple($data);
+  //   }
+    
+    
+  // }
+
+
+
+
+
+
+
+
+
+
+
+
+@function checkSpaces($Args) {
   $st: "";
   $selType: map-get($Args, $__SELTYPE__);
   @if ($selType == null) {

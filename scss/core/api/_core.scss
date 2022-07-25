@@ -9,6 +9,7 @@
             $__MQ__:      toString($MQ),
             $__COMP__:    $compName,
             $__STATUS__:  $compStatus,
+            input:        $resource,
           ));
 
         @if ($type != __BOOST__) {
