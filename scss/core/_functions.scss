@@ -3,6 +3,8 @@
 @import "functions/getAttribute";
 
 // Selector style control
+@import "functions/spaceForListAndBlock";
+@import "functions/checkSelAndSelType";
 @import "functions/customizeSelector";
 @import "functions/glueSelectorName";
 @import "functions/formatSelector";

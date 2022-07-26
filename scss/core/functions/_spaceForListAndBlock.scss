@@ -1,0 +1,14 @@
+@function spaceForListAndBlock($selType) {
+    $space: ""; // create functicon Custom spaces
+    @if $selType == g {
+      $space: " ";
+    }
+    @if $selType == d {
+      $space: "-";
+    }
+    @if $selType == id {
+      $space: ".";
+    }
+    @return $space
+  }
+  

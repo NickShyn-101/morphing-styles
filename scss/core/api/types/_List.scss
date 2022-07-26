@@ -1,31 +1,12 @@
+
+
 @mixin generateTypeOfList($Args) {
-  $prop:      map-get($Args, $__PROPPERTY__);
+  $Args:      checkSelAndSelType($Args);
   $data:      map-get($Args, $__DATA__);
-  $sel:       map-get($Args, $__SEL__);
   $selType:   map-get($Args, $__SELTYPE__);
- 
-  @if $sel == null or $sel == "" {
-    $sel: $prop;
-  } 
-  $Args: map-merge($Args, ($__SEL__: $sel));
-  $sel: formatSelector($sel, $Args);
-
-  @if ($selType == null) {
-    $selType: d;
-  }
-
-  $space: ""; // create functicon Custom spaces
-  @if $selType == g {
-    $space: " ";
-  }
-  @if $selType == d {
-    $space: "-";
-  }
-  @if $selType == id {
-    $space: ".";
-  }
-
-
+  $sel:       formatSelector(map-get($Args, $__SEL__), $Args);
+  $space:     spaceForListAndBlock($selType);
+  
   @each $propSelector, $propValue in $data {
     $respValue: map-get($Args, $__RES__);
 

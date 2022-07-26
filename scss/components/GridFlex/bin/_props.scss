@@ -1,7 +1,7 @@
 $GRID_FLEX_COMPS: (
   "dev-tools": (
     type: boost,
-    to: ("grid-main", "grid-cols"),
+    to: (grid-main, grid-cols, word-break),
     data: (
       background: "rgba(149, 16, 251, 0.05)",
       border: "1px dashed rgba(149, 16, 251, 0.25)",
@@ -64,7 +64,7 @@ $GRID_FLEX_COMPS: (
     extend: (
       mq: true,
       overflow: hidden,
-      color: grey,
+      color: blue,
     ),
   ),
 

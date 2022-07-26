@@ -1,0 +1,19 @@
+@function checkSelAndSelType($Args) {
+    $prop:      map-get($Args, $__PROPPERTY__);
+    $sel:       map-get($Args, $__SEL__);
+    $selType:   map-get($Args, $__SELTYPE__);
+   
+    @if $sel == null or $sel == "" {
+      $sel: $prop;
+    } 
+    
+    @if ($selType == null) {
+      $selType: d;
+    }
+  
+    $Args: map-merge($Args, (
+      $__SEL__: $sel,
+      $__SELTYPE__: $selType,
+      ));
+    @return $Args
+  }

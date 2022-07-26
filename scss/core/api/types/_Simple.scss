@@ -1,8 +1,8 @@
 @mixin generateTypeOfSimple($Args) {
-  $data:              map-get($Args, input);
-  $prevSel:           map-get($data, $__SELECTOR__);
+  $inputData:              map-get($Args, $__INPUT__);
+  $prevSel:           map-get($inputData, $__SELECTOR__);
 
-  @each $elementName, $elementValue in $data {  
+  @each $elementName, $elementValue in $inputData {  
     @if type-of($elementValue) == "map" {
       $elementValue:  checkSelType($elementValue, $elementName);
 

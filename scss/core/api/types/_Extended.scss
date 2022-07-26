@@ -1,41 +1,18 @@
 @mixin generateTypeOfExtended($Args) {
   $type:            map-get($Args, $__TYPE__);
-  $propName:        map-get($Args, $__PROPPERTY__);
-  $sel:             map-get($Args, $__SEL__);
   $start:           map-get($Args, $__START__);
   $end:             map-get($Args, $__END__);
-  $data:            map-get($Args, $__DATA__);
   $extend:          map-get($Args, $__EXTEND__);
   $AllSelectors:    ();
 
   @if $extend != null {
     @if ($type == $__LIST__) or ($type == $__BLOCK__) {
-
-      $sel:       map-get($Args, $__SEL__);
-      $selType:   map-get($Args, $__SELTYPE__);
-      $space: ""; // create functicon Custom spaces
-     
-      @if $sel == null or $sel == "" {
-        $sel: $prop;
-      } 
-      $Args: map-merge($Args, ($__SEL__: $sel));
-      $sel: formatSelector($sel, $Args);
-    
-      @if ($selType == null) {
-        $selType: d;
-      }
-    
-      @if $selType == g {
-        $space: " ";
-      }
-      @if $selType == d {
-        $space: "-";
-      }
-      @if $selType == id {
-        $space: ".";
-      }
-
-
+      $Args:          checkSelAndSelType($Args);
+      $selType:       map-get($Args, $__SELTYPE__);
+      $sel:           formatSelector(map-get($Args, $__SEL__), $Args);
+      $space:         spaceForListAndBlock($selType);
+      $data:          map-get($Args, $__DATA__);
+ 
       @each $propSelector, $_ in $data {
         $currentSelector: ();
         $Selector: "#{$sel}#{$space}#{$propSelector}"; 
@@ -44,7 +21,9 @@
       }
     } @else if ($type == $__CYCLE__) {
       @for $i from $start through $end {
-        $Args: map-merge($Args,(cycleKey: $i));
+        $propName:    map-get($Args, $__PROPPERTY__);
+        $Args:        map-merge($Args,(cycleKey: $i));
+        
         $currentSelector: formatSelector($propName, $Args);
         $AllSelectors: append($AllSelectors, $currentSelector, "comma");
       }
