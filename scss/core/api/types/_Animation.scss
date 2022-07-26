@@ -1,6 +1,5 @@
 @mixin generateTypeOfAnimation($Args) {
-  $isMq:  map-get($Args, $__MQ__);
-  $data:  map-get($Args, $__DATA__);
+  $data: map-get($Args, $__DATA__);
   $group: map-get($Args, $__GROUP__);
 
   @if $group == false {
@@ -9,36 +8,38 @@
 
   @if $group == true {
     @each $key, $value in $data {
-      $Args: map-merge($Args,(
+      $Args: map-merge(
+        $Args,
+        (
           SecondaryElement: $key,
-          $__CONTENT__: $value,
-        ));
+          $__DATA__: $value,
+        )
+      );
       @include globalChecks($Args);
     }
   }
 }
 
 @mixin formatGenTypeOfAnimation($Args) {
-  $data:  ();
-  $name:  map-get($Args, $__NAME__);
+  $data: ();
+  $name: map-get($Args, $__NAME__);
   $group: map-get($Args, $__GROUP__);
+  $data: map-get($Args, $__DATA__);
 
-  @if $group == false {
-    $data: map-get($Args, $__DATA__);
-  } @else if $group == true {
-    $data: map-get($Args, $__CONTENT__);
-  }
 
   $Selector: formatSelector($name, $Args);
   @keyframes #{$Selector} {
+   
     @each $key, $Value in $data {
-      @if (index($reservedNames, $propName) == null) {
-        #{$key} {
-          @each $propName, $propValue in $Value {
+      @if (index($reservedNames, $key) == null) or $key == "from" or $key == "to"{
+      #{$key} {
+        @each $propName, $propValue in $Value {
+          @if (index($reservedNames, $propName) == null) {
             #{$propName}: #{$propValue};
           }
         }
       }
     }
   }
+}
 }

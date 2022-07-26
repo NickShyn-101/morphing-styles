@@ -1,10 +1,10 @@
 @mixin Modules($Args) {
-  $moduleName:  map-get($Args, $__PROPPERTY__);
-  $Content:     map-get($Args, Content);
+  $moduleName:  map-get($Args, module);
+  $data:     map-get($Args, $__DATA__);
 
 
   // Color Custom Module from ColorPaletteCustom
     @if $moduleName == "custom-color" {
-    @include custom-color($Content, $Args);
+    @include custom-color($data, $Args);
   }
 }

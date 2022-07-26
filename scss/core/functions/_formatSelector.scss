@@ -76,5 +76,12 @@
       $result: checkFormatForSelector($Args);
   
     }
+
+    @if ($type == $__ANIMATION__) {
+      $Args: map-merge($Args, (
+        $__DEFAULT__:     glueSelectorName($-COMP-, $-div- ,$sE),
+      ));
+      $result: checkFormatForSelector($Args);
+    }
   @return $result;
 }

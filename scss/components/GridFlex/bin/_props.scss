@@ -88,10 +88,16 @@ $GRID_FLEX_COMPS: (
   // ),
   "custom-grid-basics": (
     type: block,
+    sel: green,
+    extend: (
+      font-size: 15px,
+      display: block,
+    ),
     data: (
       "d-none": (
-        mq: true,
+        mq: false,
         display: "none !important",
+        color: black
       ),
       "v-none": (
         mq: true,

@@ -1,10 +1,10 @@
 @mixin generateTypeOfModule($Args) {
   $data:        map-get($Args, $__DATA__);
-  $moduleName:  map-get($Args, $__PROPPERTY__);
+  $moduleName:  map-get($Args, module);
 
-  @each $key, $value in $data {
+  @each $_, $props in $data {
     @if mixin-exists($moduleName) {
-      $Args: map-merge($Args, ($__CONTENT__: $value));
+      $Args: map-merge($Args, ($__DATA__: $props));
       @include globalChecks($Args);
     }
   }

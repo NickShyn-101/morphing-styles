@@ -23,6 +23,56 @@ $CSS_PROPERTIES_LIST_CUSTOM: (
       ),
     ),
   ),
+  "animation-single": (
+    name: "SupernSi",
+    mq: (lh),
+    data: (
+      "from": (
+        position: 50px,
+        width: 100px,
+      ),
+      "to": (
+        position: 150px,
+        width: 500px,
+      ),
+    ),
+  ),
+  "animation-group": (
+
+    group: true,
+    name: "slide",
+    data: (
+      "in": (
+        // mq: true,
+        "from": (
+          position: 50px,
+          width: 100px,
+        ),
+        "to": (
+          position: 150px,
+          width: 500px,
+        ),
+      ),
+      "out": (
+        mq: only,
+        "from": (
+          left: 100px,
+          top: 150px,
+        ),
+        "to": (
+          left: 150px,
+          top: 200px,
+        ),
+      ),
+    ),
+  ),
+  "custom-color-short": (
+    type: module,
+    module: "custom-color",
+    data: (
+      "green":      ("pink", #ed18c6,  10,  2%,  "l",     "color"), 
+    ),
+  ),
   // "custom-padding": (
   //   sel: "div", 
   //   data: (

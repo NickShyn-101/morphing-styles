@@ -1,33 +1,56 @@
 @mixin generateTypeOfBlock($Args) {
-  $data:    map-get($Args, $__DATA__);
-  $sel:     map-get($Args, $__SEL__);
-  $selType:     map-get($Args, $__SELTYPE__);
+  $selType:   map-get($Args, $__SELTYPE__);
+  $sel:       map-get($Args, $__SEL__);
 
-  @each $blockName, $blockProps in $data {
-
-.demo {
-  sel: $sel;
-  selType: $selType;
-}
-    $Args: map-merge($Args,(
-        BlockName:   $blockName,
-        BlockProps:   $blockProps
-      ));
-    @include globalChecks($blockProps, $Args);
+  // Set default selector 
+  @if $sel != null or $sel != "" {
+    $sel:     formatSelector($sel, $Args);
+  } 
+  // Set default selector type for styling and spacing
+  @if ($selType == null) {
+    $selType: d;
   }
+// Owerwrite data
+  $Args: map-merge($Args, (
+    $__SEL__:     $sel,
+    $__SELTYPE__: $selType,
+    ));
+
+  $data:      map-get($Args, $__DATA__); 
+  $space:     spaceForListAndBlock($selType);
+  
+  @each $propSelector, $propValue in $data {
+    $respValue:   map-get($Args, $__RES__);
+    @if map-has-key($propValue, $__RES__) {
+      $respValue: map-get($propValue, $__RES__);
+    }
+    
+    $Selector: "#{$sel}#{$space}#{$propSelector}"; 
+    
+    $Args: map-merge($Args,(
+      $__DATA__:          $propValue,
+      $__RES__:           $respValue,
+      $__SELECTOR__:      $Selector,
+      ));
+    @include globalChecks($Args);
+  } 
 }
 
 @mixin formatGenTypeOfBlock($Args) {
-  $blockName:     map-get($Args, BlockName);
-  $blockProps:    map-get($Args, BlockProps);
-    
-  $Selector:      formatSelector($blockName, $Args);
+  $data: map-get($Args, $__DATA__);
+  $Selector: map-get($Args, $__SELECTOR__);
 
   #{$Selector} {
-    @each $propName, $propValue in $blockProps {
+    @each $propName, $propValue in $data {
       @if (index($reservedNames, $propName) == null) {
         #{$propName}: #{$propValue};
       }      
     }
   }
 }
+
+
+// .demo {
+//   //   sel: $sel;
+//   //   selType: $selType;
+//   // }
