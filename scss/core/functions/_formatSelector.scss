@@ -22,6 +22,7 @@
   @if $-MQ- == "-" {
     $-MQ-: ""
   }
+
 // Default styles
   $Args: map-merge($Args, (
     $__DEFAULT__:     glueSelectorName($-dot- , $-SEL-, $-MQ-),
@@ -46,6 +47,13 @@
   @if ($type == $__CYCLE__) {
     $Args: map-merge($Args, (
       $__DEFAULT__:     glueSelectorName($-dot-, $-SEL-, $-MQ-, $-div-, $i_cycle),
+    ));
+    $result: checkFormatForSelector($Args);
+  }
+
+  @if ($type == $__LIST__) {
+    $Args: map-merge($Args, (
+      $__DEFAULT__:     glueSelectorName($-dot-, $-SEL-, $-MQ-,),
     ));
     $result: checkFormatForSelector($Args);
   }

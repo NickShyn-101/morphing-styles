@@ -1,32 +1,56 @@
 @mixin generateTypeOfList($Args) {
-  $data: map-get($Args, $__DATA__);
+  $prop:      map-get($Args, $__PROPPERTY__);
+  $data:      map-get($Args, $__DATA__);
+  $sel:       map-get($Args, $__SEL__);
+  $selType:   map-get($Args, $__SELTYPE__);
+ 
+  @if $sel == null or $sel == "" {
+    $sel: $prop;
+  } 
+  $Args: map-merge($Args, ($__SEL__: $sel));
+  $sel: formatSelector($sel, $Args);
 
-  @each $currentProp, $currnetData in $data {
+  @if ($selType == null) {
+    $selType: d;
+  }
+
+  $space: ""; // create functicon Custom spaces
+  @if $selType == g {
+    $space: " ";
+  }
+  @if $selType == d {
+    $space: "-";
+  }
+  @if $selType == id {
+    $space: ".";
+  }
+
+
+  @each $propSelector, $propValue in $data {
     $respValue: map-get($Args, $__RES__);
 
-    @if length($currnetData) == 2 {
-      $respValue: nth($currnetData, 2);
+    @if length($propValue) == 2 {
+      $respValue: nth($propValue, 2);
     }
 
+    $Selector: "#{$sel}#{$space}#{$propSelector}"; 
+    
     $Args: map-merge($Args,(
-      $__CURRENTPROP__:   $currentProp,
-      $__CURRENTDATA__:   nth($currnetData, 1),
-      $__RES__:           $respValue
+      $__CURRENTDATA__:   nth($propValue, 1),
+      $__RES__:           $respValue,
+      $__SELECTOR__:      $Selector,
       ));
-      
     @include globalChecks($Args);
   } 
 }
 
 @mixin formatGenTypeOfList($Args) {
-  $propName:    map-get($Args, $__PROPPERTY__);
-  $currentProp: map-get($Args, $__CURRENTPROP__);
   $currentData: map-get($Args, $__CURRENTDATA__);
-
-  $Selector: formatSelector($currentProp, $Args);
+  $Selector: map-get($Args, $__SELECTOR__);
+  $prop: map-get($Args, prop);
 
   #{$Selector} {
-    #{$propName}: #{$currentData};
+    #{$prop}: #{$currentData};
   }
 }
 

@@ -3,14 +3,23 @@
     $start:     map-get($data, $__START__);
     $end:       map-get($data, $__END__);
 
+    $prop:      map-get($data, $__PROPPERTY__);
+    $compName:      map-get($data, $__COMP__);
+    $innerData:      map-get($data, $__DATA__);
+
     @if $type == null {
       @if $start != null and $end != null {
         $type: $__CYCLE__;
       }
+      @if $prop != null and $data != null {
+        $type: $__LIST__;
+      }
     }
     $data:  map-merge($data, (
-        $__TYPE__:    $type,
-        $__INPUT__:   $data, 
+        $__TYPE__:        $type,
+        $__INPUT__:       $data, 
+        $__DATA__:        $innerData, 
+        $__PROPPERTY__:   $prop, 
       ));
 
     @return $data

@@ -62,7 +62,9 @@ $GRID_FLEX_COMPS: (
     width: "gridWidth",
     height: "calc(10px + 20px)",
     extend: (
+      mq: true,
       overflow: hidden,
+      color: grey,
     ),
   ),
 

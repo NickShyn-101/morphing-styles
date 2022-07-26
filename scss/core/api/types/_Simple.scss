@@ -15,7 +15,6 @@
       $elementValue:  map-merge($elementValue,($__SELECTOR__: $Selector));
       $elementValue:  map-merge($elementValue, ($__MQ__: map-get($Args, $__MQ__)));
       $Args:          map-merge($Args,(input: $elementValue));   
-
       
       @include globalChecks($elementValue);
       @include generateTypeOfSimple($Args);

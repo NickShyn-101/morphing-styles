@@ -176,15 +176,20 @@ $CSS_PROPERTIES_LIST: (
       "100":        (1, true),
       ),
   ),
-  "word-break": (
-    type: list,
+  "word-break": ( 
+    // type: list,
     prop: "word-break",
-    sel: "word-b",
+    sel: "wb",
+    // seltype: id,
+    extend: (
+      mq: true,
+      color: grey,
+    ),
     data: (
-      "normal":     (normal, true),
-      "break-all":  (break-all, true),
-      "keep-all":   (keep-all, true),
-      "break-word": (break-word, true),
+      "norm":    normal,
+      "ba":  break-all,
+      "ka":   keep-all,
+      "bw": break-word,
       ),
   ),
   "text-align": (

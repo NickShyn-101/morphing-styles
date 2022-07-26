@@ -16,7 +16,7 @@
           $Args: getApiData($resource);
 
           // Generate Extended Selectors
-          @include generateTypeOfExtended($Args);
+          @include generateTypeOfExtended($resource);
 
           @if ($type == $__SIMPLE__) or ($type == null) {
             @include generateTypeOfSimple($resource);
@@ -24,7 +24,7 @@
 
           // Generate One Property Selectors
           @if ($type == $__LIST__) {
-            @include generateTypeOfList($Args);
+               @include generateTypeOfList($resource);
           }
 
           // Generate Component Selectors

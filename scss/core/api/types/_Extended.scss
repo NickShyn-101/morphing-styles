@@ -9,18 +9,38 @@
   $AllSelectors:    ();
 
   @if $extend != null {
-    @if ($type == $__LIST__) or ($type == $__BLOCK__) or ($type == null) {
-      @if ($data != null) {
-        @each $key, $_ in $data {
-          $currentSelector: ();
-          @if $key != null {
-            $Selector: formatSelector($key, $Args);
-            $currentSelector: append($currentSelector, $Selector);
-            $AllSelectors: append($AllSelectors, $currentSelector, "comma");
-          }  
-        }
-      } @else {
-        $AllSelectors: append($AllSelectors, $sel, "comma");
+    @if ($type == $__LIST__) or ($type == $__BLOCK__) {
+
+      $sel:       map-get($Args, $__SEL__);
+      $selType:   map-get($Args, $__SELTYPE__);
+      $space: ""; // create functicon Custom spaces
+     
+      @if $sel == null or $sel == "" {
+        $sel: $prop;
+      } 
+      $Args: map-merge($Args, ($__SEL__: $sel));
+      $sel: formatSelector($sel, $Args);
+    
+      @if ($selType == null) {
+        $selType: d;
+      }
+    
+      @if $selType == g {
+        $space: " ";
+      }
+      @if $selType == d {
+        $space: "-";
+      }
+      @if $selType == id {
+        $space: ".";
+      }
+
+
+      @each $propSelector, $_ in $data {
+        $currentSelector: ();
+        $Selector: "#{$sel}#{$space}#{$propSelector}"; 
+        $currentSelector: append($currentSelector, $Selector);
+        $AllSelectors: append($AllSelectors, $currentSelector, "comma");
       }
     } @else if ($type == $__CYCLE__) {
       @for $i from $start through $end {
