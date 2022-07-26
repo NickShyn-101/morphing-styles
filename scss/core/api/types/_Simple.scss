@@ -4,7 +4,7 @@
 
   @each $elementName, $elementValue in $data {  
     @if type-of($elementValue) == "map" {
-      $elementValue:  checkCurrentData($elementName, $elementValue);
+      $elementValue:  checkSelType($elementValue, $elementName);
 
       $sel:           map-get($elementValue, $__SEL__);
       $selType:       map-get($elementValue, $__SELTYPE__);

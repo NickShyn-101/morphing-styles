@@ -1,26 +1,33 @@
 @mixin generateTypeOfBlock($Args) {
   $data:    map-get($Args, $__DATA__);
+  $sel:     map-get($Args, $__SEL__);
+  $selType:     map-get($Args, $__SELTYPE__);
 
-  @each $currentProp, $currentValue in $data {
+  @each $blockName, $blockProps in $data {
+
+.demo {
+  sel: $sel;
+  selType: $selType;
+}
     $Args: map-merge($Args,(
-        $__CURRENTPROP__:   $currentProp,
-        $__CURRENTDATA__:   $currentValue
+        BlockName:   $blockName,
+        BlockProps:   $blockProps
       ));
-    @include globalChecks($currentValue, $Args);
+    @include globalChecks($blockProps, $Args);
   }
 }
 
 @mixin formatGenTypeOfBlock($Args) {
-  $currentProp:   map-get($Args, $__CURRENTPROP__);
-  $currentData:   map-get($Args, $__CURRENTDATA__);
-  
-  $Selector:      formatSelector($currentProp, $Args);
+  $blockName:     map-get($Args, BlockName);
+  $blockProps:    map-get($Args, BlockProps);
+    
+  $Selector:      formatSelector($blockName, $Args);
 
   #{$Selector} {
-    @each $propName, $propValue in $currentData {
-      @if $propName != $__RES__ {
+    @each $propName, $propValue in $blockProps {
+      @if (index($reservedNames, $propName) == null) {
         #{$propName}: #{$propValue};
-      }
+      }      
     }
   }
 }

@@ -1,5 +1,7 @@
 @function formatSelector($key_prop, $Args) {
   $result: "";
+
+ 
   // import arguments
   $sel:       map-get($Args, $__SEL__);
   $selType:   map-get($Args, $__SELTYPE__);
@@ -20,14 +22,51 @@
   @if $-MQ- == "-" {
     $-MQ-: ""
   }
+// Default styles
+  $Args: map-merge($Args, (
+    $__DEFAULT__:     glueSelectorName($-dot- , $-SEL-, $-MQ-),
+    $__GLOBAL__:      glueSelectorName($-SEL-),
+    $__PSEUDOCLASS__: glueSelectorName(":", $-SEL-),
+    $__ID__:          glueSelectorName("#", $-SEL-),
+  ));
+
+
 
   // Rules
-  $stSimpleG: glueSelectorName($-SEL-);
-  $stSimpleID: glueSelectorName("#", $-SEL-);
-  $stSimplePC: glueSelectorName(":", $-SEL-);
-  $stSimpleD: glueSelectorName($-dot- , $-SEL-, $-MQ-);
   @if ($type == $__SIMPLE__) or ($type == null) {
-    $result: checkFormatForSelector($Args, $stSimpleD, $stSimpleG, $stSimpleID, $stSimplePC);
+    $Args: map-merge($Args, (
+      $__DEFAULT__:     glueSelectorName($-dot- , $-SEL-, $-MQ-),
+      $__GLOBAL__:      glueSelectorName($-SEL-),
+      $__PSEUDOCLASS__: glueSelectorName(":", $-SEL-),
+      $__ID__:          glueSelectorName("#", $-SEL-),
+    ));
+    $result: checkFormatForSelector($Args);
   }
+
+  @if ($type == $__CYCLE__) {
+    $Args: map-merge($Args, (
+      $__DEFAULT__:     glueSelectorName($-dot-, $-SEL-, $-MQ-, $-div-, $i_cycle),
+    ));
+    $result: checkFormatForSelector($Args);
+  }
+
+    // For Block COmponents
+  @if ($type == $__BLOCK__){
+    $-HD-: ""; // helper 
+    @if ($-SEL- == null) or ($-SEL- == "") {
+      $-HD-: ""
+    } @else {
+      $-HD-: $-div-;
+    }
+
+      $Args: map-merge($Args, (
+        $__DEFAULT__:     glueSelectorName($-dot-, $-SEL-, $-HD-, $-COMP-,),
+        $__GLOBAL__:      glueSelectorName($-COMP-),
+        $__PSEUDOCLASS__: glueSelectorName($-COMP-),
+        $__ID__:          glueSelectorName($-COMP-),
+      ));
+      $result: checkFormatForSelector($Args);
+  
+    }
   @return $result;
 }

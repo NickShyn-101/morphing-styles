@@ -1,41 +1,31 @@
 @mixin generateTypeOfCycle($Args) {
-  $data:  map-get($Args, $__DATA__);
- 
-  @if $data == null {
+  $inputData:   map-get($Args, input);
+  $start:       map-get($Args, $__START__);
+  $end:         map-get($Args, $__END__);
+  
+  @for $i from $start through $end {
+    $Args:      map-merge($Args,(cycleKey: $i));
+    $Selector:  formatSelector(map-get($Args, $__SEL__), $Args);
+    $Args:      map-merge($Args,($__SELECTOR__: $Selector));
+
     @include globalChecks($Args)
-  } @else {
-    @include globalChecks($data, $Args)
   }
 }
 
 @mixin formatGenTypeOfCycle($Args) {
-  $start:       map-get($Args, $__START__);
-  $end:         map-get($Args, $__END__);
-  $exp:         map-get($Args, $__EXP__);
-  $data:        map-get($Args, $__DATA__);
-  $propName:    map-get($Args, $__PROPPERTY__);
+  $Selector:    map-get($Args, $__SELECTOR__);
+  $inputData:   map-get($Args, input);
+  $i:           map-get($Args, cycleKey);
 
-  @for $i from $start through $end {
-    $Args:      map-merge($Args, ( cycleKey: $i ));
-    $Selector:  formatSelector($propName, $Args);
-
-    #{$Selector} {  
-        // if there is only one (prop) Cycle Component
-      @if $data == null {    
-        #{$propName}: Expressions($exp, $i);
-      } @else {
-        // for some props in (data) in Cycle Component
-        @each  $currentProp, $currentData in $data {
-          @if  $currentProp != $__RES__ {
-            @if Expressions($currentData, $i) != null {
-              #{ $currentProp}: Expressions($currentData, $i);
-            } @else {
-              #{ $currentProp}: #{$currentData};
-            }
-          }   
+  #{$Selector} {
+    @each $propName, $propValue in $inputData {
+      @if (index($reservedNames, $propName) == null) {
+        @if Expressions($propValue, $i) != null {
+          #{ $propName}: Expressions($propValue, $i);
+        } @else {
+          #{ $propName}: #{$propValue};
         }
-
       }
-    }
+    } 
   }
 }

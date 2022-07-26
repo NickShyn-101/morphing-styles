@@ -32,7 +32,7 @@
   $Selector: formatSelector($name, $Args);
   @keyframes #{$Selector} {
     @each $key, $Value in $data {
-      @if $key != $__RES__ {
+      @if (index($reservedNames, $propName) == null) {
         #{$key} {
           @each $propName, $propValue in $Value {
             #{$propName}: #{$propValue};

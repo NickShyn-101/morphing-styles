@@ -8,15 +8,19 @@ $GRID_FLEX_COMPS: (
       padding: 20px,
     ),
   ),
-  "grid-normal": (
-    sel: "main, aside, footer, header, section, .section",
-    extend: (
-      display: block,
-      margin: 0,
-    ),
-  ),
+  // "grid-normal": (
+    // type: block,
+  //   sel: "main, aside, footer, header, section, .section",
+  //   "data": (
+  //     display: block,
+  //     margin: 0,
+  //   )
+  // ),
+
   "grid-main": (
     type: block,
+    seltype: g,
+    sel: "div",
     extend: (
       display: flex,
       flex-direction: row,
@@ -26,9 +30,10 @@ $GRID_FLEX_COMPS: (
       width: 100%,
     ),
     data: (
-      "container": (
+      "body": (
 
         gap: $gapInContainer,
+        seltype: gos
       ),
       "row": (
         gap: $gapInRow,
@@ -52,33 +57,34 @@ $GRID_FLEX_COMPS: (
   "grid-cols": (
     type: cycle,
     sel: "col",
-    prop: "width",
     start: 1,
     end: $col-count,
-    mq: true,
-    exp: "gridWidth",
+    mq: md,
+    width: "gridWidth",
+    height: "calc(10px + 20px)",
     extend: (
       overflow: hidden,
     ),
   ),
-  "grid-offset-left": (
-    type: cycle,
-    sel: "offset-l",
-    prop: "margin-left",
-    start: 0,
-    end: $col-count - 1,
-    mq: true,
-    exp: "offsetWidth",
-  ),
-  "grid-offset-right": (
-    type: cycle,
-    sel: "offset-r",
-    prop: "margin-right",
-    start: 0,
-    end: $col-count - 1,
-    mq: true,
-    exp: "offsetWidth",
-  ),
+
+  // "grid-offset-left": (
+  //   type: cycle,
+  //   sel: "offset-l",
+  //   prop: "margin-left",
+  //   start: 0,
+  //   end: $col-count - 1,
+  //   mq: true,
+  //   exp: "offsetWidth",
+  // ),
+  // "grid-offset-right": (
+  //   type: cycle,
+  //   sel: "offset-r",
+  //   prop: "margin-right",
+  //   start: 0,
+  //   end: $col-count - 1,
+  //   mq: true,
+  //   exp: "offsetWidth",
+  // ),
   "custom-grid-basics": (
     type: block,
     data: (

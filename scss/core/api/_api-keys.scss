@@ -40,9 +40,17 @@ $__SELECTOR__: "Selector";
 $__CURRENTPROP__: "CurrentProp";
 $__CURRENTDATA__: "CurrentData";
 
+// Selector Types
+$__DEFAULT__: "Default";
+$__GLOBAL__: "Global";
+$__PSEUDOCLASS__: "PseudoClass";
+$__PSEUDOELEMENT__: "PseudoElement";
+$__ID__: "ID";
+
 $COMPONENTS: ();
 
-$reservedNames: $__DATA__, $__SEL__, $__SELTYPE__, $__RES__, $__SELECTOR__;
+$reservedNames: $__RES__, $__SELECTOR__, $__TYPE__, $__SEL__, $__SELTYPE__,
+  $__DATA__, $__PROPPERTY__, $__EXTEND__, $__START__, $__END__, $__EXP__;
 
 $reserved_HTML_TAGS: a, abbr, address, area, article, aside, audio, b, base, bdi,
   bdo, blockquote, body, br, button, canvas, caption, cite, code, col, colgroup,
