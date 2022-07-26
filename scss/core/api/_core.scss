@@ -3,14 +3,13 @@
     @if $compStatus != false {
       @if map-has-key($API_LIST, $compName) {
         $resource:  map-get($API_LIST, $compName);
-        $type:      map-get($resource, $__TYPE__);
-        
         $resource:  map-merge($resource, (
-            $__MQ__:      toString($MQ),
-            $__COMP__:    $compName,
-            $__STATUS__:  $compStatus,
-            input:        $resource,
-          ));
+          $__MQ__:      toString($MQ),
+          $__COMP__:    $compName,
+          $__STATUS__:  $compStatus,
+        ));
+        $resource:  checkComponentBeforeRender($resource);
+        $type:      map-get($resource, $__TYPE__);
 
         @if ($type != __BOOST__) {
           // Params to share with other functions as argument
@@ -20,7 +19,7 @@
           @include generateTypeOfExtended($Args);
 
           @if ($type == $__SIMPLE__) or ($type == null) {
-            @include generateTypeOfSimple($Args);
+            @include generateTypeOfSimple($resource);
           }
 
           // Generate One Property Selectors
@@ -35,7 +34,7 @@
 
           // Generate Cycle Based Selectors
           @if ($type == $__CYCLE__) {
-            @include generateTypeOfCycle($Args);
+            @include generateTypeOfCycle($resource);
           }
 
           // Generate Animations

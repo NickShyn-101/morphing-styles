@@ -1,0 +1,17 @@
+@function checkComponentBeforeRender($data) {
+    $type:      map-get($data, $__TYPE__);
+    $start:     map-get($data, $__START__);
+    $end:       map-get($data, $__END__);
+
+    @if $type == null {
+      @if $start != null and $end != null {
+        $type: $__CYCLE__;
+      }
+    }
+    $data:  map-merge($data, (
+        $__TYPE__:    $type,
+        $__INPUT__:   $data, 
+      ));
+
+    @return $data
+}

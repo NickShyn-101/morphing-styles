@@ -55,7 +55,6 @@ $GRID_FLEX_COMPS: (
   //   ),
   // ),
   "grid-cols": (
-    type: cycle,
     sel: "col",
     start: 1,
     end: $col-count,

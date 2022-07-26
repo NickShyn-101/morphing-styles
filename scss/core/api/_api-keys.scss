@@ -13,6 +13,8 @@ $__START__: "start";
 $__END__: "end";
 $__EXP__: "exp";
 
+$__INPUT__: "input";
+$__CYCLEKEY__: "cycleKey";
 // Types of components
 $__SIMPLE__: "simple";
 $__BLOCK__: "block"; // or null
@@ -37,6 +39,7 @@ $__RES__: "mq";
 $__MQ__: "hasMQ";
 $__CONTENT__: "Content";
 $__SELECTOR__: "Selector";
+$__ALLSELECTORS__: "AllSelector";
 $__CURRENTPROP__: "CurrentProp";
 $__CURRENTDATA__: "CurrentData";
 
@@ -47,10 +50,12 @@ $__PSEUDOCLASS__: "PseudoClass";
 $__PSEUDOELEMENT__: "PseudoElement";
 $__ID__: "ID";
 
-$COMPONENTS: ();
 
-$reservedNames: $__RES__, $__SELECTOR__, $__TYPE__, $__SEL__, $__SELTYPE__,
-  $__DATA__, $__PROPPERTY__, $__EXTEND__, $__START__, $__END__, $__EXP__;
+$COMPONENTS: ();
+$reservedNames: $__COMP__, $__STATUS__, $__INPUT__, $__CYCLEKEY__, $__TYPE__, $__SEL__, $__SELTYPE__,
+  $__DATA__, $__PROPPERTY__, $__EXTEND__, $__START__, $__END__, $__EXP__,
+  $__BOOST__, $__TO__, $__GROUP__, $__NAME__, $__RES__, $__MQ__, $__CONTENT__,
+  $__SELECTOR__, $__ALLSELECTORS__, $__CURRENTPROP__, $__CURRENTDATA__;
 
 $reserved_HTML_TAGS: a, abbr, address, area, article, aside, audio, b, base, bdi,
   bdo, blockquote, body, br, button, canvas, caption, cite, code, col, colgroup,

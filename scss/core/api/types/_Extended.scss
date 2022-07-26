@@ -29,16 +29,16 @@
         $AllSelectors: append($AllSelectors, $currentSelector, "comma");
       }
     }
-    $Args: map-merge($Args,($__SELECTOR__: $AllSelectors));
+    $Args: map-merge($Args,($__ALLSELECTORS__: $AllSelectors));
     @include globalChecks($extend, $Args);
   }
 }
 
 @mixin formatGenTypeOfExtended($Args) {
-  $Selector: map-get($Args, $__SELECTOR__);
+  $AllSelectors: map-get($Args, $__ALLSELECTORS__);
   $extend: map-get($Args, $__EXTEND__);
 
-  #{$Selector} {
+  #{$AllSelectors} {
     @each $propName, $propValue in $extend {
       @if $propName != $__RES__ {
         #{$propName}: #{$propValue};
