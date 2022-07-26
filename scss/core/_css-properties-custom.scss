@@ -1,12 +1,15 @@
 //     shortName    Property          Active      MediaActive
 $CSS_PROPERTIES_LIST_CUSTOM: (
   "custom-padding": (
+    // type: simple,
 
     "table": (
+
       border: 1px,
       color: green,
       
       "tbody": (
+
         border-radius: "8px",
         position: stycky,
         border: 1px,
@@ -67,7 +70,6 @@ $CSS_PROPERTIES_LIST_CUSTOM: (
     ),
   ),
   "custom-color-short": (
-    type: module,
     module: "custom-color",
     data: (
       "green":      ("pink", #ed18c6,  10,  2%,  "l",     "color"), 

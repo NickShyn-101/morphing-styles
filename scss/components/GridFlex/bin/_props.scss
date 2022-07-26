@@ -55,17 +55,18 @@ $GRID_FLEX_COMPS: (
   //   ),
   // ),
   "grid-cols": (
+    
     sel: "col",
     start: 1,
     end: $col-count,
     mq: md,
     width: "gridWidth",
     height: "calc(10px + 20px)",
-    extend: (
-      mq: true,
-      overflow: hidden,
-      color: blue,
-    ),
+    // extend: (
+    //   mq: true,
+    //   overflow: hidden,
+    //   color: blue,
+    // ),
   ),
 
   // "grid-offset-left": (

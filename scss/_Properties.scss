@@ -1,15 +1,15 @@
 @import "core/css-properties-custom";
 
 $USER_COMPONENTS_LIST: (
-  // 'grid-cols': true,
+  'grid-cols': true,
   // 'grid-offset-left': false,
   // 'grid-offset-right': false,
-  'dev-tools': true,
-    'animation-single': true, 
-    'animation-group': true, 
+  // 'dev-tools': true,
+    // 'animation-single': true, 
+    // 'animation-group': true, 
     // 'grid-normal': true, 
     // 'grid-main': trfalseue,
-    'custom-grid-basics': true,
+    // 'custom-grid-basics': true,
     // 'table-normal': true,
     // 'table-styles': false,
     // 'caption': false,
@@ -31,13 +31,13 @@ $USER_COMPONENTS_LIST: (
     // 'margin': true,
     // 'padding': false,
     // 'opacity': false,
-    'word-break': true,
+    // 'word-break': true,
     // 'text-align': true,
     // 'vertical-align': false,
     // 'custom-margin': true,
     // 'custom-color-long': true,
-    'custom-color-short': true,
-    // 'custom-padding': true,
+    // 'custom-color-short': true,
+    'custom-padding': true,
   );
 
 // Set statuses to componetns

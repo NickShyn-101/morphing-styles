@@ -2,12 +2,14 @@
   $type:      map-get($Args, $__TYPE__);
   $AllSelectors:  map-get($Args, $__ALLSELECTORS__);
 
-  @if ($type == null) {
-    @include formatGenTypeOfSimple($Args);
-  }
+
   @if $AllSelectors != null {
     @include formatGenTypeOfExtended($Args);
   } @else {
+    @if ($type == $__SIMPLE__) {
+      @include formatGenTypeOfSimple($Args);
+    }
+    
     @if ($type == $__CYCLE__) {
       @include formatGenTypeOfCycle($Args);
     }

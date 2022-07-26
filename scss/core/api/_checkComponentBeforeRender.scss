@@ -1,37 +1,42 @@
 @function checkComponentBeforeRender($data) {
-    $type:        map-get($data, $__TYPE__);
-    $start:       map-get($data, $__START__);
-    $end:         map-get($data, $__END__);
+  $type: map-get($data, $__TYPE__);
+  $start: map-get($data, $__START__);
+  $end: map-get($data, $__END__);
 
-    $name:        map-get($data, $__NAME__);
-    $prop:        map-get($data, $__PROPPERTY__);
-    $module:      map-get($data, module);
-    $innerData:   map-get($data, $__DATA__);
+  $name: map-get($data, $__NAME__);
+  $prop: map-get($data, $__PROPPERTY__);
+  $module: map-get($data, module);
+  $compName: map-get($data, $__COMP__);
+  $innerData: map-get($data, $__DATA__);
 
-    @if $type == null {
-      @if $start != null and $end != null {
-        $type: $__CYCLE__;
-      }
-      @if $data != null {
-        $type: $__BLOCK__;
-      }
-      @if $prop != null and $data != null {
-        $type: $__LIST__;
-      }
-      @if $module != null and $data != null {
-        $type: $__MODULE__;
-      }
-      @if $name != null and $data != null {
-        $type: $__ANIMATION__;
-      }
+  @if $type == $__SIMPLE__ {
+    @if $innerData != null {
+      $type: $__BLOCK__;
     }
-    $data:  map-merge($data, (
-        $__TYPE__:        $type,
-        $__INPUT__:       $data, 
-        $__DATA__:        $innerData, 
-        $__PROPPERTY__:   $prop, 
-        module:           $module, 
-      ));
+    @if $prop != null and $innerData != null {
+      $type: $__LIST__;
+    }
+    @if $module != null and $innerData != null {
+      $type: $__MODULE__;
+    }
+    @if $name != null and $innerData != null {
+      $type: $__ANIMATION__;
+    }
+    @if $start != null and $end != null {
+      $type: $__CYCLE__;
+    }     
+  }
+ 
+  $data: map-merge(
+    $data,
+    (
+      $__TYPE__: $type,
+      $__INPUT__: $data,
+      $__DATA__: $innerData,
+      $__PROPPERTY__: $prop,
+      module: $module,
+    )
+  );
 
-    @return $data
+  @return $data;
 }

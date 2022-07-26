@@ -4,6 +4,11 @@
 
   @each $elementName, $elementValue in $inputData {  
     @if type-of($elementValue) == "map" {
+      $type:          map-get($elementValue, $__TYPE__);
+      @if $type == null {
+        $type: "simple";
+      }
+      
       $elementValue:  checkSelType($elementValue, $elementName);
 
       $sel:           map-get($elementValue, $__SEL__);
@@ -14,6 +19,7 @@
       
       $elementValue:  map-merge($elementValue,($__SELECTOR__: $Selector));
       $elementValue:  map-merge($elementValue, ($__MQ__: map-get($Args, $__MQ__)));
+      $elementValue:  map-merge($elementValue, ($__TYPE__: $type));
       $Args:          map-merge($Args,(input: $elementValue));   
       
       @include globalChecks($elementValue);

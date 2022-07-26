@@ -2,9 +2,8 @@
   $moduleName:  map-get($Args, module);
   $data:     map-get($Args, $__DATA__);
 
-
   // Color Custom Module from ColorPaletteCustom
-    @if $moduleName == "custom-color" {
+  @if $moduleName == "custom-color" {
     @include custom-color($data, $Args);
   }
 }

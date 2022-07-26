@@ -2,11 +2,17 @@
   @each $compName, $compStatus in $DATA {
     @if $compStatus != false {
       @if map-has-key($API_LIST, $compName) {
+
         $resource:  map-get($API_LIST, $compName);
+        $basicType: map-get($resource, $__TYPE__);
+        @if $basicType == null {
+          $basicType: $__SIMPLE__;
+        }
         $resource:  map-merge($resource, (
           $__MQ__:      toString($MQ),
           $__COMP__:    $compName,
           $__STATUS__:  $compStatus,
+          $__TYPE__:    $basicType,
         ));
         $resource:  checkComponentBeforeRender($resource);
         $type:      map-get($resource, $__TYPE__);
@@ -15,7 +21,7 @@
            // Generate Extended Selectors
           @include generateTypeOfExtended($resource);
 
-          @if ($type == $__SIMPLE__) or ($type == null) {
+          @if ($type == $__SIMPLE__) {
             @include generateTypeOfSimple($resource);
           }
 
