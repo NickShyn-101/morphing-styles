@@ -20,27 +20,22 @@
             @include generateTypeOfSimple($Args);
           }
 
-          // Generate One Property Selectors
           @if ($type == $__LIST__) {
                @include generateTypeOfList($Args);
           }
 
-          // Generate Component Selectors
           @if ($type == $__BLOCK__) {
             @include generateTypeOfBlock($Args);
           }
 
-          // Generate Cycle Based Selectors
           @if ($type == $__CYCLE__) {
             @include generateTypeOfCycle($Args);
           }
 
-          // Generate Animations
           @if ($type == $__ANIMATION__) {
             @include generateTypeOfAnimation($Args);
           }
 
-          // Generate Modules
           @if ($type == $__MODULE__) {
             @include generateTypeOfModule($Args);
           }

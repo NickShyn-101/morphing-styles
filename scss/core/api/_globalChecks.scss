@@ -1,21 +1,25 @@
 @mixin globalChecks($checkFromData, $Args: $checkFromData) {
-    $res:  map-get($checkFromData, $__RES__);   
-    $MQ:   map-get($Args, $__MQ__);
+  $res: map-get($checkFromData, $__RES__);
+  $MQ: map-get($Args, $__MQ__);
 
-    @if ($MQ == "") {
-      @if ($res != only) {
-        @include runComponentGenerator($Args);
-      }
+  @if ($MQ == "") {
+    @if ($res != only) and
+      (index($res, "-b") != null) or
+      ($res == true) or
+      ($res == false) or
+      ($res == null)
+    {
+      @include runComponentGenerator($Args);
+    }
+  } @else {
+    @if ($res == true) or ($res == only) {
+      @include runComponentGenerator($Args);
     } @else {
-      @if ($res == true) or ($res == only) {
-        @include runComponentGenerator($Args);
-      } @else {
-        @each $mqKey in $res {
-          @if $mqKey == $MQ {
-            @include runComponentGenerator($Args);
-          }
+      @each $mqKey in $res {
+        @if $mqKey == $MQ {
+          @include runComponentGenerator($Args);
         }
       }
     }
   }
-  
+}

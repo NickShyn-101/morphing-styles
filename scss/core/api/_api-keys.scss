@@ -11,7 +11,7 @@ $__PROPPERTY__: "prop";
 $__EXTEND__: "extend";
 $__START__: "start";
 $__END__: "end";
-$__EXP__: "exp";
+
 
 $__INPUT__: "input";
 $__CYCLEKEY__: "cycleKey";
@@ -37,24 +37,20 @@ $__RES__: "mq";
 
 // Other and short names
 $__MQ__: "hasMQ";
-$__CONTENT__: "Content";
 $__SELECTOR__: "Selector";
 $__ALLSELECTORS__: "AllSelector";
 
-
 // Selector Types
 $__DEFAULT__: "Default";
-$__GLOBAL__: "Global";
-$__PSEUDOCLASS__: "PseudoClass";
-$__PSEUDOELEMENT__: "PseudoElement";
-$__ID__: "ID";
-
+$__FROM__: "from";
 
 $COMPONENTS: ();
-$reservedNames: from, to, $__COMP__, $__STATUS__, $__INPUT__, $__CYCLEKEY__, $__TYPE__, $__SEL__, $__SELTYPE__,
-  $__DATA__, $__PROPPERTY__, $__EXTEND__, $__START__, $__END__, $__EXP__,
-  $__BOOST__, $__TO__, $__GROUP__, $__NAME__, $__RES__, $__MQ__, $__CONTENT__,
-  $__SELECTOR__, $__ALLSELECTORS__;
+
+
+$reservedNames: $__FROM__, $__COMP__, $__STATUS__, $__INPUT__, $__CYCLEKEY__,
+  $__TYPE__, $__SEL__, $__SELTYPE__, $__DATA__, $__PROPPERTY__, $__EXTEND__,
+  $__START__, $__END__,  $__BOOST__, $__TO__, $__GROUP__, $__NAME__,
+  $__RES__, $__MQ__, $__SELECTOR__, $__ALLSELECTORS__;
 
 $reserved_HTML_TAGS: a, abbr, address, area, article, aside, audio, b, base, bdi,
   bdo, blockquote, body, br, button, canvas, caption, cite, code, col, colgroup,

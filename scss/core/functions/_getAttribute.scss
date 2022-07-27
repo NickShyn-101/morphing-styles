@@ -1,9 +1,0 @@
-@function getAttribute($where, $what, $default) {
-  $result: "";
-  @if map-has-key($where, "#{$what}") {
-    $result: map-get($where, "#{$what}");
-  } @else {
-    $result: $default;
-  }
-  @return $result;
-}

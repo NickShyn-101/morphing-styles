@@ -6,7 +6,7 @@
     @if ($selType == null) {
       $selType: $defaultName;
       @if (index($reserved_HTML_TAGS, $sel) != null) {
-        $selType: "g";
+        $selType: "t";
       }
       @if (index($reserved_PSEUDO_CLASSES, $sel) != null)  {
         $selType: "pc";

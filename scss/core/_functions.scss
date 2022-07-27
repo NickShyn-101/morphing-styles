@@ -1,6 +1,5 @@
 // Basic and simple functions
-@import "functions/checkValue";
-@import "functions/getAttribute";
+@import "functions/toString";
 
 // Selector style control
 @import "functions/getSpace";
@@ -8,7 +7,7 @@
 @import "functions/glueSelectorName";
 @import "functions/formatSelector";
 @import "functions/checkSelType";
-@import "functions/checkFormat";
+@import "functions/checkFormatForSelector";
 
 
 

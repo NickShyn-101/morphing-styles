@@ -29,11 +29,11 @@ $GRID_FLEX_COMPS: (
     //   overflow: hidden,
     //   width: 100%,
     // ),
-    sel: "div",
-    // seltype: "d",
+    // sel: "div",
+    seltype: "-id-id",
     data: (
       "body": (
-        mq: true,
+        mq: only,
         gap: $gapInContainer,
       ),
       "row": (

@@ -5,12 +5,12 @@
 
   $start:       map-get($data, $__START__);
   $end:         map-get($data, $__END__);
-  
   $name:        map-get($data, $__NAME__);
   $prop:        map-get($data, $__PROPPERTY__);
   $module:      map-get($data, $__MODULE__);
-  $compName:    map-get($data, $__COMP__);
+  
   $innerData:   map-get($data, $__DATA__);
+
   @if $type == null {
     $type: $__SIMPLE__
   }
@@ -36,23 +36,6 @@
 
 
 
-
-  @if $sel == null or $sel == "" {
-    @if $type == $__SIMPLE__ {
-        
-    }
-    @if $type == $__LIST__ {
-      $sel: $prop;
-    }
-    @if $type == $__BLOCK__ {
-      
-    }
-  }
-  
-  $data: map-merge($data,($__SEL__: $sel));
-  
-
-
   @if $selType == null or $selType == "" {
     @if $type == $__SIMPLE__ {
     }
@@ -75,10 +58,10 @@
   $data: map-merge(
     $data,
     (
-      $__INPUT__: $data,
-      $__DATA__: $innerData,
-      $__PROPPERTY__: $prop,
-      $__MODULE__: $module,
+      $__INPUT__:       $data,
+      $__DATA__:        $innerData,
+      $__PROPPERTY__:   $prop,
+      $__MODULE__:      $module,
     )
   );
 

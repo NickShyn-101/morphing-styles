@@ -1,57 +1,58 @@
 @function checkFormatForSelector($Args) {
-        
   $result: "";
-  $selType: map-get($Args, $__SELTYPE__);
-  $type:    map-get($Args, $__TYPE__);
+  $selType:       map-get($Args, $__SELTYPE__);
+  $type:          map-get($Args, $__TYPE__);
 
-  $DEFAULT:       map-get($Args,   $__DEFAULT__);
-  $GLOBAL:        map-get($Args,   $__GLOBAL__);     
-  $PSEUDOCLASS:   map-get($Args,   $__PSEUDOCLASS__);      
-  $PSEUDOELEMENT: map-get($Args,   $__PSEUDOELEMENT__);      
-  $ID:            map-get($Args,   $__ID__);
+  // Main Default   
+  $DEFAULT:       map-get($Args, "d");
 
-  // no media queries
-  $PRd:            map-get($Args, "prd");
+  // Main selTypes  
+  $C:             map-get($Args, "c");
+  $T:             map-get($Args, "t");     
+  $PC:            map-get($Args, "pc");      
+  $PE:            map-get($Args, "pe");      
+  $ID:            map-get($Args, "id");
 
-  $PRc:            map-get($Args, "prc");
-  $PRt:            map-get($Args, "prt");
-  $PRid:           map-get($Args, "prid");
+  // Default   
+  $PRd:           map-get($Args, "prd");
+  $PR-d:          map-get($Args, "pr-d");
+  $PRdp:          map-get($Args, "prd+");
+  $PR-dp:         map-get($Args, "pr-d+");
 
-  $PR-d:            map-get($Args, "pr-d");
+  // Basic  
+  $PRc:           map-get($Args, "prc");
+  $PRt:           map-get($Args, "prt");
+  $PRid:          map-get($Args, "prid");
 
-  $PR-c:            map-get($Args, "pr-c");   
-  $PR-c-c:          map-get($Args, "pr-c-c");   
-  $PR-c-cp:         map-get($Args, "pr-c-c+");   
-  $PR-cp-c:         map-get($Args, "pr-c+-c");   
-  $PR-cp-cp:        map-get($Args, "pr-c+-c+");  
+  // Class selector  
+  $PR-c:          map-get($Args, "pr-c");   
+  $PR-c-c:        map-get($Args, "pr-c-c");   
+  $PR-c-cp:       map-get($Args, "pr-c-c+");   
+  $PR-cp-c:       map-get($Args, "pr-c+-c");   
+  $PR-cp-cp:      map-get($Args, "pr-c+-c+");  
+  $PR-c-p:        map-get($Args, "pr-c-p");   
+  $PR-cp-p:       map-get($Args, "pr-c+-p");   
+  $PR-c-t:        map-get($Args, "pr-c-t");   
+  $PR-cp-t:       map-get($Args, "pr-c+-t");   
+  $PR-c-id:       map-get($Args, "pr-c-id");   
+  $PR-cp-id:      map-get($Args, "pr-c+-id");   
 
-  $PR-c-p:          map-get($Args, "pr-c-p");   
-  $PR-cp-p:          map-get($Args, "pr-c+-p");   
-  $PR-c-t:          map-get($Args, "pr-c-t");   
-  $PR-cp-t:          map-get($Args, "pr-c+-t");   
-  $PR-c-id:         map-get($Args, "pr-c-id");   
-  $PR-cp-id:         map-get($Args, "pr-c+-id");   
+  // Tag selector  
+  $PR-t:          map-get($Args, "pr-t");
+  $PR-t-c:        map-get($Args, "pr-t-c"); 
+  $PR-t-cp:       map-get($Args, "pr-t-c+"); 
+  $PR-t-p:        map-get($Args, "pr-t-p"); 
+  $PR-t-t:        map-get($Args, "pr-t-t");   
+  $PR-t-id:       map-get($Args, "pr-t-id");   
 
-  $PR-t:            map-get($Args, "pr-t");
-  $PR-t-c:          map-get($Args, "pr-t-c"); 
-  $PR-t-cp:         map-get($Args, "pr-t-c+"); 
-  $PR-t-p:          map-get($Args, "pr-t-p"); 
-  $PR-t-t:          map-get($Args, "pr-t-t");   
-  $PR-t-id:         map-get($Args, "pr-t-id");   
+  // ID selector  
+  $PR-id:         map-get($Args, "pr-id");
+  $PR-id-c:       map-get($Args, "pr-id-c"); 
+  $PR-id-cp:      map-get($Args, "pr-id-c+"); 
+  $PR-id-p:       map-get($Args, "pr-id-p"); 
+  $PR-id-t:       map-get($Args, "pr-id-t"); 
+  $PR-id-id:      map-get($Args, "pr-id-id");
 
-  $PR-id:           map-get($Args, "pr-id");
-  $PR-id-c:         map-get($Args, "pr-id-c"); 
-  $PR-id-cp:        map-get($Args, "pr-id-c+"); 
-  $PR-id-p:         map-get($Args, "pr-id-p"); 
-  $PR-id-t:         map-get($Args, "pr-id-t"); 
-  $PR-id-id:        map-get($Args, "pr-id-id");
-
- // with media queries
-  $PRdp:            map-get($Args, "prd+");
-  $PR-dp:            map-get($Args, "pr-d+");
-  // @else if ($selType == "") {
-  //   $result: $ID;
-  // }
 @if $type == $__SIMPLE__ {
   @if ($selType == "id") {
     $result: $ID;

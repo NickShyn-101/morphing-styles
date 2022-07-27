@@ -9,35 +9,26 @@
 
 
   // formating vars
-  $-COMP-: customizeSelector($key_prop, $componentPrefix, $componentPostfix);
-  $-SEL-: customizeSelector($sel, $selectorPrefix, $selectorPostfix);
-  $-MQ-: customizeSelector($MQ, $mediaQueryPrefix, $mediaQueryPostfix);
-  $_: " ";
+  $-COMP-:    customizeSelector($key_prop, $componentPrefix, $componentPostfix);
+  $-SEL-:     customizeSelector($sel, $selectorPrefix, $selectorPostfix);
+  $-MQ-:      customizeSelector($MQ, $mediaQueryPrefix, $mediaQueryPostfix);
   $-div-: "-";
   $-dot-: ".";
+  $-shr-: " #";
 
   @if $-MQ- == "-" {
     $-MQ-: ""
   }
 
-// Default styles
-  $Args: map-merge($Args, (
-    $__DEFAULT__:         glueSelectorName(".", $-SEL-),
-    $__GLOBAL__:          glueSelectorName($-SEL-),
-    $__PSEUDOCLASS__:     glueSelectorName(":", $-SEL-),
-    $__PSEUDOELEMENT__:   glueSelectorName("::", $-SEL-),
-    $__ID__:              glueSelectorName($-SEL-),
-  ));
-
-
-
   // Rules
   @if ($type == $__SIMPLE__) {
     $Args: map-merge($Args, (
-      // $__DEFAULT__:     glueSelectorName($-dot- , $-SEL-, $-MQ-),
-      // $__GLOBAL__:      glueSelectorName($-SEL-),
-      // $__PSEUDOCLASS__: glueSelectorName(":", $-SEL-),
-      // $__ID__:          glueSelectorName("#", $-SEL-),
+      "c":            glueSelectorName(".", $-SEL-),
+      "t":            glueSelectorName($-SEL-),
+      "pc":           glueSelectorName(":", $-SEL-),
+      "pe":           glueSelectorName("::", $-SEL-),
+      "id":           glueSelectorName("#", $-SEL-),
+      $__DEFAULT__:   glueSelectorName($-dot- , $-SEL-, $-MQ-),
     ));
     $result: checkFormatForSelector($Args);
   }
@@ -56,24 +47,26 @@
       "prid":         glueSelectorName("#", $-SEL-, $i_cycle), 
       "pr-id":        glueSelectorName("#", $-SEL-, $-div-, $i_cycle),
 
-      $__DEFAULT__:   glueSelectorName($-dot-, $-SEL-, $-MQ-, $-div-, $i_cycle),
+      $__DEFAULT__:   glueSelectorName($-dot-, $-SEL-, $-div-, $i_cycle, $-MQ-),
       ));
     $result: checkFormatForSelector($Args);
   }
 
-  // For Block Components
+  // Block Components done
   @if ($type == $__BLOCK__) or ($type == $__LIST__) {
     $-dotS-: ".";
     $-MQS-: $-MQ-;
+    $-shrS-: $-shr-;
     @if $-SEL- == "" {
       $-div-: "";
       $-dotS-: "";
       $-MQS-: "";
+      $-shrS-: "";
     }
       $Args: map-merge($Args, (
-        "prc":            glueSelectorName($-dot-,  $-SEL-, $-div-, $sE, $-MQ-),
-        "prt":            glueSelectorName($-SEL-, $-dot-,  $sE, $-MQ-),
-        "prid":           glueSelectorName("#", $-SEL-, $-div-,  $sE, $-MQ-),
+        "prc":            glueSelectorName($-dotS-, $-SEL-, $-div-, $sE, $-MQ-),
+        "prt":            glueSelectorName($-SEL-,  $-dot-, $sE,    $-MQ-),
+        "prid":           glueSelectorName($-shrS-, $-SEL-, $-div-, $sE, $-MQ-),
 
         "prd":            glueSelectorName($-dot-,  $-SEL-, $sE),
         "prd+":           glueSelectorName($-dot-,  $-SEL-, $sE, $-MQ-), 
@@ -88,26 +81,26 @@
 
         "pr-c-p":         glueSelectorName($-dotS-, $-SEL-, ":",  $sE),
         "pr-c-t":         glueSelectorName($-dotS-, $-SEL-, " ",  $sE),
-        "pr-c-id":        glueSelectorName($-dotS-, $-SEL-, " #", $sE),
+        "pr-c-id":        glueSelectorName($-dotS-, $-SEL-, $-shr-, $sE),
         "pr-c+-p":        glueSelectorName($-dotS-, $-SEL-, $-MQS-, ":",  $sE),
-        "pr-c+-t":        glueSelectorName($-dotS-, $-SEL-, $-MQS-, " ", $sE),
-        "pr-c+-id":       glueSelectorName($-dotS-, $-SEL-, $-MQS-, " #", $sE),
+        "pr-c+-t":        glueSelectorName($-dotS-, $-SEL-, $-MQS-, " ",  $sE),
+        "pr-c+-id":       glueSelectorName($-dotS-, $-SEL-, $-MQS-, $-shr-, $sE),
 
         "pr-t":           glueSelectorName($-SEL-, $-dot-, $sE, $-MQ-),
         "pr-t-c":         glueSelectorName($-SEL-, $-dot-, $sE),
         "pr-t-c+":        glueSelectorName($-SEL-, $-dot-, $sE, $-MQ-),
         "pr-t-p":         glueSelectorName($-SEL-, ":", $sE),
         "pr-t-t":         glueSelectorName($-SEL-,  " ", $sE),
-        "pr-t-id":        glueSelectorName($-SEL-, " #", $sE),
+        "pr-t-id":        glueSelectorName($-SEL-, $-shr-, $sE),
 
-        "pr-id":          glueSelectorName("#", $-SEL-, $-dot-, $sE, $-MQ-),
-        "pr-id-c":        glueSelectorName("#", $-SEL-, $-dot-, $sE),
-        "pr-id-c+":       glueSelectorName("#", $-SEL-, $-dot-, $sE, $-MQ-),
-        "pr-id-p":        glueSelectorName("#", $-SEL-, ":",  $sE),
-        "pr-id-t":        glueSelectorName("#", $-SEL-, " ",  $sE),
-        "pr-id-id":       glueSelectorName("#", $-SEL-, " #", $sE),
+        "pr-id":          glueSelectorName($-shrS-, $-SEL-, $-dot-, $sE, $-MQ-),
+        "pr-id-c":        glueSelectorName($-shrS-, $-SEL-, $-dot-, $sE),
+        "pr-id-c+":       glueSelectorName($-shrS-, $-SEL-, $-dot-, $sE, $-MQ-),
+        "pr-id-p":        glueSelectorName($-shrS-, $-SEL-, ":",  $sE),
+        "pr-id-t":        glueSelectorName($-shrS-, $-SEL-, " ",  $sE),
+        "pr-id-id":       glueSelectorName($-shrS-, $-SEL-, $-shr-, $sE),
 
-        $__DEFAULT__:         glueSelectorName($-dot-,  $-SEL-, $-div-, $sE, $-MQ-),
+        $__DEFAULT__:     glueSelectorName($-dot-,  $-SEL-, $-div-, $sE, $-MQ-),
       ));
       $result: checkFormatForSelector($Args);
   
