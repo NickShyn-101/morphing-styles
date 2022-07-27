@@ -8,12 +8,13 @@
       $respValue: nth($propValue, 2);
     }
 
-    $Selector: "#{$sel}#{$propSelector}"; 
+    $Args: map-merge($Args, ("SecondaryElement": $propSelector));
+    $sel:       formatSelector(nth($propValue, 1), $Args);
     
     $Args: map-merge($Args,(
       $__DATA__:          nth($propValue, 1),
       $__RES__:           $respValue,
-      $__SELECTOR__:      $Selector,
+      $__SELECTOR__:      $sel,
       ));
     @include globalChecks($Args);
   } 

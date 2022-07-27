@@ -1,7 +1,7 @@
 @import "core/css-properties-custom";
 
 $USER_COMPONENTS_LIST: (
-  'grid-cols': true,
+  // 'grid-cols': true,
   // 'grid-offset-left': true,
   // 'grid-offset-right': true,
   // 'dev-tools': true,
@@ -21,11 +21,11 @@ $USER_COMPONENTS_LIST: (
     // 'align-items': true,
     // 'align-self': false,
     // 'align-content': false,
-    // 'flex-wrap': false,
+    'flex-wrap': false,
     // 'flex-direction': true,
     // 'flex-shrink': true,
-    // 'flex-grow': true,
-    // 'flex-basis': false,
+    'flex-grow': true,
+    'flex-basis': true,
     // 'gap': true,
     // 'order': false,
     // 'margin': true,

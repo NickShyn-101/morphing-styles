@@ -1,19 +1,19 @@
 @mixin generateTypeOfBlock($Args) {
-  $sel:       formatSelector(map-get($Args, $__SEL__), $Args);
   $data:      map-get($Args, $__DATA__); 
-
+  
   $respValue:   map-get($Args, $__RES__);
   @each $propSelector, $propValue in $data {
     @if map-has-key($propValue, $__RES__) {
       $respValue: map-get($propValue, $__RES__);
     }
-    
-    $Selector: "#{$sel}#{$propSelector}"; 
+    $Args: map-merge($Args, ("SecondaryElement": $propSelector));
+    $sel:       formatSelector(map-get($Args, $__SEL__), $Args);
+
     
     $Args: map-merge($Args,(
       $__DATA__:          $propValue,
       $__RES__:           $respValue,
-      $__SELECTOR__:      $Selector,
+      $__SELECTOR__:      $sel,
       ));
     @include globalChecks($Args);
   } 

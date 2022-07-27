@@ -11,24 +11,40 @@
   $ID:            map-get($Args,   $__ID__);
 
   // no media queries
-  $PRd:            map-get($Args, prd);
-  $PRt:            map-get($Args, prt);
-  $PRid:           map-get($Args, prid);
+  $PRd:            map-get($Args, "prd");
 
-  $PR-d:            map-get($Args, pr-d);
-  $PR-c-p:          map-get($Args, pr-c-p);   
-  $PR-c-t:          map-get($Args, pr-c-t);   
-  $PR-c-id:         map-get($Args, pr-c-id);   
+  $PRc:            map-get($Args, "prc");
+  $PRt:            map-get($Args, "prt");
+  $PRid:           map-get($Args, "prid");
 
-  $PR-t:            map-get($Args, pr-t);
-  $PR-t-p:          map-get($Args, pr-t-p); 
-  $PR-t-t:          map-get($Args, pr-t-t);   
-  $PR-t-id:         map-get($Args, pr-t-id);   
+  $PR-d:            map-get($Args, "pr-d");
 
-  $PR-id:           map-get($Args, pr-id);
-  $PR-id-p:         map-get($Args, pr-id-p); 
-  $PR-id-t:         map-get($Args, pr-id-t); 
-  $PR-id-id:        map-get($Args, pr-id-id);
+  $PR-c:            map-get($Args, "pr-c");   
+  $PR-c-c:          map-get($Args, "pr-c-c");   
+  $PR-c-cp:         map-get($Args, "pr-c-c+");   
+  $PR-cp-c:         map-get($Args, "pr-c+-c");   
+  $PR-cp-cp:        map-get($Args, "pr-c+-c+");  
+
+  $PR-c-p:          map-get($Args, "pr-c-p");   
+  $PR-cp-p:          map-get($Args, "pr-c+-p");   
+  $PR-c-t:          map-get($Args, "pr-c-t");   
+  $PR-cp-t:          map-get($Args, "pr-c+-t");   
+  $PR-c-id:         map-get($Args, "pr-c-id");   
+  $PR-cp-id:         map-get($Args, "pr-c+-id");   
+
+  $PR-t:            map-get($Args, "pr-t");
+  $PR-t-c:          map-get($Args, "pr-t-c"); 
+  $PR-t-cp:         map-get($Args, "pr-t-c+"); 
+  $PR-t-p:          map-get($Args, "pr-t-p"); 
+  $PR-t-t:          map-get($Args, "pr-t-t");   
+  $PR-t-id:         map-get($Args, "pr-t-id");   
+
+  $PR-id:           map-get($Args, "pr-id");
+  $PR-id-c:         map-get($Args, "pr-id-c"); 
+  $PR-id-cp:        map-get($Args, "pr-id-c+"); 
+  $PR-id-p:         map-get($Args, "pr-id-p"); 
+  $PR-id-t:         map-get($Args, "pr-id-t"); 
+  $PR-id-id:        map-get($Args, "pr-id-id");
 
  // with media queries
   $PRdp:            map-get($Args, "prd+");
@@ -47,29 +63,44 @@
     $result: $PSEUDOELEMENT;
   } 
 } @else {
-  @if ($selType == "g") {
-    $result: $GLOBAL;
-  } 
-  // Pressets for List, Block, Cycle, +Extend 
-  @else if ($selType == "d") {
-    $result: $PRd;
-  }
-  @else if ($selType == "t") {
+    // Pressets for List, Block, Cycle, +Extend 
+  @if ($selType == "t") {
     $result: $PRt;
+  }
+  @else if ($selType == "c") {
+    $result: $PRc;
   }
   @else if ($selType == "id") {
     $result: $PRid;
   }
 
+  @else if ($selType == "d") {
+    $result: $PRd;
+  }
   @else if ($selType == "d+") {
     $result: $PRdp;
   }
   @else if ($selType == "-d+") {
     $result: $PR-dp;
   }
-
   @else if ($selType == "-d") {
     $result: $PR-d;
+  }
+
+  @else if ($selType == "-c") {
+    $result: $PR-c;
+  }
+  @else if ($selType == "-c-c") {
+    $result: $PR-c-c;
+  }
+  @else if ($selType == "-c-c+") {
+    $result: $PR-c-cp;
+  }
+  @else if ($selType == "-c+-c") {
+    $result: $PR-cp-c;
+  }
+  @else if ($selType == "-c+-c+") {
+    $result: $PR-cp-cp;
   }
   @else if ($selType == "-c-p") {
     $result: $PR-c-p;
@@ -80,11 +111,26 @@
   @else if ($selType == "-c-id") {
     $result: $PR-c-id;
   }
+  @else if ($selType == "-c+-p") {
+    $result: $PR-cp-p;
+  }
+  @else if ($selType == "-c+-t") {
+    $result: $PR-cp-t;
+  }
+  @else if ($selType == "-c+-id") {
+    $result: $PR-cp-id;
+  }
 
 
 
   @else if ($selType == "-t") {
     $result: $PR-t;
+  }
+  @else if ($selType == "-t-c") {
+    $result: $PR-t-c;
+  }
+  @else if ($selType == "-t-c+") {
+    $result: $PR-t-cp;
   }
   @else if ($selType == "-t-p") {
     $result: $PR-t-p;
@@ -100,6 +146,12 @@
 
   @else if ($selType == "-id") {
     $result: $PR-id;
+  }
+  @else if ($selType == "-id-c") {
+    $result: $PR-id-c;
+  }
+  @else if ($selType == "-id-c+") {
+    $result: $PR-id-cp;
   }
   @else if ($selType == "-id-p") {
     $result: $PR-id-p;

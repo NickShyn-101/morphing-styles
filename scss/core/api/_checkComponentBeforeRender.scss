@@ -57,12 +57,8 @@
     @if $type == $__SIMPLE__ {
     }
 
-    @if $type == $__LIST__ {
-      $selType: -d;
-    }
-    
-    @if $type == $__BLOCK__ {
-      $selType: -d;
+    @if ($type == $__LIST__) or ($type == $__BLOCK__) {
+      $selType: "-d+";
     }
 
     @if $type == $__CYCLE__ {
@@ -70,7 +66,7 @@
     }
 
     @if $type == $__ANIMATION__ {
-      $selType: -d;
+      $selType: "-d";
     }
   }
   $data: map-merge($data,($__SELTYPE__: $selType));
