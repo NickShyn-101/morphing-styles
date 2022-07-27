@@ -1,9 +1,8 @@
 @mixin generateTypeOfList($Args) {
-  $Args:      checkSelAndSelType($Args);
   $data:      map-get($Args, $__DATA__);
   $selType:   map-get($Args, $__SELTYPE__);
   $sel:       formatSelector(map-get($Args, $__SEL__), $Args);
-  $space:     spaceForListAndBlock($selType);
+  $space:     getSpace($selType, $Args);
   
   @each $propSelector, $propValue in $data {
     $respValue: map-get($Args, $__RES__);
@@ -11,7 +10,7 @@
       $respValue: nth($propValue, 2);
     }
 
-    $Selector: "#{$sel}#{$space}#{$propSelector}"; 
+    $Selector: "#{$sel}#{$propSelector}"; 
     
     $Args: map-merge($Args,(
       $__DATA__:          nth($propValue, 1),
@@ -23,12 +22,12 @@
 }
 
 @mixin formatGenTypeOfList($Args) {
-  $data: map-get($Args, $__DATA__);
-  $Selector: map-get($Args, $__SELECTOR__);
-  $prop: map-get($Args, prop);
+  $propValue:     map-get($Args, $__DATA__);
+  $Selector:      map-get($Args, $__SELECTOR__);
+  $propName:      map-get($Args, $__PROPPERTY__);
 
   #{$Selector} {
-    #{$prop}: #{$data};
+    #{$propName}: #{$propValue};
   }
 }
 

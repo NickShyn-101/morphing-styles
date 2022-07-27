@@ -40,8 +40,7 @@ $__MQ__: "hasMQ";
 $__CONTENT__: "Content";
 $__SELECTOR__: "Selector";
 $__ALLSELECTORS__: "AllSelector";
-$__CURRENTPROP__: "CurrentProp";
-$__CURRENTDATA__: "CurrentData";
+
 
 // Selector Types
 $__DEFAULT__: "Default";
@@ -55,7 +54,7 @@ $COMPONENTS: ();
 $reservedNames: from, to, $__COMP__, $__STATUS__, $__INPUT__, $__CYCLEKEY__, $__TYPE__, $__SEL__, $__SELTYPE__,
   $__DATA__, $__PROPPERTY__, $__EXTEND__, $__START__, $__END__, $__EXP__,
   $__BOOST__, $__TO__, $__GROUP__, $__NAME__, $__RES__, $__MQ__, $__CONTENT__,
-  $__SELECTOR__, $__ALLSELECTORS__, $__CURRENTPROP__, $__CURRENTDATA__;
+  $__SELECTOR__, $__ALLSELECTORS__;
 
 $reserved_HTML_TAGS: a, abbr, address, area, article, aside, audio, b, base, bdi,
   bdo, blockquote, body, br, button, canvas, caption, cite, code, col, colgroup,

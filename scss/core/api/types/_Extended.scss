@@ -7,15 +7,14 @@
 
   @if $extend != null {
     @if ($type == $__LIST__) or ($type == $__BLOCK__) {
-      $Args:          checkSelAndSelType($Args);
       $selType:       map-get($Args, $__SELTYPE__);
       $sel:           formatSelector(map-get($Args, $__SEL__), $Args);
-      $space:         spaceForListAndBlock($selType);
+      $space:         getSpace($selType, $Args);
       $data:          map-get($Args, $__DATA__);
  
       @each $propSelector, $_ in $data {
         $currentSelector: ();
-        $Selector: "#{$sel}#{$space}#{$propSelector}"; 
+        $Selector: "#{$sel}#{$propSelector}"; // #{$space}
         $currentSelector: append($currentSelector, $Selector);
         $AllSelectors: append($AllSelectors, $currentSelector, "comma");
       }

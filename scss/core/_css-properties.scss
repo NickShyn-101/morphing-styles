@@ -179,8 +179,8 @@ $CSS_PROPERTIES_LIST: (
   "word-break": ( 
     // type: list,
     prop: "word-break",
-    // sel: "wb",
-    // seltype: id,
+    sel: "wbr",
+    seltype: id,
     extend: (
       mq: true,
       color: grey,

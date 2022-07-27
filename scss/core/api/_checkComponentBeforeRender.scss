@@ -1,14 +1,19 @@
 @function checkComponentBeforeRender($data) {
-  $type: map-get($data, $__TYPE__);
-  $start: map-get($data, $__START__);
-  $end: map-get($data, $__END__);
+  $type:        map-get($data, $__TYPE__);
+  $selType:     map-get($data, $__SELTYPE__);
+  $sel:         map-get($data, $__SEL__);
 
-  $name: map-get($data, $__NAME__);
-  $prop: map-get($data, $__PROPPERTY__);
-  $module: map-get($data, module);
-  $compName: map-get($data, $__COMP__);
-  $innerData: map-get($data, $__DATA__);
-
+  $start:       map-get($data, $__START__);
+  $end:         map-get($data, $__END__);
+  
+  $name:        map-get($data, $__NAME__);
+  $prop:        map-get($data, $__PROPPERTY__);
+  $module:      map-get($data, $__MODULE__);
+  $compName:    map-get($data, $__COMP__);
+  $innerData:   map-get($data, $__DATA__);
+  @if $type == null {
+    $type: $__SIMPLE__
+  }
   @if $type == $__SIMPLE__ {
     @if $innerData != null {
       $type: $__BLOCK__;
@@ -27,14 +32,48 @@
     }     
   }
  
+  $data: map-merge($data,($__TYPE__: $type));
+
+
+
+
+  @if $sel == null or $sel == "" {
+    @if $type == $__SIMPLE__ {
+        
+    }
+    @if $type == $__LIST__ {
+      $sel: $prop;
+    }
+    @if $type == $__BLOCK__ {
+      
+    }
+  }
+  
+  $data: map-merge($data,($__SEL__: $sel));
+  
+
+
+  @if $selType == null or $selType == "" {
+    @if $type == $__SIMPLE__ {
+      
+    }
+    @if $type == $__LIST__ {
+      $selType: d;
+    }
+    @if $type == $__BLOCK__ {
+      $selType: -d;
+    }
+  }
+  $data: map-merge($data,($__SELTYPE__: $selType));
+
+
   $data: map-merge(
     $data,
     (
-      $__TYPE__: $type,
       $__INPUT__: $data,
       $__DATA__: $innerData,
       $__PROPPERTY__: $prop,
-      module: $module,
+      $__MODULE__: $module,
     )
   );
 

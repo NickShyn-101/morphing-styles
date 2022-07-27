@@ -19,7 +19,7 @@ $GRID_FLEX_COMPS: (
 
   "grid-main": (
     type: block,
-    seltype: g,
+    seltype: -id-g,
     sel: "div",
     extend: (
       display: flex,
@@ -31,11 +31,11 @@ $GRID_FLEX_COMPS: (
     ),
     data: (
       "body": (
-
+        mq: true,
         gap: $gapInContainer,
-        seltype: gos
       ),
       "row": (
+        mq: true,
         gap: $gapInRow,
       ),
     ),

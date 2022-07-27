@@ -1,0 +1,45 @@
+@function getSpace($selType, $Args) {
+  $type: map-get($Args, $__TYPE__);
+  
+  $space: ""; 
+  // For List components
+  @if $type == $__LIST__ {
+    @if $selType == g {
+      $space: " ";
+    }
+    @if $selType == d {
+      $space: "-";
+    }
+    @if $selType == id {
+      $space: ".";
+    }
+  }
+  // For Block components
+  @if $type == $__BLOCK__ {
+    @if $selType == g {
+      $space: " ";
+    }
+    @if $selType == d {
+      $space: "-";
+    }
+    @if $selType == id {
+      $space: ".";
+    }
+  }
+  // For simple components
+  @if $type == $__SIMPLE__ {
+    @if ($selType == null) {
+      $space: "";
+    }
+    @if ($selType == g) {
+      $space: " ";
+    }
+    @if ($selType == pc) {
+      $space: "";
+    }
+    @if ($selType == d) {
+      $space: " ";
+    }
+  }
+  @return $space;
+}

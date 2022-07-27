@@ -3,21 +3,17 @@
     $sel:           map-get($dataArr, $__SEL__);
     $selType:       map-get($dataArr, $__SELTYPE__);
      
-    @if ($sel == null) {
-      $sel: $defaultName;
-      $dataArr:   map-merge($dataArr,($__SEL__: $defaultName));
-    }
-  
     @if ($selType == null) {
+      $selType: $defaultName;
       @if (index($reserved_HTML_TAGS, $sel) != null) {
         $selType: "g";
-        $dataArr: map-merge($dataArr,($__SELTYPE__: $selType));
       }
       @if (index($reserved_PSEUDO_CLASSES, $sel) != null)  {
         $selType: "pc";
-        $dataArr: map-merge($dataArr,($__SELTYPE__: $selType));
       }
     }
+
+    @return $selType;
   }
-    @return $dataArr;
+
   }

@@ -2,52 +2,47 @@
   @each $compName, $compStatus in $DATA {
     @if $compStatus != false {
       @if map-has-key($API_LIST, $compName) {
-
-        $resource:  map-get($API_LIST, $compName);
-        $basicType: map-get($resource, $__TYPE__);
-        @if $basicType == null {
-          $basicType: $__SIMPLE__;
-        }
-        $resource:  map-merge($resource, (
+        $Args:  map-get($API_LIST, $compName);
+        $Args:  map-merge($Args, (
           $__MQ__:      toString($MQ),
           $__COMP__:    $compName,
           $__STATUS__:  $compStatus,
-          $__TYPE__:    $basicType,
         ));
-        $resource:  checkComponentBeforeRender($resource);
-        $type:      map-get($resource, $__TYPE__);
+
+        $Args:  checkComponentBeforeRender($Args);
+        $type:      map-get($Args, $__TYPE__);
 
         @if ($type != __BOOST__) {
            // Generate Extended Selectors
-          @include generateTypeOfExtended($resource);
+          @include generateTypeOfExtended($Args);
 
           @if ($type == $__SIMPLE__) {
-            @include generateTypeOfSimple($resource);
+            @include generateTypeOfSimple($Args);
           }
 
           // Generate One Property Selectors
           @if ($type == $__LIST__) {
-               @include generateTypeOfList($resource);
+               @include generateTypeOfList($Args);
           }
 
           // Generate Component Selectors
           @if ($type == $__BLOCK__) {
-            @include generateTypeOfBlock($resource);
+            @include generateTypeOfBlock($Args);
           }
 
           // Generate Cycle Based Selectors
           @if ($type == $__CYCLE__) {
-            @include generateTypeOfCycle($resource);
+            @include generateTypeOfCycle($Args);
           }
 
           // Generate Animations
           @if ($type == $__ANIMATION__) {
-            @include generateTypeOfAnimation($resource);
+            @include generateTypeOfAnimation($Args);
           }
 
           // Generate Modules
           @if ($type == $__MODULE__) {
-            @include generateTypeOfModule($resource);
+            @include generateTypeOfModule($Args);
           }
         }
       }

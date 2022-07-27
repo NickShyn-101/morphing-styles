@@ -6,21 +6,85 @@
   $DEFAULT:       map-get($Args,   $__DEFAULT__);
   $GLOBAL:        map-get($Args,   $__GLOBAL__);     
   $PSEUDOCLASS:   map-get($Args,   $__PSEUDOCLASS__);      
+  $PSEUDOELEMENT: map-get($Args,   $__PSEUDOELEMENT__);      
   $ID:            map-get($Args,   $__ID__);
+
+  $PR-d:            map-get($Args, pr-d);
+  $PR-d-p:          map-get($Args, pr-d-p);   // pseudo
+  $PR-d-g:          map-get($Args, pr-d-g);   // global
+  $PR-d-id:         map-get($Args, pr-d-id);   // id
+
+  $PR-g:            map-get($Args, pr-g);
+  $PR-g-p:          map-get($Args, pr-g-p); // pseudo
+  $PR-g-g:          map-get($Args, pr-g-g);   // global
+  $PR-g-id:         map-get($Args, pr-g-id);   // id
+
+  $PR-id:           map-get($Args, pr-id);
+  $PR-id-p:         map-get($Args, pr-id-p); // pseudo
+  $PR-id-g:         map-get($Args, pr-id-g);   // global
+  $PR-id-id:        map-get($Args, pr-id-id);   // id
+ 
+  // $PR-id-p:         map-get($Args, pr-id-p); // pseudo
 
   // selector by type / global
   @if ($selType == "g") {
     $result: $GLOBAL;
     // id selector
-  } @else if ($selType == "id") {
+  }  @else if ($selType == "id") {
     $result: $ID;
     // pseudo class selector
   } @else if ($selType == "pc") {
     $result: $PSEUDOCLASS;
-    // pseudo element selector
+    // pseudo element selector 
   } @else if ($selType == "pe") {
-    $result: $PSEUDOCLASS;
-  } @else {
+    $result: $PSEUDOELEMENT;
+  } 
+  
+  // Pressets for List Block and Cycle 
+  @else if ($selType == "-d") {
+    $result: $PR-d;
+  }
+  @else if ($selType == "-d-p") {
+    $result: $PR-d-p;
+  }
+  @else if ($selType == "-d-g") {
+    $result: $PR-d-g;
+  }
+  @else if ($selType == "-d-id") {
+    $result: $PR-d-id;
+  }
+
+
+
+  @else if ($selType == "-g") {
+    $result: $PR-g;
+  }
+  @else if ($selType == "-g-p") {
+    $result: $PR-g-p;
+  }
+  @else if ($selType == "-g-g") {
+    $result: $PR-g-g;
+  }
+  @else if ($selType == "-g-id") {
+    $result: $PR-g-id;
+  }
+
+
+  
+  @else if ($selType == "-id") {
+    $result: $PR-id;
+  }
+  @else if ($selType == "-id-p") {
+    $result: $PR-id-p;
+  }
+  @else if ($selType == "-id-g") {
+    $result: $PR-id-g;
+  }
+  @else if ($selType == "-id-id") {
+    $result: $PR-id-id;
+  }
+
+  @else {
     $result: $DEFAULT;
   }
   @return $result;

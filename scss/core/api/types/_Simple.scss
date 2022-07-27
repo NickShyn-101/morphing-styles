@@ -1,5 +1,5 @@
 @mixin generateTypeOfSimple($Args) {
-  $inputData:              map-get($Args, $__INPUT__);
+  $inputData:         map-get($Args, $__INPUT__);
   $prevSel:           map-get($inputData, $__SELECTOR__);
 
   @each $elementName, $elementValue in $inputData {  
@@ -8,18 +8,20 @@
       @if $type == null {
         $type: "simple";
       }
-      
+      $elementValue:  map-merge($elementValue, ($__TYPE__: $type));
       $elementValue:  checkSelType($elementValue, $elementName);
 
       $sel:           map-get($elementValue, $__SEL__);
       $selType:       map-get($elementValue, $__SELTYPE__);
       
       $currentSel:    formatSelector($sel, $elementValue);
-      $Selector:      "#{$prevSel}#{checkSpaces($elementValue)}#{$currentSel}";
+      $Selector:      "#{$prevSel}#{getSpace($selType, $elementValue)}#{$currentSel}";
       
-      $elementValue:  map-merge($elementValue,($__SELECTOR__: $Selector));
-      $elementValue:  map-merge($elementValue, ($__MQ__: map-get($Args, $__MQ__)));
-      $elementValue:  map-merge($elementValue, ($__TYPE__: $type));
+      $elementValue:  map-merge($elementValue,(
+        $__SELECTOR__: $Selector,
+        $__MQ__: map-get($Args, $__MQ__)
+      ));
+
       $Args:          map-merge($Args,(input: $elementValue));   
       
       @include globalChecks($elementValue);

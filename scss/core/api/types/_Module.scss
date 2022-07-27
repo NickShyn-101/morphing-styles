@@ -1,6 +1,6 @@
 @mixin generateTypeOfModule($Args) {
   $data:        map-get($Args, $__DATA__);
-  $moduleName:  map-get($Args, module);
+  $moduleName:  map-get($Args, $__MODULE__);
 
   @each $_, $props in $data {
     @if mixin-exists($moduleName) {
