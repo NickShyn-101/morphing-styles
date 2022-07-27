@@ -1,37 +1,44 @@
 @mixin generateTypeOfAnimation($Args) {
   $data: map-get($Args, $__DATA__);
   $group: map-get($Args, $__GROUP__);
+  $sel:  map-get($Args, $__SEL__);
+  $respValue:   map-get($Args, $__RES__);
 
-  @if $group == false {
+  @if $group != true {
+    $Args: map-merge($Args, (
+      $__SELECTOR__: formatSelector($sel, $Args)
+    ));
     @include globalChecks($Args);
   }
 
   @if $group == true {
-    @each $key, $value in $data {
+    @each $propName, $propValue in $data {
+      @if map-has-key($propValue, $__RES__) {
+        $respValue: map-get($propValue, $__RES__);
+      }
+      $Args: map-merge($Args,($__SE__: $propName)); 
+      $Selector: formatSelector($sel, $Args);
       $Args: map-merge(
-        $Args,
-        (
-          SecondaryElement: $key,
-          $__DATA__: $value,
+        $Args,(
+          $__SELECTOR__: $Selector,
+          $__DATA__: $propValue,
+          $__RES__:           $respValue,
         )
-      );
+      ); 
       @include globalChecks($Args);
     }
   }
 }
 
 @mixin formatGenTypeOfAnimation($Args) {
-  $data: ();
-  $name: map-get($Args, $__NAME__);
-  $group: map-get($Args, $__GROUP__);
-  $data: map-get($Args, $__DATA__);
+  $data:  map-get($Args, $__DATA__);
+  $Selector: map-get($Args, $__SELECTOR__);
 
-
-  $Selector: formatSelector($name, $Args);
   @keyframes #{$Selector} {
-   
     @each $key, $Value in $data {
-      @if (index($reservedNames, $key) == null) or $key == "from" or $key == "to"{
+      @if (index($reservedNames, $key) == null) or
+      $key == $__FROM__ or
+      $key == $__TO__ {
       #{$key} {
         @each $propName, $propValue in $Value {
           @if (index($reservedNames, $propName) == null) {

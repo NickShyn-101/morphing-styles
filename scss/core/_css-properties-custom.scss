@@ -26,24 +26,25 @@ $CSS_PROPERTIES_LIST_CUSTOM: (
       ),
     ),
   ),
-  "animation-single": (
-    name: "SupernSi",
-    // mq: true,
-    data: (
-      "from": (
-        position: 50px,
-        width: 100px,
-      ),
-      "to": (
-        position: 150px,
-        width: 500px,
-      ),
-    ),
-  ),
+  // "animation-single": (
+    
+  //   name: "SupernSi",
+  //   mq: false,
+  //   data: (
+  //     "from": (
+  //       position: 50px,
+  //       width: 100px,
+  //     ),
+  //     "to": (
+  //       position: 150px,
+  //       width: 500px,
+  //     ),
+  //   ),
+  // ),
   "animation-group": (
-
     group: true,
-    name: "slide",
+    seltype: "-d+",
+    name: "Slide",
     data: (
       "in": (
         // mq: true,

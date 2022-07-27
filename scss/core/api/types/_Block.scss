@@ -6,7 +6,7 @@
     @if map-has-key($propValue, $__RES__) {
       $respValue: map-get($propValue, $__RES__);
     }
-    $Args: map-merge($Args, ("SecondaryElement": $propSelector));
+    $Args: map-merge($Args, ($__SE__: $propSelector));
     $sel:       formatSelector(map-get($Args, $__SEL__), $Args);
 
     

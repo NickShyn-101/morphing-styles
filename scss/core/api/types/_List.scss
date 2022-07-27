@@ -8,7 +8,7 @@
       $respValue: nth($propValue, 2);
     }
 
-    $Args: map-merge($Args, ("SecondaryElement": $propSelector));
+    $Args: map-merge($Args, ($__SE__: $propSelector));
     $sel:       formatSelector(nth($propValue, 1), $Args);
     
     $Args: map-merge($Args,(

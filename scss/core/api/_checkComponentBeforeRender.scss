@@ -31,10 +31,22 @@
       $type: $__CYCLE__;
     }     
   }
- 
+  
   $data: map-merge($data,($__TYPE__: $type));
 
-
+  @if $sel == null or $sel == "" {
+    @if $type == $__SIMPLE__ {
+        
+    }
+    @if $type == $__ANIMATION__ {
+      $sel: $name;
+    }
+    @if $type == $__BLOCK__ {
+      
+    }
+  }
+  
+  $data: map-merge($data,($__SEL__: $sel));
 
   @if $selType == null or $selType == "" {
     @if $type == $__SIMPLE__ {

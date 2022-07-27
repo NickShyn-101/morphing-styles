@@ -4,8 +4,8 @@
   $selType:   map-get($Args, $__SELTYPE__);
   $MQ:        map-get($Args, $__MQ__);
   $type:      map-get($Args, $__TYPE__);
-  $i_cycle:   map-get($Args, "cycleKey");
-  $sE:        map-get($Args, "SecondaryElement");
+  $i_cycle:   map-get($Args, $__CYCLEKEY__);
+  $sE:        map-get($Args, $__SE__);
 
 
   // formating vars
@@ -108,11 +108,14 @@
 
   // Animation formating
   @if ($type == $__ANIMATION__) {
+    @if $sE == null {
+      $-div-: ""
+    }
     $Args: map-merge($Args, (
-      "prd":          glueSelectorName($-COMP-, $sE), 
-      "pr-d":         glueSelectorName($-COMP-, $-div- ,$sE),
-      // "prd+":         glueSelectorName($-COMP-, $-MQ-, $-div- ,$sE), 
-      // "pr-d+":        glueSelectorName($-COMP-, $-MQ-, $-div- ,$sE),
+      "prd":          glueSelectorName($-SEL-, $sE), 
+      "prd+":         glueSelectorName($-SEL-, $sE, $-MQ-), 
+      "pr-d":         glueSelectorName($-SEL-, $-div- ,$sE),
+      "pr-d+":        glueSelectorName($-SEL-, $-div- ,$sE, $-MQ-),
 
       $__DEFAULT__:     glueSelectorName($-COMP-, $-div- ,$sE),
     ));
