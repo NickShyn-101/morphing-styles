@@ -58,7 +58,7 @@
       
     }
     @if $type == $__LIST__ {
-      $selType: d;
+      $selType: -d;
     }
     @if $type == $__BLOCK__ {
       $selType: -d;

@@ -10,22 +10,20 @@
   $ID:            map-get($Args,   $__ID__);
 
   $PR-d:            map-get($Args, pr-d);
-  $PR-d-p:          map-get($Args, pr-d-p);   // pseudo
-  $PR-d-g:          map-get($Args, pr-d-g);   // global
-  $PR-d-id:         map-get($Args, pr-d-id);   // id
+  $PR-d-p:          map-get($Args, pr-d-p);   
+  $PR-d-g:          map-get($Args, pr-d-g);   
+  $PR-d-id:         map-get($Args, pr-d-id);   
 
   $PR-g:            map-get($Args, pr-g);
-  $PR-g-p:          map-get($Args, pr-g-p); // pseudo
-  $PR-g-g:          map-get($Args, pr-g-g);   // global
-  $PR-g-id:         map-get($Args, pr-g-id);   // id
+  $PR-g-p:          map-get($Args, pr-g-p); 
+  $PR-g-g:          map-get($Args, pr-g-g);   
+  $PR-g-id:         map-get($Args, pr-g-id);   
 
   $PR-id:           map-get($Args, pr-id);
-  $PR-id-p:         map-get($Args, pr-id-p); // pseudo
-  $PR-id-g:         map-get($Args, pr-id-g);   // global
-  $PR-id-id:        map-get($Args, pr-id-id);   // id
+  $PR-id-p:         map-get($Args, pr-id-p); 
+  $PR-id-g:         map-get($Args, pr-id-g); 
+  $PR-id-id:        map-get($Args, pr-id-id);
  
-  // $PR-id-p:         map-get($Args, pr-id-p); // pseudo
-
   // selector by type / global
   @if ($selType == "g") {
     $result: $GLOBAL;
@@ -40,7 +38,7 @@
     $result: $PSEUDOELEMENT;
   } 
   
-  // Pressets for List Block and Cycle 
+  // Pressets for List, Block, Cycle, +Extend 
   @else if ($selType == "-d") {
     $result: $PR-d;
   }
@@ -70,7 +68,7 @@
   }
 
 
-  
+
   @else if ($selType == "-id") {
     $result: $PR-id;
   }

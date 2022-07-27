@@ -2,7 +2,6 @@
   $sel:       formatSelector(map-get($Args, $__SEL__), $Args);
   $data:      map-get($Args, $__DATA__); 
 
-  
   $respValue:   map-get($Args, $__RES__);
   @each $propSelector, $propValue in $data {
     @if map-has-key($propValue, $__RES__) {

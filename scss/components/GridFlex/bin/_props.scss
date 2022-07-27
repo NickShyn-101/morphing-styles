@@ -19,8 +19,8 @@ $GRID_FLEX_COMPS: (
 
   "grid-main": (
     type: block,
-    seltype: -id-g,
-    sel: "div",
+    seltype: d,
+    // sel: "div",
     extend: (
       display: flex,
       flex-direction: row,

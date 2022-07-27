@@ -1,6 +1,5 @@
 $CSS_PROPERTIES_LIST: (
-  "justify-content": (
-    type: list,
+  "justify-content": (    
     prop: "justify-content",
     sel: "jc",
     data: (
@@ -13,8 +12,7 @@ $CSS_PROPERTIES_LIST: (
       "se":         (space-evenly, true),
     ),
   ),
-  "align-items": (
-    type: list,
+  "align-items": (    
     prop: "align-items",
     sel: "ai",
     data: (
@@ -25,8 +23,7 @@ $CSS_PROPERTIES_LIST: (
       "bl":         (baseline, true),
     ),
   ),
-  "align-self": (
-    type: list,
+  "align-self": (    
     prop: "align-self",
     sel: "as",
     data: (
@@ -38,8 +35,7 @@ $CSS_PROPERTIES_LIST: (
       "auto":       (auto, true),
     ),
   ),
-  "align-content": (
-    type: list,
+  "align-content": (    
     prop: "align-content",
     sel: "ac",
     data: (
@@ -52,8 +48,7 @@ $CSS_PROPERTIES_LIST: (
       "se":         (space-evenly, true),
     ),
   ),
-  "flex-wrap": (
-    type: list,
+  "flex-wrap": (    
     prop: "flex-wrap",
     sel: "fw",
     data: (
@@ -62,8 +57,7 @@ $CSS_PROPERTIES_LIST: (
       "wrap-r":     (wrap-reverse, true),
     ),
   ),
-  "flex-direction": (
-    type: list,
+  "flex-direction": (    
     prop: "flex-direction",
     sel: "fd",
     data: (
@@ -73,8 +67,7 @@ $CSS_PROPERTIES_LIST: (
       "col-r":      (column-reverse, true),
       ),
   ),
-  "flex-shrink": (
-    type: list,
+  "flex-shrink": (    
     prop: "flex-shrink",
     sel: "shrink",
     data: (
@@ -84,8 +77,7 @@ $CSS_PROPERTIES_LIST: (
       "m1":         (-1, true),
       ),
   ),
-  "flex-grow": (
-    type: list,
+  "flex-grow": (    
     prop: "flex-grow",
     sel: "grow",
     data: (
@@ -96,8 +88,7 @@ $CSS_PROPERTIES_LIST: (
       ),
   ),
   
-  "flex-basis": (
-    type: list,
+  "flex-basis": (    
     prop: "flex-basis",
     sel: "fb",
     data: (
@@ -108,8 +99,7 @@ $CSS_PROPERTIES_LIST: (
       "100":        (100%, true),
       ),
   ),
-  "gap": (
-    type: list,
+  "gap": (    
     prop: "gap",
     sel: "g",
     data: (
@@ -120,8 +110,7 @@ $CSS_PROPERTIES_LIST: (
       "50":         (50px, true),
       ),
   ),
-  "order": (
-    type: list,
+  "order": (    
     prop: "order",
     sel: "order",
     data: (
@@ -140,8 +129,7 @@ $CSS_PROPERTIES_LIST: (
       "12":         (12, true),
       ),
   ),
-  "margin": (
-    type: list,
+  "margin": (    
     prop: "margin",
     sel: "m",
     data: (
@@ -153,7 +141,6 @@ $CSS_PROPERTIES_LIST: (
       ),
   ),
   "padding": (
-    type: list,
     prop: "padding",
     sel: "p",
     data: (
@@ -165,7 +152,6 @@ $CSS_PROPERTIES_LIST: (
       ),
   ),
   "opacity": (
-    type: list,
     prop: "opacity",
     sel: "o",
     data: (
@@ -177,14 +163,8 @@ $CSS_PROPERTIES_LIST: (
       ),
   ),
   "word-break": ( 
-    // type: list,
     prop: "word-break",
     sel: "wbr",
-    seltype: id,
-    extend: (
-      mq: true,
-      color: grey,
-    ),
     data: (
       "norm":    normal,
       "ba":  break-all,
@@ -193,7 +173,6 @@ $CSS_PROPERTIES_LIST: (
       ),
   ),
   "text-align": (
-    type: list,
     prop: "text-align",
     sel: "ta",
     data: (
@@ -204,7 +183,6 @@ $CSS_PROPERTIES_LIST: (
       ),
   ),
   "vertical-align": (
-    type: list,
     prop: "vertical-align",
     sel: "va",
     data: (

@@ -1,11 +1,9 @@
 @mixin generateTypeOfList($Args) {
-  $data:      map-get($Args, $__DATA__);
-  $selType:   map-get($Args, $__SELTYPE__);
   $sel:       formatSelector(map-get($Args, $__SEL__), $Args);
-  $space:     getSpace($selType, $Args);
-  
+  $data:      map-get($Args, $__DATA__); 
+
+  $respValue:   map-get($Args, $__RES__);
   @each $propSelector, $propValue in $data {
-    $respValue: map-get($Args, $__RES__);
     @if length($propValue) == 2 {
       $respValue: nth($propValue, 2);
     }
