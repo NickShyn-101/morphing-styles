@@ -55,12 +55,21 @@
 
   @if $selType == null or $selType == "" {
     @if $type == $__SIMPLE__ {
-      
     }
+
     @if $type == $__LIST__ {
       $selType: -d;
     }
+    
     @if $type == $__BLOCK__ {
+      $selType: -d;
+    }
+
+    @if $type == $__CYCLE__ {
+      $selType: "-d+";
+    }
+
+    @if $type == $__ANIMATION__ {
       $selType: -d;
     }
   }

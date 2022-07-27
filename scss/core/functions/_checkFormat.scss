@@ -2,6 +2,7 @@
         
   $result: "";
   $selType: map-get($Args, $__SELTYPE__);
+  $type:    map-get($Args, $__TYPE__);
 
   $DEFAULT:       map-get($Args,   $__DEFAULT__);
   $GLOBAL:        map-get($Args,   $__GLOBAL__);     
@@ -9,62 +10,90 @@
   $PSEUDOELEMENT: map-get($Args,   $__PSEUDOELEMENT__);      
   $ID:            map-get($Args,   $__ID__);
 
-  $PR-d:            map-get($Args, pr-d);
-  $PR-d-p:          map-get($Args, pr-d-p);   
-  $PR-d-g:          map-get($Args, pr-d-g);   
-  $PR-d-id:         map-get($Args, pr-d-id);   
+  // no media queries
+  $PRd:            map-get($Args, prd);
+  $PRt:            map-get($Args, prt);
+  $PRid:           map-get($Args, prid);
 
-  $PR-g:            map-get($Args, pr-g);
-  $PR-g-p:          map-get($Args, pr-g-p); 
-  $PR-g-g:          map-get($Args, pr-g-g);   
-  $PR-g-id:         map-get($Args, pr-g-id);   
+  $PR-d:            map-get($Args, pr-d);
+  $PR-c-p:          map-get($Args, pr-c-p);   
+  $PR-c-t:          map-get($Args, pr-c-t);   
+  $PR-c-id:         map-get($Args, pr-c-id);   
+
+  $PR-t:            map-get($Args, pr-t);
+  $PR-t-p:          map-get($Args, pr-t-p); 
+  $PR-t-t:          map-get($Args, pr-t-t);   
+  $PR-t-id:         map-get($Args, pr-t-id);   
 
   $PR-id:           map-get($Args, pr-id);
   $PR-id-p:         map-get($Args, pr-id-p); 
-  $PR-id-g:         map-get($Args, pr-id-g); 
+  $PR-id-t:         map-get($Args, pr-id-t); 
   $PR-id-id:        map-get($Args, pr-id-id);
- 
-  // selector by type / global
-  @if ($selType == "g") {
-    $result: $GLOBAL;
-    // id selector
-  }  @else if ($selType == "id") {
+
+ // with media queries
+  $PRdp:            map-get($Args, "prd+");
+  $PR-dp:            map-get($Args, "pr-d+");
+  // @else if ($selType == "") {
+  //   $result: $ID;
+  // }
+@if $type == $__SIMPLE__ {
+  @if ($selType == "id") {
     $result: $ID;
-    // pseudo class selector
-  } @else if ($selType == "pc") {
+  }
+  @else if ($selType == "gpc") {
     $result: $PSEUDOCLASS;
-    // pseudo element selector 
-  } @else if ($selType == "pe") {
+  }
+  @else if ($selType == "pe") {
     $result: $PSEUDOELEMENT;
   } 
-  
+} @else {
+  @if ($selType == "g") {
+    $result: $GLOBAL;
+  } 
   // Pressets for List, Block, Cycle, +Extend 
+  @else if ($selType == "d") {
+    $result: $PRd;
+  }
+  @else if ($selType == "t") {
+    $result: $PRt;
+  }
+  @else if ($selType == "id") {
+    $result: $PRid;
+  }
+
+  @else if ($selType == "d+") {
+    $result: $PRdp;
+  }
+  @else if ($selType == "-d+") {
+    $result: $PR-dp;
+  }
+
   @else if ($selType == "-d") {
     $result: $PR-d;
   }
-  @else if ($selType == "-d-p") {
-    $result: $PR-d-p;
+  @else if ($selType == "-c-p") {
+    $result: $PR-c-p;
   }
-  @else if ($selType == "-d-g") {
-    $result: $PR-d-g;
+  @else if ($selType == "-c-t") {
+    $result: $PR-c-t;
   }
-  @else if ($selType == "-d-id") {
-    $result: $PR-d-id;
+  @else if ($selType == "-c-id") {
+    $result: $PR-c-id;
   }
 
 
 
-  @else if ($selType == "-g") {
-    $result: $PR-g;
+  @else if ($selType == "-t") {
+    $result: $PR-t;
   }
-  @else if ($selType == "-g-p") {
-    $result: $PR-g-p;
+  @else if ($selType == "-t-p") {
+    $result: $PR-t-p;
   }
-  @else if ($selType == "-g-g") {
-    $result: $PR-g-g;
+  @else if ($selType == "-t-t") {
+    $result: $PR-t-t;
   }
-  @else if ($selType == "-g-id") {
-    $result: $PR-g-id;
+  @else if ($selType == "-t-id") {
+    $result: $PR-t-id;
   }
 
 
@@ -75,8 +104,8 @@
   @else if ($selType == "-id-p") {
     $result: $PR-id-p;
   }
-  @else if ($selType == "-id-g") {
-    $result: $PR-id-g;
+  @else if ($selType == "-id-t") {
+    $result: $PR-id-t;
   }
   @else if ($selType == "-id-id") {
     $result: $PR-id-id;
@@ -85,5 +114,8 @@
   @else {
     $result: $DEFAULT;
   }
+}
+
+
   @return $result;
 }

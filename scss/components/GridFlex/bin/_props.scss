@@ -18,8 +18,8 @@ $GRID_FLEX_COMPS: (
   // ),
 
   "grid-main": (
-    type: block,
-    seltype: d,
+    // type: block,
+    // seltype: -d,
     // sel: "div",
     extend: (
       display: flex,
@@ -57,16 +57,17 @@ $GRID_FLEX_COMPS: (
   "grid-cols": (
     
     sel: "col",
+    seltype: "-d+",
     start: 1,
     end: $col-count,
-    mq: md,
+    mq: true,
     width: "gridWidth",
     height: "calc(10px + 20px)",
-    // extend: (
-    //   mq: true,
-    //   overflow: hidden,
-    //   color: blue,
-    // ),
+    extend: (
+      // mq: true,
+      overflow: hidden,
+      color: blue,
+    ),
   ),
 
   // "grid-offset-left": (
