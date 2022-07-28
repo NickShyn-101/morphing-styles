@@ -1,0 +1,26 @@
+$COMPONENTS:
+  map-merge($COMPONENTS, (
+    "vertical-align": (
+      prop: "vertical-align",
+      sel: "va",
+      data: (
+        "bs":         (baseline, true),
+        "sub":        (sub, true),
+        "super":      (super, true),
+        "text-top":   (text-top, true),
+        "text-bottom":(text-bottom, true),
+        "middle":     (middle, true),
+        "top":        (top, true),
+        "bottom":     (bottom, true),
+        "10p":        (10%, true),
+        "25p":        (25%, true),
+        "50p":        (50%, true),
+        "75p":        (75%, true),
+        "100p":       (100%, true),
+        "05r":        (0.5rem, true),
+        "1r":         (1rem, true),
+        "15r":        (15rem, true),
+        ),
+    ),
+  )
+);

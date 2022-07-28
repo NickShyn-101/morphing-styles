@@ -1,0 +1,15 @@
+$COMPONENTS:
+  map-merge($COMPONENTS, (
+    "align-items": (    
+      prop: "align-items",
+      sel: "ai",
+      data: (
+        "center":     (center, true),
+        "fs":         (flex-start, true),
+        "fe":         (flex-end, true),
+        "str":        (stretch, true),
+        "bl":         (baseline, true),
+      ),
+    ),
+  )
+);

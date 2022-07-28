@@ -1,0 +1,14 @@
+$COMPONENTS:
+  map-merge($COMPONENTS, (
+    "word-break": ( 
+      prop: "word-break",
+      sel: "wbr",
+      data: (
+        "norm":    normal,
+        "ba":  break-all,
+        "ka":   keep-all,
+        "bw": break-word,
+        ),
+    ),
+  )
+);

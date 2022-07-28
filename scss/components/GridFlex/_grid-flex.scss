@@ -1,2 +1,68 @@
-@import "bin/props";
-@import "bin/core";
+$COMPONENTS: map-merge(
+  $COMPONENTS,
+  (
+    "grid-normal": (
+      "main, aside, footer, header, section, .section": (
+        display: block,
+        margin: 0,
+      ),
+    ),
+    "grid-main": (
+      data: (
+        "container": (
+          gap: $gapInContainer,
+        ),
+        "row": (
+          gap: $gapInRow,
+        ),
+      ),
+      extend: (
+        display: flex,
+        flex-direction: row,
+        align-items: flex-start,
+        flex-wrap: wrap,
+        overflow: hidden,
+        width: 100%,
+      ),
+    ),
+    "grid-cols": (
+      sel: "col",
+      st: "-d+",
+      start: 1,
+      end: $col-count,
+      mq: true,
+      width: "gridWidth",
+      extend: (
+        overflow: hidden,
+      ),
+    ),
+    "grid-offset-left": (
+      sel: "offset-l",
+      st: "d+",
+      mq: true,
+      start: 0,
+      end: $col-count - 1,
+      margin-left: "offsetWidth",
+    ),
+    "grid-offset-right": (
+      sel: "offset-r",
+      st: "d+",
+      mq: true,
+      start: 0,
+      end: $col-count - 1,
+      margin-right: "offsetWidth",
+    ),
+    "grid-hl-dev-tools": (
+      type: boost,
+      to: (
+        "grid-main",
+        "grid-cols",
+      ),
+      data: (
+        background: "rgba(149, 16, 251, 0.05)",
+        border: "1px dashed rgba(149, 16, 251, 0.25)",
+        padding: 10px,
+      ),
+    ),
+  )
+);

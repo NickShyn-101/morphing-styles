@@ -1,0 +1,14 @@
+$COMPONENTS:
+  map-merge($COMPONENTS, (
+    "flex-direction": (    
+      prop: "flex-direction",
+      sel: "fd",
+      data: (
+        "row":        (row, true),
+        "col":        (column, true),
+        "row-r":      (row-reverse, true),
+        "col-r":      (column-reverse, true),
+        ),
+    ),
+  )
+);

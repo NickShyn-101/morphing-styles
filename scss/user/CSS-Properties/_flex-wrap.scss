@@ -1,0 +1,13 @@
+$COMPONENTS:
+  map-merge($COMPONENTS, (
+    "flex-wrap": (    
+      prop: "flex-wrap",
+      sel: "fw",
+      data: (
+        "nowrap":     (nowrap, true),
+        "wrap":       (wrap, true),
+        "wrap-r":     (wrap-reverse, true),
+      ),
+    ),
+  )
+);

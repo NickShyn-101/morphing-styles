@@ -1,0 +1,17 @@
+$COMPONENTS:
+  map-merge($COMPONENTS, (
+    "justify-content": (    
+      prop: "justify-content",
+      sel: "jc",
+      data: (
+        "center":     (center, true),
+        "fs":         (flex-start, true),
+        "fe":         (flex-end, true),
+        "str":        (stretch, true),
+        "sb":         (space-between, true),
+        "sa":         (space-around, true),
+        "se":         (space-evenly, true),
+      ),
+    ),
+  )
+);

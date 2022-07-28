@@ -1,0 +1,16 @@
+$COMPONENTS:
+  map-merge($COMPONENTS, (
+    "align-self": (    
+      prop: "align-self",
+      sel: "as",
+      data: (
+        "center":     (center, true),
+        "fs":         (flex-start, true),
+        "fe":         (flex-end, true),
+        "str":        (stretch, true),
+        "bl":         (baseline, true),
+        "auto":       (auto, true),
+      ),
+    ),
+  )
+);

@@ -1,0 +1,13 @@
+@function getFirstListItemFromStr($str) {
+  $i: 0;
+  $separators: ".", ",", ":", ">", "+", "~", "[";
+  @if str-length($str) > 1 {
+    @each $sep in $separators {
+      $index: str-index($str, $sep);
+      @if $index != null {
+        $i: $index - 1;
+      }
+    }
+  }
+  @return str-slice($str, 1, $i);
+}

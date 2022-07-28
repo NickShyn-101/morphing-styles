@@ -1,0 +1,15 @@
+$COMPONENTS:
+  map-merge($COMPONENTS, (
+    "gap": (    
+      prop: "gap",
+      sel: "g",
+      data: (
+        "10":         (10px, true),
+        "20":         (20px, true),
+        "30":         (30px, true),
+        "40":         (40px, true),
+        "50":         (50px, true),
+        ),
+    ),
+  )
+);

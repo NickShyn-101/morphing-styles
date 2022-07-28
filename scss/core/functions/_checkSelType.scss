@@ -1,7 +1,10 @@
 @function checkSelType($selType, $sel, $default) {
+  $longSel: getFirstListItemFromStr($sel);
   @if ($selType == null) {
     $selType: $default;
-    @if (index($reserved_HTML_TAGS, $sel) != null) {
+    @if (index($reserved_HTML_TAGS, $sel) != null) or
+    (index($reserved_HTML_TAGS, $longSel) != null)
+    {
       $selType: "t";
     }
     @if (index($reserved_PSEUDO_CLASSES, $sel) != null) {

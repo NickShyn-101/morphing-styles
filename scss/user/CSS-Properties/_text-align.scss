@@ -1,0 +1,14 @@
+$COMPONENTS:
+  map-merge($COMPONENTS, (
+    "text-align": (
+      prop: "text-align",
+      sel: "ta",
+      data: (
+        "left":       (left, true),
+        "right":      (right, true),
+        "center":     (center, true),
+        "justify":    (justify, true),
+        ),
+    ),
+  )
+);

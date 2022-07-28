@@ -1,0 +1,15 @@
+$COMPONENTS:
+  map-merge($COMPONENTS, (
+    "margin": (    
+      prop: "margin",
+      sel: "m",
+      data: (
+        "auto":       (auto, only),
+        "25":         (25%, only),
+        "50":         (50%, only),
+        "75":         (75%, false),
+        "100":        (100%, true),
+        ),
+    ),
+  )
+);

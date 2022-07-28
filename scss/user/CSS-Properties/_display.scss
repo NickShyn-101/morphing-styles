@@ -1,0 +1,20 @@
+$COMPONENTS:
+  map-merge($COMPONENTS, (
+    "display-visibility": (
+        data: (
+          "d-none": (
+            display: "none !important",
+          ),
+          "v-none": (
+            visibility: "hidden !important",
+          ),
+          "d-show": (
+            display: "none !important",
+          ),
+          "v-show": (
+            visibility: "hidden !important",
+          ),
+        ),
+    ),
+  )
+);

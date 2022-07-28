@@ -1,0 +1,14 @@
+$COMPONENTS:
+  map-merge($COMPONENTS, (
+    "flex-shrink": (    
+      prop: "flex-shrink",
+      sel: "shrink",
+      data: (
+        "1":          (1, true),
+        "1n5":        (1.5, true),
+        "2":          (2, true),
+        "m1":         (-1, true),
+        ),
+    ),
+  )
+);

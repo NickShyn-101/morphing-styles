@@ -1,32 +1,35 @@
-$BUTTONS_COMPS: (
-  "custom-btn-borders": (
-    prop: "border-radius",
-    sel: "btn-shape", 
-    data: (
-      "round":        0.65rem,
-      "circle":       5rem,
-      "square":       0px,
-      "hard-rounded": "1.5rem / 3rem",
+$COMPONENTS: map-merge(
+  $COMPONENTS,
+  (
+    "custom-btn-borders": (
+      prop: "border-radius",
+      sel: "btn-shape",
+      data: (
+        "round": 0.65rem,
+        "circle": 5rem,
+        "square": 0px,
+        "hard-rounded": "1.5rem / 3rem",
+      ),
     ),
-  ),
-  "custom-btn-paddings": (
-    prop: "padding",
-    sel: "btn-size", 
-    data: (
-      "xl":           1rem 1rem,
-      "x":            2rem 2rem,
-      "xs":           3rem 3rem,
-      "s":            3rem 3rem,
-      "l":            3rem 3rem,
-      "m":            3rem 3rem,
+    "custom-btn-paddings": (
+      prop: "padding",
+      sel: "btn-size",
+      data: (
+        "xl": 1rem 1rem,
+        "x": 2rem 2rem,
+        "xs": 3rem 3rem,
+        "s": 3rem 3rem,
+        "l": 3rem 3rem,
+        "m": 3rem 3rem,
+      ),
     ),
-  ),
-  "custom-btn-bg": (
-    prop: "background-color",
-    sel: "btn-bg", 
-    data: (
-      "primary":       "var(--mg-success-color) !important",
-      "primary:hover": "var(--mg-danger-color) !important",
+    "custom-btn-bg": (
+      prop: "background-color",
+      sel: "btn-bg",
+      data: (
+        "primary": "var(--mg-success-color) !important",
+        "primary:hover": "var(--mg-danger-color) !important",
+      ),
     ),
-  ),
+  )
 );
