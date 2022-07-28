@@ -3,7 +3,7 @@
   $end:         map-get($Args, $__END__);
   
   @for $i from $start through $end {
-    $Args:      map-merge($Args,($__CYCLEKEY__: $i));
+    $Args:      map-merge($Args,($__SE__: $i));
     $Selector:  formatSelector(map-get($Args, $__SEL__), $Args);
     $Args:      map-merge($Args,($__SELECTOR__: $Selector));
 
@@ -13,7 +13,7 @@
 
 @mixin formatGenTypeOfCycle($Args) {
   $Selector:    map-get($Args, $__SELECTOR__);
-  $i:           map-get($Args, $__CYCLEKEY__);
+  $i:           map-get($Args, $__SE__);
 
   #{$Selector} {
     @each $propName, $propValue in $Args {

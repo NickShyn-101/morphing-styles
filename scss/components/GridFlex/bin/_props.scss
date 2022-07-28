@@ -18,25 +18,26 @@ $GRID_FLEX_COMPS: (
   // ),
 
   "grid-main": (
-    // type: block,
-    // seltype: -d,
-    // sel: "div",
-    // extend: (
-    //   display: flex,
-    //   flex-direction: row,
-    //   align-items: flex-start,
-    //   flex-wrap: wrap,
-    //   overflow: hidden,
-    //   width: 100%,
-    // ),
-    // sel: "div",
-    seltype: "-id-id",
+    sel: "div",
+    extend: (
+      display: flex,
+      flex-direction: row,
+      align-items: flex-start,
+      flex-wrap: wrap,
+      overflow: hidden,
+      width: 100%,
+    ),
+    // seltype: "-id-id",
     data: (
       "body": (
         mq: only,
         gap: $gapInContainer,
       ),
       "row": (
+        mq: true,
+        gap: $gapInRow,
+      ),
+      "clean": (
         mq: true,
         gap: $gapInRow,
       ),
@@ -67,6 +68,8 @@ $GRID_FLEX_COMPS: (
     extend: (
       overflow: hidden,
       color: blue,
+      mq: true,
+      display: flex,
     ),
   ),
 

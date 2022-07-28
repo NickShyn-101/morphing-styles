@@ -7,26 +7,22 @@
 
   @if $extend != null {
     @if ($type == $__LIST__) or ($type == $__BLOCK__) {
-      $selType:       map-get($Args, $__SELTYPE__);
-      $sel:           formatSelector(map-get($Args, $__SEL__), $Args);
-      $space:         getSpace($selType, $Args);
       $data:          map-get($Args, $__DATA__);
- 
-      @each $propSelector, $_ in $data {
-        $currentSelector: ();
-        $Selector: "#{$sel}#{$propSelector}"; // #{$space}
-        $currentSelector: append($currentSelector, $Selector);
-        $AllSelectors: append($AllSelectors, $currentSelector, "comma");
+       @each $propSelector, $_ in $data {
+        $Args: map-merge($Args, ($__SE__: $propSelector));  
+             
+        $Selector: formatSelector(map-get($Args, $__SEL__), $Args);
+        $AllSelectors: append($AllSelectors,  $Selector, "comma");
       }
     } @else if ($type == $__CYCLE__) {
       @for $i from $start through $end {
-        $propName:    map-get($Args, $__PROPPERTY__);
-        $Args:        map-merge($Args,(cycleKey: $i));
-        
-        $currentSelector: formatSelector($propName, $Args);
-        $AllSelectors: append($AllSelectors, $currentSelector, "comma");
+        $Args:        map-merge($Args,($__SE__: $i));
+
+        $Selector: formatSelector(map-get($Args, $__SEL__), $Args);
+        $AllSelectors: append($AllSelectors, $Selector, "comma");
       }
     }
+     
     $Args: map-merge($Args,($__ALLSELECTORS__: $AllSelectors));
     @include globalChecks($extend, $Args);
   }

@@ -12,9 +12,7 @@ $__EXTEND__: "extend";
 $__START__: "start";
 $__END__: "end";
 
-
 $__INPUT__: "input";
-$__CYCLEKEY__: "cycleKey";
 // Types of components
 $__SIMPLE__: "simple";
 $__BLOCK__: "block"; // or null
@@ -41,18 +39,16 @@ $__SE__: "SecondaryElement";
 $__SELECTOR__: "Selector";
 $__ALLSELECTORS__: "AllSelector";
 
-
 // Selector Types
 $__DEFAULT__: "Default";
 $__FROM__: "from";
 
 $COMPONENTS: ();
 
-
-$reservedNames: $__FROM__, $__COMP__, $__STATUS__, $__INPUT__, $__CYCLEKEY__,
-  $__TYPE__, $__SEL__, $__SELTYPE__, $__DATA__, $__PROPPERTY__, $__EXTEND__,
-  $__START__, $__END__,  $__BOOST__, $__TO__, $__GROUP__, $__NAME__,
-  $__RES__, $__MQ__, $__SELECTOR__, $__ALLSELECTORS__;
+$reservedNames: $__FROM__, $__COMP__, $__STATUS__, $__INPUT__, $__TYPE__,
+  $__SEL__, $__SELTYPE__, $__DATA__, $__PROPPERTY__, $__EXTEND__, $__START__,
+  $__END__, $__BOOST__, $__TO__, $__GROUP__, $__NAME__, $__RES__, $__MQ__,
+  $__SELECTOR__, $__ALLSELECTORS__;
 
 $reserved_HTML_TAGS: a, abbr, address, area, article, aside, audio, b, base, bdi,
   bdo, blockquote, body, br, button, canvas, caption, cite, code, col, colgroup,
