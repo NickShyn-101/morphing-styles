@@ -1,10 +1,7 @@
-@function checkSelType($dataArr, $defaultName) {
-  @if type-of($dataArr) == "map" {
-    $sel:           map-get($dataArr, $__SEL__);
-    $selType:       map-get($dataArr, $__SELTYPE__);
-     
+@function checkSelType($selType, $sel, $default) {
+    
     @if ($selType == null) {
-      $selType: $defaultName;
+      $selType: $default;
       @if (index($reserved_HTML_TAGS, $sel) != null) {
         $selType: "t";
       }
@@ -14,6 +11,6 @@
     }
 
     @return $selType;
-  }
+
 
   }

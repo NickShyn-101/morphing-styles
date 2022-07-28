@@ -1,5 +1,5 @@
 @mixin generateTypeOfList($Args) {
-  $sel:       formatSelector(map-get($Args, $__SEL__), $Args);
+  $sel:       formatSelector($Args);
   $data:      map-get($Args, $__DATA__); 
 
   $respValue:   map-get($Args, $__RES__);
@@ -9,7 +9,7 @@
     }
 
     $Args: map-merge($Args, ($__SE__: $propSelector));
-    $sel:       formatSelector(nth($propValue, 1), $Args);
+    $sel:       formatSelector($Args);
     
     $Args: map-merge($Args,(
       $__DATA__:          nth($propValue, 1),

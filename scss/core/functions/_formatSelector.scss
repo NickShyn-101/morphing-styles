@@ -1,4 +1,4 @@
-@function formatSelector($key_prop, $Args) {
+@function formatSelector($Args) {
   $selType:   map-get($Args, $__SELTYPE__);
   $type:      map-get($Args, $__TYPE__);
   
@@ -22,11 +22,11 @@
   @if ($type == $__SIMPLE__) {
     $Args: map-merge($Args, (
       "c":            glueSelectorName(".", $-SEL-),
-      "t":            glueSelectorName($-SEL-),
+      "t":            glueSelectorName(" ", $-SEL-),
       "pc":           glueSelectorName(":", $-SEL-),
       "pe":           glueSelectorName("::", $-SEL-),
-      "id":           glueSelectorName("#", $-SEL-),
-      $__DEFAULT__:   glueSelectorName($-dot- , $-SEL-, $-MQ-),
+      "id":           glueSelectorName(" #", $-SEL-),
+      $__DEFAULT__:   glueSelectorName(".", $-dot- , $-SEL-, $-MQ-),
     ));
     $result: checkFormatForSelector($Args);
   }

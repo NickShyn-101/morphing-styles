@@ -54,14 +54,20 @@
   $PR-id-id:      map-get($Args, "pr-id-id");
 
 @if $type == $__SIMPLE__ {
-  @if ($selType == "id") {
+  @if ($selType == "c") {
+    $result: $C;
+  }
+  @else if ($selType == "t") {
+    $result: $T;
+  }
+  @else if ($selType == "id") {
     $result: $ID;
   }
-  @else if ($selType == "gpc") {
-    $result: $PSEUDOCLASS;
+  @else if ($selType == "pc") {
+    $result: $PC;
   }
   @else if ($selType == "pe") {
-    $result: $PSEUDOELEMENT;
+    $result: $PE;
   } 
 } @else {
     // Pressets for List, Block, Cycle, +Extend 

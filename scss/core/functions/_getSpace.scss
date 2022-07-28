@@ -7,7 +7,7 @@
     @if ($selType == null) {
       $space: "";
     }
-    @if ($selType == g) {
+    @if ($selType == t) {
       $space: " ";
     }
     @if ($selType == pc) {

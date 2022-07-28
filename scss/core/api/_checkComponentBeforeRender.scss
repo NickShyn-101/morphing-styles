@@ -50,6 +50,7 @@
 
   @if $selType == null or $selType == "" {
     @if $type == $__SIMPLE__ {
+      $selType: "t";
     }
 
     @if ($type == $__LIST__) or ($type == $__BLOCK__) {
@@ -70,7 +71,6 @@
   $data: map-merge(
     $data,
     (
-      $__INPUT__:       $data,
       $__DATA__:        $innerData,
       $__PROPPERTY__:   $prop,
       $__MODULE__:      $module,

@@ -1,31 +1,31 @@
 @mixin generateTypeOfSimple($Args) {
-  $inputData:         map-get($Args, $__INPUT__);
-  $prevSel:           map-get($inputData, $__SELECTOR__);
+  $prevSel:           map-get($Args, $__SELECTOR__);
 
-  @each $elementName, $elementValue in $inputData {  
+  @each $elementName, $elementValue in $Args {  
     @if type-of($elementValue) == "map" {
       $type:          map-get($elementValue, $__TYPE__);
       @if $type == null {
         $type: "simple";
       }
-      $elementValue:  map-merge($elementValue, ($__TYPE__: $type));
-      $elementValue:  checkSelType($elementValue, $elementName);
 
-      $sel:           map-get($elementValue, $__SEL__);
-      $selType:       map-get($elementValue, $__SELTYPE__);
-      
-      $currentSel:    formatSelector($sel, $elementValue);
-      $Selector:      "#{$prevSel}#{getSpace($selType, $elementValue)}#{$currentSel}";
-      
-      $elementValue:  map-merge($elementValue,(
-        $__SELECTOR__: $Selector,
-        $__MQ__: map-get($Args, $__MQ__)
+      $selType: map-get($elementValue, $__SELTYPE__);
+      $selType: checkSelType($selType, $elementName, "c");
+
+      $elementValue:  map-merge($elementValue, (
+        $__MQ__:      map-get($Args, $__MQ__),
+        $__TYPE__:    $type,
+        $__SEL__:     $elementName,
+        $__SELTYPE__: $selType,
       ));
 
-      $Args:          map-merge($Args,(input: $elementValue));   
+      $Selector: $prevSel + formatSelector($elementValue);
+      
+      $elementValue:  map-merge($elementValue, (
+        $__SELECTOR__:   $Selector,
+      ));
       
       @include globalChecks($elementValue);
-      @include generateTypeOfSimple($Args);
+      @include generateTypeOfSimple($elementValue);
     }
   }
 }

@@ -11,14 +11,14 @@
        @each $propSelector, $_ in $data {
         $Args: map-merge($Args, ($__SE__: $propSelector));  
              
-        $Selector: formatSelector(map-get($Args, $__SEL__), $Args);
+        $Selector: formatSelector( $Args);
         $AllSelectors: append($AllSelectors,  $Selector, "comma");
       }
     } @else if ($type == $__CYCLE__) {
       @for $i from $start through $end {
         $Args:        map-merge($Args,($__SE__: $i));
 
-        $Selector: formatSelector(map-get($Args, $__SEL__), $Args);
+        $Selector: formatSelector($Args);
         $AllSelectors: append($AllSelectors, $Selector, "comma");
       }
     }
