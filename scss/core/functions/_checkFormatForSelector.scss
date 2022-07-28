@@ -12,6 +12,7 @@
   $PC:            map-get($Args, "pc");      
   $PE:            map-get($Args, "pe");      
   $ID:            map-get($Args, "id");
+  $ATTR:          map-get($Args, "attr");
 
   // Default   
   $PRd:           map-get($Args, "prd");
@@ -68,6 +69,9 @@
   }
   @else if ($selType == "pe") {
     $result: $PE;
+  } 
+  @else if ($selType == "attr") {
+    $result: $ATTR;
   } 
 } @else {
     // Pressets for List, Block, Cycle, +Extend 
@@ -174,7 +178,6 @@
     $result: $DEFAULT;
   }
 }
-
 
   @return $result;
 }

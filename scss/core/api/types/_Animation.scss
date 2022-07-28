@@ -1,7 +1,7 @@
 @mixin generateTypeOfAnimation($Args) {
-  $data: map-get($Args, $__DATA__);
-  $group: map-get($Args, $__GROUP__);
-  $sel:  map-get($Args, $__SEL__);
+  $data:        map-get($Args, $__DATA__);
+  $group:       map-get($Args, $__GROUP__);
+  $sel:         map-get($Args, $__SEL__);
   $respValue:   map-get($Args, $__RES__);
 
   @if $group != true {
@@ -16,13 +16,14 @@
       @if map-has-key($propValue, $__RES__) {
         $respValue: map-get($propValue, $__RES__);
       }
+
       $Args: map-merge($Args,($__SE__: $propName)); 
       $Selector: formatSelector($Args);
       $Args: map-merge(
         $Args,(
-          $__SELECTOR__: $Selector,
-          $__DATA__: $propValue,
-          $__RES__:           $respValue,
+          $__SELECTOR__:  $Selector,
+          $__DATA__:      $propValue,
+          $__RES__:       $respValue,
         )
       ); 
       @include globalChecks($Args);

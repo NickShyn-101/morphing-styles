@@ -1,5 +1,6 @@
 // Add your own rules and expressions
 @function Expressions($method, $itr) {
+
   @if $method == "gridWidth" {
     @return calc(
       (((100% / $col-count) * $itr)) -
@@ -13,7 +14,7 @@
     );
   }
 
-  // Default value
+  // Default value (don`t delete this method)
   @if $method != true {
     @return null;
   }

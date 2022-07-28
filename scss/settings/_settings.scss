@@ -1,0 +1,14 @@
+// Global Settings and helpers
+$--new-components-add-status: true; // status - true/on, false/off, only, mq 
+$--show-components-list: true;
+
+// selectors styling
+$mediaQueryPrefix: "-";
+$mediaQueryPostfix: "";
+
+$selectorPrefix: "";
+$selectorPostfix: "";
+
+$-div-: "-";
+$-dot-: ".";
+$-shr-: " #";

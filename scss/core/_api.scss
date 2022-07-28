@@ -1,5 +1,7 @@
-@import "api/api-keys";
-@import "api/generators";
+@import "api/global/api-keys";
+@import "api/global/vars";
+
+@import "api/types";
 @import "api/globalChecks";
 @import "api/runComponentGenerator";
 @import "api/checkComponentBeforeRender";

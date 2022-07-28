@@ -4,11 +4,7 @@ $table-all-tags: "table tfoot th, table tfoot td, table tfoot tr, table tfoot, t
 
 $TABLE_COMPS: (
   "table-normal": (
-    type: block,
-    seltype: "g",
-    data: (
       "table": (
-        mq: false,
         table-layout: fixed,
         border-collapse: collapse,
         border-spacing: 0px,
@@ -20,11 +16,9 @@ $TABLE_COMPS: (
       $table-all-tags: (
         border: var(--mg-table-border),
         border-color: var(--mg-table-border-color),
-      )
-    ),
+      ),
   ),
   "table-styles": (
-    type: block,
     sel: "table",
     data: (
       "wrapper": (
@@ -35,29 +29,20 @@ $TABLE_COMPS: (
     ),
   ),
   "caption": (
-    type: block,
-    seltype: "g",
-    data: (
-      "caption": (
-        mq: false,
-        font-size: 10px,
-        text-align: left,
-        padding: 10px 20px,
-        color: black,
-      ),
+    "caption": (
+      font-size: 10px,
+      text-align: left,
+      padding: 10px 20px,
+      color: black,
     ),
   ),
   "table-fonts": (
-    type: block,
     sel: "table",
-    seltype: "g",
     extend: (
-      mq: false,
       line-height: 100%,
     ),
     data: (
       "table": (
-        mq: false,
         font-size: 1.25em,
         text-decoration: none,
       ),

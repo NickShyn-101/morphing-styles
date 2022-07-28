@@ -8,8 +8,7 @@
     }
     $Args:      map-merge($Args, ($__SE__: $propSelector));
     $sel:       formatSelector($Args);
-
-    
+  
     $Args: map-merge($Args,(
       $__DATA__:          $propValue,
       $__RES__:           $respValue,

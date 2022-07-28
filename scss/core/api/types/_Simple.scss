@@ -1,37 +1,36 @@
 @mixin generateTypeOfSimple($Args) {
   $prevSel:           map-get($Args, $__SELECTOR__);
 
-  @each $elementName, $elementValue in $Args {  
-    @if type-of($elementValue) == "map" {
-      $type:          map-get($elementValue, $__TYPE__);
-      @if $type == null {
-        $type: "simple";
-      }
+  @each $propSelector, $propValue in $Args {  
+    @if type-of($propValue) == "map" {
+      $type:          map-get($propValue, $__TYPE__);
+      @if $type == null { $type: $__SIMPLE__ }
 
-      $selType: map-get($elementValue, $__SELTYPE__);
-      $selType: checkSelType($selType, $elementName, "c");
+      $selType: map-get($propValue, $__SELTYPE__);
+      $selType: checkSelType($selType, $propSelector, "c");
 
-      $elementValue:  map-merge($elementValue, (
+      $propValue:  map-merge($propValue, (
         $__MQ__:      map-get($Args, $__MQ__),
         $__TYPE__:    $type,
-        $__SEL__:     $elementName,
+        $__SEL__:     $propSelector,
         $__SELTYPE__: $selType,
       ));
 
-      $Selector: $prevSel + formatSelector($elementValue);
+      $Selector: $prevSel + formatSelector($propValue);
       
-      $elementValue:  map-merge($elementValue, (
+      $propValue:  map-merge($propValue, (
         $__SELECTOR__:   $Selector,
       ));
       
-      @include globalChecks($elementValue);
-      @include generateTypeOfSimple($elementValue);
+      @include globalChecks($propValue);
+      @include generateTypeOfSimple($propValue);
     }
   }
 }
 
 @mixin formatGenTypeOfSimple($Args) {
   $Selector: map-get($Args, $__SELECTOR__);
+  
   #{$Selector} {
     @each $propName, $propValue in $Args {
       @if (type-of($propValue) != "map") {

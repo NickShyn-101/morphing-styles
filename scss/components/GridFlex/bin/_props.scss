@@ -8,17 +8,13 @@ $GRID_FLEX_COMPS: (
       padding: 20px,
     ),
   ),
-  // "grid-normal": (
-    // type: block,
-  //   sel: "main, aside, footer, header, section, .section",
-  //   "data": (
-  //     display: block,
-  //     margin: 0,
-  //   )
-  // ),
-
+  "grid-normal": (
+    "main, aside, footer, header, section, .section": (
+      display: block,
+      margin: 0,
+    )
+  ),
   "grid-main": (
-    sel: "div",
     extend: (
       display: flex,
       flex-direction: row,
@@ -27,36 +23,15 @@ $GRID_FLEX_COMPS: (
       overflow: hidden,
       width: 100%,
     ),
-    // seltype: "-id-id",
     data: (
-      "body": (
-        mq: only,
+      "container": (
         gap: $gapInContainer,
       ),
       "row": (
-        mq: true,
-        gap: $gapInRow,
-      ),
-      "clean": (
-        mq: true,
         gap: $gapInRow,
       ),
     ),
   ),
-  // "grid-cols": (
-  //   type: cycle,
-  //   sel: "col",
-  //   start: 1,
-  //   end: $col-count,
-  //   mq: true,
-  //   extend: (
-  //     overflow: hidden,
-  //   ),
-  //   data: (
-  //     width: "gridWidth",
-  //     height: 100px,
-  //   ),
-  // ),
   "grid-cols": (
     sel: "col",
     seltype: "-d+",
@@ -72,7 +47,6 @@ $GRID_FLEX_COMPS: (
       display: flex,
     ),
   ),
-
   "grid-offset-left": (
     type: cycle,
     sel: "offset-l",
@@ -82,30 +56,21 @@ $GRID_FLEX_COMPS: (
     seltype: "d+",
     margin-left: "offsetWidth"
   ),
-  // "grid-offset-right": (
-  //   type: cycle,
-  //   sel: "offset-r",
-  //   prop: "margin-right",
-  //   start: 0,
-  //   end: $col-count - 1,
-  //   mq: true,
-  //   exp: "offsetWidth",
-  // ),
+  "grid-offset-right": (
+    type: cycle,
+    sel: "offset-r",
+    start: 0,
+    end: $col-count - 1,
+    mq: true,
+    seltype: "d+",
+    margin-right: "offsetWidth"
+  ),
   "custom-grid-basics": (
-    type: block,
-    sel: green,
-    extend: (
-      font-size: 15px,
-      display: block,
-    ),
     data: (
       "d-none": (
-        mq: false,
         display: "none !important",
-        color: black
       ),
       "v-none": (
-        mq: true,
         visibility: "hidden !important",
       ),
     ),

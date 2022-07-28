@@ -1,14 +1,11 @@
 @function formatSelector($Args) {
   $selType:   map-get($Args, $__SELTYPE__);
   $type:      map-get($Args, $__TYPE__);
-  
-  // formating vars
   $sel:       map-get($Args, $__SEL__);
   $-SEL-:     $sel;
   $MQ:        map-get($Args, $__MQ__);
   $-MQ-:      $MQ;
   $-SE_2-:    map-get($Args, $__SE__);
-
   $result:    "";
 
   @if $MQ != "" {
@@ -26,12 +23,12 @@
       "pc":           glueSelectorName(":", $-SEL-),
       "pe":           glueSelectorName("::", $-SEL-),
       "id":           glueSelectorName(" #", $-SEL-),
+      "attr":          glueSelectorName("[", $-SEL-, "]"),
       $__DEFAULT__:   glueSelectorName(".", $-dot- , $-SEL-, $-MQ-),
     ));
     $result: checkFormatForSelector($Args);
   }
 
-  // Cycle done
   @if ($type == $__CYCLE__) {
     $Args: map-merge($Args, (
       "prd":          glueSelectorName($-dot-, $-SEL-, $-SE_2-), 
@@ -50,7 +47,6 @@
     $result: checkFormatForSelector($Args);
   }
 
-  // Block Components done
   @if ($type == $__BLOCK__) or ($type == $__LIST__) {
     $-dotS-: ".";
     $-MQS-: $-MQ-;
@@ -104,7 +100,6 @@
   
   }
 
-  // Animation formating
   @if ($type == $__ANIMATION__) {
     @if $-SE_2- == null {
       $-div-: ""

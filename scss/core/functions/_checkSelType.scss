@@ -1,16 +1,22 @@
 @function checkSelType($selType, $sel, $default) {
-    
-    @if ($selType == null) {
-      $selType: $default;
-      @if (index($reserved_HTML_TAGS, $sel) != null) {
-        $selType: "t";
-      }
-      @if (index($reserved_PSEUDO_CLASSES, $sel) != null)  {
-        $selType: "pc";
-      }
+  @if ($selType == null) {
+    $selType: $default;
+    @if (index($reserved_HTML_TAGS, $sel) != null) {
+      $selType: "t";
     }
-
-    @return $selType;
-
-
+    @if (index($reserved_PSEUDO_CLASSES, $sel) != null) {
+      $selType: "pc";
+    }
+    @if (index($reserved_PSEUDO_ELEMENTS, $sel) != null) {
+      $selType: "pe";
+    }
+    @if (str-index($sel, "=") != null) or
+      (index($reserved_GLOBAL_ATTR, $sel) != null) or
+      (str-index($sel, "aria"))
+    {
+      $selType: "attr";
+    }
   }
+
+  @return $selType;
+}

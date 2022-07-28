@@ -1,5 +1,3 @@
-@import "core/css-properties-custom";
-
 $USER_COMPONENTS_LIST: (
   // 'grid-cols': true,
   // 'grid-offset-left': true,
@@ -14,9 +12,9 @@ $USER_COMPONENTS_LIST: (
     // 'table-styles': false,
     // 'caption': false,
     // 'table-fonts': true,
-    // 'custom-btn-borders': false,
-    // 'custom-btn-paddings': false,
-    // 'custom-btn-bg': false,
+    // 'custom-btn-borders': true,
+    // 'custom-btn-paddings': true,
+    // 'custom-btn-bg': true,
     // 'justify-content': false,
     // 'align-items': true,
     // 'align-self': false,
@@ -37,7 +35,7 @@ $USER_COMPONENTS_LIST: (
     // 'custom-margin': true,
     // 'custom-color-long': true,
     // 'custom-color-short': true,
-    'custom-padding': true,
+    // 'custom-padding': true,
   );
 
 // Set statuses to componetns

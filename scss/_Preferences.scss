@@ -1,3 +1,5 @@
+@import "settings/settings"; // For advanced users
+
 $mediaQuery: (
 	"lh":   " screen and (min-width : 1181px)", 	// Large screens and Up
 	"md":   " screen and (max-width : 910px)", 		// middle screens and down
@@ -13,17 +15,3 @@ $font-famyly-prime:     '"Noto Sans", sans-serif ';
 $font-famyly-second:    '"Roboto Mono", monospace';
 $font-famyly-third:     '"Ubuntu", sans-serif';
 
-// Global Settings and helpers
-$--new-components-add-status: false; // status - true/on, false/off, only, mq 
-$--show-components-list: true;
-
-// selectors styling
-$mediaQueryPrefix: "-";
-$mediaQueryPostfix: "";
-
-$selectorPrefix: "";
-$selectorPostfix: "";
-
-$-div-: "-";
-$-dot-: ".";
-$-shr-: " #";
