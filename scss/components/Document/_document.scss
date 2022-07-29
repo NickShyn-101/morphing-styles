@@ -4,14 +4,20 @@
   box-sizing: border-box;
 }
 
-html {
-  background-color: var(--mg-bg-color);
-  font-family: #{$font-famyly-prime}, #{$font-famyly-second}, #{$font-famyly-third}; 
-  font-size: var(--mg-font-size-g);
-  -ms-text-size-adjust: 100%;
-  -webkit-text-size-adjust: 100%;
-}
-
-body {
-  margin: 0;
-}
+$COMPONENTS: map-merge(
+  $COMPONENTS,
+  (
+    "global": (
+      "html": (
+        background-color: var(--mg-bg-color),
+        font-family: "#{$font-famyly-prime}, #{$font-famyly-second}, #{$font-famyly-third}", 
+        font-size: var(--mg-font-size-g),
+        -ms-text-size-adjust: 100%,
+        -webkit-text-size-adjust: 100%,
+      ),
+    ),
+    body: (
+      margin: 0,
+    ),
+  )
+);

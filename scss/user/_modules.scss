@@ -6,4 +6,16 @@
   @if $moduleName == "custom-color" {
     @include custom-color($data, $Args);
   }
+
+  @if $moduleName == "createTableBorder" {
+    @include createTableBorder($data, $Args);
+  }
+
+  @if $moduleName == "createHighlight" {
+    @include createHighlight($data, $Args);
+  }
+
+  @if $moduleName == "createTablePaddings" {
+    @include createTablePaddings($data, $Args);
+  }
 }

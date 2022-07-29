@@ -1,33 +1,47 @@
 @import "bin/mixin";
-@import "bin/props"; // edit props to create an awesome table
 
-//----------------- Special Styles --------------------------------------
-//-----------------------------------------------------------------------
-//Custom paddings            name        tbody    ?tHead    ?tFoot
-@include createTablePaddings("slim",     20px,    20px,    "40px 1rem");
-@include createTablePaddings("extra",    30px,    100px);
-@include createTablePaddings("minimal",  10px);
-//-----------------------------------------------------------------------
-// Hightlight table areas :   area  , ?bgColor, ?textColor
-@include highlightTableAreas("head");
-@include highlightTableAreas("foot");
-//-----------------------------------------------------------------------
-// borders in table:       area     type  ?width/style/color, ?color
-@include createTableBorder("body", "row");
-@include createTableBorder("body", "col");
-@include createTableBorder("body", "inner");
-@include createTableBorder("body", "wrapper");
-@include createTableBorder("head", "row");
-@include createTableBorder("head", "col");
-@include createTableBorder("head", "inner");
-@include createTableBorder("head", "wrapper");
-@include createTableBorder("foot", "row");
-@include createTableBorder("foot", "col");
-@include createTableBorder("foot", "inner");
-@include createTableBorder("foot", "wrapper");
-//-----------------------------------------------------------------------
-// striped effect:       area    type    rule  ?colorBG   
-@include createHighlight("body", "col",  "2n");
-@include createHighlight("head", "row",  "3n");
-@include createHighlight("body", "row",  "2n");
-@include createHighlight("body", "col",  "1");
+@import "components/table-normal"; 
+@import "components/table-fonts"; 
+
+$COMPONENTS: map-merge(
+  $COMPONENTS,
+  (
+    "module-table-borders": (
+        module: "createTableBorder",
+        data: (
+//                  tableArea   type
+         "pr1":     ("body",     "row"),
+         "pr2":     ("body",     "col"),
+         "pr3":     ("body",     "inner"),
+         "pr4":     ("body",     "wrapper"),
+         "pr5":     ("head",     "row"),
+         "pr6":     ("head",     "col"),
+         "pr7":     ("head",     "inner"),
+         "pr8":     ("head",     "wrapper"),
+         "pr9":     ("foot",     "row"),
+         "pr20":    ("foot",     "col"),
+         "pr11":    ("foot",     "inner"),
+         "pr12":    ("foot",     "wrapper"),
+        ),
+    ),
+    "module-table-highlight": (
+        module: "createHighlight",
+        data: (
+//              tableArea   type    nth()
+         "pr1": ("body",     "col",  "1" ),
+         "pr2": ("body",     "col",  "2n"),
+         "pr3": ("head",     "row",  "3n"),
+         "pr4": ("body",     "row",  "2n"),
+        ),
+    ),
+    "module-table-paddings": (
+        module: "createTablePaddings",
+        data: (
+//              name        tbody   ?tHead  ?tFoot
+         "pr1": ("slim",     20px,   20px,   "40px 1rem"),
+         "pr2": ("extra",    30px,   30px,   100px),
+         "pr3": ("minimal",  10px,   10px,   10px),
+        ),
+    ),
+  )
+);

@@ -1,9 +1,8 @@
-.btn,
 button,
 input[type="button"],
 input[type="reset"],
 input[type="submit"],
-input[type="file"] {
+input[type="file"], .btn {
   background: var(--mg-primary-color);
   display: inline;
   border: 0;
@@ -16,7 +15,6 @@ input[type="file"] {
   font-family: inherit;
   user-select: none;
   -webkit-user-drag: none;
-
   cursor: pointer;
   &:disabled,
   &.disabled {

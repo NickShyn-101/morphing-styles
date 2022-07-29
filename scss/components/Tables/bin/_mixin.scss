@@ -1,4 +1,9 @@
-@mixin createHighlight($area, $ColOrRow, $name, $colorBG: "") {
+@mixin createHighlight($props, $Args) {
+  $area: nth($props, 1);
+  $ColOrRow: nth($props, 2);
+  $name: nth($props, 3);
+  $colorBG: "";
+
   $default-colorBG: $colorBG;
   @if $default-colorBG == "" {
     $default-colorBG: var(--mg-table-striped-bg);
@@ -24,7 +29,13 @@
   }
 }
 
-@mixin createTableBorder($area, $type, $borderWidth: "", $borderColor: "") {
+@mixin createTableBorder($props, $Args) {
+
+  $area: nth($props, 1);
+  $type: nth($props, 2);
+  $borderWidth: "";
+  $borderColor: "";
+
   $border-default: $borderWidth;
   $border-color-default: $borderColor;
   @if $borderWidth == "" {
@@ -117,7 +128,12 @@
   }
 }
 
-@mixin createTablePaddings($name, $bodyP, $headerP: $bodyP, $footerP: $bodyP) {
+@mixin createTablePaddings($props, $Args) {
+  $name:      nth($props, 1);
+  $headerP:   nth($props, 2);
+  $footerP:   nth($props, 3);
+  $bodyP:     nth($props, 4);
+
   table.#{$name} {
     th,
     td {

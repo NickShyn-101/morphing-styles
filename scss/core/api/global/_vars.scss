@@ -5,7 +5,7 @@ $reservedNames: $__SE__, $__FROM__, $__COMP__, $__STATUS__, $__INPUT__,
   $__START__, $__END__, $__BOOST__, $__TO__, $__GROUP__, $__NAME__, $__RES__,
   $__MQ__, $__SELECTOR__, $__ALLSELECTORS__;
 
-$reserved_HTML_TAGS: a, abbr, address, area, article, aside, audio, b, base, bdi,
+$reserved_HTML_TAGS: "*", a, abbr, address, area, article, aside, audio, b, base, bdi,
   bdo, blockquote, body, br, button, canvas, caption, cite, code, col, colgroup,
   data, datalist, dd, del, details, dfn, dialog, div, dl, dt, em, embed,
   fieldset, figcaption, figure, footer, form, h1, head, header, hr, html, i,

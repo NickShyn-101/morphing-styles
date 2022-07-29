@@ -1,23 +1,17 @@
-$h1-h6-font-size: (
-  "h1": 2.7em,
-  "h2": 2.4em,
-  "h3": 2.1em,
-  "h4": 1.8em,
-  "h5": 1.5em,
-  "h6": 1.2em,
+$COMPONENTS: map-merge(
+  $COMPONENTS,
+  (
+    "typography-headings": (
+      start: 1,
+      end: 6,
+      sel: "h",
+      st: t,
+      font-size: "headingsSize",
+      extend: (
+        line-height: 100%,
+        margin: 0,
+        font-weight: 600,
+      ),
+    ),
+  )
 );
-
-%headings-general {
-  line-height: 100%;
-  margin: 0;
-  font-weight: 600;
-}
-
-//H1 - H6 Headings generate
-@each $type, $size in $h1-h6-font-size {
-  #{$type},
-  .#{$type} {
-    font-size: $size;
-    @extend %headings-general;
-  }
-}
