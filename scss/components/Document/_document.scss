@@ -4,11 +4,13 @@
   box-sizing: border-box;
 }
 
+@import "normalize";
 $COMPONENTS: map-merge(
   $COMPONENTS,
   (
     "global": (
       "html": (
+        margin: "0px",
         background-color: var(--mg-bg-color),
         font-family: "#{$font-famyly-prime}, #{$font-famyly-second}, #{$font-famyly-third}", 
         font-size: var(--mg-font-size-g),
@@ -17,7 +19,8 @@ $COMPONENTS: map-merge(
       ),
     ),
     body: (
-      margin: 0,
+      margin: "0px",
+      padding: 0,
     ),
   )
 );

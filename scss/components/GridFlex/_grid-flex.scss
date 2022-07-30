@@ -6,9 +6,20 @@ $COMPONENTS: map-merge(
         display: block,
         margin: 0,
       ),
+      "strict": (
+        max-width: $container-width
+      ),
+      "to-mid": (
+        margin: "0 auto",
+      ),
     ),
     "grid-main": (
       data: (
+        "mid-container": (
+          gap: $gapInContainer,
+          margin: "0 auto",
+          max-width: $container-width
+        ),
         "container": (
           gap: $gapInContainer,
         ),
@@ -60,8 +71,8 @@ $COMPONENTS: map-merge(
       ),
       data: (
         background: "rgba(149, 16, 251, 0.05)",
-        border: "1px dashed rgba(149, 16, 251, 0.25)",
-        padding: 10px,
+        // border: "1px dashed rgba(149, 16, 251, 0.25)",
+        // padding: 10px,
       ),
     ),
   )

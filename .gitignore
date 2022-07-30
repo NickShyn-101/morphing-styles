@@ -2,3 +2,7 @@ prepros.config
 css
 index.html
 scss/test
+node_modules
+gulpfile.js
+package-lock.json
+site
