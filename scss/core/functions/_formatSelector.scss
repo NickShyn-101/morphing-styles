@@ -58,6 +58,11 @@
       $-MQS-: "";
       $-shrS-: "";
     }
+    @if $-SEL- == $-SE_2- {
+      $-SEL-: "";
+      $selType: "-t-t";
+      $Args: map-merge($Args, ($__SELTYPE__: $selType));
+    }
       $Args: map-merge($Args, (
         "prc":            glueSelectorName($-dotS-, $-SEL-, $-Ddiv-, $-SE_2-, $-MQ-),
         "prt":            glueSelectorName($-SEL-,  $-dot-, $-SE_2-,    $-MQ-),

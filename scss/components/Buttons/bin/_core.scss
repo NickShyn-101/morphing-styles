@@ -2,20 +2,25 @@ button,
 input[type="button"],
 input[type="reset"],
 input[type="submit"],
-input[type="file"], .btn {
-  background: var(--mg-primary-color);
+input[type="file"],
+.btn {
   display: inline;
-  border: 0;
-  margin: 0;
-  padding: 1rem 2rem;
-  font-size: 1em;
+  border-radius: var(--mg-default-btn-border-radius);
+  border-width: var(--mg-default-btn-border-width);
+  border-style: var(--mg-default-btn-border-style);
+  background-color: var(--mg-default-btn-bg);
+  border-color: var(--mg-default-btn-border-color);
+  color: var(--mg-default-btn-color);
+  padding: var(--mg-default-btn-padding);
+  margin: var(--mg-default-btn-margin);
+  font-size: var(--mg-default-btn-font-size);
   font-weight: normal;
   text-decoration: none;
-  outline: 0;
-  font-family: inherit;
   user-select: none;
   -webkit-user-drag: none;
+  outline: 0;
   cursor: pointer;
+  transition: all 0.2s ease;
   &:disabled,
   &.disabled {
     background-color: grey;
@@ -23,7 +28,9 @@ input[type="file"], .btn {
     cursor: default;
   }
   &:hover:not(:disabled, .disabled) {
-    background: var(--mg-info-color);
+    color: var(--mg-light-color);
+    border-color: var(--mg-default-btn-bg-hover);
+    background-color: var(--mg-default-btn-bg-hover);
     // background-color: orangered ;
   }
 }

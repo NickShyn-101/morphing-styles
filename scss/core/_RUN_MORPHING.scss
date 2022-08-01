@@ -1,3 +1,7 @@
+// Edit this files ​to your liking
+@import "user/css-properties";
+
+
 $ALL_COMPONENTS_LIST: ();
 @each $component, $_ in $COMPONENTS {
   $ALL_COMPONENTS_LIST: map-merge(
@@ -16,9 +20,10 @@ $ALL_COMPONENTS_LIST: map-merge($ALL_COMPONENTS_LIST, $USER_COMPONENTS_LIST);
 
 // Helpfull instruments and settings
 @if $--show-components-list == true {
-  LIST-OF-COMPONENTS {
     @each $key, $val in $ALL_COMPONENTS_LIST {
-      #{"/*"}: "'#{$key}': #{$val},"#{"*/"};
+      $str: "'#{$key}': #{$val},";
+      @debug $str;
     }
-  }
 }
+
+

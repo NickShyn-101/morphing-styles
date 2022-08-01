@@ -1,3 +1,16 @@
+:root {
+  --mg-default-btn-font-size:       1em;
+  --mg-default-btn-color:           var(--mg-light-color);
+  --mg-default-btn-bg:              var(--mg-primary-color);
+  --mg-default-btn-bg-hover:        var(--mg-dark-color);
+  --mg-default-btn-padding:         0.75rem 1.75rem;
+  --mg-default-btn-margin:          0px;
+  --mg-default-btn-border-radius:   2px;
+  --mg-default-btn-border-color:    var(--mg-primary-color);
+  --mg-default-btn-border-width:    2px;
+  --mg-default-btn-border-style:    solid;
+}
+
 $COMPONENTS: map-merge(
   $COMPONENTS,
   (
@@ -5,9 +18,9 @@ $COMPONENTS: map-merge(
       prop: "border-radius",
       sel: "btn-shape",
       data: (
-        "round": 0.65rem,
-        "circle": 5rem,
-        "square": 0px,
+        "round": "0.65rem",
+        "circle": "5rem",
+        "square": "0px",
         "hard-rounded": "1.5rem / 3rem",
       ),
     ),
@@ -15,21 +28,59 @@ $COMPONENTS: map-merge(
       prop: "padding",
       sel: "btn-size",
       data: (
-        "xl": 1rem 1rem,
-        "x": 2rem 2rem,
-        "xs": 3rem 3rem,
-        "s": 3rem 3rem,
-        "l": 3rem 3rem,
-        "m": 3rem 3rem,
+        "xl": "1.25rem 2.25rem",
+        "l": "1rem 2rem",
+        "m": var(--mg-default-btn-padding),
+        "s": "0.5rem 1.5rem",
+        "xs": ".25rem 1.25rem",
       ),
     ),
+
     "custom-btn-bg": (
-      prop: "background-color",
-      sel: "btn-bg",
+      sel: "btn",
       data: (
-        "primary": "var(--mg-success-color) !important",
-        "primary:hover": "var(--mg-danger-color) !important",
+        "primary": (
+          background-color:   var(--mg-primary-color),
+          border-color:       var(--mg-primary-color),
+          color:              var(--mg-light-color),
+        ),
+        "primary:hover:not(:disabled, .disabled)": (
+          background-color:   var(--mg-success-color),
+          border-color:       var(--mg-success-color),
+          color:              var(--mg-light-color),
+        ),
+        "secondary": (
+          background-color:   var(--mg-danger-color),
+          border-color:       var(--mg-danger-color),
+          color:              var(--mg-light-color),
+        ),
+        "secondary:hover:not(:disabled, .disabled)": (
+          background-color:   var(--mg-warning-color),
+          border-color:       var(--mg-warning-color),
+          color:              var(--mg-light-color),
+        ),
+      ),
+
+    ),
+    "custom-btn-type": (
+      sel: "btn",
+      data: (
+        "outline":  (
+          background-color: unset,
+        ),
+        "clear":    (
+          background-color: unset,
+          border-color: unset,
+        ),
       ),
     ),
+    // "custom-btn-bg": (
+    //   prop: "background-color",
+    //   sel: "btn-bg",
+    //   data: (
+    //     "primary": "var(--mg-success-color) !important",
+    //     "primary:hover": "var(--mg-danger-color) !important",
+    //   ),
+    // ),,,
   )
 );

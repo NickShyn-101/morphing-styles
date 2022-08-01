@@ -18,13 +18,16 @@ $COMPONENTS: map-merge(
         "mid-container": (
           gap: $gapInContainer,
           margin: "0 auto",
+          width: 95%,
           max-width: $container-width
         ),
         "container": (
           gap: $gapInContainer,
+          width: 95%,
         ),
         "row": (
           gap: $gapInRow,
+          width: 100%,
         ),
       ),
       extend: (
@@ -33,7 +36,7 @@ $COMPONENTS: map-merge(
         align-items: flex-start,
         flex-wrap: wrap,
         overflow: hidden,
-        width: 100%,
+        
       ),
     ),
     "grid-cols": (
@@ -71,8 +74,8 @@ $COMPONENTS: map-merge(
       ),
       data: (
         background: "rgba(149, 16, 251, 0.05)",
-        // border: "1px dashed rgba(149, 16, 251, 0.25)",
-        // padding: 10px,
+        border: "1px dashed rgba(149, 16, 251, 0.25)",
+        padding: 10px,
       ),
     ),
   )

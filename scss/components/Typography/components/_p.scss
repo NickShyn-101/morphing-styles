@@ -1,0 +1,25 @@
+$COMPONENTS: map-merge(
+  $COMPONENTS,
+  (
+    "typography-paragraph": (
+      sel: p,
+      st: "-t-c",
+      data: (
+        "p": (
+          color: "rgb(27, 24, 34)",
+          font-size: 1.15em,
+          font-weight: 300,
+        ),
+        "pre-header": (
+          color: "rgb(27, 24, 34)",
+          font-size: 1em,
+          font-weight: 600,
+        ),
+      ),
+      extend: (
+        font-family: inherit,
+        line-height: 150%,
+      ),
+    ),
+  )
+);
