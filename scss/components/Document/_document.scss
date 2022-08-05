@@ -10,8 +10,7 @@ $COMPONENTS: map-merge(
   (
     "global": (
       "html": (
-        margin: "0px",
-        background-color: var(--mg-bg-color),
+        margin: "0px", 
         font-family: "#{$font-famyly-prime}, #{$font-famyly-second}, #{$font-famyly-third}", 
         font-size: var(--mg-font-size-g),
         -ms-text-size-adjust: 100%,

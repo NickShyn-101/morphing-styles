@@ -1,7 +1,14 @@
 html[data-theme='light'] {
     --mg-bg-color:                      rgb(255, 255, 255); // +
+    --mg-text-color:                    #171324;
+    --mg-text-p-color:                  #171324;
+    
+    --mg-footer-bg-color:               #f3f6f9;
+    --mg-footer-text-color:             #171324;
+    --mg-footer-text-p-color:           #171324;
 
-    --mg-primary-color:                 #1c49de;
+
+    --mg-primary-color:                 #22a063;
     --mg-secondary-color:               #cbaa26;
     --mg-success-color:                 #22a063;
     --mg-warning-color:                 #da7f2a;

@@ -6,12 +6,12 @@ $COMPONENTS: map-merge(
       st: "-t-c",
       data: (
         "p": (
-          color: "rgb(27, 24, 34)",
+          color: var(--mg-text-p-color),
           font-size: 1.15em,
           font-weight: 300,
         ),
         "pre-header": (
-          color: "rgb(27, 24, 34)",
+          color: var(--mg-text-p-color),
           font-size: 1em,
           font-weight: 600,
         ),

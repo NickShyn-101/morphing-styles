@@ -40,23 +40,24 @@ $COMPONENTS: map-merge(
       sel: "btn",
       data: (
         "primary": (
-          background-color:   var(--mg-primary-color),
+          background:   var(--mg-primary-color),
           border-color:       var(--mg-primary-color),
           color:              var(--mg-light-color),
         ),
         "primary:hover:not(:disabled, .disabled)": (
-          background-color:   var(--mg-success-color),
+          background:   var(--mg-success-color),
           border-color:       var(--mg-success-color),
           color:              var(--mg-light-color),
         ),
         "secondary": (
-          background-color:   var(--mg-danger-color),
-          border-color:       var(--mg-danger-color),
-          color:              var(--mg-light-color),
+          border: 0,
+          background:   "linear-gradient( 109.6deg,  rgba(255,207,84,1) 11.2%, rgba(255,158,27,1) 91.1% )",
+          border-color:       var(--mg-warning-color),
+          color:              var(--mg-dark-color),
         ),
         "secondary:hover:not(:disabled, .disabled)": (
-          background-color:   var(--mg-warning-color),
-          border-color:       var(--mg-warning-color),
+          background:   var(--mg-danger-color),
+          border-color:       var(--mg-danger-color),
           color:              var(--mg-light-color),
         ),
       ),
@@ -70,17 +71,9 @@ $COMPONENTS: map-merge(
         ),
         "clear":    (
           background-color: unset,
-          border-color: unset,
+          border-color: transparent,
         ),
       ),
     ),
-    // "custom-btn-bg": (
-    //   prop: "background-color",
-    //   sel: "btn-bg",
-    //   data: (
-    //     "primary": "var(--mg-success-color) !important",
-    //     "primary:hover": "var(--mg-danger-color) !important",
-    //   ),
-    // ),,,
   )
 );

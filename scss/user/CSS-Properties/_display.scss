@@ -1,7 +1,11 @@
 $COMPONENTS:
   map-merge($COMPONENTS, (
     "display-visibility": (
+      mq: true,
         data: (
+          "d-flex": (
+            display: flex,
+          ),
           "d-none": (
             display: "none !important",
           ),

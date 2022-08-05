@@ -50,6 +50,19 @@ $COMPONENTS: map-merge(
         overflow: hidden,
       ),
     ),
+    "grid-cols-flex": (
+      sel: "col-f",
+      st: "-d+",
+      start: 1,
+      end: $col-count,
+      mq: true,
+      flex-basis: "f-col-width",
+      flex-wrap: "no-wrap",
+      extend: (
+        // flex: 1,
+        // overflow: hidden,
+      ),
+    ),
     "grid-offset-left": (
       sel: "offset-l",
       st: "d+",
@@ -71,6 +84,7 @@ $COMPONENTS: map-merge(
       to: (
         "grid-main",
         "grid-cols",
+        "grid-cols-flex"
       ),
       data: (
         background: "rgba(149, 16, 251, 0.05)",

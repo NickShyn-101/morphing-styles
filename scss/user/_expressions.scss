@@ -18,6 +18,10 @@
     @return calc(3 - (0.3 * $itr));
   }
 
+  @if $method == "f-col-width" {
+    @return calc((100% / $col-count) * $itr);
+  }
+
   // Default value (don`t delete this method)
   @if $method != true {
     @return null;
